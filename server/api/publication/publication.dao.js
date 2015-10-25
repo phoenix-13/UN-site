@@ -48,7 +48,7 @@ function update(id, doc) {
 }
 
 function remove(id) {
-  return Publication.removeAsync({_id: id})
+  return Publication.removeAsync({_id: id })
     .then(assertDBUpdateAffected);
 }
 

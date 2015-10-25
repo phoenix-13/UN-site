@@ -126,9 +126,4 @@ describe('publication.dao', () => {
     });
   });
 
-
-
-
-
 });
-
