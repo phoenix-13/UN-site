@@ -8,7 +8,7 @@ var cookieParser = require('cookie-parser');
 var path = require('path');
 var config = require('./environment');
 
-module.exports = app => {
+module.exports = function (app) {
   var env = app.get('env');
 
   app.engine('html', require('ejs').renderFile);
@@ -21,12 +21,14 @@ module.exports = app => {
 
   if (env === 'production') {
     app.use(express.static(path.join(config.root, 'dist')));
+    app.use(express.static(path.join(config.paths.uploads)));
     app.set('appPath', 'dist');
   }
 
   if (env === 'development' || env === 'test') {
     app.use(express.static(path.join(config.root, '.tmp')));
     app.use(express.static(path.join(config.root, './')));
+    app.use(express.static(path.join(config.paths.uploads)));
     app.set('appPath', 'client');
   }
 };
