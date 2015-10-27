@@ -1,8 +1,13 @@
 'use strict';
 
 export default class {
-  constructor() {
+  constructor(test, $mdDialog) {
     'ngInject';
 
+    this.test = test;
+  }
+
+  addIndicator() {
+    this.test.open();
   }
 }
