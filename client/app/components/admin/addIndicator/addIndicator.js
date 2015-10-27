@@ -1,6 +1,6 @@
 'use strict';
 
-import onEnter from './add.indicator.controller';
+import onEnter from './addIndicatorController';
 
 export default angular.module('admin.indicators.add', [])
   .config($stateProvider => {

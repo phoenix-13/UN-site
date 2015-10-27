@@ -1,7 +1,7 @@
 'use strict';
 
-import template from './add.indicator.html!text';
-import './add.indicator.css!';
+import template from './addIndicator.html!text';
+import './addIndicator.css!';
 
 export default ($state, $mdDialog) => {
   'ngInject';
