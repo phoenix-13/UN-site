@@ -5,6 +5,7 @@ import './add.indicator.css!';
 
 export default ($state, $mdDialog) => {
   'ngInject';
+
   $mdDialog.show({
     template,
     clickOutsideToClose: true,
