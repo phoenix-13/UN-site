@@ -8,7 +8,7 @@ export default angular.module('admin.publications', [])
 .config($stateProvider => {
   $stateProvider
     .state('admin.publications', {
-      url: 'publications',
+      url: 'publications/',
       template,
       controller,
       controllerAs: 'vm',
