@@ -1,1 +1,45 @@
-hello world!
+<md-dialog aria-label="Mango (Fruit)">
+  <form>
+    <md-toolbar>
+      <div class="md-toolbar-tools">
+        <h2>Add New Indicator</h2>
+        <span flex></span>
+        <md-button class="md-icon-button" ng-click="cancel()">
+          <i class="fa fa-times" aria-label="Close dialog"></i>
+        </md-button>
+      </div>
+    </md-toolbar>
+    <md-dialog-content style="max-width:800px;max-height:810px; ">
+      <md-tabs md-dynamic-height md-border-bottom>
+        <md-tab label="ქართული">
+          <md-content class="md-padding">
+            <div layout layout-sm="column">
+              <md-input-container style="width:70%">
+                <label>Title</label>
+                <input>
+              </md-input-container>
+              <md-datepicker ng-model="user.submissionDate" md-placeholder="Enter date"></md-datepicker>
+            </div>
+            <md-input-container flex>
+              <label>Content</label>
+              <textarea columns="1"></textarea>
+            </md-input-container>
+
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla venenatis ante augue. Phasellus volutpat neque ac dui mattis vulputate. Etiam consequat aliquam cursus. In sodales pretium ultrices. Maecenas lectus est, sollicitudin consectetur felis nec, feugiat ultricies mi. Aliquam erat </p>
+          </md-content>
+        </md-tab>
+        <md-tab label="English">
+          <md-content class="md-padding">
+            <h1 class="md-display-2">Tab Two</h1>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla venenatis ante augue. Phasellus volutpat neque ac dui mattis vulputate. Etiam consequat aliquam cursus. In sodales pretium ultrices. Maecenas lectus est, sollicitudin consectetur felis nec, feugiat ultricies mi. Aliquam erat </p>
+          </md-content>
+        </md-tab>
+      </md-tabs>
+    </md-dialog-content>
+    <div class="md-actions" layout="row">
+      <md-button ng-click="answer()" style="margin-right:20px;" >
+        Save
+      </md-button>
+    </div>
+  </form>
+</md-dialog>
