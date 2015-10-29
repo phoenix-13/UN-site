@@ -6,7 +6,7 @@ var Indicator = require('../indicator.dao');
 var ObjectId = require('mongoose').Types.ObjectId;
 var BusinessLogicValidationError = require('../../../errors').BusinessLogicValidationError;
 
-describe.only('indicator.business.logic.validator', () => {
+describe('indicator.business.logic.validator', () => {
   var indicator;
 
   beforeEach(done => {
