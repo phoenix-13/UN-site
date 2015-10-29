@@ -9,6 +9,7 @@ import home from './main/home/home';
 import Admin from './admin/admin';
 //inject:import.admin
 import aboutUs from './admin/aboutUs/aboutUs';
+import addIndicator from './admin/addIndicator/addIndicator';
 import contact from './admin/contact/contact';
 import demography from './admin/demography/demography';
 import indicators from './admin/indicators/indicators';
@@ -28,6 +29,7 @@ export default angular.module('app.components', [
   Admin.name,
   //inject:ngmodule.admin
   aboutUs.name,
+  addIndicator.name,
   contact.name,
   demography.name,
   indicators.name,

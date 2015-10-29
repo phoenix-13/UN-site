@@ -22,34 +22,35 @@
   <section layout="row" flex>
     <md-sidenav class="md-sidenav-left md-whiteframe-z2" md-component-id="left" md-is-locked-open="$mdMedia('gt-md')">
       <md-content>
-        <md-list hide-md show-gt-md>
+        <md-list>
           <md-list-item>
-            <md-button class="md-button md-primary md-hue-1" ui-sref="admin.landingPage"> <i class="fa fa-th"></i> მთავარი გვერდი</md-button>
+            <md-button class="md-primary md-hue-1" ui-sref="admin.landingPage"> <i class="fa fa-th"></i> <span>მთავარი გვერდი</span> </md-button>
           </md-list-item>
           <md-list-item>
-            <md-button class="md-primary md-hue-1" ui-sref="admin.indicators"> <i class="fa fa-bar-chart"></i> ინდიკატორები</md-button>
+            <md-button class="md-primary md-hue-1" ui-sref="admin.indicators"> <i class="fa fa-bar-chart"></i> <span>ინდიკატორები</span> </md-button>
           </md-list-item>
           <md-list-item>
-            <md-button class="md-primary md-hue-1" ui-sref="admin.publications"> <i class="fa fa-newspaper-o"></i> პუბლიკაციები</md-button>
+            <md-button class="md-primary md-hue-1" ui-sref="admin.publications"> <i class="fa fa-newspaper-o"></i> <span>პუბლიკაციები</span></md-button>
           </md-list-item>
           <md-list-item>
-            <md-button class="md-primary md-hue-1" ui-sref="admin.demography"> <i class="fa fa-child"></i> დემოგრაფია</md-button>
+            <md-button class="md-primary md-hue-1" ui-sref="admin.demography"> <i class="fa fa-child"></i> <span>დემოგრაფია</span></md-button>
           </md-list-item>
           <md-list-item>
-            <md-button class="md-primary md-hue-1" ui-sref="admin.aboutUs"> <i class="fa fa-edit"></i> ჩვენ შესახებ</md-button>
+            <md-button class="md-primary md-hue-1" ui-sref="admin.aboutUs"> <i class="fa fa-edit"></i>
+              <span>ჩვენ შესახებ</span></md-button>
           </md-list-item>
           <md-list-item>
-            <md-button class="md-primary md-hue-1" ui-sref="admin.partners"> <i class="fa fa-users"></i> პარტნიორები</md-button>
+            <md-button class="md-primary md-hue-1" ui-sref="admin.partners"> <i class="fa fa-users"></i><span>პარტნიორები</span></md-button>
           </md-list-item>
           <md-list-item>
-            <md-button class="md-primary md-hue-1" ui-sref="admin.contact"> <i class="fa fa-map-signs"></i> საკონტაქტო ინფორმაცია</md-button>
+            <md-button class="md-primary md-hue-1" ui-sref="admin.contact"> <i class="fa fa-map-signs"></i><span>საკონტაქტო ინფორმაცია</span></md-button>
           </md-list-item>
         </md-list>
       </md-content>
     </md-sidenav>
     <md-content flex layout-padding>
       <div layout="column" layout-fill layout-align="top center">
-        <ui-view></ui-view>
+        <ui-view style="width:100%"></ui-view>
       </div>
       <div flex></div>
     </md-content>
@@ -58,122 +59,10 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 <!--
-
-
-
-<md-sidenav layout="column" class="md-sidenav-left md-whiteframe-z2" md-component-id="left" md-is-locked-open="$mdMedia('gt-md')">
-    <md-toolbar class="md-tall md-hue-2">
-      <span flex></span>
-      <div layout="column" class="md-toolbar-tools-bottom inset">
-        <user-avatar></user-avatar>
-        <span></span>
-        <div>Firstname Lastname</div>
-        <div>email@domainname.com</div>
-      </div>
-    </md-toolbar>
-    <md-list>
-    <md-item ng-repeat="item in menu">
-      <a>
-        <md-item-content md-ink-ripple layout="row" layout-align="start center">
-          <div class="inset">
-            <ng-md-icon icon="{{item.icon}}"></ng-md-icon>
-          </div>
-          <div class="inset">{{item.title}}
-          </div>
-        </md-item-content>
-      </a>
-    </md-item>
-    <md-divider></md-divider>
-    <md-subheader>Management</md-subheader>
-    <md-item ng-repeat="item in admin">
-      <a>
-        <md-item-content md-ink-ripple layout="row" layout-align="start center">
-          <div class="inset">
-            <ng-md-icon icon="{{item.icon}}"></ng-md-icon>
-          </div>
-          <div class="inset">{{item.title}}
-          </div>
-        </md-item-content>
-      </a>
-    </md-item>
-  </md-list>
-</md-sidenav>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<md-sidenav flex md-is-locked-open="$mdMedia('gt-sm')" layout="column" class="md-whiteframe-z2" md-component-id="left">
-  <md-list>
-    <md-list-item>
-      <md-button class="md-primary md-hue-1" ui-sref="admin.landingPage"> <i class="fa fa-th"></i> მთავარი გვერდი</md-button>
-    </md-list-item>
-    <md-list-item>
-      <md-button class="md-primary md-hue-1" ui-sref="admin.indicators"> <i class="fa fa-bar-chart"></i> ინდიკატორები</md-button>
-    </md-list-item>
-    <md-list-item>
-      <md-button class="md-primary md-hue-1" ui-sref="admin.publications"> <i class="fa fa-newspaper-o"></i> პუბლიკაციები</md-button>
-    </md-list-item>
-    <md-list-item>
-      <md-button class="md-primary md-hue-1" ui-sref="admin.demography"> <i class="fa fa-child"></i> დემოგრაფია</md-button>
-    </md-list-item>
-    <md-list-item>
-      <md-button class="md-primary md-hue-1" ui-sref="admin.aboutUs"> <i class="fa fa-edit"></i> ჩვენ შესახებ</md-button>
-    </md-list-item>
-    <md-list-item>
-      <md-button class="md-primary md-hue-1" ui-sref="admin.partners"> <i class="fa fa-users"></i> პარტნიორები</md-button>
-    </md-list-item>
-    <md-list-item>
-      <md-button class="md-primary md-hue-1" ui-sref="admin.contact"> <i class="fa fa-map-signs"></i> საკონტაქტო ინფორმაცია</md-button>
-    </md-list-item>
-  </md-list>
-</md-sidenav>
-
-
-
-
-
-
-
-
-
-
 <header><h1>Admin<h1></header>
 
 <md-content>
   <md-datepicker ng-model="myDate"></md-datepicker>
 </md-content>
-
-
  -->
