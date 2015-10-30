@@ -1,12 +1,13 @@
 <h1>publications</h1>
 
-<md-button class="md-fab md-fab-bottom-right md-primary" style="position:fixed;" aria-label="Add">
-  <i class="fa fa-plus"></i>
-  <md-tooltip md-direction="left">
-    Add new
-  </md-tooltip>
-</md-button>
-
+<a ui-sref="admin.publications.add">
+  <md-button class="md-fab md-fab-bottom-right md-primary" style="position:fixed;" aria-label="Add">
+    <i class="fa fa-plus"></i>
+    <md-tooltip md-direction="left">
+      Add new
+    </md-tooltip>
+  </md-button>
+</a>
 <md-content class="md-padding">
   <md-list ng-cloak>
     <md-list-item ng-click="edit" class="md-2-line">
