@@ -26,6 +26,7 @@ System.config({
     "lodash": "github:lodash/lodash@3.10.1",
     "restangular": "github:mgonto/restangular@1.5.1",
     "text": "github:systemjs/plugin-text@0.0.2",
+    "textAngular": "github:fraywing/textAngular@1.4.6",
     "github:angular-translate/bower-angular-translate@2.8.1": {
       "angular": "github:angular/bower-angular@1.4.7"
     },
@@ -49,6 +50,12 @@ System.config({
       "angular-animate": "github:angular/bower-angular-animate@1.4.7",
       "angular-aria": "github:angular/bower-angular-aria@1.4.7",
       "css": "github:systemjs/plugin-css@0.1.19"
+    },
+    "github:fraywing/textAngular@1.4.6": {
+      "angular": "github:angular/bower-angular@1.4.7",
+      "css": "github:systemjs/plugin-css@0.1.19",
+      "font-awesome": "npm:font-awesome@4.4.0",
+      "rangy": "github:timdown/rangy-release@1.3.0"
     },
     "github:jspm/nodelibs-assert@0.1.0": {
       "assert": "npm:assert@1.3.0"

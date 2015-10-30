@@ -88,7 +88,8 @@
       "font-awesome": "npm:font-awesome@^4.4.0",
       "lodash": "github:lodash/lodash@^3.10.1",
       "restangular": "github:mgonto/restangular@^1.5.1",
-      "text": "github:systemjs/plugin-text@^0.0.2"
+      "text": "github:systemjs/plugin-text@^0.0.2",
+      "textAngular": "github:fraywing/textAngular@^1.4.6"
     },
     "devDependencies": {}
   }
