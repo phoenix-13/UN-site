@@ -14,13 +14,12 @@ import addPartner from './admin/addPartner/addPartner';
 import addPublication from './admin/addPublication/addPublication';
 import contact from './admin/contact/contact';
 import demography from './admin/demography/demography';
-import editIndicators from './admin/editIndicators/editIndicators';
+import editIndicator from './admin/editIndicator/editIndicator';
 import editPublication from './admin/editPublication/editPublication';
 import indicators from './admin/indicators/indicators';
 import landingPage from './admin/landingPage/landingPage';
 import partners from './admin/partners/partners';
 import publications from './admin/publications/publications';
-import users from './admin/users/users';
 //endinject
 
 export default angular.module('app.components', [
@@ -38,12 +37,11 @@ export default angular.module('app.components', [
   addPublication.name,
   contact.name,
   demography.name,
-  editIndicators.name,
+  editIndicator.name,
   editPublication.name,
   indicators.name,
   landingPage.name,
   partners.name,
   publications.name,
-  users.name,
   //endinject
 ]);

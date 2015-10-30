@@ -8,7 +8,7 @@ export default angular.module('admin.indicators.add', [])
   .config($stateProvider => {
     $stateProvider
       .state('admin.indicators.add', {
-        url: 'add/',
+        url: '/add',
         onEnter: ($mdDialog, $state) => {
           $mdDialog.show({
             template,

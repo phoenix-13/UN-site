@@ -8,7 +8,7 @@ export default angular.module('admin.aboutUs', [])
 .config($stateProvider => {
   $stateProvider
     .state('admin.aboutUs', {
-      url: 'aboutUs',
+      url: '/aboutUs',
       template,
       controller,
       controllerAs: 'vm',

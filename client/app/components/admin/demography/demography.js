@@ -8,7 +8,7 @@ export default angular.module('admin.demography', [])
 .config($stateProvider => {
   $stateProvider
     .state('admin.demography', {
-      url: 'demography',
+      url: '/demography',
       template,
       controller,
       controllerAs: 'vm',

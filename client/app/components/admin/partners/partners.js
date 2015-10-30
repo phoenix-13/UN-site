@@ -8,7 +8,7 @@ export default angular.module('admin.partners', [])
 .config($stateProvider => {
   $stateProvider
     .state('admin.partners', {
-      url: 'partners',
+      url: '/partners',
       template,
       controller,
       controllerAs: 'vm',
