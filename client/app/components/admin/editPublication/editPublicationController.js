@@ -5,11 +5,11 @@ export default class {
     'ngInject';
     this.$state = $state;
     this.$mdDialog = $mdDialog;
-    this.indicator = {};
+    this.publication = {};
   }
 
-  addIndicator() {
-    console.log(this.indicator);
+  editPublication() {
+    console.log(this.publication);
   }
 
   close() {

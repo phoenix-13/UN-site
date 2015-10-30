@@ -1,14 +1,14 @@
 'use strict';
 
-import controller from './addPartnerController.js';
-import template from './addPartner.html!text';
-import './addPartner.css!';
+import controller from './editPublicationController.js';
+import template from './editPublication.html!text';
+import './editPublication.css!';
 
-export default angular.module('admin.partners.add', [])
+export default angular.module('admin.publications.edit', [])
   .config(($stateProvider) => {
     $stateProvider
-      .state('admin.partners.add', {
-        url: '/add',
+      .state('admin.publications.edit', {
+        url: '/edit',
         onEnter: ($mdDialog, $state) => {
           $mdDialog.show({
             template,

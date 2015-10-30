@@ -9,13 +9,14 @@ export default angular.module('admin.publications.add', [])
     $stateProvider
       .state('admin.publications.add', {
         url: '/add',
-        onEnter: $mdDialog => {
+        onEnter: ($mdDialog, $state) => {
           $mdDialog.show({
             template,
             controller,
             controllerAs: 'vm',
-            escapeToClose: false
-          });
+            escapeToClose: true,
+            clickOutsideToClose: true
+          }).finally(() => $state.go('^'));
         }
       });
   });

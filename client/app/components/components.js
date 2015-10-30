@@ -14,6 +14,8 @@ import addPartner from './admin/addPartner/addPartner';
 import addPublication from './admin/addPublication/addPublication';
 import contact from './admin/contact/contact';
 import demography from './admin/demography/demography';
+import editIndicators from './admin/editIndicators/editIndicators';
+import editPublication from './admin/editPublication/editPublication';
 import indicators from './admin/indicators/indicators';
 import landingPage from './admin/landingPage/landingPage';
 import partners from './admin/partners/partners';
@@ -36,6 +38,8 @@ export default angular.module('app.components', [
   addPublication.name,
   contact.name,
   demography.name,
+  editIndicators.name,
+  editPublication.name,
   indicators.name,
   landingPage.name,
   partners.name,
