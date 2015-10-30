@@ -1,3 +1,15 @@
-<div class="about-us-text-editor-container">
+<md-content class="md-padding">
+  <md-tabs md-dynamic-height md-border-bottom class="page_tabs">
+    <md-tab label="ქართულად">
+      <md-content class="md-padding">
+        <text-angular ng-model="vm.aboutUs"></text-angular>
+      </md-content>
+    </md-tab>
+    <md-tab label="english">
+      <md-content class="md-padding">
+        <text-angular ng-model="vm.aboutUs"></text-angular>
+      </md-content>
+    </md-tab>
+  </md-tabs>
   <md-button ng-click="vm.updateAboutUs()" class="md-raised md-primary pull-right">განახლება</md-button>
-</div>
+</md-content>

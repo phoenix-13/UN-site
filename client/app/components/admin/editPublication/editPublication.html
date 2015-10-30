@@ -1,6 +1,54 @@
-<div class="modal-header">
-  <button type="button" ng-click="vm.close()" class="close">
-    <span aria-hidden="true">&times;</span>
-  </button>
-  <h1>Edit Publication</h1>
-</div>
+<md-dialog aria-label="Mango (Fruit)" style="min-width:60%">
+  <form>
+    <md-toolbar>
+      <div class="md-toolbar-tools">
+        <h2>Edit Publication</h2>
+        <span flex></span>
+        <md-button class="md-icon-button" ng-click="vm.close()">
+          <i class="fa fa-times" aria-label="Close dialog"></i>
+        </md-button>
+      </div>
+    </md-toolbar>
+    <md-dialog-content style="max-width:800px;max-height:810px; " class="dialog_content">
+      <md-tabs md-dynamic-height md-border-bottom class="page_tabs">
+        <md-tab label="ქართული">
+          <md-content class="md-padding">
+            <div layout layout-sm="column">
+              <md-input-container style="width:70%">
+                <label>მიმართულება</label>
+                <md-select ng-model>
+                  <md-option>მონაწილეობა</md-option>
+                  <md-option>სპეციალური მხარდაჭერა და დაცვა</md-option>
+                  <md-option>ჯანმრთელობა</md-option>
+                  <md-option>განათლება, დასაქმება და მობილობა</md-option>
+                </md-select>
+              </md-input-container>
+              <md-datepicker ng-model="user.submissionDate" md-placeholder="Enter date"></md-datepicker>
+            </div>
+            <md-input-container flex>
+              <md-input-container style="width:70%">
+                <label>სათაური</label>
+                <input>
+              </md-input-container>
+            </md-input-container>
+            <text-angular ng-model="vm.aboutUs"></text-angular>
+          </md-content>
+        </md-tab>
+        <md-tab label="English">
+          <md-content class="md-padding">
+            <md-input-container flex>
+              <md-input-container style="width:70%">
+                <label>Title</label>
+                <input>
+              </md-input-container>
+            </md-input-container>
+            <text-angular ng-model="vm.aboutUs"></text-angular>
+          </md-content>
+        </md-tab>
+      </md-tabs>
+    </md-dialog-content>
+    <div class="md-actions" layout="row">
+      <md-button ng-click="answer()" class="md-raised md-primary" style="margin-right:20px;" >Save</md-button>
+    </div>
+  </form>
+</md-dialog>

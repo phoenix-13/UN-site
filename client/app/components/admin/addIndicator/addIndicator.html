@@ -1,4 +1,4 @@
-<md-dialog aria-label="Mango (Fruit)" style="width:60%">
+<md-dialog aria-label="Mango (Fruit)" style="min-width:60%">
   <form>
     <md-toolbar>
       <div class="md-toolbar-tools">
@@ -31,11 +31,7 @@
                 <input>
               </md-input-container>
             </md-input-container>
-
             <text-angular ng-model="vm.aboutUs"></text-angular>
-            // text editor here
-
-
           </md-content>
         </md-tab>
         <md-tab label="English">
@@ -46,19 +42,13 @@
                 <input>
               </md-input-container>
             </md-input-container>
-
-
-            // text editor here
             <text-angular ng-model="vm.aboutUs"></text-angular>
-
           </md-content>
         </md-tab>
       </md-tabs>
     </md-dialog-content>
     <div class="md-actions" layout="row">
-      <md-button ng-click="answer()" style="margin-right:20px;" >
-        Save
-      </md-button>
+      <md-button ng-click="answer()" class="md-raised md-primary" style="margin-right:20px;" >Save</md-button>
     </div>
   </form>
 </md-dialog>

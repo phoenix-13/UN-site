@@ -11,7 +11,7 @@ export default class {
     var contactLocation = {lat: this.contact.location.latitude, lng: this.contact.location.longitude};
     this.map = new google.maps.Map(document.getElementById('contact-map'), {
       center: contactLocation,
-      scrollwheel: true,
+      scrollwheel: false,
       zoom: 13
     });
 
