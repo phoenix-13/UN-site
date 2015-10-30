@@ -19,6 +19,7 @@ import editPublication from './admin/editPublication/editPublication';
 import indicators from './admin/indicators/indicators';
 import landingPage from './admin/landingPage/landingPage';
 import partners from './admin/partners/partners';
+import photos from './admin/photos/photos';
 import publications from './admin/publications/publications';
 //endinject
 
@@ -42,6 +43,7 @@ export default angular.module('app.components', [
   indicators.name,
   landingPage.name,
   partners.name,
+  photos.name,
   publications.name,
   //endinject
 ]);
