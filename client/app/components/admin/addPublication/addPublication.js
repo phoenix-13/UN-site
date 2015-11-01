@@ -1,13 +1,13 @@
 'use strict';
 
-import controller from './addIndicatorController';
-import template from './addIndicator.html!text';
-import 'addIndicator.css!';
+import controller from './addPublicationController.js';
+import template from './addPublication.html!text';
+import './addPublication.css!';
 
-export default angular.module('admin.indicators.add', [])
-  .config($stateProvider => {
+export default angular.module('admin.publications.add', [])
+  .config(($stateProvider) => {
     $stateProvider
-      .state('admin.indicators.add', {
+      .state('admin.publications.add', {
         url: '/add',
         onEnter: ($mdDialog, $state) => {
           $mdDialog.show({
@@ -18,5 +18,5 @@ export default angular.module('admin.indicators.add', [])
             clickOutsideToClose: true
           }).finally(() => $state.go('^'));
         }
-      })
+      });
   });

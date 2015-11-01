@@ -1,14 +1,14 @@
 'use strict';
 
-import controller from './addIndicatorController';
-import template from './addIndicator.html!text';
-import 'addIndicator.css!';
+import controller from './editIndicatorController';
+import template from './editIndicator.html!text';
+import 'editIndicator.css!';
 
-export default angular.module('admin.indicators.add', [])
+export default angular.module('admin.indicators.edit', [])
   .config($stateProvider => {
     $stateProvider
-      .state('admin.indicators.add', {
-        url: '/add',
+      .state('admin.indicators.edit', {
+        url: '/edit',
         onEnter: ($mdDialog, $state) => {
           $mdDialog.show({
             template,

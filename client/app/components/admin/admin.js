@@ -8,7 +8,7 @@ export default angular.module('admin', [])
 .config($stateProvider => {
   $stateProvider
     .state('admin', {
-      url: '/admin/',
+      url: '/admin',
       template,
       controller,
       controllerAs: 'vm',

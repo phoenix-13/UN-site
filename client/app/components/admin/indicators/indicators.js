@@ -8,7 +8,7 @@ export default angular.module('admin.indicators', [])
 .config($stateProvider => {
   $stateProvider
     .state('admin.indicators', {
-      url: 'indicators/',
+      url: '/indicators',
       template,
       controller,
       controllerAs: 'vm',
