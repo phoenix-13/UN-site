@@ -7,6 +7,6 @@ export default () => {
   return {
     restrict: 'E',
     template,
-    replace: true,
+    replace: true
   };
 };

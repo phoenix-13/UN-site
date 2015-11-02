@@ -11,7 +11,7 @@ var all = {
 
   root: path.normalize(__dirname + '/../../..'),
 
-  port: process.env.PORT || 9000,
+  port: process.env.PORT || 4000,
 
   seedDB: false,
 
