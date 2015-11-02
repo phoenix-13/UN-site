@@ -3,18 +3,20 @@
 import gulp from 'gulp';
 import runSequence from 'run-sequence';
 import paths from '../paths';
+import Builder from 'systemjs-builder';
 import {FILES_TO_INJECT_FOR_DIST, JSPM_PACKAGES_FOR_DIST} from '../consts';
 import {copy} from '../helpers';
-import Builder from 'systemjs-builder';
 var $ = require('gulp-load-plugins')();
 
 gulp.task('dist', done =>
-  runSequence('cleanDist', [
-    'inject',
+  runSequence([
+    'compile',
+    'cleanDist'
+  ], [
     'distPackages',
     'distAssets',
     'distExtras',
-    'distIndex',
+    'distIndex'
   ], 'indexHtmlReplace', done)
 );
 
@@ -63,10 +65,10 @@ gulp.task('injectDistFiles', ['bundle'], () =>
 
 gulp.task('bundle', ['compileStyles', 'compileScripts'], () => {
   const builder = new Builder();
-  const inputPath = `${paths.tmp.basePath}app/app.js`;
+  const inputPath = `${paths.tmp.bootstrapper}`;
   const outputPath = `${paths.dist.basePath}build.js`;
 
-  return builder.loadConfig(`${paths.root}jspm.conf.js`)
+  return builder.loadConfig(`${paths.jspmConfig}`)
     .then(() =>
       builder.buildSFX(inputPath, outputPath)
       // builder.buildSFX(inputPath, outputPath, {minify: true})

@@ -2,7 +2,7 @@
 
 import controller from './addIndicatorController';
 import template from './addIndicator.html!text';
-import 'addIndicator.css!';
+import './addIndicator.css!';
 
 export default angular.module('admin.indicators.add', [])
   .config($stateProvider => {

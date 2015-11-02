@@ -2,7 +2,7 @@
 
 import controller from './editIndicatorController';
 import template from './editIndicator.html!text';
-import 'editIndicator.css!';
+import './editIndicator.css!';
 
 export default angular.module('admin.indicators.edit', [])
   .config($stateProvider => {

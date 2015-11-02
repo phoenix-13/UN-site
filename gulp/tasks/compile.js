@@ -2,17 +2,25 @@
 
 import gulp from 'gulp';
 import paths from '../paths';
-import {COMPILER_OPTIONS} from '../consts';
 import runSequence from 'run-sequence';
 import {copy} from '../helpers';
 var $ = require('gulp-load-plugins')();
 
-const tmpAppBase= `${paths.tmp.basePath}app`;
+const tmpAppBase = `${paths.tmp.basePath}app`;
+
+var babelOptions = {
+  stage: 1,
+  modules: 'system',
+  moduleIds: false,
+  externalHelpers: true,
+  comments: true,
+  compact: false
+};
 
 gulp.task('compile', done => {
   runSequence([
     'cleanTmp',
-    'inject',
+    'inject'
   ], [
     'compileTemplates',
     'compileStyles',
@@ -42,7 +50,7 @@ gulp.task('compileScripts', () =>
   gulp.src(paths.app.scripts)
     .pipe($.plumber())
     .pipe($.changed(paths.tmp.basePath, {extension: '.js'}))
-    .pipe($.babel(COMPILER_OPTIONS))
+    .pipe($.babel(babelOptions))
     .pipe($.ngAnnotate())
     .pipe(gulp.dest(tmpAppBase))
 );

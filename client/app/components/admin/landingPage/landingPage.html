@@ -126,6 +126,9 @@
             </md-input-container>
             <md-input-container flex>
               <div class="thumbnail" style="margin-bottom:0">
+                <div class="edit_btn_container btn btn-default">
+                  change
+                </div>
                 <img src="/assets/images/1.jpg">
               </div>
             </md-input-container>
@@ -141,95 +144,20 @@
               <label>Article Url</label>
               <input>
             </md-input-container>
-          </div>
-          <div layout layout-sm="column">
-            <md-input-container >
-              <label>2</label>
-            </md-input-container>
-            <md-input-container flex>
-              <div class="thumbnail" style="margin-bottom:0">
-                <img src="/assets/images/1.jpg">
-              </div>
-            </md-input-container>
-            <md-input-container flex>
-              <label>სტატიის სახელი</label>
-              <input>
-            </md-input-container>
-            <md-input-container flex>
-              <label>Article Name</label>
-              <input>
-            </md-input-container>
-            <md-input-container flex>
-              <label>Article Url</label>
-              <input>
+            <md-input-container style="width:10%">
+              <md-button class="md-raised md-primary">Update</md-button>
             </md-input-container>
           </div>
-          <div layout layout-sm="column">
-            <md-input-container >
-              <label>3</label>
-            </md-input-container>
-            <md-input-container flex>
-              <div class="thumbnail" style="margin-bottom:0">
-                <img src="/assets/images/1.jpg">
-              </div>
-            </md-input-container>
-            <md-input-container flex>
-              <label>სტატიის სახელი</label>
-              <input>
-            </md-input-container>
-            <md-input-container flex>
-              <label>Article Name</label>
-              <input>
-            </md-input-container>
-            <md-input-container flex>
-              <label>Article Url</label>
-              <input>
-            </md-input-container>
+          <div layout layout-sm="column" style="margin-top: 10px">
+            <div class="flex"></div>
+            <md-button ui-sref="admin.slider.add" class="md-fab md-fab-bottom-right md-primary" style="position:fixed;" aria-label="Add">
+              <i class="fa fa-plus"></i>
+              <md-tooltip md-direction="left">
+                Add new
+              </md-tooltip>
+            </md-button>
           </div>
-          <div layout layout-sm="column">
-            <md-input-container >
-              <label>4</label>
-            </md-input-container>
-            <md-input-container flex>
-              <div class="thumbnail" style="margin-bottom:0">
-                <img src="/assets/images/1.jpg">
-              </div>
-            </md-input-container>
-            <md-input-container flex>
-              <label>სტატიის სახელი</label>
-              <input>
-            </md-input-container>
-            <md-input-container flex>
-              <label>Article Name</label>
-              <input>
-            </md-input-container>
-            <md-input-container flex>
-              <label>Article Url</label>
-              <input>
-            </md-input-container>
-          </div>
-          <div layout layout-sm="column">
-            <md-input-container >
-              <label>5</label>
-            </md-input-container>
-            <md-input-container flex>
-              <div class="thumbnail" style="margin-bottom:0">
-                <img src="/assets/images/1.jpg">
-              </div>
-            </md-input-container>
-            <md-input-container flex>
-              <label>სტატიის სახელი</label>
-              <input>
-            </md-input-container>
-            <md-input-container flex>
-              <label>Article Name</label>
-              <input>
-            </md-input-container>
-            <md-input-container flex>
-              <label>Article Url</label>
-              <input>
-            </md-input-container>
-          </div>
+
         </md-content>
       </md-tab>
       <md-tab label="banner">
@@ -256,7 +184,14 @@
               <input>
             </md-input-container>
           </div>
+          <div class="col-xs-12">
+            <div layout layout-sm="column" style="margin-top: 10px">
+              <div class="flex"></div>
+              <md-button class="md-raised md-primary">Save</md-button>
+            </div>
+          </div>
         </md-content>
+          </div>
       </md-tab>
     </md-tabs>
   </md-content>

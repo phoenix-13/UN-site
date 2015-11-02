@@ -3,7 +3,7 @@
 export default class {
   constructor() {
     'ngInject';
-    this.aboutUs = '<h1>about me</h1>';
+    this.aboutUs = '';
   }
 
   updateAboutUs() {
