@@ -15,7 +15,6 @@ var yearValueSchema = {
 
 var DemographicsSchema = new Schema({
   region: bilingStringSchema,
-  // title: bilingStringSchema,
   values: [yearValueSchema],
 }, { collection: 'demographics' });
 

@@ -1,7 +1,7 @@
 'use strict';
 
 var Q = require('bluebird');
-var Demographics = require('./Demographics.model');
+var Demographics = require('./demographics.model');
 var errors = require('../../errors');
 var assertDBResultExistence = errors.assertDBResultExistence;
 var assertDBUpdateAffected = errors.assertDBUpdateAffected;
@@ -12,9 +12,7 @@ Q.promisifyAll(Demographics.prototype);
 module.exports = {
   getById,
   getAll,
-  getLimited,
   create,
-  update,
   addYearValue,
   removeYearValue,
   remove,
@@ -30,23 +28,9 @@ function getAll() {
   return Demographics.findAsync();
 }
 
-function getLimited(offset, limit) {
-  return Demographics
-    .find()
-    .select('')
-    .skip(offset)
-    .limit(limit)
-    .execAsync();
-}
-
 function create() {
   return Demographics.createAsync.apply(Demographics, arguments)
     .then(assertDBResultExistence);
-}
-
-function update(id, doc) {
-  return Demographics.updateAsync({ _id: id }, doc)
-    .then(assertDBUpdateAffected);
 }
 
 function addYearValue(id, yearValue) {
@@ -60,7 +44,7 @@ function removeYearValue(id, yearValueId) {
 }
 
 function remove(id) {
-  return Demographics.removeAsync({_id: id })
+  return Demographics.removeAsync({ _id: id })
     .then(assertDBUpdateAffected);
 }
 

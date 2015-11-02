@@ -5,7 +5,7 @@ var contentSchemaValidator = require('../content.schema.validator');
 var contentConstants = require('../content.constants');
 var SchemaError = require('../../../errors').SchemaError;
 
-describe.only('content.schema.validator', () => {
+describe('content.schema.validator', () => {
   describe('validateFeatured', () => {
     var featured;
 
