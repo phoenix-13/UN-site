@@ -7,7 +7,7 @@ export const RELEASE_NAME = `release-${pkg.name}`;
 export const LOCALHOST_PORT = 9000;
 export const BROWSER_SYNC_PORT = 4000;
 
-const externalHelpersPath = 'jspm_packages/npm/babel-core@5.8.22/external-helpers.min.js';
+const externalHelpersPath = 'jspm_packages/npm/babel-core@5.8.25/external-helpers.min.js';
 
 export const FILES_TO_INJECT_FOR_DIST = [
   externalHelpersPath,
