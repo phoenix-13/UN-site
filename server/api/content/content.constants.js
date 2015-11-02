@@ -13,4 +13,3 @@ module.exports = {
   aboutMinLength: 10,
   aboutMaxLength: 2000,
 };
-
