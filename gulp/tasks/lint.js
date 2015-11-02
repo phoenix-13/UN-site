@@ -8,7 +8,7 @@ gulp.task('lint', [
   // 'lintHtml',
   'lintStyles',
   'lintScripts',
-  'lintJs',
+  'lintJs'
 ]);
 
 gulp.task('lintHtml', () =>
@@ -23,7 +23,7 @@ gulp.task('lintStyles', () =>
 
 gulp.task('lintScripts', () =>
   gulp.src(paths.app.scripts)
-    .pipe($.jshint(`${paths.root}.jshintrc`))
+    .pipe($.jshint(`${paths.jshintrc}`))
     .pipe($.jshint.reporter('jshint-stylish'))
 );
 

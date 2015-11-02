@@ -4,11 +4,12 @@ import gulp from 'gulp';
 import browserSync from 'browser-sync';
 import ripe from 'ripe';
 import paths from '../paths';
-import {API_URL, BROWSER_SYNC_PORT} from '../consts';
+import {LOCALHOST_PORT, BROWSER_SYNC_PORT} from '../consts';
 var $ = require('gulp-load-plugins')();
 
 gulp.task('nodemon', done => {
   var already = false;
+
   $.nodemon({
     script: 'server/server.js',
     watch: 'server/**/*.js'
@@ -26,7 +27,7 @@ gulp.task('nodemon', done => {
 gulp.task('serve', ['nodemon', 'watch'], () =>
   browserSync.init({
     files: [paths.app.html],
-    proxy: {target: API_URL, ws: true},
+    proxy: {target: `localhost:${LOCALHOST_PORT}`, ws: true},
     port: BROWSER_SYNC_PORT,
     browser: 'default'
   })

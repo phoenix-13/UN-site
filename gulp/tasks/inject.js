@@ -46,7 +46,7 @@ function injectImport(folderPath, module) { // module is app/main
     gulp.src(folderPath, {read: false}), {
       transform: transformImport(module),
       starttag,
-      endtag: END_TAG,
+      endtag: END_TAG
     }
   );
 }
@@ -57,7 +57,7 @@ function injectNgModule(folderPath, module) { // module is app/main
     gulp.src(folderPath, {read: false}), {
       transform: transformNgModule,
       starttag,
-      endtag: END_TAG,
+      endtag: END_TAG
     }
   );
 }

@@ -3,4 +3,4 @@
 import <%= name %>Component from './<%= name %>.component';
 
 export default angular.module('<%= name %>', [])
-.directive('<%= name %>', <%= name %>Component);
+  .directive('<%= name %>', <%= name %>Component);
