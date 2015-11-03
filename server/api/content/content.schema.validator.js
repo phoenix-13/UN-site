@@ -36,6 +36,8 @@ var featuredSchema = Joi.object().keys({
   title: bilingTitleSchema,
   link: Joi.string().required()
 }).required();
+
+var featuredsSchema = Joi.array().items(featuredSchema).required();
 var slideSchema = Joi.object().keys({
   title: bilingTitleSchema,
   image: Joi.string().required(),
@@ -66,7 +68,7 @@ var bilingAboutSchema = Joi.object().keys({
 }).required();
 
 function validateFeatured(featured) {
-  return Joi.validate(featured, featuredSchema)
+  return Joi.validate(featured, featuredsSchema)
     .catch((err) => Q.reject(new SchemaError(err.message)));
 }
 
