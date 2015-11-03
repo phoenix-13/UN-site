@@ -8,7 +8,9 @@ module.exports = {
   getOne,
   updateFeatured,
   addSlide,
+  removeSlide,
   addPartner,
+  removePartner,
   updateContacts,
   updateBanner,
   updateAbout
@@ -30,10 +32,18 @@ function addSlide(slide) {
     .then(schemaValidatedSlide => Content.addSlide(schemaValidatedSlide));
 }
 
+function removeSlide(slideId) {
+  return Content.removeSlide(slideId);
+}
+
 function addPartner(partner) {
   var parsedPartner = contentParser.parsePartner(partner);
   return contentSchemaValidator.validatePartner(parsedPartner)
     .then(schemaValidatedPartner => Content.addPartner(schemaValidatedPartner));
+}
+
+function removePartner(partnerId) {
+  return Content.removePartner(partnerId);
 }
 
 function updateContacts(contacts) {

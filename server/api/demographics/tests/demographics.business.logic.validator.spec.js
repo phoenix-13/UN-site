@@ -6,7 +6,7 @@ var Demographics = require('../demographics.dao');
 var ObjectId = require('mongoose').Types.ObjectId;
 var BusinessLogicValidationError = require('../../../errors').BusinessLogicValidationError;
 
-describe.only('demographics.business.logic.validator', () => {
+describe('demographics.business.logic.validator', () => {
   var demographics;
 
   beforeEach(done => {

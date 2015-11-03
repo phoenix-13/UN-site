@@ -21,8 +21,8 @@ function exists(demographicsId, res) {
     });
 }
 
-function validateAddYearValue(demographicsId) {
-  return exists(demographicsId);
+function validateAddYearValue(demographicsId, yearValue) {
+  return exists(demographicsId, yearValue);
 }
 
 function validateRemoveYearValue(demographicsId) {

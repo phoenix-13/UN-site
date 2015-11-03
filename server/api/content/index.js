@@ -10,7 +10,9 @@ var router = express.Router();
 router.get('/', getOne);
 router.post('/updateFeatured', authService.isAdmin(), updateFeatured);
 router.post('/addSlide', authService.isAdmin(), addSlide);
+router.post('/removeSlide', authService.isAdmin(), removeSlide);
 router.post('/addPartner', authService.isAdmin(), addPartner);
+router.post('/removePartner', authService.isAdmin(), removePartner);
 router.post('/updateContacts', authService.isAdmin(), updateContacts);
 router.post('/updateBanner', authService.isAdmin(), updateBanner);
 router.post('/updateAbout', authService.isAdmin(), updateAbout);
@@ -38,10 +40,24 @@ function addSlide(req, res) {
     .catch(errors.handleError(res));
 }
 
+function removeSlide(req, res) {
+  controller.removeSlide(req.body.slideId)
+    .then(() => res.sendStatus(200))
+    .catch(errors.logError(`Failed to remove slide from content`))
+    .catch(errors.handleError(res));
+}
+
 function addPartner(req, res) {
   controller.addPartner(req.body.partner)
     .then(() => res.sendStatus(200))
     .catch(errors.logError(`Failed to add partner to content`))
+    .catch(errors.handleError(res));
+}
+
+function removePartner(req, res) {
+  controller.removePartner(req.body.partnerId)
+    .then(() => res.sendStatus(200))
+    .catch(errors.logError(`Failed to remove partner from content`))
     .catch(errors.handleError(res));
 }
 
