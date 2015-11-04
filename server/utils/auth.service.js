@@ -12,6 +12,7 @@ module.exports = {
 };
 
 function isAuthenticated() {
+  console.log('is authen')
   return compose().use(validateJwt)
     .use(function (err, req, res, next) {
       if (err.name === 'UnauthorizedError') {
