@@ -9,7 +9,6 @@ var jwt = require('jsonwebtoken');
 module.exports = {
   signToken,
   isAuthenticated,
-  hasRole,
 };
 
 function isAuthenticated() {

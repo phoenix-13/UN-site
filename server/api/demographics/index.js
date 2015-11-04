@@ -2,14 +2,14 @@
 
 var express = require('express');
 var controller = require('./demographics.controller');
-var authService = require('../../utils/auth.service');
+// var authService = require('../../utils/auth.service');
 var errors = require('../../errors');
 
 var router = express.Router();
 
 router.get('/all', getAll);
-router.post('/:id/addYearValue', authService.isAdmin(), addYearValue);
-router.post('/:id/removeYearValue', authService.isAdmin(), removeYearValue);
+router.post('/:id/addYearValue', addYearValue);
+router.post('/:id/removeYearValue', removeYearValue);
 
 module.exports = router;
 

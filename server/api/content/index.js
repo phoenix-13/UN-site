@@ -2,20 +2,20 @@
 
 var express = require('express');
 var controller = require('./content.controller');
-var authService = require('../../utils/auth.service');
+// var authService = require('../../utils/auth.service');
 var errors = require('../../errors');
 
 var router = express.Router();
-
+//authService.isAdmin() needed
 router.get('/', getOne);
-router.post('/updateFeatured', authService.isAdmin(), updateFeatured);
-router.post('/addSlide', authService.isAdmin(), addSlide);
-router.post('/removeSlide', authService.isAdmin(), removeSlide);
-router.post('/addPartner', authService.isAdmin(), addPartner);
-router.post('/removePartner', authService.isAdmin(), removePartner);
-router.post('/updateContacts', authService.isAdmin(), updateContacts);
-router.post('/updateBanner', authService.isAdmin(), updateBanner);
-router.post('/updateAbout', authService.isAdmin(), updateAbout);
+router.post('/updateFeatured', updateFeatured);
+router.post('/addSlide', addSlide);
+router.post('/removeSlide', removeSlide);
+router.post('/addPartner', addPartner);
+router.post('/removePartner', removePartner);
+router.post('/updateContacts', updateContacts);
+router.post('/updateBanner', updateBanner);
+router.post('/updateAbout', updateAbout);
 
 module.exports = router;
 

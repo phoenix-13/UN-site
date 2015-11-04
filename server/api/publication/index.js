@@ -2,7 +2,7 @@
 
 var express = require('express');
 var controller = require('./publication.controller');
-var authService = require('../../utils/auth.service');
+// var authService = require('../../utils/auth.service');
 var errors = require('../../errors');
 
 var router = express.Router();
@@ -10,9 +10,9 @@ var router = express.Router();
 router.get('/:id', getById);
 router.get('/all', getAll);
 router.get('/limited', getLimited);
-router.post('/create', authService.isAdmin(), create);
-router.post('/:id/update', authService.isAdmin(), update);
-router.delete('/:id/remove', authService.isAdmin(), remove);
+router.post('/create', create);
+router.post('/:id/update', update);
+router.delete('/:id/remove', remove);
 
 module.exports = router;
 

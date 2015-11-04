@@ -2,7 +2,7 @@
 
 var express = require('express');
 var controller = require('./indicator.controller');
-var authService = require('../../utils/auth.service');
+// var authService = require('../../utils/auth.service');
 var errors = require('../../errors');
 
 var router = express.Router();
@@ -10,11 +10,11 @@ var router = express.Router();
 router.get('/:id', getById);
 router.get('/all', getAll);
 router.get('/limited', getLimited);
-router.post('/create', authService.isAdmin(), create);
-router.post('/:id/update', authService.isAdmin(), update);
-router.post('/:id/addYearValue', authService.isAdmin(), addYearValue);
-router.post('/:id/removeYearValue', authService.isAdmin(), removeYearValue);
-router.delete('/:id/remove', authService.isAdmin(), remove);
+router.post('/create', create);
+router.post('/:id/update', update);
+router.post('/:id/addYearValue', addYearValue);
+router.post('/:id/removeYearValue', removeYearValue);
+router.delete('/:id/remove', remove);
 
 module.exports = router;
 
