@@ -12,9 +12,7 @@ describe('publication.schema.validator', () => {
     beforeEach(done => {
       publication =  {
         title: biling(_.repeat('x', publicationConstants.titleMinLength)),
-        date: new Date('2100/12/31'),
-        year: publicationConstants.yearMaxValue,
-        description: biling(_.repeat('x', publicationConstants.descriptionMaxLength)),
+        date: new Date('2010/12/31'),
         content: biling('content')
       };
       done();
@@ -25,9 +23,10 @@ describe('publication.schema.validator', () => {
         .then(() => done());
     });
 
-    it('should validate publication and return provided schema', done => {
+    it('should validate publication and return provided schema + year value of date', done => {
       publicationSchemaValidator.validatePublication(publication)
         .then(validatedPublication => {
+          publication.year = validatedPublication.year;
           _.isEqual(validatedPublication, publication).should.equal(true);
           done();
         });
@@ -79,6 +78,12 @@ describe('publication.schema.validator', () => {
         .catch(SchemaError, () => done());
     });
 
+    it('should not validate when date is not provided', done => {
+      delete publication.date;
+      publicationSchemaValidator.validatePublication(publication)
+        .catch(SchemaError, () => done());
+    });
+
     it('should not validate when date is not of date type', done => {
       publication.date = 'not_a_date';
       publicationSchemaValidator.validatePublication(publication)
@@ -91,38 +96,14 @@ describe('publication.schema.validator', () => {
         .catch(SchemaError, () => done());
     });
 
-    it('should not validate when year is not number', done => {
-      publication.year = 'not_a_number';
+    it(`should not validate when date is less than '${publicationConstants.dateMinValue}'`, done => {
+      publication.date = new Date(publicationConstants.dateMinValue - 1);
       publicationSchemaValidator.validatePublication(publication)
         .catch(SchemaError, () => done());
     });
 
-    it(`should not validate when year is less than ${publicationConstants.yearMinValue}`, done => {
-      publication.year = publicationConstants.yearMinValue - 1;
-      publicationSchemaValidator.validatePublication(publication)
-        .catch(SchemaError, () => done());
-    });
-
-    it(`should not validate when year is more than ${publicationConstants.yearMaxValue}`, done => {
-      publication.year = publicationConstants.yearMaxValue + 1;
-      publicationSchemaValidator.validatePublication(publication)
-        .catch(SchemaError, () => done());
-    });
-
-    it('should not validate when description is not an object', done => {
-      publication.description = 'not_an_object';
-      publicationSchemaValidator.validatePublication(publication)
-        .catch(SchemaError, () => done());
-    });
-
-    it('should not validate when description geo/eng is not string', done => {
-      publication.description.geo = {};
-      publicationSchemaValidator.validatePublication(publication)
-        .catch(SchemaError, () => done());
-    });
-
-    it(`should not validate when description geo/eng length is more than ${publicationConstants.descriptionMaxLength}`, done => {
-      publication.description.geo = _.repeat('x', publicationConstants.descriptionMaxLength + 1);
+    it(`should not validate when date is more than '${publicationConstants.dateMaxValue}'`, done => {
+      publication.date = new Date(publicationConstants.dateMaxValue + 1);
       publicationSchemaValidator.validatePublication(publication)
         .catch(SchemaError, () => done());
     });

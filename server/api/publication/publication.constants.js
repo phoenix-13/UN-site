@@ -3,9 +3,6 @@ module.exports = {
   titleMaxLength: 20,
 
   dateFormat: 'YYYY/MM/DD',
-
-  yearMinValue: 2000,
-  yearMaxValue: 2100,
-
-  descriptionMaxLength: 100,
+  dateMinValue: '2000/01/01',
+  dateMaxValue: '2100/01/01',
 };
