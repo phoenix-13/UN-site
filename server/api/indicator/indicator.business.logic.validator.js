@@ -26,8 +26,8 @@ function validateUpdate(indicator, doc) {
   return exists(indicator._id, doc);
 }
 
-function validateAddYearValue(indicatorId) {
-  return exists(indicatorId);
+function validateAddYearValue(indicatorId, yearValue) {
+  return exists(indicatorId, yearValue);
 }
 
 function validateRemoveYearValue(indicatorId) {

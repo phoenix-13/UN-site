@@ -19,7 +19,8 @@ describe('indicator.schema.validator', () => {
             value: indicatorConstants.minValue
           }
         ],
-        content: biling('content')
+        content: biling('content'),
+        category: 'category ID'
       };
       done();
     });
@@ -32,6 +33,7 @@ describe('indicator.schema.validator', () => {
     it('should validate indicator and return provided schema', done => {
       indicatorSchemaValidator.validateIndicator(indicator)
         .then(validatedIndicator => {
+          console.log(validatedIndicator);
           _.isEqual(validatedIndicator, indicator).should.equal(true);
           done();
         });
@@ -101,7 +103,14 @@ describe('indicator.schema.validator', () => {
         .catch(SchemaError, () => done());
     });
 
-    it(`should not validate when values year is not number`, done => {
+    it('should not validate when values year is not provided', done => {
+      var withoutYear = { value: indicatorConstants.minValue };
+      indicator.values.push(withoutYear);
+      indicatorSchemaValidator.validateIndicator(indicator)
+        .catch(SchemaError, () => done());
+    });
+
+    it('should not validate when values year is not number', done => {
       var invalidYearValue = { year: 'not_a_number', value: indicatorConstants.minValue };
       indicator.values.push(invalidYearValue);
       indicatorSchemaValidator.validateIndicator(indicator)
@@ -122,7 +131,14 @@ describe('indicator.schema.validator', () => {
         .catch(SchemaError, () => done());
     });
 
-    it(`should not validate when values value is not number`, done => {
+    it('should not validate when values value is not provided', done => {
+      var withoutValue = { year: indicatorConstants.yearMinValue };
+      indicator.values.push(withoutValue);
+      indicatorSchemaValidator.validateIndicator(indicator)
+        .catch(SchemaError, () => done());
+    });
+
+    it('should not validate when values value is not number', done => {
       var invalidYearValue = { year: indicatorConstants.yearMinValue, value: 'not_a_number' };
       indicator.values.push(invalidYearValue);
       indicatorSchemaValidator.validateIndicator(indicator)
@@ -151,6 +167,12 @@ describe('indicator.schema.validator', () => {
 
     it('should not validate when content geo/eng is not string', done => {
       indicator.content.geo = {};
+      indicatorSchemaValidator.validateIndicator(indicator)
+        .catch(SchemaError, () => done());
+    });
+
+    it('should not validate when category is not provided', done => {
+      delete indicator.category;
       indicatorSchemaValidator.validateIndicator(indicator)
         .catch(SchemaError, () => done());
     });

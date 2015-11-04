@@ -5,7 +5,7 @@ var publicationSchemaValidator = require('../publication.schema.validator');
 var publicationConstants = require('../publication.constants');
 var SchemaError = require('../../../errors').SchemaError;
 
-describe('publication.schema.validator', () => {
+describe.only('publication.schema.validator', () => {
   describe('validatePublication', () => {
     var publication;
 
@@ -13,7 +13,8 @@ describe('publication.schema.validator', () => {
       publication =  {
         title: biling(_.repeat('x', publicationConstants.titleMinLength)),
         date: new Date('2010/12/31'),
-        content: biling('content')
+        content: biling('content'),
+        category: 'category ID'
       };
       done();
     });
@@ -116,6 +117,12 @@ describe('publication.schema.validator', () => {
 
     it('should not validate when content geo/eng is not string', done => {
       publication.content.geo = {};
+      publicationSchemaValidator.validatePublication(publication)
+        .catch(SchemaError, () => done());
+    });
+
+    it('should not validate when category is not  provided', done => {
+      delete publication.category;
       publicationSchemaValidator.validatePublication(publication)
         .catch(SchemaError, () => done());
     });

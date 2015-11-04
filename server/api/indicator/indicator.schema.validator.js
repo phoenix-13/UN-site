@@ -6,13 +6,14 @@ var indicatorConstants = require('./indicator.constants');
 var SchemaError = require('../../errors').SchemaError;
 
 module.exports = {
-  validateIndicator
+  validateIndicator,
+  validateYearValue,
 };
 
 var titleSchema = Joi.string().min(indicatorConstants.titleMinLength).max(indicatorConstants.titleMaxLength).required();
 var yearValueSchema = Joi.object().keys({
-  year: Joi.number().min(indicatorConstants.yearMinValue).max(indicatorConstants.yearMaxValue),
-  value: Joi.number().min(indicatorConstants.minValue).max(indicatorConstants.maxValue)
+  year: Joi.number().min(indicatorConstants.yearMinValue).max(indicatorConstants.yearMaxValue).required(),
+  value: Joi.number().min(indicatorConstants.minValue).max(indicatorConstants.maxValue).required()
 });
 var contentSchema = Joi.string();
 
@@ -30,10 +31,16 @@ var indicatorSchema = Joi.object().keys({
   title: bilingTitleSchema,
   date: Joi.date().format(indicatorConstants.dateFormat),
   values: Joi.array().items(yearValueSchema),
-  content: bilingContentSchema
+  content: bilingContentSchema,
+  category: Joi.required()
 }).required();
 
 function validateIndicator(indicator) {
   return Joi.validate(indicator, indicatorSchema)
-    .catch((err) => Q.reject(new SchemaError(err.message)));
+    .catch(err => Q.reject(new SchemaError(err.message)));
+}
+
+function validateYearValue(yearValue) {
+  return Joi.validate(yearValue, yearValueSchema.required())
+    .catch(err => Q.reject(new SchemaError(err.message)));
 }

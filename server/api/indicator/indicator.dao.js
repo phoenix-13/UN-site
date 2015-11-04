@@ -49,20 +49,18 @@ function update(id, doc) {
     .then(assertDBUpdateAffected);
 }
 
-function addYearValue(id, year, value) {
-  var yearValue = { year, value };
+function addYearValue(id, yearValue) {
   return Indicator.updateAsync({ _id: id }, { $push: { 'values': yearValue } })
     .then(assertDBUpdateAffected);
 }
 
-function removeYearValue(id, year, value) {
-  var yearValue = { year, value };
-  return Indicator.updateAsync({ _id: id }, { $pull: { 'values': yearValue } })
+function removeYearValue(id, yearValueId) {
+  return Indicator.updateAsync({ _id: id }, { $pull: { 'values': { _id: yearValueId } } })
     .then(assertDBUpdateAffected);
 }
 
 function remove(id) {
-  return Indicator.removeAsync({_id: id })
+  return Indicator.removeAsync({ _id: id })
     .then(assertDBUpdateAffected);
 }
 
