@@ -5,7 +5,7 @@ var publicationSchemaValidator = require('../publication.schema.validator');
 var publicationConstants = require('../publication.constants');
 var SchemaError = require('../../../errors').SchemaError;
 
-describe.only('publication.schema.validator', () => {
+describe('publication.schema.validator', () => {
   describe('validatePublication', () => {
     var publication;
 
