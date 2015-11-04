@@ -5,4 +5,5 @@ module.exports = function (app) {
   app.use('/api/demographics', require('./api/demographics'));
   app.use('/api/publications', require('./api/publication'));
   app.use('/api/indicators', require('./api/indicator'));
+  app.use('/api/image', require('./api/image'));
 };

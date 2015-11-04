@@ -6,7 +6,7 @@ var Category = require('../category.dao');
 var DBEmptyResultError = require('../../../errors').DBEmptyResultError;
 var ObjectId = require('mongoose').Types.ObjectId;
 
-describe.only('Category.dao', () => {
+describe('Category.dao', () => {
   beforeEach(done => {
     Category.removeAll().then(() => done());
   });
