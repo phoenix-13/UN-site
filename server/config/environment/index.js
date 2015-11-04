@@ -31,6 +31,13 @@ var all = {
 
   hostName: 'http://localhost:4000',
 
+  imageOptions: {
+    maxFileSize: 5000000,
+    maxFieldsSize: 0,
+    maxFilesSize: 1,
+    allowedExtensions: ['jpg', 'jpeg', 'png']
+  },
+
   paths: {
     root: dataRootPath,
     log: path.join(dataRootPath, 'log'),
