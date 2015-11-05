@@ -92,5 +92,15 @@
       "textAngular": "github:fraywing/textAngular@^1.4.6"
     },
     "devDependencies": {}
+  },
+  "gulp": {
+    "sshAddress": "lucy@162.243.184.90",
+    "localhostPort": "8080",
+    "browserSyncPort": "4000",
+    "externalHelpersPath": "jspm_packages/npm/babel-core@5.8.25/external-helpers.min.js",
+    "fontsPaths": [
+      "jspm_packages/github/twbs/bootstrap@3.3.5/fonts/**",
+      "jspm_packages/npm/font-awesome@4.4.0/fonts/**"
+    ]
   }
 }
