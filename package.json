@@ -1,5 +1,5 @@
 {
-  "name": "capp",
+  "name": "UN",
   "version": "0.1.0",
   "main": "server/server.js",
   "scripts": {
@@ -58,7 +58,7 @@
     "gulp-util": "^3.0.4",
     "gulp-watch": "^4.2.4",
     "jshint-stylish": "^2.0.0",
-    "jspm": "^0.16.2",
+    "jspm": "^0.16.14",
     "require-dir": "^0.3.0",
     "ripe": "^0.2.0",
     "run-sequence": "^1.1.0",
@@ -67,7 +67,7 @@
     "through2": "^0.6.5"
   },
   "engines": {
-    "node": "4.2.0"
+    "node": "4.2.2"
   },
   "private": true,
   "jspm": {
