@@ -4,7 +4,7 @@ import pkg from '../package.json';
 
 export const SERVER_SSH = `lucy@162.243.184.90`;
 export const RELEASE_NAME = `release-${pkg.name}`;
-export const LOCALHOST_PORT = 9000;
+export const LOCALHOST_PORT = 8080;
 export const BROWSER_SYNC_PORT = 4000;
 
 const externalHelpersPath = 'jspm_packages/npm/babel-core@5.8.25/external-helpers.min.js';

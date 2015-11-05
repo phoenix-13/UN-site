@@ -11,7 +11,7 @@ var all = {
 
   root: path.normalize(__dirname + '/../../..'),
 
-  port: process.env.PORT || 4000,
+  port: process.env.PORT || 8080,
 
   seedDB: false,
 
@@ -29,7 +29,7 @@ var all = {
     }
   },
 
-  hostName: 'http://localhost:4000',
+  hostName: 'http://localhost:8080',
 
   imageOptions: {
     maxFileSize: 5000000,

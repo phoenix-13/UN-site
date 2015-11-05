@@ -1,7 +1,7 @@
 'use strict';
 
 module.exports = {
-  port: 4001,
+  port: 8081,
 
   mongo: {
     uri: 'mongodb://localhost/UN-site-test'
