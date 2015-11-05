@@ -3,7 +3,9 @@
 import Main from './main/main';
 //inject:import.main
 import about from './main/about/about';
+import demographics from './main/demographics/demographics';
 import home from './main/home/home';
+import sitemap from './main/sitemap/sitemap';
 //endinject
 
 import Admin from './admin/admin';
@@ -27,7 +29,9 @@ export default angular.module('app.components', [
   Main.name,
   //inject:ngmodule.main
   about.name,
+  demographics.name,
   home.name,
+  sitemap.name,
   //endinject
 
   Admin.name,
