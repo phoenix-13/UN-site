@@ -16,7 +16,7 @@ module.exports = {
 
 var titleSchema = Joi.string().min(contentConstants.titleMinLength).max(contentConstants.titleMaxLength).required();
 var nameSchema = Joi.string().min(contentConstants.nameMinLength).max(contentConstants.nameMaxLength);
-var addressSchema = Joi.string().max(contentConstants.addressMaxLength).required().empty('');
+var addressSchema = Joi.string().required().empty('');
 var aboutSchema = Joi.string().min(contentConstants.aboutMinLength).max(contentConstants.aboutMaxLength);
 
 var bilingTitleSchema = Joi.object().keys({
@@ -59,8 +59,8 @@ var contactsSchema = Joi.object().keys({
     longitude: Joi.number().required()
   }).required(),
   phones: Joi.array().items(Joi.string()).required(),
-  fax: Joi.string().required(),
-  mail: Joi.string().email().required()
+  fax: Joi.string().required().empty(''),
+  mail: Joi.string().email().required().empty('')
 }).required();
 var bilingAboutSchema = Joi.object().keys({
   geo: aboutSchema,
