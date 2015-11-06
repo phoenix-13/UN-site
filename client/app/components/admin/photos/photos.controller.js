@@ -1,8 +1,9 @@
 'use strict';
 
 export default class {
-  constructor() {
+  constructor(images) {
     'ngInject';
-
+    this.images = images;
   }
+
 }
