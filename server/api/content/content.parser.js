@@ -38,8 +38,8 @@ function parseContacts(contacts) {
   return {
     address: biling(contacts.address),
     coordinates:  {
-      latitude: contacts.latitude,
-      longitude:contacts.longitude
+      latitude: contacts.coordinates.latitude,
+      longitude:contacts.coordinates.longitude
     },
     phones: contacts.phones,
     fax: contacts.fax,
