@@ -1,14 +1,15 @@
 'use strict';
 
 export default class {
-  constructor($timeout, contact) {
+  constructor($timeout, content) {
     'ngInject';
-    this.contact = contact;
+    this.contacts = content.contacts;
+    console.log(this.contacts);
     $timeout(() => this.initMap());
   }
 
   initMap() {
-    var contactLocation = {lat: this.contact.location.latitude, lng: this.contact.location.longitude};
+    var contactLocation = {lat: this.contacts.coordinates.latitude, lng: this.contacts.coordinates.longitude};
     this.map = new google.maps.Map(document.getElementById('contact-map'), {
       center: contactLocation,
       scrollwheel: false,
@@ -22,13 +23,13 @@ export default class {
     });
 
     google.maps.event.addListener(this.marker, 'dragend', () => {
-      this.contact.location.latitude = this.marker.position.lat();
-      this.contact.location.longitude = this.marker.position.lng();
+      this.contacts.coordinates.latitude = this.marker.position.lat();
+      this.contacts.coordinates.longitude = this.marker.position.lng();
       this.updateContact();
     });
   }
 
   updateContact() {
-  //  update contact
+
   }
 }

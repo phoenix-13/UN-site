@@ -14,7 +14,7 @@ export default angular.module('admin', [])
       controllerAs: 'vm',
       abstract: true,
       resolve: {
-        // get admin
-      },
+        content: ContentResource => ContentResource.getContent()
+      }
     });
 });

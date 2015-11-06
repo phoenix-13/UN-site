@@ -5,37 +5,40 @@
   </div>
   <div flex></div>
 </div>
-<md-content class="md-padding">
-  <md-content class="md-padding contact_page_inputs">
-
-    <div layout layout-sm="column">
-      <md-input-container flex>
-        <label>მისამართი (GEO)</label>
-        <input>
-      </md-input-container>
-      <md-input-container flex>
-        <label>address (ENG)</label>
-        <input>
-      </md-input-container>
-    </div>
-    <div layout layout-sm="column">
-      <md-input-container flex>
-        <label>ტელეფონი</label>
-        <input>
-      </md-input-container>
-      <md-input-container flex>
-        <label>ფაქსი</label>
-        <input>
-      </md-input-container>
-      <md-input-container flex>
-        <label>mail</label>
-        <input>
-      </md-input-container>
+<form name="contactForm">
+  <md-content class="md-padding">
+    <md-content class="md-padding contact_page_inputs">
+      <div layout layout-sm="column">
+        <md-input-container flex>
+          <label>მისამართი (GEO)</label>
+          <input type="text" ng-model="vm.contacts.address.geo">
+        </md-input-container>
+        <md-input-container flex>
+          <label>address (ENG)</label>
+          <input type="text" ng-model="vm.contacts.address.eng">
+        </md-input-container>
+      </div>
+      <div layout layout-sm="column">
+        <md-input-container flex>
+          <label>ფაქსი</label>
+          <input type="text" ng-model="vm.contacts.fax">
+        </md-input-container>
+        <md-input-container flex>
+          <label>mail</label>
+          <input type="email" ng-model="vm.contacts.mail">
+        </md-input-container>
+      </div>
+      <div layout layout-sm="column">
+        <md-input-container flex>
+          <label>ტელეფონები</label>
+          <md-chips ng-model="vm.contacts.phones"></md-chips>
+        </md-input-container>
+      </div>
+    </md-content>
+    <div class="contact-map-container" id="contact-map"></div>
+    <div layout layout-sm="column" style="margin-top: 5px">
+      <div class="flex"></div>
+      <md-button class="md-raised md-primary">Save</md-button>
     </div>
   </md-content>
-  <div class="contact-map-container" id="contact-map"></div>
-  <div layout layout-sm="column" style="margin-top: 5px">
-    <div class="flex"></div>
-    <md-button class="md-raised md-primary">Save</md-button>
-  </div>
-</md-content>
+</form>

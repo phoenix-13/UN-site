@@ -33,8 +33,8 @@ var partnerSchema = {
 var contactsSchema = {
   address: bilingStringSchema,
   coordinates: {
-    latitude: String,
-    longitude: String
+    latitude: Number,
+    longitude: Number
   },
   phones: [String],
   fax: String,
