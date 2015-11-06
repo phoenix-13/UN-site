@@ -16,7 +16,7 @@ module.exports = {
 
 var titleSchema = Joi.string().min(contentConstants.titleMinLength).max(contentConstants.titleMaxLength).required();
 var nameSchema = Joi.string().min(contentConstants.nameMinLength).max(contentConstants.nameMaxLength);
-var addressSchema = Joi.string().min(contentConstants.addressMinLength).max(contentConstants.addressMaxLength);
+var addressSchema = Joi.string().max(contentConstants.addressMaxLength).required().empty('');
 var aboutSchema = Joi.string().min(contentConstants.aboutMinLength).max(contentConstants.aboutMaxLength);
 
 var bilingTitleSchema = Joi.object().keys({
@@ -30,7 +30,7 @@ var bilingNameSchema = Joi.object().keys({
 var bilingAddressSchema = Joi.object().keys({
   geo: addressSchema,
   eng: addressSchema
-});
+}).required();
 
 var featuredSchema = Joi.object().keys({
   title: bilingTitleSchema,
@@ -58,9 +58,9 @@ var contactsSchema = Joi.object().keys({
     latitude: Joi.number().required(),
     longitude: Joi.number().required()
   }).required(),
-  phones: Joi.array().items(Joi.string()),
-  fax: Joi.string(),
-  mail: Joi.string().email()
+  phones: Joi.array().items(Joi.string()).required(),
+  fax: Joi.string().required(),
+  mail: Joi.string().email().required()
 }).required();
 var bilingAboutSchema = Joi.object().keys({
   geo: aboutSchema,

@@ -7,7 +7,6 @@ module.exports = {
   nameMinLength: 1,
   nameMaxLength: 10,
 
-  addressMinLength: 1,
   addressMaxLength: 20,
 
   aboutMinLength: 10,

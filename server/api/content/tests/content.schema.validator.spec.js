@@ -310,12 +310,12 @@ describe('content.schema.validator', () => {
     });
   });
 
-  describe('validateContacts', () => {
+  describe.only('validateContacts', () => {
     var contacts;
 
     beforeEach(done => {
       contacts =  {
-        address: biling(_.repeat('x', contentConstants.addressMinLength)),
+        address: biling(_.repeat('x', contentConstants.addressMaxLength)),
         coordinates: {
           latitude: 41.72,
           longitude: 44.76
@@ -335,6 +335,7 @@ describe('content.schema.validator', () => {
     it('should validate contacts and return provided schema', done => {
       contentSchemaValidator.validateContacts(contacts)
         .then(validatedContacts => {
+          console.log(validatedContacts);
           _.isEqual(validatedContacts, contacts).should.equal(true);
           done();
         });
@@ -350,8 +351,20 @@ describe('content.schema.validator', () => {
         .catch(SchemaError, () => done());
     });
 
+    it('should not validate when address is not provided', done => {
+      delete contacts.address;
+      contentSchemaValidator.validateContacts(contacts)
+        .catch(SchemaError, () => done());
+    });
+
     it('should not validate when address is not an object', done => {
       contacts.address = 'not_an_object';
+      contentSchemaValidator.validateContacts(contacts)
+        .catch(SchemaError, () => done());
+    });
+
+    it('should not validate when address geo/eng is not provided', done => {
+      delete contacts.address.geo;
       contentSchemaValidator.validateContacts(contacts)
         .catch(SchemaError, () => done());
     });
@@ -362,10 +375,10 @@ describe('content.schema.validator', () => {
         .catch(SchemaError, () => done());
     });
 
-    it(`should not validate when address geo/eng length is less than ${contentConstants.addressMinLength}`, done => {
-      contacts.address.geo = _.repeat('x', contentConstants.addressMinLength - 1);
+    it('should validate when address geo/eng is empty string', done => {
+      contacts.address.geo = '';
       contentSchemaValidator.validateContacts(contacts)
-        .catch(SchemaError, () => done());
+        .then(() => done());
     });
 
     it(`should not validate when address geo/eng length is more than ${contentConstants.addressMaxLength}`, done => {
@@ -410,10 +423,22 @@ describe('content.schema.validator', () => {
         .catch(SchemaError, () => done());
     });
 
+    it('should not validate when phones is not provided', done => {
+      delete contacts.phones;
+      contentSchemaValidator.validateContacts(contacts)
+        .catch(SchemaError, () => done());
+    });
+
     it('should not validate when phones is not array', done => {
       contacts.phones = 'not_an_array';
       contentSchemaValidator.validateContacts(contacts)
         .catch(SchemaError, () => done());
+    });
+
+    it('should validate when phones array is empty', done => {
+      contacts.phones = [];
+      contentSchemaValidator.validateContacts(contacts)
+        .then(() => done());
     });
 
     it('should not validate when phones item is not string', done => {
@@ -422,8 +447,20 @@ describe('content.schema.validator', () => {
         .then(SchemaError, () => done());
     });
 
+    it('should not validate when fax is not provided', done => {
+      delete contacts.fax;
+      contentSchemaValidator.validateContacts(contacts)
+        .catch(SchemaError, () => done());
+    });
+
     it('should not validate when fax is not string', done => {
       contacts.fax = [];
+      contentSchemaValidator.validateContacts(contacts)
+        .catch(SchemaError, () => done());
+    });
+
+    it('should not validate when mail is not provided', done => {
+      delete contacts.mail;
       contentSchemaValidator.validateContacts(contacts)
         .catch(SchemaError, () => done());
     });
