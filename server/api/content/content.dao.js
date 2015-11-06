@@ -33,7 +33,7 @@ function create(content) {
 }
 
 function update(doc) {
-  return Content.updateAsync({}, doc)
+  return Content.updateAsync({}, { contacts: doc })
     .then(assertDBUpdateAffected);
 }
 
