@@ -5,23 +5,23 @@
   </div>
   <div flex></div>
 </div>
-<md-button ui-sref="" class="md-fab md-fab-bottom-right md-primary" style="position:fixed;" aria-label="Add">
+<md-button ngf-select="vm.uploadImages($files)" ngf-multiple="true" ngf-fix-orientation="false" accept="image/*" class="md-fab md-fab-bottom-right md-primary" style="position:fixed;" aria-label="Add">
   <i class="fa fa-plus"></i>
   <md-tooltip md-direction="left">
     Add new
   </md-tooltip>
 </md-button>
-<md-content class="md-padding images_container">
+<md-content class="md-padding images_container" ng-repeat="image in vm.images track by $index">
   <div class="col-xs-6 col-sm-4 col-md-3">
     <div class="thumbnail" style="margin-bottom:0">
-      <div class="delete_btn_contaier btn">
+      <div ng-click="vm.removeImage(image, $index)" class="delete_btn_contaier btn">
         <i class="fa fa-times"></i>
       </div>
-      <img src="/assets/images/1.jpg">
+      <img ng-src="{{image.fileName}}">
     </div>
-    <md-input-container>
-      <label>Url</label>
-      <input>
-    </md-input-container>
+    <!--<md-input-container>-->
+      <!--<label>Url</label>-->
+      <!--<input ng-model="{{'sldkfjsdlkfj'}}">-->
+    <!--</md-input-container>-->
   </div>
 </md-content>
