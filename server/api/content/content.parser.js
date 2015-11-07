@@ -3,9 +3,9 @@
 module.exports = {
   parseFeatured,
   parseSlide,
+  parseBanner,
   parsePartner,
   parseContacts,
-  parseBanner,
   parseAbout,
 };
 
@@ -23,6 +23,14 @@ function parseSlide(slide) {
     title: biling(slide.title),
     image: slide.image,
     link: slide.link
+  };
+}
+
+function parseBanner(banner) {
+  return {
+    title: biling(banner.title),
+    image: banner.image,
+    link: banner.link
   };
 }
 
@@ -44,13 +52,6 @@ function parseContacts(contacts) {
     phones: contacts.phones,
     fax: contacts.fax,
     mail: contacts.mail
-  };
-}
-
-function parseBanner(banner) {
-  return {
-    image: banner.image,
-    link: banner.link
   };
 }
 

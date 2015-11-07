@@ -15,19 +15,20 @@ var featuredSchema = {
 
 var slideSchema = {
   title: bilingStringSchema,
-  image: String,
-  link: String
+  image: { type: String, default: '' },
+  link: { type: String, default: '' }
 };
 
 var bannerSchema = {
-  image: String,
-  link: String
+  title: bilingStringSchema,
+  image: { type: String, default: '' },
+  link: { type: String, default: '' }
 };
 
 var partnerSchema = {
   name: bilingStringSchema,
-  image: String,
-  link: String
+  image: { type: String, default: '' },
+  link: { type: String, default: '' }
 };
 
 var contactsSchema = {

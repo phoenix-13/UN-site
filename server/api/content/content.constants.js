@@ -3,8 +3,8 @@
 module.exports = {
   // titleMaxLength: 100,
 
-  nameMinLength: 1,
-  nameMaxLength: 10,
+  // nameMinLength: 1,
+  // nameMaxLength: 10,
 
   // addressMaxLength: 256,
 
