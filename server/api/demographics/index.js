@@ -8,8 +8,7 @@ var errors = require('../../errors');
 var router = express.Router();
 
 router.get('/all', getAll);
-router.post('/:id/addYearValue', addYearValue);
-router.post('/:id/removeYearValue', removeYearValue);
+router.post('/:id/updateYearValues', updateYearValues);
 
 module.exports = router;
 
@@ -20,18 +19,10 @@ function getAll(req, res) {
     .catch(errors.handleError(res));
 }
 
-function addYearValue(req, res) {
+function updateYearValues(req, res) {
   var demographicsId = req.params.id;
-  controller.addYearValue(demographicsId, req.body.yearValue)
+  controller.updateYearValues(demographicsId, req.body.yearValues)
     .then(() => res.sendStatus(200))
-    .catch(errors.logError(`Failed to add year-value to demographics`))
-    .catch(errors.handleError(res));
-}
-
-function removeYearValue(req, res) {
-  var demographicsId = req.params.id;
-  controller.removeYearValue(demographicsId, req.body.yearValueId)
-    .then(() => res.sendStatus(200))
-    .catch(errors.logError(`Failed to remove year-value from demographics`))
+    .catch(errors.logError(`Failed to update year-values of demographics ${req. params.id}`))
     .catch(errors.handleError(res));
 }

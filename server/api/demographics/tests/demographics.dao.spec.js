@@ -55,58 +55,21 @@ describe('demographics.dao', () => {
     });
   });
 
-  describe('addYearValue', () => {
-    var demographicsId;
+  describe('updateYearValues', () => {
+    var demographicsId = new ObjectId();
 
     beforeEach(done => {
-      Demographics.create({})
-        .then(createdDemographics => {
-          demographicsId = createdDemographics._id;
-          done();
-        });
+      Demographics.create({ _id: demographicsId, values: [{ year: 2015, value: 99 }] }).then(() => done());
     });
 
-    it('should add year-value to demographics', done => {
-      var yearValue = { _id: new ObjectId(), year: 2015, value: 99 };
-      Demographics.addYearValue(demographicsId, yearValue)
+    it('should update demographics year-values', done => {
+      var newYearValue = { year: 2014, value: 13 };
+      Demographics.updateYearValues(demographicsId, [newYearValue])
         .then(() => Demographics.getById(demographicsId))
         .then(foundDemographics => {
-          foundDemographics.values[0]._id.equals(yearValue._id).should.equal(true);
+          foundDemographics.values[0].year.should.equal(newYearValue.year);
           done();
         });
-    });
-
-    it('should not add year-value to not existing demographics', done => {
-      Demographics.addYearValue(new ObjectId(), {})
-        .catch(DBUnaffectedUpdateError, () => done());
-    });
-  });
-
-  describe('removeYearValue', () => {
-    var demographicsId;
-    var yearValue = { _id: new ObjectId(), year: 2015, value: 99 };
-
-    beforeEach(done => {
-      Demographics.create({})
-        .then(createdDemographics => {
-          demographicsId = createdDemographics._id;
-          return Demographics.addYearValue(demographicsId, yearValue);
-        })
-        .then(() => done());
-    });
-
-    it('should remove year-value from demographics', done => {
-      Demographics.removeYearValue(demographicsId, yearValue._id)
-        .then(() => Demographics.getById(demographicsId))
-        .then(foundDemographics => {
-          foundDemographics.values.length.should.equal(0);
-          done();
-        });
-    });
-
-    it('should not remove year-value from not existing demographics', done => {
-      Demographics.removeYearValue(new ObjectId(), yearValue._id)
-        .catch(DBUnaffectedUpdateError, () => done());
     });
   });
 

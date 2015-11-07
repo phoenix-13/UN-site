@@ -13,8 +13,7 @@ module.exports = {
   getById,
   getAll,
   create,
-  addYearValue,
-  removeYearValue,
+  updateYearValues,
   remove,
   removeAll
 };
@@ -33,13 +32,8 @@ function create() {
     .then(assertDBResultExistence);
 }
 
-function addYearValue(id, yearValue) {
-  return Demographics.updateAsync({ _id: id }, { $push: { 'values': yearValue } })
-    .then(assertDBUpdateAffected);
-}
-
-function removeYearValue(id, yearValueId) {
-  return Demographics.updateAsync({ _id: id }, { $pull: { 'values': { _id: yearValueId } } })
+function updateYearValues(id, yearValues) {
+  return Demographics.updateAsync({ _id: id }, { values: yearValues })
     .then(assertDBUpdateAffected);
 }
 

@@ -2,7 +2,6 @@
 
 var _ = require('lodash');
 var contentSchemaValidator = require('../content.schema.validator');
-var contentConstants = require('../content.constants');
 var SchemaError = require('../../../errors').SchemaError;
 
 describe('content.schema.validator', () => {
@@ -448,12 +447,6 @@ describe('content.schema.validator', () => {
       contacts.address.geo = '';
       contentSchemaValidator.validateContacts(contacts)
         .then(() => done());
-    });
-
-    it(`should not validate when address geo/eng length is more than ${contentConstants.addressMaxLength}`, done => {
-      contacts.address.geo = _.repeat('x', contentConstants.addressMaxLength + 1);
-      contentSchemaValidator.validateContacts(contacts)
-        .catch(SchemaError, () => done());
     });
 
     it('should not validate when coordinates is not provided', done => {
