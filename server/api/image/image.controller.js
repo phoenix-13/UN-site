@@ -3,9 +3,16 @@
 var imageParser = require('./image.parser');
 var ImageDao = require('./image.dao');
 
-module.exports.create = create;
+module.exports = {
+  getAll: getAll,
+  create: create
+};
 
-function create(image) {
-  var parsedImage = imageParser.parseImage(image);
+function getAll() {
+  return ImageDao.getAll();
+}
+
+function create(imageName) {
+  var parsedImage = imageParser.parseImage(imageName);
   return ImageDao.create(parsedImage);
 }

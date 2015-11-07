@@ -1,9 +1,9 @@
 'use strict';
 
 export default class {
-  constructor(ContentResource, $state, $timeout, content) {
+  constructor(ContentResource, Toast, $timeout, content) {
     'ngInject';
-    this.$state = $state;
+    this.Toast = Toast;
     this.ContentResource = ContentResource;
     this.contacts = content.contacts;
     $timeout(() => this.initMap());
@@ -31,6 +31,6 @@ export default class {
 
   updateContact() {
     this.ContentResource.updateContact({contacts: this.contacts})
-      .then(() => this.$state.reload());
+      .then(() => this.Toast.showToast('Updated Successfully'));
   }
 }

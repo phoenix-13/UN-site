@@ -4,6 +4,6 @@ module.exports = {
   parseImage
 };
 
-function parseImage(data) {
-  return { image: data.image };
+function parseImage(imageName) {
+  return {fileName: imageName};
 }

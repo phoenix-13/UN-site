@@ -1,12 +1,15 @@
 'use strict';
 
 export default class {
-  constructor() {
+  constructor(ContentResource, Toast, content) {
     'ngInject';
-    this.aboutUs = '';
+    this.ContentResource = ContentResource;
+    this.Toast = Toast;
+    this.about = content.about;
   }
 
-  updateAboutUs() {
-    console.log('updateAboutUs');
+  updateAbout() {
+    this.ContentResource.updateAbout({about: this.about})
+      .then(() => this.Toast.showToast('Updated Successfully!'));
   }
 }

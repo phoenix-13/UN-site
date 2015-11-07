@@ -7,7 +7,7 @@ var errors = require('../../../errors');
 var DBEmptyResultError = errors.DBEmptyResultError;
 var DBUnaffectedUpdateError = errors.DBUnaffectedUpdateError;
 
-describe('image.dao', () => {
+describe.only('image.dao', () => {
   beforeEach(done => {
     ImageDao.removeAll().then(() => done());
   });

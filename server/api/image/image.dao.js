@@ -10,14 +10,19 @@ Q.promisifyAll(ImageModel);
 Q.promisifyAll(ImageModel.prototype);
 
 module.exports = {
-  imageExists,
+  getAll,
   create,
+  imageExists,
   remove,
   removeAll
 };
 
+function getAll() {
+  return ImageModel.findAsync();
+}
+
 function imageExists(fileName) {
-  return ImageModel.findOneAsync({ fileName })
+  return ImageModel.findOneAsync({fileName})
     .then(assertDBResultExistence);
 }
 

@@ -11,6 +11,6 @@ export default angular.module('admin.aboutUs', [])
       url: '/aboutUs',
       template,
       controller,
-      controllerAs: 'vm',
+      controllerAs: 'vm'
     });
 });
