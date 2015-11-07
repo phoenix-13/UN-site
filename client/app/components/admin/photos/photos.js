@@ -11,6 +11,6 @@ export default angular.module('admin.photos', [])
       url: '/photos',
       template,
       controller,
-      controllerAs: 'vm',
+      controllerAs: 'vm'
     });
 });
