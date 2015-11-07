@@ -22,6 +22,7 @@ System.config({
     "bootstrap": "github:twbs/bootstrap@3.3.5",
     "clean-css": "npm:clean-css@3.4.6",
     "css": "github:systemjs/plugin-css@0.1.19",
+    "danialfarid/ng-file-upload": "github:danialfarid/ng-file-upload@9.1.2",
     "font-awesome": "npm:font-awesome@4.4.0",
     "lodash": "github:lodash/lodash@3.10.1",
     "restangular": "github:mgonto/restangular@1.5.1",
