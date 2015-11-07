@@ -15,6 +15,7 @@ import 'angular-material';
 import 'textAngular/dist/textAngular-sanitize';
 import 'textAngular/dist/textAngularSetup';
 import 'textAngular/dist/textAngular';
+import 'danialfarid/ng-file-upload';
 
 export default angular.module('dependencies', [
   'ngAnimate',
@@ -26,4 +27,5 @@ export default angular.module('dependencies', [
   'ui.router',
   'restangular',
   'textAngular',
+  'ngFileUpload'
 ]);
