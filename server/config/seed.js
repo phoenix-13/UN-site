@@ -9,6 +9,14 @@ module.exports = function () {
 
 function seedContent() {
   var featured = _.range(6).map(function() { return {}; });
+  var banner = {
+    title: {
+      geo: 'ახალგაზრდობის ინდექსი',
+      eng: 'youth index'
+    },
+    image: 'http://pre00.deviantart.net/d929/th/pre/i/2012/332/2/5/phoenix_by_darkheroic-d5g7m4m.png',
+    link: 'https://www.youtube.com/watch?v=HgzGwKwLmgM'
+  };
   var contacts = {
     address: {
       geo: 'თბილისი ჭავჭავაძის 46,',
@@ -25,8 +33,9 @@ function seedContent() {
 
   var content = {
     featured,
+    banner,
     contacts
   };
 
-  Content.removeOne().then(() => Content.create(content));
+  Content.removeAll().then(() => Content.create(content));
 }
