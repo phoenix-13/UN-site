@@ -7,7 +7,7 @@ var DBEmptyResultError = require('../../../errors').DBEmptyResultError;
 // var DBUnaffectedUpdateError = require('../../../errors').DBUnaffectedUpdateError;
 var ObjectId = require('mongoose').Types.ObjectId;
 
-describe.only('content.dao', () => {
+describe('content.dao', () => {
   beforeEach(done => {
     Content.removeAll().then(() => done());
   });

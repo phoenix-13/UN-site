@@ -483,7 +483,7 @@ describe('content.schema.validator', () => {
     var about;
 
     beforeEach(done => {
-      about = biling(_.repeat('x', contentConstants.aboutMinLength));
+      about = biling('about');
       done();
     });
 
@@ -517,16 +517,10 @@ describe('content.schema.validator', () => {
         .catch(SchemaError, () => done());
     });
 
-    it(`should not validate when about geo/eng length is less than ${contentConstants.aboutMinLength}`, done => {
-      about.geo = _.repeat('x', contentConstants.aboutMinLength - 1);
+    it('should validate when about geo/eng is empty string', done => {
+      about.geo = '';
       contentSchemaValidator.validateAbout(about)
-        .catch(SchemaError, () => done());
-    });
-
-    it(`should not validate when about geo/eng length is more than ${contentConstants.aboutMaxLength}`, done => {
-      about.geo = _.repeat('x', contentConstants.aboutMaxLength + 1);
-      contentSchemaValidator.validateAbout(about)
-        .catch(SchemaError, () => done());
+        .then(() => done());
     });
   });
 

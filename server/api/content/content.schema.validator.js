@@ -17,7 +17,7 @@ module.exports = {
 var titleSchema = Joi.string().required().empty('');
 var nameSchema = Joi.string().min(contentConstants.nameMinLength).max(contentConstants.nameMaxLength);
 var addressSchema = Joi.string().required().empty('');
-var aboutSchema = Joi.string().min(contentConstants.aboutMinLength).max(contentConstants.aboutMaxLength);
+var aboutSchema = Joi.string().required().empty('');
 
 var bilingTitleSchema = Joi.object().keys({
   geo: titleSchema,

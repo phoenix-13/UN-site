@@ -8,6 +8,6 @@ module.exports = {
 
   // addressMaxLength: 256,
 
-  aboutMinLength: 10,
-  aboutMaxLength: 2000,
+  // aboutMinLength: 10,
+  // aboutMaxLength: 2000,
 };

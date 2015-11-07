@@ -1,7 +1,7 @@
 'use strict';
 
 module.exports = {
-  parseImage: parseImage
+  parseImage
 };
 
 function parseImage(data) {
