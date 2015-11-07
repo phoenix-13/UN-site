@@ -13,13 +13,12 @@ module.exports = {
   getOne,
   create,
   update,
-  addFeatured,
-  removeFeatured,
   addSlide,
   removeSlide,
   addPartner,
   removePartner,
-  removeOne
+  removeOne,
+  removeAll
 };
 
 function getOne() {
@@ -33,17 +32,7 @@ function create(content) {
 }
 
 function update(doc) {
-  return Content.updateAsync({}, { contacts: doc })
-    .then(assertDBUpdateAffected);
-}
-
-function addFeatured(featured) {
-  return Content.updateAsync({}, { $push: { 'featured': featured } })
-    .then(assertDBUpdateAffected);
-}
-
-function removeFeatured(featuredId) {
-  return Content.updateAsync({}, { $pull: { 'featured': { _id: featuredId } } })
+  return Content.updateAsync({}, doc)
     .then(assertDBUpdateAffected);
 }
 
@@ -69,4 +58,8 @@ function removePartner(partnerId) {
 
 function removeOne() {
   return Content.findOneAndRemoveAsync({});
+}
+
+function removeAll() {
+  return Content.removeAsync();
 }

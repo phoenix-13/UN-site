@@ -10,7 +10,7 @@ var bilingStringSchema = {
 
 var featuredSchema = {
   title: bilingStringSchema,
-  link: String,
+  link: { type: String, default: '' },
 };
 
 var slideSchema = {

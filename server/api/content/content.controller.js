@@ -23,7 +23,10 @@ function getOne() {
 function updateFeatured(featured) {
   var parsedFeatured = contentParser.parseFeatured(featured);
   return contentSchemaValidator.validateFeatured(parsedFeatured)
-    .then(schemaValidatedFeatured => Content.update(schemaValidatedFeatured));
+    .then(schemaValidatedFeatured => {
+      var updateData = { featured: schemaValidatedFeatured };
+      Content.update(updateData);
+    });
 }
 
 function addSlide(slide) {
@@ -49,17 +52,26 @@ function removePartner(partnerId) {
 function updateContacts(contacts) {
   var parsedContacts = contentParser.parseContacts(contacts);
   return contentSchemaValidator.validateContacts(parsedContacts)
-    .then(schemaValidatedContacts => Content.update(schemaValidatedContacts));
+    .then(schemaValidatedContacts => {
+      var updateData = { contacts: schemaValidatedContacts };
+      return Content.update(updateData);
+    });
 }
 
 function updateBanner(banner) {
   var parsedBanner = contentParser.parseBanner(banner);
   return contentSchemaValidator.validateBanner(parsedBanner)
-    .then(schemaValidatedBanner => Content.update(schemaValidatedBanner));
+    .then(schemaValidatedBanner => {
+      var updateData = { banner: schemaValidatedBanner };
+      return Content.update(updateData);
+    });
 }
 
 function updateAbout(about) {
   var parsedAbout = contentParser.parseAbout(about);
   return contentSchemaValidator.validateAbout(parsedAbout)
-    .then(schemaValidatedAbout => Content.update(schemaValidatedAbout));
+    .then(schemaValidatedAbout => {
+      var updateData = { about: schemaValidatedAbout };
+      return Content.update(updateData);
+    });
 }

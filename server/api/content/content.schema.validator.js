@@ -14,7 +14,7 @@ module.exports = {
   validateAbout
 };
 
-var titleSchema = Joi.string().min(contentConstants.titleMinLength).max(contentConstants.titleMaxLength).required();
+var titleSchema = Joi.string().required().empty('');
 var nameSchema = Joi.string().min(contentConstants.nameMinLength).max(contentConstants.nameMaxLength);
 var addressSchema = Joi.string().required().empty('');
 var aboutSchema = Joi.string().min(contentConstants.aboutMinLength).max(contentConstants.aboutMaxLength);
@@ -32,12 +32,12 @@ var bilingAddressSchema = Joi.object().keys({
   eng: addressSchema
 }).required();
 
-var featuredSchema = Joi.object().keys({
+var featuredItemSchema = Joi.object().keys({
   title: bilingTitleSchema,
-  link: Joi.string().required()
-}).required();
+  link: Joi.string().required().empty('')
+});
 
-var featuredsSchema = Joi.array().items(featuredSchema).required();
+var featuredSchema = Joi.array().items(featuredItemSchema).required();
 var slideSchema = Joi.object().keys({
   title: bilingTitleSchema,
   image: Joi.string().required(),
@@ -68,7 +68,7 @@ var bilingAboutSchema = Joi.object().keys({
 }).required();
 
 function validateFeatured(featured) {
-  return Joi.validate(featured, featuredsSchema)
+  return Joi.validate(featured, featuredSchema)
     .catch((err) => Q.reject(new SchemaError(err.message)));
 }
 

@@ -10,10 +10,12 @@ describe('content.schema.validator', () => {
     var featured;
 
     beforeEach(done => {
-      featured =  {
-        title: biling(_.repeat('x', contentConstants.titleMinLength)),
+      featured = [];
+      var featuredItem =  {
+        title: biling('title'),
         link: 'link'
       };
+      featured.push(featuredItem);
       done();
     });
 
@@ -35,57 +37,57 @@ describe('content.schema.validator', () => {
         .catch(SchemaError, () => done());
     });
 
-    it('should not validate when featured is not an object', done => {
-      contentSchemaValidator.validateFeatured('not_an_object')
+    it('should not validate when featured is not an array', done => {
+      contentSchemaValidator.validateFeatured('not_an_array')
         .catch(SchemaError, () => done());
     });
 
-    it('should not validate when title is not provided', done => {
-      delete featured.title;
+    it('should not validate when featured item is not an object', done => {
+      featured[0] = 'not_an_object';
       contentSchemaValidator.validateFeatured(featured)
         .catch(SchemaError, () => done());
     });
 
     it('should not validate when title is not an object', done => {
-      featured.title = 'not_an_object';
+      featured[0].title = 'not_an_object';
       contentSchemaValidator.validateFeatured(featured)
         .catch(SchemaError, () => done());
     });
 
     it('should not validate when title geo/eng is not provided', done => {
-      delete featured.title.geo;
+      delete featured[0].title.geo;
       contentSchemaValidator.validateFeatured(featured)
         .catch(SchemaError, () => done());
     });
 
     it('should not validate when title geo/eng is not string', done => {
-      featured.title.geo = [];
+      featured[0].title.geo = [];
       contentSchemaValidator.validateFeatured(featured)
         .catch(SchemaError, () => done());
     });
 
-    it(`should not validate when title geo/eng length is less than ${contentConstants.titleMinLength}`, done => {
-      featured.title.geo = _.repeat('x', contentConstants.titleMinLength - 1);
+    it('should validate when title geo/eng is empty string', done => {
+      featured[0].title.geo = '';
       contentSchemaValidator.validateFeatured(featured)
-        .catch(SchemaError, () => done());
-    });
-
-    it(`should not validate when title geo/eng length is more than ${contentConstants.titleMaxLength}`, done => {
-      featured.title.geo = _.repeat('x', contentConstants.titleMaxLength + 1);
-      contentSchemaValidator.validateFeatured(featured)
-        .catch(SchemaError, () => done());
+        .then(() => done());
     });
 
     it('should not validate when link is not provided', done => {
-      delete featured.link;
+      delete featured[0].link;
       contentSchemaValidator.validateFeatured(featured)
         .catch(SchemaError, () => done());
     });
 
     it('should not validate when link is not string', done => {
-      featured.link = [];
+      featured[0].link = [];
       contentSchemaValidator.validateFeatured(featured)
         .catch(SchemaError, () => done());
+    });
+
+    it('should validate when link is empty string', done => {
+      featured[0].link = '';
+      contentSchemaValidator.validateFeatured(featured)
+        .then(() => done());
     });
   });
 
@@ -310,12 +312,12 @@ describe('content.schema.validator', () => {
     });
   });
 
-  describe.only('validateContacts', () => {
+  describe('validateContacts', () => {
     var contacts;
 
     beforeEach(done => {
       contacts =  {
-        address: biling(_.repeat('x', contentConstants.addressMaxLength)),
+        address: biling('address'),
         coordinates: {
           latitude: 41.72,
           longitude: 44.76
@@ -335,7 +337,6 @@ describe('content.schema.validator', () => {
     it('should validate contacts and return provided schema', done => {
       contentSchemaValidator.validateContacts(contacts)
         .then(validatedContacts => {
-          console.log(validatedContacts);
           _.isEqual(validatedContacts, contacts).should.equal(true);
           done();
         });

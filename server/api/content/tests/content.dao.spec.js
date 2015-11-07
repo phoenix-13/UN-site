@@ -7,9 +7,9 @@ var DBEmptyResultError = require('../../../errors').DBEmptyResultError;
 // var DBUnaffectedUpdateError = require('../../../errors').DBUnaffectedUpdateError;
 var ObjectId = require('mongoose').Types.ObjectId;
 
-describe('content.dao', () => {
+describe.only('content.dao', () => {
   beforeEach(done => {
-    Content.removeOne().then(() => done());
+    Content.removeAll().then(() => done());
   });
 
   describe('getOne', () => {
@@ -45,42 +45,6 @@ describe('content.dao', () => {
         .then(() => Content.getOne())
         .then(content => {
           content.about.geo.should.equal(updateDoc.about.geo);
-          done();
-        });
-    });
-  });
-
-  describe('addFeatured', () =>  {
-    beforeEach(done => {
-      Content.create({}).then(() => done());
-    })
-
-    it('should add featured to content', done => {
-      var featured = { title: {}, link: 'link' };
-      Content.addFeatured(featured)
-        .then(() => Content.getOne())
-        .then(content => {
-          content.featured.length.should.equal(1);
-          content.featured[0].link.should.equal(featured.link);
-          done();
-        });
-    });
-  });
-
-  describe('removeFeatured', () =>  {
-    var featured = { _id: new ObjectId(), title: {} };
-
-    beforeEach(done => {
-      Content.create({})
-      .then(() => Content.addFeatured(featured))
-      .then(() => done());
-    })
-
-    it('should remove featured from content', done => {
-      Content.removeFeatured(featured._id)
-        .then(() => Content.getOne())
-        .then(content => {
-          content.featured.length.should.equal(0);
           done();
         });
     });
