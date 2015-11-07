@@ -2,9 +2,11 @@
 
 var _ = require('lodash');
 var Content = require('../api/content/content.dao');
+var Category = require('../api/category/category.dao');
 
 module.exports = function () {
   seedContent();
+  seedCategories();
 };
 
 function seedContent() {
@@ -38,4 +40,17 @@ function seedContent() {
   };
 
   Content.removeAll().then(() => Content.create(content));
+}
+
+function seedCategories() {
+  var category0 = bilingCategory('მონაწილეობა', 'participation');
+  var category1 = bilingCategory('სპეციალური მხარდაჭერა და დაცვა', 'special support and protection');
+  var category2 = bilingCategory('ჯანმრთელობა', 'health');
+  var category3 = bilingCategory('განათლება, დასაქმება და მობილობა', 'Education, Employment and Mobility');
+
+  Category.removeAll().then(() => Category.create(category0, category1, category2, category3));
+}
+
+function bilingCategory(titleGeo, titleEng) {
+  return { title: { geo: titleGeo, eng: titleEng } };
 }
