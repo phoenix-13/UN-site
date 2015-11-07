@@ -11,6 +11,6 @@ export default angular.module('admin.landingPage', [])
       url: '/landingPage',
       template,
       controller,
-      controllerAs: 'vm',
+      controllerAs: 'vm'
     });
 });
