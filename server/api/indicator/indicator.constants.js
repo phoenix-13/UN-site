@@ -1,12 +1,14 @@
 module.exports = {
-  titleMinLength: 1,
-  titleMaxLength: 20,
+  // titleMinLength: 1,
+  // titleMaxLength: 20,
 
-  dateFormat: 'YYYY/MM/DD',
+  // dateFormat: 'YYYY/MM/DD',
 
-  yearMinValue: 2000,
-  yearMaxValue: 2100,
+  // yearMinValue: 2000,
+  // yearMaxValue: 2100,
 
-  minValue: 0,
-  maxValue: 100,
+  // minValue: 0,
+  // maxValue: 100,
+
+  perPageLimit: 10
 };

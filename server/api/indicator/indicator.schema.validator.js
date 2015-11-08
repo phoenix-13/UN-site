@@ -2,20 +2,18 @@
 
 var Q = require('bluebird');
 var Joi = require('joibird');
-var indicatorConstants = require('./indicator.constants');
 var SchemaError = require('../../errors').SchemaError;
 
 module.exports = {
-  validateIndicator,
-  validateYearValue,
+  validateIndicator
 };
 
-var titleSchema = Joi.string().min(indicatorConstants.titleMinLength).max(indicatorConstants.titleMaxLength).required();
+var titleSchema = Joi.string().required().empty('');
 var yearValueSchema = Joi.object().keys({
-  year: Joi.number().min(indicatorConstants.yearMinValue).max(indicatorConstants.yearMaxValue).required(),
-  value: Joi.number().min(indicatorConstants.minValue).max(indicatorConstants.maxValue).required()
+  year: Joi.number().required(),
+  value: Joi.number().required()
 });
-var contentSchema = Joi.string();
+var contentSchema = Joi.string().required().empty('');
 
 var bilingTitleSchema = Joi.object().keys({
   geo: titleSchema,
@@ -25,22 +23,17 @@ var bilingTitleSchema = Joi.object().keys({
 var bilingContentSchema = Joi.object().keys({
   geo: contentSchema,
   eng: contentSchema
-});
+}).required();
 
 var indicatorSchema = Joi.object().keys({
   title: bilingTitleSchema,
-  date: Joi.date().format(indicatorConstants.dateFormat),
-  values: Joi.array().items(yearValueSchema),
+  date: Joi.date().required(), // questions exist
+  values: Joi.array().items(yearValueSchema).required(),
   content: bilingContentSchema,
-  category: Joi.required()
+  category: Joi.string().required()
 }).required();
 
 function validateIndicator(indicator) {
   return Joi.validate(indicator, indicatorSchema)
-    .catch(err => Q.reject(new SchemaError(err.message)));
-}
-
-function validateYearValue(yearValue) {
-  return Joi.validate(yearValue, yearValueSchema.required())
     .catch(err => Q.reject(new SchemaError(err.message)));
 }

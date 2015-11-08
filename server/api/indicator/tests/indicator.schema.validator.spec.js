@@ -2,7 +2,6 @@
 
 var _ = require('lodash');
 var indicatorSchemaValidator = require('../indicator.schema.validator');
-var indicatorConstants = require('../indicator.constants');
 var SchemaError = require('../../../errors').SchemaError;
 
 describe('indicator.schema.validator', () => {
@@ -11,12 +10,12 @@ describe('indicator.schema.validator', () => {
 
     beforeEach(done => {
       indicator =  {
-        title: biling(_.repeat('x', indicatorConstants.titleMinLength)),
+        title: biling('title'),
         date: new Date('2100/12/31'),
         values: [
           {
-            year: indicatorConstants.yearMinValue,
-            value: indicatorConstants.minValue
+            year: 2015,
+            value: 1331
           }
         ],
         content: biling('content'),
@@ -33,7 +32,6 @@ describe('indicator.schema.validator', () => {
     it('should validate indicator and return provided schema', done => {
       indicatorSchemaValidator.validateIndicator(indicator)
         .then(validatedIndicator => {
-          console.log(validatedIndicator);
           _.isEqual(validatedIndicator, indicator).should.equal(true);
           done();
         });
@@ -73,14 +71,14 @@ describe('indicator.schema.validator', () => {
         .catch(SchemaError, () => done());
     });
 
-    it(`should not validate when title geo/eng length is less than ${indicatorConstants.titleMinLength}`, done => {
-      indicator.title.geo = _.repeat('x', indicatorConstants.titleMinLength - 1);
+    it('should validate when title geo/eng is empty string', done => {
+      indicator.title.geo = '';
       indicatorSchemaValidator.validateIndicator(indicator)
-        .catch(SchemaError, () => done());
+        .then(() => done());
     });
 
-    it(`should not validate when title geo/eng length is more than ${indicatorConstants.titleMaxLength}`, done => {
-      indicator.title.geo = _.repeat('x', indicatorConstants.titleMaxLength + 1);
+    it('should not validate when date is not provided', done => {
+      delete indicator.date;
       indicatorSchemaValidator.validateIndicator(indicator)
         .catch(SchemaError, () => done());
     });
@@ -91,8 +89,8 @@ describe('indicator.schema.validator', () => {
         .catch(SchemaError, () => done());
     });
 
-    it(`should not validate when date is not of proper '${indicatorConstants.dateFormat}' format`, done => {
-      indicator.date = '2010-11-11';
+    it('should not validate when values is not provided', done => {
+      delete indicator.values;
       indicatorSchemaValidator.validateIndicator(indicator)
         .catch(SchemaError, () => done());
     });
@@ -104,63 +102,47 @@ describe('indicator.schema.validator', () => {
     });
 
     it('should not validate when values year is not provided', done => {
-      var withoutYear = { value: indicatorConstants.minValue };
+      var withoutYear = { value: 13 };
       indicator.values.push(withoutYear);
       indicatorSchemaValidator.validateIndicator(indicator)
         .catch(SchemaError, () => done());
     });
 
     it('should not validate when values year is not number', done => {
-      var invalidYearValue = { year: 'not_a_number', value: indicatorConstants.minValue };
-      indicator.values.push(invalidYearValue);
-      indicatorSchemaValidator.validateIndicator(indicator)
-        .catch(SchemaError, () => done());
-    });
-
-    it(`should not validate when values year is less than ${indicatorConstants.yearMinValue}`, done => {
-      var invalidYearValue = { year: (indicatorConstants.yearMinValue - 1), value: indicatorConstants.minValue };
-      indicator.values.push(invalidYearValue);
-      indicatorSchemaValidator.validateIndicator(indicator)
-        .catch(SchemaError, () => done());
-    });
-
-    it(`should not validate when values year is more than ${indicatorConstants.yearMaxValue}`, done => {
-      var invalidYearValue = { year: (indicatorConstants.yearMaxValue + 1), value: indicatorConstants.minValue };
+      var invalidYearValue = { year: 'not_a_number', value: 31 };
       indicator.values.push(invalidYearValue);
       indicatorSchemaValidator.validateIndicator(indicator)
         .catch(SchemaError, () => done());
     });
 
     it('should not validate when values value is not provided', done => {
-      var withoutValue = { year: indicatorConstants.yearMinValue };
+      var withoutValue = { year: 2020 };
       indicator.values.push(withoutValue);
       indicatorSchemaValidator.validateIndicator(indicator)
         .catch(SchemaError, () => done());
     });
 
     it('should not validate when values value is not number', done => {
-      var invalidYearValue = { year: indicatorConstants.yearMinValue, value: 'not_a_number' };
+      var invalidYearValue = { year: 2020, value: 'not_a_number' };
       indicator.values.push(invalidYearValue);
       indicatorSchemaValidator.validateIndicator(indicator)
         .catch(SchemaError, () => done());
     });
 
-    it(`should not validate when values value is less than ${indicatorConstants.minValue}`, done => {
-      var invalidYearValue = { year: indicatorConstants.yearMinValue, value: (indicatorConstants.minValue - 1) };
-      indicator.values.push(invalidYearValue);
-      indicatorSchemaValidator.validateIndicator(indicator)
-        .catch(SchemaError, () => done());
-    });
-
-    it(`should not validate when values value is more than ${indicatorConstants.maxValue}`, done => {
-      var invalidYearValue = { year: indicatorConstants.yearMinValue, value: (indicatorConstants.maxValue + 1) };
-      indicator.values.push(invalidYearValue);
+    it('should not validate when content is not provided', done => {
+      delete indicator.content;
       indicatorSchemaValidator.validateIndicator(indicator)
         .catch(SchemaError, () => done());
     });
 
     it('should not validate when content is not an object', done => {
       indicator.content = 'not_an_object';
+      indicatorSchemaValidator.validateIndicator(indicator)
+        .catch(SchemaError, () => done());
+    });
+
+    it('should not validate when content geo/eng is not provided', done => {
+      delete indicator.content.geo;
       indicatorSchemaValidator.validateIndicator(indicator)
         .catch(SchemaError, () => done());
     });
@@ -173,6 +155,12 @@ describe('indicator.schema.validator', () => {
 
     it('should not validate when category is not provided', done => {
       delete indicator.category;
+      indicatorSchemaValidator.validateIndicator(indicator)
+        .catch(SchemaError, () => done());
+    });
+
+    it('should not validate when category is not string', done => {
+      indicator.category = [];
       indicatorSchemaValidator.validateIndicator(indicator)
         .catch(SchemaError, () => done());
     });

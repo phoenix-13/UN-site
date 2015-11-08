@@ -6,8 +6,8 @@ var BusinessLogicValidationError = require('../../errors').BusinessLogicValidati
 
 module.exports = {
   validateUpdate,
-  validateAddYearValue,
-  validateRemoveYearValue,
+  // validateAddYearValue,
+  // validateRemoveYearValue,
   validateRemove
 };
 
@@ -22,18 +22,18 @@ function exists(indicatorId, res) {
     });
 }
 
-function validateUpdate(indicator, doc) {
-  return exists(indicator._id, doc);
+function validateUpdate(indicatorId, doc) {
+  return exists(indicatorId, doc);
 }
 
-function validateAddYearValue(indicatorId, yearValue) {
-  return exists(indicatorId, yearValue);
-}
+// function validateAddYearValue(indicatorId, yearValue) {
+//   return exists(indicatorId, yearValue);
+// }
 
-function validateRemoveYearValue(indicatorId) {
+// function validateRemoveYearValue(indicatorId) {
+//   return exists(indicatorId);
+// }
+
+function validateRemove(indicatorId) {
   return exists(indicatorId);
-}
-
-function validateRemove(indicator) {
-  return exists(indicator._id);
 }

@@ -30,9 +30,5 @@ var publicationSchema = Joi.object().keys({
 
 function validatePublication(publication) {
   return Joi.validate(publication, publicationSchema)
-    // .then(validatedSchema => {
-    //   validatedSchema.year = validatedSchema.date.getFullYear();
-    //   return Q.resolve(validatedSchema);
-    // })
     .catch((err) => Q.reject(new SchemaError(err.message)));
 }

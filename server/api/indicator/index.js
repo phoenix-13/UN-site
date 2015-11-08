@@ -12,8 +12,6 @@ router.get('/all', getAll);
 router.get('/limited', getLimited);
 router.post('/create', create);
 router.post('/:id/update', update);
-router.post('/:id/addYearValue', addYearValue);
-router.post('/:id/removeYearValue', removeYearValue);
 router.delete('/:id/remove', remove);
 
 module.exports = router;
@@ -33,7 +31,7 @@ function getAll(req, res) {
 }
 
 function getLimited(req, res) {
-  controller.getLimited(req.body.offset, req.body.limit)
+  controller.getLimited(req.body.offset)
     .then(indicators => res.json(indicators))
     .catch(errors.logError('Failed to load limited indicators'))
     .catch(errors.handleError(res));
@@ -51,22 +49,6 @@ function update(req, res) {
   controller.update(indicatorId, req.body.data)
     .then(() => res.sendStatus(200))
     .catch(errors.logError(`Failed to update indicator ${indicatorId}`))
-    .catch(errors.handleError(res));
-}
-
-function addYearValue(req, res) {
-  var indicatorId = req.params.id;
-  controller.addYearValue(indicatorId, req.body.yearValue)
-    .then(() => res.sendStatus(200))
-    .catch(errors.logError(`Failed to add year-value to indicator`))
-    .catch(errors.handleError(res));
-}
-
-function removeYearValue(req, res) {
-  var indicatorId = req.params.id;
-  controller.removeYearValue(indicatorId, req.body.yearValueId)
-    .then(() => res.sendStatus(200))
-    .catch(errors.logError(`Failed to remove year-value from indicator`))
     .catch(errors.handleError(res));
 }
 
