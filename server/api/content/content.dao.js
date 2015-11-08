@@ -56,8 +56,9 @@ function removeSlide(slideId) {
 }
 
 function addPartner(partner) {
+  partner._id = new ObjectId();
   return Content.updateAsync({}, { $push: { 'partners': partner } })
-    .then(assertDBUpdateAffected);
+    .then(() => Q.resolve(partner));
 }
 
 function updatePartner(partner) {

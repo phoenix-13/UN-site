@@ -65,7 +65,7 @@ function updateBanner(req, res) {
 
 function addPartner(req, res) {
   controller.addPartner(req.body.partner)
-    .then(() => res.sendStatus(200))
+    .then(addedPartner => res.json(addedPartner))
     .catch(errors.logError(`Failed to add partner to content`))
     .catch(errors.handleError(res));
 }

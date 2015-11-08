@@ -131,6 +131,15 @@ describe('content.dao', () => {
           done();
         });
     });
+
+    it('should add partner and resolve with partner doc with _id', done => {
+      var partner = { link: 'kink' };
+      Content.addPartner(partner)
+        .then(addedPartner => {
+          addedPartner.should.have.property('_id');
+          done();
+        });
+    });
   });
 
   describe('updatePartner', () =>  {
