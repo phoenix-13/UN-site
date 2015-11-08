@@ -15,9 +15,10 @@ module.exports = {
   getLimited,
   create,
   update,
-  addYearValue,
-  removeYearValue,
+  // addYearValue,
+  // removeYearValue,
   remove,
+  countAll,
   removeAll
 };
 
@@ -49,19 +50,23 @@ function update(id, doc) {
     .then(assertDBUpdateAffected);
 }
 
-function addYearValue(id, yearValue) {
-  return Indicator.updateAsync({ _id: id }, { $push: { 'values': yearValue } })
-    .then(assertDBUpdateAffected);
-}
+// function addYearValue(id, yearValue) {
+//   return Indicator.updateAsync({ _id: id }, { $push: { 'values': yearValue } })
+//     .then(assertDBUpdateAffected);
+// }
 
-function removeYearValue(id, yearValueId) {
-  return Indicator.updateAsync({ _id: id }, { $pull: { 'values': { _id: yearValueId } } })
-    .then(assertDBUpdateAffected);
-}
+// function removeYearValue(id, yearValueId) {
+//   return Indicator.updateAsync({ _id: id }, { $pull: { 'values': { _id: yearValueId } } })
+//     .then(assertDBUpdateAffected);
+// }
 
 function remove(id) {
   return Indicator.removeAsync({ _id: id })
     .then(assertDBUpdateAffected);
+}
+
+function countAll() {
+  return Indicator.countAsync({});
 }
 
 function removeAll() {
