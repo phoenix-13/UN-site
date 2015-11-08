@@ -37,7 +37,7 @@ function updateFeatured(req, res) {
 
 function addSlide(req, res) {
   controller.addSlide(req.body.slide)
-    .then(() => res.sendStatus(200))
+    .then(addedSlide => res.json(addedSlide))
     .catch(errors.logError(`Failed to add slide to content`))
     .catch(errors.handleError(res));
 }

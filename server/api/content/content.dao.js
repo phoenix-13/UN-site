@@ -5,6 +5,7 @@ var Content = require('./content.model');
 var errors = require('../../errors');
 var assertDBResultExistence = errors.assertDBResultExistence;
 var assertDBUpdateAffected = errors.assertDBUpdateAffected;
+var ObjectId = require('mongoose').Types.ObjectId;
 
 Q.promisifyAll(Content);
 Q.promisifyAll(Content.prototype);
@@ -39,8 +40,9 @@ function update(doc) {
 }
 
 function addSlide(slide) {
+  slide._id = new ObjectId();
   return Content.updateAsync({}, { $push: { 'slider': slide } })
-    .then(assertDBUpdateAffected);
+    .then(() => Q.resolve(slide));
 }
 
 function updateSlide(slide) {

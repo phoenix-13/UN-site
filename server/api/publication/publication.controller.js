@@ -5,7 +5,7 @@ var Publication = require('./publication.dao');
 var publicationSchemaValidator = require('./publication.schema.validator');
 var publicationBusinessLogicValidator = require('./publication.business.logic.validator');
 var publicationParser = require('./publication.parser');
-var publicationConstants = require('.publication.constants');
+var publicationConstants = require('./publication.constants');
 
 module.exports = {
   getById,

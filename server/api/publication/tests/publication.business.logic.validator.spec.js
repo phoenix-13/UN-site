@@ -7,7 +7,7 @@ var Publication = require('../publication.dao');
 var ObjectId = require('mongoose').Types.ObjectId;
 var BusinessLogicValidationError = require('../../../errors').BusinessLogicValidationError;
 
-describe.only('publication.business.logic.validator', () => {
+describe('publication.business.logic.validator', () => {
   var publication;
 
   beforeEach(done => {

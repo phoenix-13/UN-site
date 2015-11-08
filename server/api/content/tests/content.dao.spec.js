@@ -65,6 +65,15 @@ describe('content.dao', () => {
           done();
         });
     });
+
+    it('should add slide and resolve with slide doc with _id', done => {
+      var slide = { link: 'cink' };
+      Content.addSlide(slide)
+        .then(addedSlide => {
+          addedSlide.should.have.property('_id');
+          done();
+        });
+    });
   });
 
   describe('updateSlide', () =>  {
