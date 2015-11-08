@@ -65,14 +65,13 @@
           </div>
           <div layout layout-sm="column" style="margin-top: 10px">
             <div class="flex"></div>
-            <md-button ui-sref="admin.slider.add" class="md-fab md-fab-bottom-right md-primary" style="position:fixed;" aria-label="Add">
+            <md-button ng-click="vm.openGallery()" ui-sref="admin.slider.add" class="md-fab md-fab-bottom-right md-primary" style="position:fixed;" aria-label="Add">
               <i class="fa fa-plus"></i>
               <md-tooltip md-direction="left">
                 Add new
               </md-tooltip>
             </md-button>
           </div>
-
         </md-content>
       </md-tab>
       <md-tab label="banner">
