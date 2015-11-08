@@ -2,7 +2,6 @@
 
 var _ = require('lodash');
 var publicationSchemaValidator = require('../publication.schema.validator');
-var publicationConstants = require('../publication.constants');
 var SchemaError = require('../../../errors').SchemaError;
 
 describe('publication.schema.validator', () => {
@@ -11,7 +10,7 @@ describe('publication.schema.validator', () => {
 
     beforeEach(done => {
       publication =  {
-        title: biling(_.repeat('x', publicationConstants.titleMinLength)),
+        title: biling('title'),
         date: new Date('2010/12/31'),
         content: biling('content'),
         category: 'category ID'
@@ -24,10 +23,9 @@ describe('publication.schema.validator', () => {
         .then(() => done());
     });
 
-    it('should validate publication and return provided schema + year value of date', done => {
+    it('should validate publication and return provided schema', done => {
       publicationSchemaValidator.validatePublication(publication)
         .then(validatedPublication => {
-          publication.year = validatedPublication.year;
           _.isEqual(validatedPublication, publication).should.equal(true);
           done();
         });
@@ -67,16 +65,10 @@ describe('publication.schema.validator', () => {
         .catch(SchemaError, () => done());
     });
 
-    it(`should not validate when title geo/eng length is less than ${publicationConstants.titleMinLength}`, done => {
-      publication.title.geo = _.repeat('x', publicationConstants.titleMinLength - 1);
+    it('should validate when title geo/eng is empty string', done => {
+      publication.title.geo = '';
       publicationSchemaValidator.validatePublication(publication)
-        .catch(SchemaError, () => done());
-    });
-
-    it(`should not validate when title geo/eng length is more than ${publicationConstants.titleMaxLength}`, done => {
-      publication.title.geo = _.repeat('x', publicationConstants.titleMaxLength + 1);
-      publicationSchemaValidator.validatePublication(publication)
-        .catch(SchemaError, () => done());
+        .then(() => done());
     });
 
     it('should not validate when date is not provided', done => {
@@ -91,20 +83,8 @@ describe('publication.schema.validator', () => {
         .catch(SchemaError, () => done());
     });
 
-    it(`should not validate when date is not of proper '${publicationConstants.dateFormat}' format`, done => {
-      publication.date = '2010-11-11';
-      publicationSchemaValidator.validatePublication(publication)
-        .catch(SchemaError, () => done());
-    });
-
-    it(`should not validate when date is less than '${publicationConstants.dateMinValue}'`, done => {
-      publication.date = new Date(publicationConstants.dateMinValue - 1);
-      publicationSchemaValidator.validatePublication(publication)
-        .catch(SchemaError, () => done());
-    });
-
-    it(`should not validate when date is more than '${publicationConstants.dateMaxValue}'`, done => {
-      publication.date = new Date(publicationConstants.dateMaxValue + 1);
+    it('should not validate when content is not provided', done => {
+      delete publication.content;
       publicationSchemaValidator.validatePublication(publication)
         .catch(SchemaError, () => done());
     });
@@ -115,14 +95,32 @@ describe('publication.schema.validator', () => {
         .catch(SchemaError, () => done());
     });
 
+    it('should not validate when content geo/eng is not provided', done => {
+      delete publication.content.geo;
+      publicationSchemaValidator.validatePublication(publication)
+        .catch(SchemaError, () => done());
+    });
+
     it('should not validate when content geo/eng is not string', done => {
       publication.content.geo = {};
       publicationSchemaValidator.validatePublication(publication)
         .catch(SchemaError, () => done());
     });
 
+    it('should validate when content geo/eng is empty string', done => {
+      publication.content.geo = '';
+      publicationSchemaValidator.validatePublication(publication)
+        .then(() => done());
+    });
+
     it('should not validate when category is not  provided', done => {
       delete publication.category;
+      publicationSchemaValidator.validatePublication(publication)
+        .catch(SchemaError, () => done());
+    });
+
+    it('should not validate when category is not string', done => {
+      publication.category = [];
       publicationSchemaValidator.validatePublication(publication)
         .catch(SchemaError, () => done());
     });

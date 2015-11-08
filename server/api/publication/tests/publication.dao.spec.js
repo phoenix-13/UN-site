@@ -60,7 +60,7 @@ describe('publication.dao', () => {
     it('should return empty array of publications', done => {
       Publication.removeAll()
         .then(() => Publication.getLimited(0, 1))
-        .then((foundPublications) => {
+        .then(foundPublications => {
           foundPublications.length.should.equal(0);
           done();
         });
@@ -70,7 +70,7 @@ describe('publication.dao', () => {
       var offset = 1;
       var limit = 1;
       Publication.getLimited(offset, limit)
-        .then((foundPublications) => {
+        .then(foundPublications => {
           foundPublications.length.should.equal(limit);
           foundPublications[0]._id.equals(publications[offset]._id).should.equal(true);
           done();
@@ -92,12 +92,14 @@ describe('publication.dao', () => {
   describe('update', () =>  {
     it('should update publication', (done) => {
       var publicationId = new ObjectId();
-      var updated = 'updated';
-      Publication.create({ _id: publicationId })
-        .then(() => Publication.update(publicationId, { 'title.geo': updated }))
+      var updatedTitleGeo = 'updated';
+      var updatedYear = 2013;
+      Publication.create({ _id: publicationId, year: 2015 })
+        .then(() => Publication.update(publicationId, { 'title.geo': updatedTitleGeo, 'year': updatedYear }))
         .then(() => Publication.getById(publicationId))
         .then(publication => {
-          publication.title.geo.should.equal(updated);
+          publication.title.geo.should.equal(updatedTitleGeo);
+          publication.year.should.equal(updatedYear);
           done();
         });
     });
@@ -126,4 +128,22 @@ describe('publication.dao', () => {
     });
   });
 
+  describe('countAll', () => {
+    it('should return 0 num of publications count', done => {
+      Publication.countAll()
+        .then(totalNum => {
+          totalNum.should.equal(0);
+          done();
+        });
+    });
+
+    it('should return 1 num of publications count', done => {
+      Publication.create({})
+        .then(() => Publication.countAll())
+        .then(totalNum => {
+          totalNum.should.equal(1);
+          done();
+        });
+    });
+  });
 });

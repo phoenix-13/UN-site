@@ -16,6 +16,7 @@ module.exports = {
   create,
   update,
   remove,
+  countAll,
   removeAll
 };
 
@@ -50,6 +51,10 @@ function update(id, doc) {
 function remove(id) {
   return Publication.removeAsync({ _id: id })
     .then(assertDBUpdateAffected);
+}
+
+function countAll() {
+  return Publication.countAsync({});
 }
 
 function removeAll() {
