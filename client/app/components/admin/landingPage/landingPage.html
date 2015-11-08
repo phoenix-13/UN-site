@@ -33,6 +33,7 @@
           </div>
         </md-content>
       </md-tab>
+
       <md-tab label="slider">
         <md-content class="md-padding">
           <div layout layout-sm="column">
@@ -65,7 +66,7 @@
           </div>
           <div layout layout-sm="column" style="margin-top: 10px">
             <div class="flex"></div>
-            <md-button ng-click="vm.openGallery()" ui-sref="admin.slider.add" class="md-fab md-fab-bottom-right md-primary" style="position:fixed;" aria-label="Add">
+            <md-button ng-click="vm.openAddSlideModal()" class="md-fab md-fab-bottom-right md-primary" style="position:fixed;" aria-label="Add">
               <i class="fa fa-plus"></i>
               <md-tooltip md-direction="left">
                 Add new
@@ -74,6 +75,7 @@
           </div>
         </md-content>
       </md-tab>
+
       <md-tab label="banner">
         <md-content class="md-padding first_page_banner">
           <div class="col-xs-12 col-sm-4">

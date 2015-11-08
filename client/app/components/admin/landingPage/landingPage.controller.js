@@ -1,10 +1,14 @@
 'use strict';
 
+import addSlideTemplate from './addSlide.html!text';
+
 export default class {
-  constructor(Gallery, Toast, ContentResource, content) {
+  constructor($mdDialog, Gallery, Toast, ContentResource, content) {
     'ngInject';
+    this.$mdDialog = $mdDialog;
     this.Gallery = Gallery;
     this.Toast = Toast;
+    this.$mdDialog = $mdDialog;
     this.ContentResource = ContentResource;
     this.primaryArticles = content.featured;
     this.images = content.images;
@@ -17,5 +21,16 @@ export default class {
 
   openGallery() {
     this.Gallery.showModal(this.images);
+  }
+
+  openAddSlideModal() {
+    this.$mdDialog.show({
+      template: addSlideTemplate,
+      escapeToClose: true,
+      clickOutsideToClose: true,
+      controller($scope) {
+        console.log('scope');
+      }
+    });
   }
 }
