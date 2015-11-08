@@ -1,6 +1,7 @@
 'use strict';
 
 require('../../../config/mongoose');
+var _ = require('lodash');
 var demographicsBusinessLogicValidator = require('../demographics.business.logic.validator');
 var Demographics = require('../demographics.dao');
 var ObjectId = require('mongoose').Types.ObjectId;
@@ -18,45 +19,24 @@ describe('demographics.business.logic.validator', () => {
         });
   });
 
-  describe('validateAddYearValue', () => {
-    it('should validate addYearValue', done => {
-      demographicsBusinessLogicValidator.validateAddYearValue(demographics._id)
+  describe('validateUpdateYearValues', () => {
+    it('should validate updateYearValues', done => {
+      demographicsBusinessLogicValidator.validateUpdateYearValues(demographics._id, {})
         .then(() => done());
     });
 
-    it('should validate addYearValue and resolve with demographics', done => {
-      demographicsBusinessLogicValidator.validateAddYearValue(demographics._id)
+    it('should validate updateYearValues and resolve with year-values', done => {
+      var yearValues = [{ _id: new ObjectId() }];
+      demographicsBusinessLogicValidator.validateUpdateYearValues(demographics._id, yearValues)
         .then(resolvedValue => {
-          resolvedValue._id.equals(demographics._id).should.equal(true);
+          _.isEqual(resolvedValue, yearValues).should.equal(true);
           done();
         });
     });
 
-    it('should not validate addYearValue on nonexisting demographics', done => {
+    it('should not validate updateYearValues on nonexisting demographics', done => {
       var notExistingDemographics = { _id: new ObjectId() };
-      demographicsBusinessLogicValidator.validateAddYearValue(notExistingDemographics._id, {})
-        .catch(BusinessLogicValidationError, () => done());
-    });
-  });
-
-
-  describe('validateRemoveYearValue', () => {
-    it('should validate removeYearValue', done => {
-      demographicsBusinessLogicValidator.validateRemoveYearValue(demographics._id)
-        .then(() => done());
-    });
-
-    it('should validate removeYearValue and resolve with demographics', done => {
-      demographicsBusinessLogicValidator.validateRemoveYearValue(demographics._id)
-        .then(resolvedValue => {
-          resolvedValue._id.equals(demographics._id).should.equal(true);
-          done();
-        });
-    });
-
-    it('should not validate removeYearValue on nonexisting demographics', done => {
-      var notExistingDemographics = { _id: new ObjectId() };
-      demographicsBusinessLogicValidator.validateRemoveYearValue(notExistingDemographics._id, {})
+      demographicsBusinessLogicValidator.validateUpdateYearValues(notExistingDemographics._id, {})
         .catch(BusinessLogicValidationError, () => done());
     });
   });
@@ -68,7 +48,7 @@ describe('demographics.business.logic.validator', () => {
     });
 
     it('should validate remove and resolve with demographics', done => {
-      demographicsBusinessLogicValidator.validateAddYearValue(demographics._id)
+      demographicsBusinessLogicValidator.validateRemove(demographics)
         .then(resolvedValue => {
           resolvedValue._id.equals(demographics._id).should.equal(true);
           done();

@@ -14,8 +14,10 @@ module.exports = {
   create,
   update,
   addSlide,
+  updateSlide,
   removeSlide,
   addPartner,
+  updatePartner,
   removePartner,
   removeOne,
   removeAll
@@ -41,6 +43,11 @@ function addSlide(slide) {
     .then(assertDBUpdateAffected);
 }
 
+function updateSlide(slide) {
+  return Content.updateAsync({ 'slider._id': slide._id }, { '$set': { 'slider.$': slide } })
+    .then(assertDBUpdateAffected);
+}
+
 function removeSlide(slideId) {
   return Content.updateAsync({}, { $pull: { 'slider': { _id: slideId } } })
     .then(assertDBUpdateAffected);
@@ -48,6 +55,11 @@ function removeSlide(slideId) {
 
 function addPartner(partner) {
   return Content.updateAsync({}, { $push: { 'partners': partner } })
+    .then(assertDBUpdateAffected);
+}
+
+function updatePartner(partner) {
+  return Content.updateAsync({ 'partners._id': partner._id }, { '$set': { 'partners.$': partner } })
     .then(assertDBUpdateAffected);
 }
 

@@ -2,19 +2,20 @@
 
 var Q = require('bluebird');
 var Joi = require('joibird');
-var demographicsConstants = require('./demographics.constants');
 var SchemaError = require('../../errors').SchemaError;
 
 module.exports = {
-  validateYearValue
+  validateYearValues
 };
 
 var yearValueSchema = Joi.object().keys({
-  year: Joi.number().min(demographicsConstants.yearMinValue).max(demographicsConstants.yearMaxValue).required(),
-  value: Joi.number().min(demographicsConstants.minValue).max(demographicsConstants.maxValue).required()
-}).required();
+  year: Joi.number().required(),
+  value: Joi.number().required()
+});
 
-function validateYearValue(yearValue) {
-  return Joi.validate(yearValue, yearValueSchema)
+var yearValuesSchema = Joi.array().items(yearValueSchema).required();
+
+function validateYearValues(yearValues) {
+  return Joi.validate(yearValues, yearValuesSchema)
     .catch((err) => Q.reject(new SchemaError(err.message)));
 }

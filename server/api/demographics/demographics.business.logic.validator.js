@@ -5,8 +5,7 @@ var Demographics = require('./demographics.dao');
 var BusinessLogicValidationError = require('../../errors').BusinessLogicValidationError;
 
 module.exports = {
-  validateAddYearValue,
-  validateRemoveYearValue,
+  validateUpdateYearValues,
   validateRemove
 };
 
@@ -21,12 +20,8 @@ function exists(demographicsId, res) {
     });
 }
 
-function validateAddYearValue(demographicsId, yearValue) {
-  return exists(demographicsId, yearValue);
-}
-
-function validateRemoveYearValue(demographicsId) {
-  return exists(demographicsId);
+function validateUpdateYearValues(demographicsId, yearValues) {
+  return exists(demographicsId, yearValues);
 }
 
 function validateRemove(demographics) {

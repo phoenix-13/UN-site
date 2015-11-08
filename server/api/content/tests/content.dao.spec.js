@@ -53,7 +53,7 @@ describe('content.dao', () => {
   describe('addSlide', () =>  {
     beforeEach(done => {
       Content.create({}).then(() => done());
-    })
+    });
 
     it('should add slide to content', done => {
       var slide = { title: {}, link: 'cink' };
@@ -62,6 +62,27 @@ describe('content.dao', () => {
         .then(content => {
           content.slider.length.should.equal(1);
           content.slider[0].link.should.equal(slide.link);
+          done();
+        });
+    });
+  });
+
+  describe('updateSlide', () =>  {
+    var slide = { _id: new ObjectId(), link: 'link' };
+
+    beforeEach(done => {
+      Content.create({ slider: [slide] })
+      .then(() => done());
+    });
+
+    it('should update slide of content', done => {
+      var updatedLink = 'updated';
+      slide.link = updatedLink;
+      Content.updateSlide(slide)
+        .then(() => Content.getOne())
+        .then(content => {
+          content.slider.length.should.equal(1);
+          content.slider[0].link.should.equal(updatedLink);
           done();
         });
     });
@@ -98,6 +119,27 @@ describe('content.dao', () => {
         .then(content => {
           content.partners.length.should.equal(1);
           content.partners[0].link.should.equal(partner.link);
+          done();
+        });
+    });
+  });
+
+  describe('updatePartner', () =>  {
+    var partner = { _id: new ObjectId(), link: 'link' };
+
+    beforeEach(done => {
+      Content.create({ partners: [partner] })
+      .then(() => done());
+    });
+
+    it('should update partner of content', done => {
+      var updatedLink = 'updated';
+      partner.link = updatedLink;
+      Content.updatePartner(partner)
+        .then(() => Content.getOne())
+        .then(content => {
+          content.partners.length.should.equal(1);
+          content.partners[0].link.should.equal(updatedLink);
           done();
         });
     });

@@ -2,7 +2,6 @@
 
 var _ = require('lodash');
 var contentSchemaValidator = require('../content.schema.validator');
-var contentConstants = require('../content.constants');
 var SchemaError = require('../../../errors').SchemaError;
 
 describe('content.schema.validator', () => {
@@ -96,7 +95,7 @@ describe('content.schema.validator', () => {
 
     beforeEach(done => {
       slide =  {
-        title: biling(_.repeat('x', contentConstants.titleMinLength)),
+        title: biling('title'),
         image: 'image',
         link: 'link'
       };
@@ -150,16 +149,10 @@ describe('content.schema.validator', () => {
         .catch(SchemaError, () => done());
     });
 
-    it(`should not validate when title geo/eng length is less than ${contentConstants.titleMinLength}`, done => {
-      slide.title.geo = _.repeat('x', contentConstants.titleMinLength - 1);
+    it('should validate when title geo/eng is empty string', done => {
+      slide.title.geo = '';
       contentSchemaValidator.validateSlide(slide)
-        .catch(SchemaError, () => done());
-    });
-
-    it(`should not validate when title geo/eng length is more than ${contentConstants.titleMaxLength}`, done => {
-      slide.title.geo = _.repeat('x', contentConstants.titleMaxLength + 1);
-      contentSchemaValidator.validateSlide(slide)
-        .catch(SchemaError, () => done());
+        .then(() => done());
     });
 
     it('should not validate when image is not provided', done => {
@@ -179,6 +172,18 @@ describe('content.schema.validator', () => {
       contentSchemaValidator.validateSlide(slide)
         .catch(SchemaError, () => done());
     });
+
+    it('should not validate when link is not provided', done => {
+      delete slide.link;
+      contentSchemaValidator.validateSlide(slide)
+        .catch(SchemaError, () => done());
+    });
+
+    it('should validate when link is empty string', done => {
+      slide.link = '';
+      contentSchemaValidator.validateSlide(slide)
+        .then(() => done());
+    });
   });
 
   describe('validateBanner', () => {
@@ -186,6 +191,7 @@ describe('content.schema.validator', () => {
 
     beforeEach(done => {
       banner =  {
+        title: biling('title'),
         image: 'image',
         link: 'link'
       };
@@ -215,6 +221,37 @@ describe('content.schema.validator', () => {
         .catch(SchemaError, () => done());
     });
 
+    it('should not validate when title is not provided', done => {
+      delete banner.title;
+      contentSchemaValidator.validateSlide(banner)
+        .catch(SchemaError, () => done());
+    });
+
+    it('should not validate when title is not an object', done => {
+      banner.title = 'not_an_object';
+      contentSchemaValidator.validateSlide(banner)
+        .catch(SchemaError, () => done());
+    });
+
+    it('should not validate when title geo/eng is not provided', done => {
+      delete banner.title.geo;
+      contentSchemaValidator.validateSlide(banner)
+        .catch(SchemaError, () => done());
+    });
+
+    it('should not validate when title geo/eng is not string', done => {
+      banner.title.geo = [];
+      contentSchemaValidator.validateSlide(banner)
+        .catch(SchemaError, () => done());
+    });
+
+    it('should validate when title geo/eng is empty string', done => {
+      banner.title.geo = '';
+      contentSchemaValidator.validateSlide(banner)
+        .then(() => done());
+    });
+
+
     it('should not validate when image is not provided', done => {
       delete banner.image;
       contentSchemaValidator.validateBanner(banner)
@@ -227,10 +264,22 @@ describe('content.schema.validator', () => {
         .catch(SchemaError, () => done());
     });
 
+    it('should not validate when link is not provided', done => {
+      delete banner.link;
+      contentSchemaValidator.validateBanner(banner)
+        .catch(SchemaError, () => done());
+    });
+
     it('should not validate when link is not string', done => {
       banner.link = [];
       contentSchemaValidator.validateBanner(banner)
         .catch(SchemaError, () => done());
+    });
+
+    it('should validate when link is empty string', done => {
+      banner.link = '';
+      contentSchemaValidator.validateBanner(banner)
+        .then(() => done());
     });
   });
 
@@ -239,7 +288,7 @@ describe('content.schema.validator', () => {
 
     beforeEach(done => {
       partner =  {
-        name: biling(_.repeat('x', contentConstants.nameMinLength)),
+        name: biling('name'),
         image: 'image',
         link: 'link'
       };
@@ -269,8 +318,20 @@ describe('content.schema.validator', () => {
         .catch(SchemaError, () => done());
     });
 
+    it('should not validate when name is not provided', done => {
+      delete partner.name;
+      contentSchemaValidator.validatePartner(partner)
+        .catch(SchemaError, () => done());
+    });
+
     it('should not validate when name is not an object', done => {
       partner.name = 'not_an_object';
+      contentSchemaValidator.validatePartner(partner)
+        .catch(SchemaError, () => done());
+    });
+
+    it('should not validate when name geo/eng is not provided', done => {
+      delete partner.name.geo;
       contentSchemaValidator.validatePartner(partner)
         .catch(SchemaError, () => done());
     });
@@ -281,16 +342,10 @@ describe('content.schema.validator', () => {
         .catch(SchemaError, () => done());
     });
 
-    it(`should not validate when name geo/eng length is less than ${contentConstants.nameMinLength}`, done => {
-      partner.name.geo = _.repeat('x', contentConstants.nameMinLength - 1);
+    it('should validate when name geo/eng is empty string', done => {
+      partner.name.geo = '';
       contentSchemaValidator.validatePartner(partner)
-        .catch(SchemaError, () => done());
-    });
-
-    it(`should not validate when name geo/eng length is more than ${contentConstants.nameMaxLength}`, done => {
-      partner.name.geo = _.repeat('x', contentConstants.nameMaxLength + 1);
-      contentSchemaValidator.validatePartner(partner)
-        .catch(SchemaError, () => done());
+        .then(() => done());
     });
 
     it('should not validate when image is not provided', done => {
@@ -305,10 +360,22 @@ describe('content.schema.validator', () => {
         .catch(SchemaError, () => done());
     });
 
+    it('should not validate when link is not provided', done => {
+      delete partner.image;
+      contentSchemaValidator.validatePartner(partner)
+        .catch(SchemaError, () => done());
+    });
+
     it('should not validate when link is not string', done => {
       partner.link = {};
       contentSchemaValidator.validatePartner(partner)
         .catch(SchemaError, () => done());
+    });
+
+    it('should validate when link is empty string', done => {
+      partner.link = '';
+      contentSchemaValidator.validatePartner(partner)
+        .then(() => done());
     });
   });
 
@@ -380,12 +447,6 @@ describe('content.schema.validator', () => {
       contacts.address.geo = '';
       contentSchemaValidator.validateContacts(contacts)
         .then(() => done());
-    });
-
-    it(`should not validate when address geo/eng length is more than ${contentConstants.addressMaxLength}`, done => {
-      contacts.address.geo = _.repeat('x', contentConstants.addressMaxLength + 1);
-      contentSchemaValidator.validateContacts(contacts)
-        .catch(SchemaError, () => done());
     });
 
     it('should not validate when coordinates is not provided', done => {

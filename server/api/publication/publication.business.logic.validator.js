@@ -20,10 +20,10 @@ function exists(publicationId, res) {
     });
 }
 
-function validateUpdate(publication, doc) {
-  return exists(publication._id, doc);
+function validateUpdate(publicationId, doc) {
+  return exists(publicationId, doc);
 }
 
-function validateRemove(publication) {
-  return exists(publication._id);
+function validateRemove(publicationId) {
+  return exists(publicationId);
 }

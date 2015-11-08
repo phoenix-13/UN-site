@@ -31,7 +31,7 @@ function getAll(req, res) {
 }
 
 function getLimited(req, res) {
-  controller.getLimited(req.body.offset, req.body.limit)
+  controller.getLimited(req.body.offset)
     .then(publications => res.json(publications))
     .catch(errors.logError('Failed to load limited publications'))
     .catch(errors.handleError(res));

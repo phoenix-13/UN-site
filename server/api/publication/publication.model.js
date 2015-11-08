@@ -4,8 +4,8 @@ var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
 var bilingStringSchema = {
-  geo: String,
-  eng: String
+  geo: { type: String, default: '' },
+  eng: { type: String, default: '' }
 };
 
 var PublicationSchema = new Schema({

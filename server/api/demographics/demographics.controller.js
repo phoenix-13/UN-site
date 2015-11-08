@@ -7,22 +7,16 @@ var demographicsParser = require('./demographics.parser');
 
 module.exports = {
   getAll,
-  addYearValue,
-  removeYearValue
+  updateYearValues
 };
 
 function getAll() {
   return Demographics.getAll();
 }
 
-function addYearValue(demographicsId, yearValue) {
-  var parsedYearValue = demographicsParser.parseYearValue(yearValue);
-  return demographicsSchemaValidator.validateYearValue(parsedYearValue)
-    .then(schemaValidatedYearValue => demographicsBusinessLogicValidator.validateAddYearValue(demographicsId, schemaValidatedYearValue))
-    .then(validatedYearValue => Demographics.addYearValue(demographicsId, validatedYearValue));
-}
-
-function removeYearValue(demographicsId, yearValueId) {
-  return demographicsBusinessLogicValidator.validateRemoveYearValue(demographicsId)
-    .then(() => Demographics.removeYearValue(demographicsId, yearValueId));
+function updateYearValues(demographicsId, yearValues) {
+  var parsedYearValues = demographicsParser.parseYearValues(yearValues);
+  return demographicsSchemaValidator.validateYearValues(parsedYearValues)
+    .then(schemaValidatedYearValues => demographicsBusinessLogicValidator.validateUpdateYearValues(demographicsId, schemaValidatedYearValues))
+    .then(validatedYearValues => Demographics.updateYearValues(demographicsId, validatedYearValues));
 }

@@ -6,9 +6,16 @@ module.exports = {
 
 function parsePublication(publication) {
   return {
-    title: publication.title,
+    title: biling(publication.title),
     date: publication.date,
-    content: publication.content,
+    content: biling(publication.content),
     category: publication.category
+  };
+}
+
+function biling(value) {
+  return {
+    geo: value.geo,
+    eng: value.eng
   };
 }

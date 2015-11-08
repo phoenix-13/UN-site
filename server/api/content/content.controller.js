@@ -8,11 +8,13 @@ module.exports = {
   getOne,
   updateFeatured,
   addSlide,
+  updateSlide,
   removeSlide,
+  updateBanner,
   addPartner,
+  updatePartner,
   removePartner,
   updateContacts,
-  updateBanner,
   updateAbout
 };
 
@@ -35,14 +37,41 @@ function addSlide(slide) {
     .then(schemaValidatedSlide => Content.addSlide(schemaValidatedSlide));
 }
 
+function updateSlide(slideId, slide) {
+  var parsedSlide = contentParser.parseSlide(slide);
+  return contentSchemaValidator.validateSlide(parsedSlide)
+    .then(schemaValidatedSlide => {
+      schemaValidatedSlide._id = slideId;
+      Content.updateSlide(schemaValidatedSlide);
+    });
+}
+
 function removeSlide(slideId) {
   return Content.removeSlide(slideId);
+}
+
+function updateBanner(banner) {
+  var parsedBanner = contentParser.parseBanner(banner);
+  return contentSchemaValidator.validateBanner(parsedBanner)
+    .then(schemaValidatedBanner => {
+      var updateData = { banner: schemaValidatedBanner };
+      return Content.update(updateData);
+    });
 }
 
 function addPartner(partner) {
   var parsedPartner = contentParser.parsePartner(partner);
   return contentSchemaValidator.validatePartner(parsedPartner)
     .then(schemaValidatedPartner => Content.addPartner(schemaValidatedPartner));
+}
+
+function updatePartner(partnerId, partner) {
+  var parsedPartner = contentParser.parsePartner(partner);
+  return contentSchemaValidator.validatePartner(parsedPartner)
+    .then(schemaValidatedPartner => {
+      schemaValidatedPartner._id = partnerId;
+      Content.updatePartner(schemaValidatedPartner);
+    });
 }
 
 function removePartner(partnerId) {
@@ -54,15 +83,6 @@ function updateContacts(contacts) {
   return contentSchemaValidator.validateContacts(parsedContacts)
     .then(schemaValidatedContacts => {
       var updateData = { contacts: schemaValidatedContacts };
-      return Content.update(updateData);
-    });
-}
-
-function updateBanner(banner) {
-  var parsedBanner = contentParser.parseBanner(banner);
-  return contentSchemaValidator.validateBanner(parsedBanner)
-    .then(schemaValidatedBanner => {
-      var updateData = { banner: schemaValidatedBanner };
       return Content.update(updateData);
     });
 }

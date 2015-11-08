@@ -10,6 +10,7 @@ Q.promisifyAll(ImageModel);
 Q.promisifyAll(ImageModel.prototype);
 
 module.exports = {
+  getById,
   getAll,
   create,
   imageExists,
@@ -17,6 +18,10 @@ module.exports = {
   removeAll
 };
 
+function getById(imageId) {
+  return ImageModel.findByIdAsync(imageId)
+    .then(assertDBResultExistence);
+}
 function getAll() {
   return ImageModel.findAsync();
 }

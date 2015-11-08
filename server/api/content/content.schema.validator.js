@@ -2,7 +2,6 @@
 
 var Q = require('bluebird');
 var Joi = require('joibird');
-var contentConstants = require('./content.constants');
 var SchemaError = require('../../errors').SchemaError;
 
 module.exports = {
@@ -15,7 +14,7 @@ module.exports = {
 };
 
 var titleSchema = Joi.string().required().empty('');
-var nameSchema = Joi.string().min(contentConstants.nameMinLength).max(contentConstants.nameMaxLength);
+var nameSchema = Joi.string().required().empty('');
 var addressSchema = Joi.string().required().empty('');
 var aboutSchema = Joi.string().required().empty('');
 
@@ -26,7 +25,7 @@ var bilingTitleSchema = Joi.object().keys({
 var bilingNameSchema = Joi.object().keys({
   geo: nameSchema,
   eng: nameSchema
-});
+}).required();
 var bilingAddressSchema = Joi.object().keys({
   geo: addressSchema,
   eng: addressSchema
@@ -41,16 +40,17 @@ var featuredSchema = Joi.array().items(featuredItemSchema).required();
 var slideSchema = Joi.object().keys({
   title: bilingTitleSchema,
   image: Joi.string().required(),
-  link: Joi.string()
+  link: Joi.string().required().empty('')
 }).required();
 var bannerSchema = Joi.object().keys({
+  title: bilingTitleSchema,
   image: Joi.string().required(),
-  link: Joi.string()
+  link: Joi.string().required().empty('')
 }).required();
 var partnerSchema = Joi.object().keys({
   name: bilingNameSchema,
   image: Joi.string().required(),
-  link: Joi.string()
+  link: Joi.string().required().empty('')
 }).required();
 var contactsSchema = Joi.object().keys({
   address: bilingAddressSchema,
