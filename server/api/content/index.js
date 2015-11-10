@@ -10,11 +10,11 @@ var router = express.Router();
 router.get('/', getOne);
 router.post('/updateFeatured', updateFeatured);
 router.post('/addSlide', addSlide);
-router.post('/updateSlide', updateSlide);
+router.post('/updateSlide/:slideId', updateSlide);
 router.post('/removeSlide', removeSlide);
 router.post('/updateBanner', updateBanner);
 router.post('/addPartner', addPartner);
-router.post('/updatePartner', updatePartner);
+router.post('/updatePartner/:partnerId', updatePartner);
 router.post('/removePartner', removePartner);
 router.post('/updateContacts', updateContacts);
 router.post('/updateAbout', updateAbout);
@@ -43,7 +43,7 @@ function addSlide(req, res) {
 }
 
 function updateSlide(req, res) {
-  controller.updateSlide(req.body.slideId, req.body.updateData)
+  controller.updateSlide(req.params.slideId, req.body.updateData)
     .then(() => res.sendStatus(200))
     .catch(errors.logError(`Failed to udpate slide ${req.body.slideId}`))
     .catch(errors.handleError(res));
@@ -71,7 +71,7 @@ function addPartner(req, res) {
 }
 
 function updatePartner(req, res) {
-  controller.updatePartner(req.body.partnerId, req.body.updateData)
+  controller.updatePartner(req.params.partnerId, req.body.updateData)
     .then(() => res.sendStatus(200))
     .catch(errors.logError(`Failed to udpate partner ${req.body.partnerId}`))
     .catch(errors.handleError(res));
