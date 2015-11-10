@@ -11,11 +11,11 @@ router.get('/', getOne);
 router.post('/updateFeatured', updateFeatured);
 router.post('/addSlide', addSlide);
 router.post('/updateSlide/:slideId', updateSlide);
-router.post('/removeSlide', removeSlide);
+router.post('/removeSlide/:slideId', removeSlide);
 router.post('/updateBanner', updateBanner);
 router.post('/addPartner', addPartner);
 router.post('/updatePartner/:partnerId', updatePartner);
-router.post('/removePartner', removePartner);
+router.post('/removePartner/:partnerId', removePartner);
 router.post('/updateContacts', updateContacts);
 router.post('/updateAbout', updateAbout);
 
@@ -50,7 +50,7 @@ function updateSlide(req, res) {
 }
 
 function removeSlide(req, res) {
-  controller.removeSlide(req.body.slideId)
+  controller.removeSlide(req.params.slideId)
     .then(() => res.sendStatus(200))
     .catch(errors.logError(`Failed to remove slide from content`))
     .catch(errors.handleError(res));
@@ -78,7 +78,7 @@ function updatePartner(req, res) {
 }
 
 function removePartner(req, res) {
-  controller.removePartner(req.body.partnerId)
+  controller.removePartner(req.params.partnerId)
     .then(() => res.sendStatus(200))
     .catch(errors.logError(`Failed to remove partner from content`))
     .catch(errors.handleError(res));
