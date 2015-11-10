@@ -4,6 +4,7 @@
 import config from './config/config';
 import resources from './resources/resources';
 import services from './services/services';
+import modals from './modals/modals';
 //endinject
 
 export default angular.module('app.common', [
@@ -11,5 +12,6 @@ export default angular.module('app.common', [
   config.name,
   resources.name,
   services.name,
+  modals.name
   //endinject
 ]);
