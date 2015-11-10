@@ -1,6 +1,6 @@
 <nav class="navbar navbar-default main_page_navbar">
   <div class="navbar_pad_color"></div>
-  <div class="container-fluid"></div>
+  <div>
     <div layout="row">
       <div class="navbar-header" flex="20">
         <a class="navbar-brand" href="#">Brand</a>
@@ -33,14 +33,35 @@
       </div>
       <div flex></div>
     </div>
+  </div>
+  <div class="sub_navbar">
     <div layout="row">
       <div flex="50"></div>
-      <div class="navbar_button_wrapp text-center" flex="35">  </div>
+      <div class="text-center nav_buttons" flex="35">
+        <div layout="row" class="title_text">
+          <span flex>
+            <a href="#" ui-sref="main.home">მთავარი</a>
+          </span>
+          <span flex>
+            <a href="#" ui-sref="main.about">ჩვენ შესახებ</a>
+          </span>
+          <span flex>
+            <a href="#" ui-sref="indicators">ინდიკატორები</a>
+          </span>
+          <span flex>
+            <a href="#" ui-sref="publications">პუბლიკაციები</a>
+          </span>
+        </div>
+      </div>
       <div flex></div>
     </div>
   </div>
-  <!-- <div class="navbar_bottom_placeholder"></div> -->
 </nav>
+
+
+
+<div style="width:100%; border: 1px solid rgba(180,35,35,0.7)"></div>
+
 
 
 
