@@ -5,110 +5,13 @@
   </div>
   <div flex></div>
 </div>
-<md-card flex>
+<div flex>
   <md-content>
-    <md-tabs md-dynamic-height md-border-bottom class="page_tabs">
-      <md-tab label="primary articles">
-        <md-content class="md-padding first_page_articles">
-          <div layout layout-sm="column" ng-repeat="primaryArticle in vm.primaryArticles track by $index">
-            <md-input-container >
-              <label>{{$index + 1}}</label>
-            </md-input-container>
-            <md-input-container flex>
-              <label>სტატიის სახელი</label>
-              <input type="text" ng-model="primaryArticle.title.geo">
-            </md-input-container>
-            <md-input-container flex>
-              <label>Article Name</label>
-              <input type="text" ng-model="primaryArticle.title.eng">
-            </md-input-container>
-            <md-input-container flex>
-              <label>Article Url</label>
-              <input type="text" ng-model="primaryArticle.link">
-            </md-input-container>
-          </div>
-          <div layout layout-sm="column" style="margin-top: 10px">
-            <div class="flex"></div>
-            <md-button ng-click="vm.updatePrimaryArticles()" class="md-raised md-primary">Save</md-button>
-          </div>
-        </md-content>
-      </md-tab>
-
-      <md-tab label="slider">
-        <md-content class="md-padding">
-          <div layout layout-sm="column">
-            <md-input-container >
-              <label>1</label>
-            </md-input-container>
-            <md-input-container flex>
-              <div class="thumbnail" style="margin-bottom:0">
-                <div class="edit_btn_container btn btn-default">
-                  change
-                </div>
-                <img src="/assets/images/1.jpg">
-              </div>
-            </md-input-container>
-            <md-input-container flex>
-              <label>სტატიის სახელი</label>
-              <input>
-            </md-input-container>
-            <md-input-container flex>
-              <label>Article Name</label>
-              <input>
-            </md-input-container>
-            <md-input-container flex>
-              <label>Article Url</label>
-              <input>
-            </md-input-container>
-            <md-input-container style="width:10%">
-              <md-button class="md-raised md-primary">Update</md-button>
-            </md-input-container>
-          </div>
-          <div layout layout-sm="column" style="margin-top: 10px">
-            <div class="flex"></div>
-            <md-button ng-click="vm.openAddSlideModal()" class="md-fab md-fab-bottom-right md-primary" style="position:relative;" aria-label="Add">
-              <i class="fa fa-plus"></i>
-              <md-tooltip md-direction="left">
-                Add new
-              </md-tooltip>
-            </md-button>
-          </div>
-        </md-content>
-      </md-tab>
-
-      <md-tab label="banner">
-        <md-content class="md-padding first_page_banner">
-          <div class="col-xs-12 col-sm-4">
-            <div class="thumbnail" style="margin-bottom:0">
-              <div ng-click="vm.openGallery()" class="edit_btn_container btn btn-default">
-                change
-              </div>
-              <img ng-src="{{vm.banner.image}}">
-            </div>
-          </div>
-          <div class="col-xs-12 col-sm-8">
-            <md-input-container flex>
-              <label>სათაური</label>
-              <input type="text" ng-model="vm.banner.title.geo">
-            </md-input-container>
-            <md-input-container>
-              <label>Title</label>
-              <input type="text" ng-model="vm.banner.title.eng">
-            </md-input-container>
-            <md-input-container>
-              <label>Url</label>
-              <input type="text" ng-model="vm.banner.link">
-            </md-input-container>
-          </div>
-          <div class="col-xs-12">
-            <div layout layout-sm="column" style="margin-top: 10px">
-              <div class="flex"></div>
-              <md-button ng-click="vm.updateBanner()" class="md-raised md-primary">Save</md-button>
-            </div>
-          </div>
-        </md-content>
-          </div>
-      </md-tab>
+    <md-tabs md-dynamic-height md-border-bottom class="page_tabs" md-selected="selectedIndex">
+      <md-tab label="primary articles"></md-tab>
+      <md-tab label="slider"></md-tab>
+      <md-tab label="banner"></md-tab>
     </md-tabs>
   </md-content>
-</md-card>
+  <div ui-view></div>
+</div>

@@ -7,7 +7,8 @@ export default Restangular => {
     getContent: () => Restangular.one('contents').get(),
     updateContact: data => Restangular.one('contents', 'updateContacts').post('', data),
     updateAbout: data => Restangular.one('contents', 'updateAbout').post('', data),
-    updatePrimaryArticles: data => Restangular.one('contents', 'updateFeatured').post('', data)
+    updatePrimaryArticles: data => Restangular.one('contents', 'updateFeatured').post('', data),
+    updateBanner: data => Restangular.one('contents', 'updateBanner').post('', data),
 
     //addRule: (contentId, rule) => Restangular.one('contents', contentId).post('addRule', rule),
     //updateRule: (contentId, ruleId, data) => Restangular.one('contents', contentId).one('updateRule', ruleId).post('', data),

@@ -1,0 +1,41 @@
+<md-dialog aria-label="add Slide" style="min-width:60%">
+  <md-toolbar>
+    <div class="md-toolbar-tools">
+      <h2>{{vm.title}}</h2>
+      <span flex></span>
+      <md-button class="md-icon-button" ng-click="vm.close()">
+        <i class="fa fa-times" aria-label="Close dialog"></i>
+      </md-button>
+    </div>
+  </md-toolbar>
+  <md-dialog-content style="max-width:800px;max-height:810px; " class="dialog_content">
+    <md-content class="md-padding">
+      <div layout layout-sm="column">
+        <md-input-container flex>
+          <label>სტატიის სახელი</label>
+          <input ng-model="vm.slide.title.geo">
+        </md-input-container>
+        <md-input-container flex>
+          <label>article name</label>
+          <input ng-model="vm.slide.title.eng">
+        </md-input-container>
+        <md-input-container flex>
+          <label>article URL</label>
+          <input ng-model="vm.slide.link">
+        </md-input-container>
+      </div>
+      <div layout layout-sm="column">
+        <div class="thumbnail" style="margin-bottom:0; width:25%">
+          <img ng-src="{{vm.slide.image}}">
+        </div>
+        <md-input-container>
+          <md-button class="md-raised md-primary">Upload photo</md-button>
+        </md-input-container>
+      </div>
+    </md-content>
+  </md-dialog-content>
+  <div class="md-actions" layout="row">
+    <md-button ng-click="vm.cancel()" class="md-raised md-primary" style="margin-right:20px;" >Cancel</md-button>
+    <md-button ng-click="vm.save()" class="md-raised md-primary" style="margin-right:20px;" >Save</md-button>
+  </div>
+</md-dialog>
