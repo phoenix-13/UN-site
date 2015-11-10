@@ -3,8 +3,14 @@
 import Main from './main/main';
 //inject:import.main
 import mainabout from './main/about/about';
+import maincontact from './main/contact/contact';
 import maindemographics from './main/demographics/demographics';
 import mainhome from './main/home/home';
+import mainindicator from './main/indicator/indicator';
+import mainindicators from './main/indicators/indicators';
+import mainpublication from './main/publication/publication';
+import mainpublications from './main/publications/publications';
+import mainsearch from './main/search/search';
 import mainsitemap from './main/sitemap/sitemap';
 //endinject
 
@@ -29,8 +35,14 @@ export default angular.module('app.components', [
   Main.name,
   //inject:ngmodule.main
   mainabout.name,
+  maincontact.name,
   maindemographics.name,
   mainhome.name,
+  mainindicator.name,
+  mainindicators.name,
+  mainpublication.name,
+  mainpublications.name,
+  mainsearch.name,
   mainsitemap.name,
   //endinject
 

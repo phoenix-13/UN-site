@@ -5,7 +5,6 @@
       <div class="navbar-header" flex="20">
         <a class="navbar-brand" href="#">Brand</a>
       </div>
-
       <div flex="30"></div>
       <div class="navbar_button_wrapp text-center" flex="35">
         <div>
@@ -17,12 +16,12 @@
           </span>
           <span class="line_separator"></span>
           <span>
-            <a href="#">
+            <a ui-sref="contact" href="">
               <i class="fa fa-envelope-o"></i>
             </a>
           </span>
           <span>
-            <a href="#">
+            <a ui-sref="main.sitemap" href="">
               <i class="fa fa-sitemap"></i>
             </a>
           </span>
@@ -31,49 +30,63 @@
             <input type="text" class="search_container" placeholder="Search">
           </span>
         </div>
-
       </div>
       <div flex></div>
-
     </div>
-
     <div layout="row">
-
       <div flex="50"></div>
-      <div class="navbar_button_wrapp text-center" flex="35">
-        <div>
-          <span>
-            <a href="#">ENG</a>
-          </span>
-          <span>
-            <a href="#">GEO</a>
-          </span>
-          <span class="line_separator"></span>
-          <span>
-            <a href="#">
-              <i class="fa fa-envelope-o"></i>
-            </a>
-          </span>
-          <span>
-            <a href="#">
-              <i class="fa fa-sitemap"></i>
-            </a>
-          </span>
-          <span class="line_separator"></span>
-          <span style="margin-left:10px;">
-            <input type="text" class="search_container" placeholder="Search">
-          </span>
-        </div>
-
-      </div>
+      <div class="navbar_button_wrapp text-center" flex="35">  </div>
       <div flex></div>
-
     </div>
-
-
   </div>
+  <!-- <div class="navbar_bottom_placeholder"></div> -->
 </nav>
 
 
 
-<ui-view></ui-view>
+<div class="page_container">
+  <ui-view></ui-view>
+</div>
+
+
+
+<footer class="footer">
+  <div layout="row" class="sposors_list">
+    <div>
+      <i class="fa fa-angle-left fa-3x"></i>
+    </div>
+    <div flex></div>
+    <div>
+      <i class="fa fa-angle-right fa-3x"></i>
+    </div>
+  </div>
+  <div layout="row">
+    <div class="logo_container">
+      <a href="http://www.unfpa.org/" target="_blank">
+        <img src="/assets/images/unfpa-logo.png">
+        <md-tooltip md-direction="top">
+          United Nations Population Fund
+        </md-tooltip>
+      </a>
+    </div>
+    <div flex class="text-center made_by_part">
+      <span>
+        <p>
+        ვებგვერდი მომზადებულია საქართველოს სპორტისა და ახალგაზრდობის
+        საქმეთა სამინისტროს ახალგაზრდობის საქმეთა დეპარტამენტის მიერ
+        </p>
+        <p>
+          &copy; 2015
+        </p>
+      </span>
+    </div>
+    <div class="logo_container">
+      <a href="http://msy.gov.ge/" target="_blank">
+        <md-tooltip md-direction="top">
+          საქართველოს სპორტისა და ახალგაზრდობის საქმეთა სამინისტრო
+        </md-tooltip>
+        <img src="/assets/images/sportis-saministro1.png">
+      </a>
+    </div>
+  </div>
+</footer>
