@@ -104,61 +104,6 @@ describe('indicator.dao', () => {
     });
   });
 
-  // describe('addYearValue', () => {
-  //   var indicatorId;
-
-  //   beforeEach(done => {
-  //     Indicator.create({})
-  //       .then(createdIndicator => {
-  //         indicatorId = createdIndicator._id;
-  //         done();
-  //       });
-  //   });
-
-  //   it('should add year-value to indicator', done => {
-  //     var yearValue = { _id: new ObjectId(), year: 2015, value: 99 };
-  //     Indicator.addYearValue(indicatorId, yearValue)
-  //       .then(() => Indicator.getById(indicatorId))
-  //       .then(foundIndicator => {
-  //         foundIndicator.values[0]._id.equals(yearValue._id).should.equal(true);
-  //         done();
-  //       });
-  //   });
-
-  //   it('should not add year-value to not existing indicator', done => {
-  //     Indicator.addYearValue(new ObjectId(), {})
-  //       .catch(DBUnaffectedUpdateError, () => done());
-  //   });
-  // });
-
-  // describe('removeYearValue', () => {
-  //   var indicatorId;
-  //   var yearValue = { _id: new ObjectId(), year: 2015, value: 99 };
-
-  //   beforeEach(done => {
-  //     Indicator.create({})
-  //       .then(createdIndicator => {
-  //         indicatorId = createdIndicator._id;
-  //         return Indicator.addYearValue(indicatorId, yearValue);
-  //       })
-  //       .then(() => done());
-  //   });
-
-  //   it('should remove year-value from indicator', done => {
-  //     Indicator.removeYearValue(indicatorId, yearValue._id)
-  //       .then(() => Indicator.getById(indicatorId))
-  //       .then(foundIndicator => {
-  //         foundIndicator.values.length.should.equal(0);
-  //         done();
-  //       });
-  //   });
-
-  //   it('should not remove year-value from not existing indicator', done => {
-  //     Indicator.removeYearValue(new ObjectId(), yearValue._id)
-  //       .catch(DBUnaffectedUpdateError, () => done());
-  //   });
-  // });
-
   describe('remove', () => {
     var indicatorId;
 
