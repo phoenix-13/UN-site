@@ -1,10 +1,10 @@
-<md-button ngf-select="uploadImage($file)" ngf-multiple="false" ngf-fix-orientation="false" accept="image/*" class="md-fab md-fab-bottom-right md-primary" style="position:fixed;" aria-label="Add">
-    <i class="fa fa-plus"></i>
-    <md-tooltip md-direction="left">
-        Add new
-    </md-tooltip>
-</md-button>
-<md-content class="md-padding images_container" ng-repeat="image in vm.images track by $index">
+<!--<md-button ngf-select="uploadImage($file)" ngf-multiple="false" ngf-fix-orientation="false" accept="image/*" class="md-fab md-fab-bottom-right md-primary" style="position:fixed;" aria-label="Add">-->
+    <!--<i class="fa fa-plus"></i>-->
+    <!--<md-tooltip md-direction="left">-->
+        <!--Add new-->
+    <!--</md-tooltip>-->
+<!--</md-button>-->
+<md-content class="md-padding images_container" ng-repeat="image in images track by $index">
     <div class="col-xs-6 col-sm-4 col-md-3">
         <div class="thumbnail" style="margin-bottom:0">
             <img ng-src="{{image.fileName}}">
