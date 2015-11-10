@@ -15,7 +15,7 @@ export default class {
       this.$mdDialog.show({
         template,
         controller($scope) {
-          console.log('hahahaha');
+          $scope.images = images;
         }
       });
     });

@@ -3,7 +3,7 @@
 import addSlideTemplate from './addSlide.html!text';
 
 export default class {
-  constructor($mdDialog, Gallery, Toast, ContentResource, content) {
+  constructor($mdDialog, Gallery, Toast, ContentResource, content, images) {
     'ngInject';
     this.$mdDialog = $mdDialog;
     this.Gallery = Gallery;
@@ -11,7 +11,8 @@ export default class {
     this.$mdDialog = $mdDialog;
     this.ContentResource = ContentResource;
     this.primaryArticles = content.featured;
-    this.images = content.images;
+    this.banner = content.banner;
+    this.images = images;
   }
 
   updatePrimaryArticles() {
@@ -32,5 +33,9 @@ export default class {
         console.log('scope');
       }
     });
+  }
+
+  updateBanner() {
+    console.log('updateBanner');
   }
 }

@@ -80,30 +80,30 @@
         <md-content class="md-padding first_page_banner">
           <div class="col-xs-12 col-sm-4">
             <div class="thumbnail" style="margin-bottom:0">
-              <div class="edit_btn_container btn btn-default">
+              <div ng-click="vm.openGallery()" class="edit_btn_container btn btn-default">
                 change
               </div>
-              <img src="/assets/images/1.jpg">
+              <img ng-src="{{vm.banner.image}}">
             </div>
           </div>
           <div class="col-xs-12 col-sm-8">
             <md-input-container flex>
               <label>სათაური</label>
-              <input>
+              <input type="text" ng-model="vm.banner.title.geo">
             </md-input-container>
             <md-input-container>
               <label>Title</label>
-              <input>
+              <input type="text" ng-model="vm.banner.title.eng">
             </md-input-container>
             <md-input-container>
               <label>Url</label>
-              <input>
+              <input type="text" ng-model="vm.banner.link">
             </md-input-container>
           </div>
           <div class="col-xs-12">
             <div layout layout-sm="column" style="margin-top: 10px">
               <div class="flex"></div>
-              <md-button class="md-raised md-primary">Save</md-button>
+              <md-button ng-click="vm.updateBanner()" class="md-raised md-primary">Save</md-button>
             </div>
           </div>
         </md-content>
