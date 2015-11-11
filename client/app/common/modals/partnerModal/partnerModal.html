@@ -9,20 +9,20 @@
       <div layout layout-sm="column">
         <md-input-container flex>
           <label>სტატიის სახელი</label>
-          <input ng-model="vm.slide.title.geo">
+          <input ng-model="vm.partner.name.geo">
         </md-input-container>
         <md-input-container flex>
           <label>article name</label>
-          <input ng-model="vm.slide.title.eng">
+          <input ng-model="vm.partner.name.eng">
         </md-input-container>
         <md-input-container flex>
           <label>article URL</label>
-          <input ng-model="vm.slide.link">
+          <input ng-model="vm.partner.link">
         </md-input-container>
       </div>
       <div layout layout-sm="column">
         <div class="thumbnail" style="margin-bottom:0; width:25%">
-          <img ng-src="{{vm.slide.image}}">
+          <img ng-src="{{vm.partner.image}}">
         </div>
         <md-input-container>
           <md-button ng-click="vm.openGallery()" class="md-raised md-primary">Upload photo</md-button>

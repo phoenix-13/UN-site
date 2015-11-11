@@ -12,6 +12,9 @@ export default Restangular => {
     addSlide: data => Restangular.one('contents', 'addSlide').post('', data),
     updateSlide: (slideId, data) => Restangular.one('contents', 'updateSlide').post(slideId, data),
     removeSlide: slideId => Restangular.one('contents', 'removeSlide').post(slideId),
+    addPartner: data => Restangular.one('contents', 'addPartner').post('', data),
+    updatePartner: (partnerId, data) => Restangular.one('contents', 'updatePartner').post(partnerId, data),
+    removePartner: partnerId => Restangular.one('contents', 'removePartner').post(partnerId),
 
     //addRule: (contentId, rule) => Restangular.one('contents', contentId).post('addRule', rule),
     //updateRule: (contentId, ruleId, data) => Restangular.one('contents', contentId).one('updateRule', ruleId).post('', data),
