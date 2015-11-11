@@ -13,7 +13,7 @@ export default class {
   }
 
   close() {
-    this.$mdDialog.hide();
+    this.$mdDialog.cancel();
     this.$state.go('^');
   }
 }

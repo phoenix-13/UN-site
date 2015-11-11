@@ -1,0 +1,21 @@
+<md-toolbar>
+  <div class="md-toolbar-tools">
+    <h2>Add photo</h2>
+    <span flex></span>
+  </div>
+</md-toolbar>
+<md-dialog-content style="max-width:800px;max-height:810px;" class="dialog_content">
+  <md-content class="md-padding images_container">
+    <div>
+      <div class="col-xs-6 col-sm-4 col-md-3" style="padding-top: 15px;" ng-repeat="image in vm.images track by $index">
+        <div class="thumbnail" style="margin-bottom:0">
+          <img ng-dblclick="vm.chooseImage(image)" ng-src="{{image.fileName}}">
+        </div>
+      </div>
+    </div>
+  </md-content>
+</md-dialog-content>
+<div class="md-actions" layout="row">
+  <md-button ng-click="vm.cancel()" class="md-raised md-primary" style="margin-right:20px;">Cancel</md-button>
+  <md-button ngf-select="vm.uploadImage($files)" ngf-multiple="true" ngf-fix-orientation="false" accept="image/*" class="md-raised md-primary" style="margin-right:20px;">Add</md-button>
+</div>

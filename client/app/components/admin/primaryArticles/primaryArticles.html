@@ -1,0 +1,23 @@
+<md-content class="md-padding first_page_articles">
+  <div layout layout-sm="column" ng-repeat="primaryArticle in vm.primaryArticles track by $index">
+    <md-input-container >
+      <label>{{$index + 1}}</label>
+    </md-input-container>
+    <md-input-container flex>
+      <label>სტატიის სახელი</label>
+      <input type="text" ng-model="primaryArticle.title.geo">
+    </md-input-container>
+    <md-input-container flex>
+      <label>Article Name</label>
+      <input type="text" ng-model="primaryArticle.title.eng">
+    </md-input-container>
+    <md-input-container flex>
+      <label>Article Url</label>
+      <input type="text" ng-model="primaryArticle.link">
+    </md-input-container>
+  </div>
+  <div layout layout-sm="column" style="margin-top: 10px">
+    <div class="flex"></div>
+    <md-button ng-click="vm.updatePrimaryArticles()" class="md-raised md-primary">Save</md-button>
+  </div>
+</md-content>

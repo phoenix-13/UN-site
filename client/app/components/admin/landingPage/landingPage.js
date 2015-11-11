@@ -10,7 +10,6 @@ export default angular.module('admin.landingPage', [])
     .state('admin.landingPage', {
       url: '/landingPage',
       template,
-      controller,
-      controllerAs: 'vm'
+      controller
     });
 });
