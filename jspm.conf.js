@@ -12,6 +12,7 @@ System.config({
   map: {
     "angular": "github:angular/bower-angular@1.4.7",
     "angular-animate": "github:angular/bower-angular-animate@1.4.7",
+    "angular-bootstrap": "github:angular-ui/bootstrap-bower@0.14.3",
     "angular-cookies": "github:angular/bower-angular-cookies@1.4.7",
     "angular-material": "github:angular/bower-material@0.11.4",
     "angular-messages": "github:angular/bower-angular-messages@1.4.7",

@@ -10,6 +10,7 @@ import 'angular-cookies';
 import 'angular-messages';
 import 'angular-translate';
 import 'angular-ui-router';
+import 'angular-bootstrap';
 import 'restangular';
 import 'angular-material';
 import 'textAngular/dist/textAngular-sanitize';
@@ -25,6 +26,7 @@ export default angular.module('dependencies', [
   'ngMaterial',
   'pascalprecht.translate',
   'ui.router',
+  'ui.bootstrap',
   'restangular',
   'textAngular',
   'ngFileUpload'
