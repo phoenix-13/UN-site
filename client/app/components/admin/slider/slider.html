@@ -1,5 +1,4 @@
 <md-content class="md-padding">
-
   <div layout layout-sm="column" ng-repeat="slide in vm.slider track by $index">
     <md-input-container>
       <label>{{$index + 1}}</label>
@@ -22,16 +21,16 @@
       <input type="text" ng-model="slide.link">
     </md-input-container>
     <md-input-container style="width:10%">
-      <md-button ng-click="vm.openRemoveSlideModal(slide, $index)" class="md-raised md-primary">Remove</md-button>
+      <md-button ng-click="vm.openRemoveSlideModal($event, slide, $index)" class="md-raised md-primary">Remove</md-button>
     </md-input-container>
     <md-input-container style="width:10%">
-      <md-button ng-click="vm.openUpdateSlideModal(slide)" class="md-raised md-primary">Update</md-button>
+      <md-button ng-click="vm.openUpdateSlideModal($event, slide)" class="md-raised md-primary">Update</md-button>
     </md-input-container>
   </div>
 
   <div layout layout-sm="column" style="margin-top: 10px">
     <div class="flex"></div>
-    <md-button ng-click="vm.openAddSlideModal()" class="md-fab md-fab-bottom-right md-primary" style="position:relative;" aria-label="Add">
+    <md-button ng-click="vm.openAddSlideModal($event)" class="md-fab md-fab-bottom-right md-primary" style="position:relative;" aria-label="Add">
       <i class="fa fa-plus"></i>
       <md-tooltip md-direction="left">
         Add new

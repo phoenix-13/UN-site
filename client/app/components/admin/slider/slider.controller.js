@@ -10,8 +10,8 @@ export default class {
     this.slider = content.slider;
   }
 
-  openAddSlideModal() {
-    this.slideModal.open()
+  openAddSlideModal(targetEvent) {
+    this.slideModal.open(targetEvent)
       .then(slide => this.ContentResource.addSlide({slide}))
       .then(slide => {
         this.slider.push(slide)
@@ -19,9 +19,9 @@ export default class {
       });
   }
 
-  openUpdateSlideModal(slide) {
+  openUpdateSlideModal(targetEvent, slide) {
     var newSlide = angular.copy(slide);
-    this.slideModal.open(newSlide)
+    this.slideModal.open(targetEvent, newSlide)
       .then(updatedSlide => this.ContentResource.updateSlide(newSlide._id, {updateData: updatedSlide}))
       .then(() => {
         angular.copy(newSlide, slide)
@@ -29,8 +29,8 @@ export default class {
       });
   }
 
-  openRemoveSlideModal(slide, index) {
-    this.confirmModal.open()
+  openRemoveSlideModal(targetEvent, slide, index) {
+    this.confirmModal.open(targetEvent)
       .then(() => this.ContentResource.removeSlide(slide._id))
       .then(() => {
         this.slider.splice(index, 1);

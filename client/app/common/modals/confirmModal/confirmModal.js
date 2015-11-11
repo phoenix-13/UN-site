@@ -7,8 +7,8 @@ export default class {
     this.$mdDialog = $mdDialog;
   }
 
-  open() {
-    var confirm = this.$mdDialog.confirm()
+  open(targetEvent) {
+    var confirm = this.$mdDialog.confirm({targetEvent: targetEvent})
       .title('ადასტურებთ წაშლას?')
       .content('წაშლის შემთხვევაში ინფორმაციის აღდგენა შეუძლებელი იქნება')
       .ok('კი')

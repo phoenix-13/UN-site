@@ -1,65 +1,40 @@
-<div layout layout-sm="column">
-  <div flex></div>
-  <div>
-    <h3>partners</h3>
-  </div>
-  <div flex></div>
-</div>
-
-<md-button ui-sref="admin.partners.add" class="md-fab md-fab-bottom-right md-primary" style="position:fixed;" aria-label="Add">
-  <i class="fa fa-plus"></i>
-  <md-tooltip md-direction="left">
-    Add new
-  </md-tooltip>
-</md-button>
-
 <md-content class="md-padding">
-  <md-list ng-cloak>
-    <md-list-item>
-      <div class="md-list-item-text">
-        <div layout layout-sm="column">
-          <div style="width:20%">
-            <div class="thumbnail" style="margin-bottom:0">
-              <img src="/assets/images/1.jpg">
-            </div>
-          </div>
-          <md-input-container flex>
-            <label>Company Name</label>
-            <input>
-          </md-input-container>
-          <md-input-container flex>
-            <label>URL</label>
-            <input>
-          </md-input-container>
-          <md-input-container style="width:10%">
-            <md-button class="md-raised md-primary">Update</md-button>
-          </md-input-container>
-        </div>
+  <div layout layout-sm="column" ng-repeat="partner in vm.partners track by $index">
+    <md-input-container>
+      <label>{{$index + 1}}</label>
+    </md-input-container>
+    <md-input-container flex>
+      <div class="thumbnail" style="margin-bottom:0">
+        <img ng-src="{{partner.image}}">
       </div>
-      <md-divider ng-if="!$last"></md-divider>
-    </md-list-item>
-    <md-list-item>
-      <div class="md-list-item-text">
-        <div layout layout-sm="column">
-          <div style="width:20%">
-            <div class="thumbnail" style="margin-bottom:0">
-              <img src="/assets/images/1.jpg">
-            </div>
-          </div>
-          <md-input-container flex>
-            <label>Company Name</label>
-            <input>
-          </md-input-container>
-          <md-input-container flex>
-            <label>URL</label>
-            <input>
-          </md-input-container>
-          <md-input-container style="width:10%">
-            <md-button class="md-raised md-primary">Update</md-button>
-          </md-input-container>
-        </div>
-      </div>
-      <md-divider ng-if="!$last"></md-divider>
-    </md-list-item>
-  </md-list>
+    </md-input-container>
+    <md-input-container flex>
+      <label>სტატიის სახელი</label>
+      <input type="text" ng-model="partner.name.geo">
+    </md-input-container>
+    <md-input-container flex>
+      <label>Article Name</label>
+      <input type="text" ng-model="partner.name.eng">
+    </md-input-container>
+    <md-input-container flex>
+      <label>Article Url</label>
+      <input type="text" ng-model="partner.link">
+    </md-input-container>
+    <md-input-container style="width:10%">
+      <md-button ng-click="vm.openRemovePartnerModal($event, partner, $index)" class="md-raised md-primary">Remove</md-button>
+    </md-input-container>
+    <md-input-container style="width:10%">
+      <md-button ng-click="vm.openUpdatePartnerModal($event, partner)" class="md-raised md-primary">Update</md-button>
+    </md-input-container>
+  </div>
+
+  <div layout layout-sm="column" style="margin-top: 10px">
+    <div class="flex"></div>
+    <md-button ng-click="vm.openAddPartnerModal($event)" class="md-fab md-fab-bottom-right md-primary" style="position:relative;" aria-label="Add">
+      <i class="fa fa-plus"></i>
+      <md-tooltip md-direction="left">
+        Add new
+      </md-tooltip>
+    </md-button>
+  </div>
 </md-content>

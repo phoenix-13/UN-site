@@ -1,7 +1,7 @@
 'use strict';
 
-import template from './slideModal.html!text';
-import './slideModal.css!';
+import template from './partnerModal.html!text';
+import './partnerModal.css!';
 
 export default class {
   constructor($mdDialog) {
@@ -9,22 +9,22 @@ export default class {
     this.$mdDialog = $mdDialog;
   }
 
-  open(targetEvent, slide) {
-    var defaultSlide = {title: {eng: '', geo: ''}};
+  open(targetEvent, partner) {
+    var defaultPartner = {name: {eng: '', geo: ''}};
 
     return this.$mdDialog.show({
       controller($mdDialog, galleryModal, Toast) {
-        this.slide = slide || defaultSlide;
-        this.title = (slide) ? 'Update Slide' : 'Add Slide';
+        this.partner = partner || defaultPartner;
+        this.title = (partner) ? 'Update Partner' : 'Add Partner';
 
         this.openGallery = () => {
           galleryModal.open()
-            .then(image => this.slide.image = image.fileName);
-        };
+            .then(image => this.partner.image = image.fileName);
+        }
 
         this.save = () => {
-          if (this.slide.image && this.slide.link) {
-            $mdDialog.hide(this.slide);
+          if (this.partner.image && this.partner.link) {
+            $mdDialog.hide(this.partner);
           } else {
             Toast.showToast('Image And Link Should Be Provided!');
           }
