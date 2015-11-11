@@ -26,7 +26,7 @@ export default class {
           if (this.slide.image && this.slide.link) {
             $mdDialog.hide(this.slide);
           } else {
-            Toast.showToast('Image And Link Should Be Provided!');
+            Toast.show('Image And Link Should Be Provided!');
           }
         };
 
@@ -34,8 +34,7 @@ export default class {
       },
       controllerAs: 'vm',
       template,
-      parent: angular.element(document.body),
-      targetEvent: targetEvent,
+      targetEvent,
       clickOutsideToClose: true
     });
   }

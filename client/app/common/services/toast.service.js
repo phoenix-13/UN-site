@@ -6,7 +6,7 @@ export default class {
     this.$mdToast = $mdToast;
   }
 
-  showToast(content) {
+  show(content) {
     this.$mdToast.show(
       this.$mdToast.simple()
         .content(content)

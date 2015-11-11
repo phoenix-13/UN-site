@@ -17,13 +17,10 @@ import mainsitemap from './main/sitemap/sitemap';
 import Admin from './admin/admin';
 //inject:import.admin
 import adminaboutUs from './admin/aboutUs/aboutUs';
-import adminaddIndicator from './admin/addIndicator/addIndicator';
-import adminaddPartner from './admin/addPartner/addPartner';
 import adminaddPublication from './admin/addPublication/addPublication';
 import adminbanner from './admin/banner/banner';
 import admincontact from './admin/contact/contact';
 import admindemography from './admin/demography/demography';
-import admineditIndicator from './admin/editIndicator/editIndicator';
 import admineditPublication from './admin/editPublication/editPublication';
 import adminindicators from './admin/indicators/indicators';
 import adminlandingPage from './admin/landingPage/landingPage';
@@ -52,13 +49,10 @@ export default angular.module('app.components', [
   Admin.name,
   //inject:ngmodule.admin
   adminaboutUs.name,
-  adminaddIndicator.name,
-  adminaddPartner.name,
   adminaddPublication.name,
   adminbanner.name,
   admincontact.name,
   admindemography.name,
-  admineditIndicator.name,
   admineditPublication.name,
   adminindicators.name,
   adminlandingPage.name,

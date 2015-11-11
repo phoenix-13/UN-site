@@ -31,6 +31,6 @@ export default class {
 
   updateContact() {
     this.ContentResource.updateContact({contacts: this.contacts})
-      .then(() => this.Toast.showToast('Updated Successfully'));
+      .then(() => this.Toast.show('Updated Successfully'));
   }
 }
