@@ -19,6 +19,6 @@ export default class {
   updateBanner() {
     this.ContentResource
       .updateBanner({banner: this.banner})
-      .then(() => this.Toast.showToast('Banner Updated Successfully!'));
+      .then(() => this.Toast.show('Banner Updated Successfully!'));
   }
 }

@@ -10,6 +10,6 @@ export default class {
 
   updatePrimaryArticles() {
     this.ContentResource.updatePrimaryArticles({featured: this.primaryArticles})
-      .then(() => this.Toast.showToast('Primary Articles Update!'))
+      .then(() => this.Toast.show('Primary Articles Update!'))
   }
 }

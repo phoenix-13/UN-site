@@ -15,7 +15,7 @@ export default class {
       .then(partner => this.ContentResource.addPartner({partner}))
       .then(partner => {
         this.partners.push(partner);
-        this.Toast.showToast('Partner Added Successfully!');
+        this.Toast.show('Partner Added Successfully!');
       });
   }
 
@@ -25,7 +25,7 @@ export default class {
       .then(updatedPartner => this.ContentResource.updatePartner(newPartner._id, {updateData: updatedPartner}))
       .then(() => {
         angular.copy(newPartner, partner);
-        this.Toast.showToast('Partner Updated Successfully!');
+        this.Toast.show('Partner Updated Successfully!');
       });
   }
 
@@ -34,7 +34,7 @@ export default class {
       .then(() => this.ContentResource.removePartner(partner._id))
       .then(() => {
         this.partners.splice(index, 1);
-        this.Toast.showToast('Partner Removed Successfully!');
+        this.Toast.show('Partner Removed Successfully!');
       });
   }
 }

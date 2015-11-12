@@ -15,7 +15,7 @@ export default class {
       .then(slide => this.ContentResource.addSlide({slide}))
       .then(slide => {
         this.slider.push(slide)
-        this.Toast.showToast('Slide Added Successfully!');
+        this.Toast.show('Slide Added Successfully!');
       });
   }
 
@@ -25,7 +25,7 @@ export default class {
       .then(updatedSlide => this.ContentResource.updateSlide(newSlide._id, {updateData: updatedSlide}))
       .then(() => {
         angular.copy(newSlide, slide)
-        this.Toast.showToast('Slide Updated Successfully!');
+        this.Toast.show('Slide Updated Successfully!');
       });
   }
 
@@ -34,7 +34,7 @@ export default class {
       .then(() => this.ContentResource.removeSlide(slide._id))
       .then(() => {
         this.slider.splice(index, 1);
-        this.Toast.showToast('Slide Removed Successfully!');
+        this.Toast.show('Slide Removed Successfully!');
       });
   }
 }

@@ -1,86 +1,33 @@
 <div layout layout-sm="column">
   <div flex></div>
   <div>
-    <h3>indicators</h3>
+    <h3>Indicators</h3>
   </div>
   <div flex></div>
 </div>
-<md-button ui-sref="admin.indicators.add" class="md-fab md-fab-bottom-right md-primary" style="position:fixed;" aria-label="Add">
+<md-button ng-click="vm.openAddIndicatorModal($event)" class="md-fab md-fab-bottom-right md-primary" style="position:fixed;" aria-label="Add">
   <i class="fa fa-plus"></i>
   <md-tooltip md-direction="left">
     Add new
   </md-tooltip>
 </md-button>
+
 <md-content class="md-padding">
   <md-list ng-cloak>
-
-      <md-list-item class="md-3-line indicators_list_item">
-        <div class="md-list-item-text">
-          <h3>title</h3>
-          <span layout="column">
-            <span flex><p>Integer turpis erat, porttitor vitae mi faucibus, laoreet interdum tellus. Curabitur posuere molestie dictum. </p></span>
-            <span flex class="indicator_btn_wrapp">
-              <md-button class="md-fab md-mini md-primary" ui-sref="admin.indicators.edit" aria-label="Edit">
-                <i class="fa fa-pencil-square-o"></i>
-              </md-button>
-              <md-button class="md-fab md-mini md-primary" aria-label="Edit">
-                <i class="fa fa-trash-o"></i>
-              </md-button>
-            </span>
+    <md-list-item class="md-3-line indicators_list_item" ng-repeat="indicator in vm.indicators track by $index">
+      <div class="md-list-item-text">
+        <h3>{{indicator.title.geo}}</h3>
+        <span layout="column">
+          <span flex class="indicator_btn_wrapp">
+            <md-button class="md-fab md-mini md-primary" ng-click="vm.openRemoveIndicatorModal($event, slide, $index)" aria-label="Edit">
+              <i class="fa fa-pencil-square-o"></i>
+            </md-button>
+            <md-button class="md-fab md-mini md-primary" ng-click="vm.openUpdateIndicatorModal($event, slide)" aria-label="Edit">
+              <i class="fa fa-trash-o"></i>
+            </md-button>
           </span>
-        </div>
-      </md-list-item>
-
-      <md-list-item class="md-3-line indicators_list_item">
-        <div class="md-list-item-text">
-          <h3>title</h3>
-          <span layout="column">
-            <span flex><p>Integer turpis erat, porttitor vitae mi faucibus, laoreet interdum tellus. Curabitur posuere molestie dictum. </p></span>
-            <span flex class="indicator_btn_wrapp">
-              <md-button class="md-fab md-mini md-primary" ui-sref="admin.indicators.edit" aria-label="Edit">
-                <i class="fa fa-pencil-square-o"></i>
-              </md-button>
-              <md-button class="md-fab md-mini md-primary" aria-label="Edit">
-                <i class="fa fa-trash-o"></i>
-              </md-button>
-            </span>
-          </span>
-        </div>
-      </md-list-item>
-
-      <md-list-item class="md-3-line indicators_list_item">
-        <div class="md-list-item-text">
-          <h3>title</h3>
-          <span layout="column">
-            <span flex><p>Integer turpis erat, porttitor vitae mi faucibus, laoreet interdum tellus. Curabitur posuere molestie dictum. </p></span>
-            <span flex class="indicator_btn_wrapp">
-              <md-button class="md-fab md-mini md-primary" ui-sref="admin.indicators.edit" aria-label="Edit">
-                <i class="fa fa-pencil-square-o"></i>
-              </md-button>
-              <md-button class="md-fab md-mini md-primary" aria-label="Edit">
-                <i class="fa fa-trash-o"></i>
-              </md-button>
-            </span>
-          </span>
-        </div>
-      </md-list-item>
-
-      <md-list-item class="md-3-line indicators_list_item">
-        <div class="md-list-item-text">
-          <h3>title</h3>
-          <span layout="column">
-            <span flex><p>Integer turpis erat, porttitor vitae mi faucibus, laoreet interdum tellus. Curabitur posuere molestie dictum. </p></span>
-            <span flex class="indicator_btn_wrapp">
-              <md-button class="md-fab md-mini md-primary" ui-sref="admin.indicators.edit" aria-label="Edit">
-                <i class="fa fa-pencil-square-o"></i>
-              </md-button>
-              <md-button class="md-fab md-mini md-primary" aria-label="Edit">
-                <i class="fa fa-trash-o"></i>
-              </md-button>
-            </span>
-          </span>
-        </div>
-      </md-list-item>
-
+        </span>
+      </div>
+    </md-list-item>
   </md-list>
 </md-content>

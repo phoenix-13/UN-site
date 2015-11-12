@@ -24,13 +24,13 @@ export default class {
         : 'Image Added!';
       this.$q.all(promises)
         .then(arrayOfResponses => arrayOfResponses.forEach(response => this.images.push(response.data)))
-        .then(() => this.Toast.showToast(toastText));
+        .then(() => this.Toast.show(toastText));
     }
   }
 
   removeImage(image, index) {
     this.ImageResource.removeImage(image._id)
       .then(() => this.images.splice(index, 1))
-      .then(() => this.Toast.showToast('Image removed!'));
+      .then(() => this.Toast.show('Image removed!'));
   }
 }

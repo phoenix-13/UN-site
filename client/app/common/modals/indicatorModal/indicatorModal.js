@@ -4,28 +4,29 @@ import template from './indicatorModal.html!text';
 import './indicatorModal.css!';
 
 export default class {
-  constructor($q, $mdDialog) {
+  constructor($mdDialog) {
     'ngInject';
-
-    this.$q = $q;
     this.$mdDialog = $mdDialog;
   }
 
-  open() {
-    return this.$q((resolve, reject) => {
-      this.$mdDialog.show({
-        controller() {
-        },
-        controllerAs: 'vm',
-        template,
-        parent: angular.element(document.body),
-        clickOutsideToClose: true
-      })
-      .then(() => {
-        reject();
-      }, () => {
-        reject();
-      });
+  open(targetEvent, indicator) {
+
+    return this.$mdDialog.show({
+      controller() {
+        this.indicator = indicator || {};
+        this.title = (indicator) ? 'Update Indicator' : 'Add Indicator';
+
+        this.save = () => {
+          //TODO check if form is valid
+          $mdDialog.hide(this.indicator);
+        };
+
+        this.cancel = () => $mdDialog.cancel();
+      },
+      controllerAs: 'vm',
+      template,
+      targetEvent,
+      clickOutsideToClose: true
     });
   }
 }

@@ -15,7 +15,7 @@ export default angular.module('admin', [])
       abstract: true,
       resolve: {
         content: ContentResource => ContentResource.getContent(),
-        images: ImageResource => ImageResource.getImages()
+        indicators: IndicatorResource => IndicatorResource.getIndicators(),
       }
     });
 });

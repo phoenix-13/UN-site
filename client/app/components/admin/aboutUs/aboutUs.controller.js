@@ -10,6 +10,6 @@ export default class {
 
   updateAbout() {
     this.ContentResource.updateAbout({about: this.about})
-      .then(() => this.Toast.showToast('Updated Successfully!'));
+      .then(() => this.Toast.show('Updated Successfully!'));
   }
 }

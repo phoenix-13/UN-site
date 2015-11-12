@@ -30,7 +30,7 @@ export default class {
               : 'Image Added!';
             $q.all(promises)
               .then(arrayOfResponses => arrayOfResponses.forEach(response => this.images.push(response.data)))
-              .then(() => Toast.showToast(toastText));
+              .then(() => Toast.show(toastText));
           }
         };
 
