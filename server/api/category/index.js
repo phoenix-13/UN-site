@@ -9,6 +9,8 @@ var router = express.Router();
 
 router.get('', getAll);
 
+module.exports = router;
+
 function getAll(req, res) {
   controller.getAll()
     .then(categories => res.json(categories))
