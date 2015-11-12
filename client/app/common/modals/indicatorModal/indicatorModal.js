@@ -52,7 +52,7 @@ export default class {
           var unUsedYears = [];
           var i, j;
           for (j = 0, i = 0; i < years.length; i++) {
-            if (j == usedYears.length || years[i] !== usedYears[j].year) {
+            if (j === usedYears.length || years[i] !== usedYears[j].year) {
               unUsedYears.push(years[i]);
             } else {
               j++;

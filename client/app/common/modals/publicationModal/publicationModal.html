@@ -1,3 +1,58 @@
-<md-dialog aria-label="" ng-cloak>
+<md-dialog aria-label="{{vm.title}}" style="min-width:60%">
+  <form
+    name="form"
+    ng-submit="vm.save(form)"
+    novalidate>
 
+    <md-toolbar>
+      <div class="md-toolbar-tools">
+        <h2>{{vm.title}}</h2>
+      </div>
+    </md-toolbar>
+
+    <md-dialog-content style="max-width:800px;max-height:810px; " class="dialog_content">
+      <md-tabs md-dynamic-height md-border-bottom class="page_tabs">
+
+        <md-tab label="ქართული">
+          <div layout layout-sm="column">
+            <input type="text" name="category" ng-model="vm.publication.category" required hidden>
+            <md-input-container style="width:60%">
+              <label>მიმართულება</label>
+              <md-select ng-model="vm.publication.category">
+                <md-option value="{{category._id}}" ng-repeat="category in vm.categories track by $index">{{category.title.geo}}</md-option>
+              </md-select>
+            </md-input-container>
+            <md-datepicker ng-model="vm.publication.date"></md-datepicker>
+          </div>
+          <md-content class="md-padding">
+            <md-input-container flex>
+              <label>სათაური</label>
+              <input type="text" name="titleGeo" ng-model="vm.publication.title.geo" required>
+            </md-input-container>
+            <div>
+              <input type="text" name="contentGeo" ng-model="vm.publication.content.geo" required hidden>
+              <text-angular ng-model="vm.publication.content.geo"></text-angular>
+            </div>
+          </md-content>
+        </md-tab>
+
+        <md-tab label="English">
+          <md-content class="md-padding">
+            <md-input-container flex>
+              <label>title</label>
+              <input type="text" name="titleEng" ng-model="vm.publication.title.eng" required>
+            </md-input-container>
+            <div>
+              <input type="text" name="contentEng" ng-model="vm.publication.content.eng" required hidden>
+              <text-angular ng-model="vm.publication.content.eng"></text-angular>
+            </div>
+          </md-content>
+        </md-tab>
+
+      </md-tabs>
+    </md-dialog-content>
+    <div class="md-actions" layout="row">
+      <md-button type="submit" ng-disabled="form.$invalid" class="md-raised md-primary" style="margin-right:20px;" >Save</md-button>
+    </div>
+  </form>
 </md-dialog>

@@ -48,7 +48,7 @@ function create(req, res) {
 }
 
 function update(req, res) {
-  var publicationId = req.params.id;
+  var publicationId = req.params.publicationId;
   var publicationData = req.body.data;
   controller.update(publicationId, publicationData)
     .then(() => res.sendStatus(200))

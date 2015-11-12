@@ -4,28 +4,36 @@ import template from './publicationModal.html!text';
 import './publicationModal.css!';
 
 export default class {
-  constructor($q, $mdDialog) {
+  constructor($mdDialog) {
     'ngInject';
-
-    this.$q = $q;
     this.$mdDialog = $mdDialog;
   }
 
-  open() {
-    return this.$q((resolve, reject) => {
-      this.$mdDialog.show({
-        controller() {
-        },
-        controllerAs: 'vm',
-        template,
-        parent: angular.element(document.body),
-        clickOutsideToClose: true
-      })
-      .then(() => {
-        reject();
-      }, () => {
-        reject();
-      });
+  open(targetEvent, categories, publication) {
+    var defaultPublication= {
+      title: {geo: '', eng: ''},
+      content: {geo: '', eng: ''},
+      date: new Date()
+    };
+
+    return this.$mdDialog.show({
+      controller($mdDialog) {
+        this.title = (publication) ? 'Update Publication' : 'Add Publication';
+        this.categories = categories;
+        this.publication = publication || defaultPublication;
+
+        this.save = form => {
+          if (form.$valid) {
+            $mdDialog.hide(this.publication);
+          }
+        };
+
+        this.cancel = () => $mdDialog.cancel();
+      },
+      controllerAs: 'vm',
+      template,
+      targetEvent,
+      clickOutsideToClose: true
     });
   }
 }
