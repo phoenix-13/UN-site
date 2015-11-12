@@ -7,19 +7,20 @@ var errors = require('../../errors');
 
 var router = express.Router();
 
-router.get('/:id', getById);
-router.get('/all', getAll);
-router.get('/limited', getLimited);
-router.post('/create', create);
-router.post('/:id/update', update);
-router.delete('/:id/remove', remove);
+router.get('', getAll);
+router.get('/:publicationId', getById);
+router.get('/page/:pageIndex', getLimited);
+router.post('', create);
+router.post('/:publicationId', update);
+router.delete('/:publicationId', remove);
 
 module.exports = router;
 
 function getById(req, res) {
-  controller.getById(req.params.id)
+  var publicationId = req.params.id;
+  controller.getById(publicationId)
     .then(publication => res.json(publication))
-    .catch(errors.logError(`Failed to load publication ${req.params.id}`))
+    .catch(errors.logError(`Failed to load publication ${publicationId}`))
     .catch(errors.handleError(res));
 }
 
@@ -31,30 +32,34 @@ function getAll(req, res) {
 }
 
 function getLimited(req, res) {
-  controller.getLimited(req.body.offset)
+  var pageIndex = req.params.pageIndex;
+  controller.getLimited(pageIndex)
     .then(publications => res.json(publications))
-    .catch(errors.logError('Failed to load limited publications'))
+    .catch(errors.logError(`Failed to load limited publications from pageIndex: ${pageIndex}`))
     .catch(errors.handleError(res));
 }
 
 function create(req, res) {
-  controller.create(req.body.publication)
+  var publication = req.body.publication;
+  controller.create(publication)
     .then(publication => res.json(publication))
-    .catch(errors.logError(`Failed to create publication ${req.body.publication}`))
+    .catch(errors.logError(`Failed to create publication ${publication}`))
     .catch(errors.handleError(res));
 }
 
 function update(req, res) {
   var publicationId = req.params.id;
-  controller.update(publicationId, req.body.data)
+  var publicationData = req.body.data;
+  controller.update(publicationId, publicationData)
     .then(() => res.sendStatus(200))
-    .catch(errors.logError(`Failed to update publication ${publicationId}`))
+    .catch(errors.logError(`Failed to update publication: ${publicationId} with data: ${publicationData}`))
     .catch(errors.handleError(res));
 }
 
 function remove(req, res) {
-  controller.remove(req.params.id)
+  var publicationId = req.params.publicationId;
+  controller.remove(publicationId)
     .then(() => res.sendStatus(200))
-    .catch(errors.logError(`Failed to remove publication ${req.params.id}`))
+    .catch(errors.logError(`Failed to remove publication ${publicationId}`))
     .catch(errors.handleError(res));
 }

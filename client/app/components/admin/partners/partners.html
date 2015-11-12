@@ -1,3 +1,18 @@
+<div layout layout-sm="column">
+  <div flex></div>
+  <div>
+    <h3>Partners</h3>
+  </div>
+  <div flex></div>
+</div>
+
+<md-button ng-click="vm.openAddPartnerModal($event)" class="md-fab md-fab-bottom-right md-primary" style="position:fixed;" aria-label="Add">
+  <i class="fa fa-plus"></i>
+  <md-tooltip md-direction="left">
+    Add new
+  </md-tooltip>
+</md-button>
+
 <md-content class="md-padding">
   <div layout layout-sm="column" ng-repeat="partner in vm.partners track by $index">
     <md-input-container>
@@ -26,15 +41,5 @@
     <md-input-container style="width:10%">
       <md-button ng-click="vm.openUpdatePartnerModal($event, partner)" class="md-raised md-primary">Update</md-button>
     </md-input-container>
-  </div>
-
-  <div layout layout-sm="column" style="margin-top: 10px">
-    <div class="flex"></div>
-    <md-button ng-click="vm.openAddPartnerModal($event)" class="md-fab md-fab-bottom-right md-primary" style="position:relative;" aria-label="Add">
-      <i class="fa fa-plus"></i>
-      <md-tooltip md-direction="left">
-        Add new
-      </md-tooltip>
-    </md-button>
   </div>
 </md-content>

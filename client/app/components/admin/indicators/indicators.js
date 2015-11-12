@@ -11,6 +11,6 @@ export default angular.module('admin.indicators', [])
       url: '/indicators',
       template,
       controller,
-      controllerAs: 'vm'
+      controllerAs: 'vm',
     });
 });

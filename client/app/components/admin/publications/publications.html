@@ -1,90 +1,31 @@
-<div layout layout-sm="column">
-  <div flex></div>
-  <div>
-    <h3>publications</h3>
-  </div>
-  <div flex></div>
-</div>
-
-<a ui-sref="admin.publications.add">
-  <md-button class="md-fab md-fab-bottom-right md-primary" style="position:fixed;" aria-label="Add">
+<div>
+  <md-button ng-click="vm.openAddPublicationModal($event)" class="md-fab md-fab-bottom-right md-primary" style="position:fixed;" aria-label="Add">
     <i class="fa fa-plus"></i>
     <md-tooltip md-direction="left">
       Add new
     </md-tooltip>
   </md-button>
-</a>
-<md-content class="md-padding">
-  <md-list ng-cloak>
 
-    <md-list-item class="md-3-line">
-      <div class="md-list-item-text">
-        <h3>title</h3>
+  <md-content class="md-padding">
+    <md-list ng-cloak>
+      <md-list-item class="md-3-line" ng-repeat="publication in vm.publications track by $index">
+        <div class="md-list-item-text">
+          <h3>{{publication.title.geo}}</h3>
         <span layout="column">
-          <span flex><p>Integer turpis erat, porttitor vitae mi faucibus, laoreet interdum tellus. Curabitur posuere molestie dictum. </p></span>
-          <span flex class="indicator_btn_wrapp">
-            <md-button class="md-fab md-mini md-primary" ui-sref="admin.publications.edit" aria-label="Edit">
+          <span flex>
+            <p ng-bind-html="publication.content.geo"></p>
+          </span>
+          <span flex>
+            <md-button class="md-fab md-mini md-primary" ng-click="vm.openUpdatePublicationModal($event, publication)" aria-label="Edit">
               <i class="fa fa-pencil-square-o"></i>
             </md-button>
-            <md-button class="md-fab md-mini md-primary" aria-label="Edit">
+            <md-button class="md-fab md-mini md-primary" ng-click="vm.openRemovePublicationModal($event, publication, $index)" aria-label="Edit">
               <i class="fa fa-trash-o"></i>
             </md-button>
           </span>
         </span>
-      </div>
-    </md-list-item>
-
-    <md-list-item class="md-3-line">
-      <div class="md-list-item-text">
-        <h3>title</h3>
-        <span layout="column">
-          <span flex><p>Integer turpis erat, porttitor vitae mi faucibus, laoreet interdum tellus. Curabitur posuere molestie dictum. </p></span>
-          <span flex class="indicator_btn_wrapp">
-            <md-button class="md-fab md-mini md-primary" ui-sref="admin.publications.edit" aria-label="Edit">
-              <i class="fa fa-pencil-square-o"></i>
-            </md-button>
-            <md-button class="md-fab md-mini md-primary" aria-label="Edit">
-              <i class="fa fa-trash-o"></i>
-            </md-button>
-          </span>
-        </span>
-      </div>
-    </md-list-item>
-
-    <md-list-item class="md-3-line">
-      <div class="md-list-item-text">
-        <h3>title</h3>
-        <span layout="column">
-          <span flex><p>Integer turpis erat, porttitor vitae mi faucibus, laoreet interdum tellus. Curabitur posuere molestie dictum. </p></span>
-          <span flex class="indicator_btn_wrapp">
-            <md-button class="md-fab md-mini md-primary" ui-sref="admin.publications.edit" aria-label="Edit">
-              <i class="fa fa-pencil-square-o"></i>
-            </md-button>
-            <md-button class="md-fab md-mini md-primary" aria-label="Edit">
-              <i class="fa fa-trash-o"></i>
-            </md-button>
-          </span>
-        </span>
-      </div>
-    </md-list-item>
-
-    <md-list-item class="md-3-line">
-      <div class="md-list-item-text">
-        <h3>title</h3>
-        <span layout="column">
-          <span flex><p>Integer turpis erat, porttitor vitae mi faucibus, laoreet interdum tellus. Curabitur posuere molestie dictum. </p></span>
-          <span flex class="indicator_btn_wrapp">
-            <md-button class="md-fab md-mini md-primary" ui-sref="admin.publications.edit" aria-label="Edit">
-              <i class="fa fa-pencil-square-o"></i>
-            </md-button>
-            <md-button class="md-fab md-mini md-primary" aria-label="Edit">
-              <i class="fa fa-trash-o"></i>
-            </md-button>
-          </span>
-        </span>
-      </div>
-    </md-list-item>
-
-
-  </md-list>
-</md-content>
+        </div>
+      </md-list-item>
+    </md-list>
+  </md-content>
+</div>

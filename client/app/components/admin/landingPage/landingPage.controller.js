@@ -1,7 +1,5 @@
 'use strict';
 
-import addSlideTemplate from './addSlide.html!text';
-
 export default class {
   constructor($scope, $state) {
     'ngInject';

@@ -18,11 +18,14 @@
       <div class="md-list-item-text">
         <h3>{{indicator.title.geo}}</h3>
         <span layout="column">
-          <span flex class="indicator_btn_wrapp">
-            <md-button class="md-fab md-mini md-primary" ng-click="vm.openRemoveIndicatorModal($event, slide, $index)" aria-label="Edit">
+          <span flex>
+            <p ng-bind-html="indicator.content.geo"></p>
+          </span>
+          <span flex>
+            <md-button class="md-fab md-mini md-primary" ng-click="vm.openUpdateIndicatorModal($event, indicator)" aria-label="Edit">
               <i class="fa fa-pencil-square-o"></i>
             </md-button>
-            <md-button class="md-fab md-mini md-primary" ng-click="vm.openUpdateIndicatorModal($event, slide)" aria-label="Edit">
+            <md-button class="md-fab md-mini md-primary" ng-click="vm.openRemoveIndicatorModal($event, indicator, $index)" aria-label="Edit">
               <i class="fa fa-trash-o"></i>
             </md-button>
           </span>

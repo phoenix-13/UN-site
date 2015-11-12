@@ -8,7 +8,7 @@ function parseIndicator(indicator) {
   return {
     title: biling(indicator.title),
     date: indicator.date,
-    values: indicator.values,
+    values: extractIds(indicator.values),
     content: biling(indicator.content),
     category: indicator.category
   };
@@ -19,4 +19,13 @@ function biling(value) {
     geo: value.geo,
     eng: value.eng
   };
+}
+
+function extractIds(pairs) {
+  return pairs.map(pair => {
+    return {
+      year: pair.year,
+      value: pair.value
+    }
+  });
 }

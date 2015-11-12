@@ -1,99 +1,104 @@
-<h1>{{vm.title}}</h1>
-<!--<md-dialog aria-label="{{vm.title}}" style="min-width:60%">-->
-  <!--<form>-->
-    <!--<md-toolbar>-->
-      <!--<div class="md-toolbar-tools">-->
-        <!--<h2>{{vm.title}}</h2>-->
-      <!--</div>-->
-    <!--</md-toolbar>-->
-    <!--<md-dialog-content style="max-width:800px;max-height:810px; " class="dialog_content">-->
-      <!--<md-tabs md-dynamic-height md-border-bottom class="page_tabs">-->
-        <!--<md-tab label="ქართული">-->
-          <!--<md-content class="md-padding">-->
-            <!--<div layout layout-sm="column">-->
-              <!--<md-input-container style="width:70%">-->
-                <!--<label>მიმართულება</label>-->
-                <!--<md-select ng-model>-->
-                  <!--<md-option>მონაწილეობა</md-option>-->
-                  <!--<md-option>სპეციალური მხარდაჭერა და დაცვა</md-option>-->
-                  <!--<md-option>ჯანმრთელობა</md-option>-->
-                  <!--<md-option>განათლება, დასაქმება და მობილობა</md-option>-->
-                <!--</md-select>-->
-              <!--</md-input-container>-->
-              <!--<md-datepicker ng-model="user.submissionDate" md-placeholder="Enter date"></md-datepicker>-->
-            <!--</div>-->
-            <!--<div flex class="year_container" style="padding-right:0;padding-left:0;">-->
-              <!--<div layout="row">-->
-                <!--<md-input-container style="padding-bottom:0" flex="20">-->
-                  <!--<label>წელი</label>-->
-                  <!--<md-select ng-model>-->
-                    <!--<md-option>2009</md-option>-->
-                    <!--<md-option>2010</md-option>-->
-                    <!--<md-option>2011</md-option>-->
-                    <!--<md-option>2012</md-option>-->
-                  <!--</md-select>-->
-                <!--</md-input-container>-->
-                <!--<div style="margin-top: 30px;" flex="5" class="text-center">-->
-                  <!--<i class="fa fa-angle-double-right"></i>-->
-                <!--</div>-->
-                <!--<md-input-container style="padding-bottom:0" flex="20">-->
-                  <!--<label>მაჩვენებელი</label>-->
-                  <!--<input>-->
-                <!--</md-input-container>-->
-                <!--<md-button class="md-fab md-mini md-primary" aria-label="Edit">-->
-                  <!--<i class="fa fa-trash-o"></i>-->
-                <!--</md-button>-->
-              <!--</div>-->
-              <!--<span flex></span>-->
-            <!--</div>-->
+<md-dialog aria-label="{{vm.title}}" style="min-width:60%">
+  <form
+    name="form"
+    ng-submit="vm.save(form)"
+    novalidate>
 
-            <!--<div flex class="year_container" style="padding-right:0;padding-left:0;">-->
-              <!--<div layout="row">-->
-                <!--<md-input-container style="padding-bottom:0" flex="20">-->
-                  <!--<label>წელი</label>-->
-                  <!--<md-select ng-model>-->
-                    <!--<md-option>2009</md-option>-->
-                    <!--<md-option>2010</md-option>-->
-                    <!--<md-option>2011</md-option>-->
-                    <!--<md-option>2012</md-option>-->
-                  <!--</md-select>-->
-                <!--</md-input-container>-->
-                <!--<div style="margin-top: 30px;" flex="5" class="text-center">-->
-                  <!--<i class="fa fa-angle-double-right"></i>-->
-                <!--</div>-->
-                <!--<md-input-container style="padding-bottom:0" flex="20">-->
-                  <!--<label>მაჩვენებელი</label>-->
-                  <!--<input>-->
-                <!--</md-input-container>-->
-                <!--<md-button class="md-fab md-mini md-primary" aria-label="Add">-->
-                  <!--<i class="fa fa-plus"></i>-->
-                <!--</md-button>-->
-              <!--</div>-->
-              <!--<span flex></span>-->
-            <!--</div>-->
+    <md-toolbar>
+      <div class="md-toolbar-tools">
+        <h2>{{vm.title}}</h2>
+      </div>
+    </md-toolbar>
 
-            <!--<md-input-container flex>-->
-              <!--<label>სათაური</label>-->
-              <!--<input>-->
-            <!--</md-input-container>-->
-            <!--<text-angular ng-model="vm.aboutUs"></text-angular>-->
-          <!--</md-content>-->
-        <!--</md-tab>-->
-        <!--<md-tab label="English">-->
-          <!--<md-content class="md-padding">-->
-            <!--<md-input-container flex>-->
-              <!--<md-input-container style="width:70%">-->
-                <!--<label>Title</label>-->
-                <!--<input>-->
-              <!--</md-input-container>-->
-            <!--</md-input-container>-->
-            <!--<text-angular ng-model="vm.aboutUs"></text-angular>-->
-          <!--</md-content>-->
-        <!--</md-tab>-->
-      <!--</md-tabs>-->
-    <!--</md-dialog-content>-->
-    <!--<div class="md-actions" layout="row">-->
-      <!--<md-button ng-click="answer()" class="md-raised md-primary" style="margin-right:20px;" >Save</md-button>-->
-    <!--</div>-->
-  <!--</form>-->
-<!--</md-dialog>-->
+    <md-dialog-content style="max-width:800px;max-height:810px; " class="dialog_content">
+      <md-tabs md-dynamic-height md-border-bottom class="page_tabs">
+        <md-tab label="ქართული">
+          <div layout layout-sm="column">
+            <input type="text" name="category" ng-model="vm.indicator.category" required hidden>
+            <md-input-container style="width:60%">
+              <label>მიმართულება</label>
+              <md-select ng-model="vm.indicator.category">
+                <md-option value="{{category._id}}" ng-repeat="category in vm.categories track by $index">{{category.title.geo}}</md-option>
+              </md-select>
+            </md-input-container>
+            <md-datepicker ng-model="vm.indicator.date"></md-datepicker>
+          </div>
+
+          <div flex class="year_container" style="padding-right:0;padding-left:0;" ng-repeat="pair in vm.indicator.values track by $index">
+            <div layout="row">
+              <md-input-container class="md-block">
+                <label>წელი</label>
+                <input type="text" ng-model="pair.year" readonly>
+              </md-input-container>
+
+              <div style="margin-top: 30px;" flex="5" class="text-center">
+                <i class="fa fa-angle-double-right"></i>
+              </div>
+
+              <md-input-container style="padding-bottom:0" flex="20">
+                <label>მაჩვენებელი</label>
+                <input type="number" ng-model="pair.value" readonly>
+              </md-input-container>
+
+              <md-button ng-click="vm.removePair($index, pair); $event.preventDefault()" class="md-fab md-mini md-primary" aria-label="Edit">
+                <i class="fa fa-trash-o"></i>
+              </md-button>
+            </div>
+            <span flex></span>
+          </div>
+
+          <div flex class="year_container" style="padding-right:0;padding-left:0;">
+            <div layout="row">
+              <md-input-container class="md-block">
+                <label>წელი</label>
+                <md-select ng-model="vm.pair.year">
+                  <md-option ng-repeat="year in vm.years" value="{{year}}">{{year}}</md-option>
+                </md-select>
+              </md-input-container>
+
+              <div style="margin-top: 30px;" flex="5" class="text-center">
+                <i class="fa fa-angle-double-right"></i>
+              </div>
+
+              <md-input-container style="padding-bottom:0" flex="20">
+                <label>მაჩვენებელი</label>
+                <input type="number" ng-model="vm.pair.value">
+              </md-input-container>
+
+              <md-button ng-click="vm.addPair(); $event.preventDefault()" ng-disabled="!vm.pair.year || (vm.pair.value == undefined)" class="md-fab md-mini md-primary" aria-label="Add">
+                <i class="fa fa-plus"></i>
+              </md-button>
+            </div>
+            <span flex></span>
+          </div>
+
+          <md-content class="md-padding">
+            <md-input-container flex>
+              <label>სათაური</label>
+              <input type="text" name="titleGeo" ng-model="vm.indicator.title.geo" required>
+            </md-input-container>
+            <div>
+              <input type="text" name="contentGeo" ng-model="vm.indicator.content.geo" required hidden>
+              <text-angular ng-model="vm.indicator.content.geo"></text-angular>
+            </div>
+          </md-content>
+        </md-tab>
+        <md-tab label="English">
+          <md-content class="md-padding">
+            <md-input-container flex>
+              <label>title</label>
+              <input type="text" name="titleEng" ng-model="vm.indicator.title.eng" required>
+            </md-input-container>
+            <div>
+              <input type="text" name="contentEng" ng-model="vm.indicator.content.eng" required hidden>
+              <text-angular ng-model="vm.indicator.content.eng"></text-angular>
+            </div>
+          </md-content>
+        </md-tab>
+      </md-tabs>
+    </md-dialog-content>
+    <div class="md-actions" layout="row">
+      <md-button type="submit" ng-disabled="form.$invalid" class="md-raised md-primary" style="margin-right:20px;" >Save</md-button>
+    </div>
+  </form>
+</md-dialog>

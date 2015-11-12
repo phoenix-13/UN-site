@@ -1,18 +1,16 @@
 'use strict';
 
 export default class {
-  constructor(ContentResource, galleryModal, Toast, images, content) {
+  constructor(ContentResource, galleryModal, Toast, content) {
     'ngInject';
     this.ContentResource = ContentResource;
     this.galleryModal = galleryModal;
     this.Toast = Toast;
-    this.images = images;
     this.banner = content.banner;
   }
 
   openGallery() {
-    this.galleryModal
-      .open(this.images)
+    this.galleryModal.open()
       .then(image => this.banner.image = image.fileName);
   }
 

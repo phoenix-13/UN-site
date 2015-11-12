@@ -1,17 +1,18 @@
 'use strict';
 
 export default class {
-  constructor(Toast, IndicatorResource, indicatorModal, confirmModal, indicators) {
+  constructor(Toast, IndicatorResource, indicatorModal, confirmModal, indicators, categories) {
     'ngInject';
     this.Toast = Toast;
     this.IndicatorResource = IndicatorResource;
     this.indicatorModal = indicatorModal;
     this.confirmModal = confirmModal;
     this.indicators = indicators;
+    this.categories = categories;
   }
 
   openAddIndicatorModal(targetEvent) {
-    this.indicatorModal.open(targetEvent)
+    this.indicatorModal.open(targetEvent, this.categories)
       .then(indicator => this.IndicatorResource.addIndicator({indicator}))
       .then(indicator => {
         this.indicators.push(indicator)
@@ -21,10 +22,11 @@ export default class {
 
   openUpdateIndicatorModal(targetEvent, indicator) {
     var newIndicator = angular.copy(indicator);
-    this.indicatorModal.open(targetEvent, newIndicator)
-      .then(updatedIndicator => this.IndicatorResource.updateIndicator(newIndicator._id, {updateData: updatedIndicator}))
+    newIndicator.date = new Date(newIndicator.date);
+    this.indicatorModal.open(targetEvent, this.categories, newIndicator)
+      .then(updatedIndicator => this.IndicatorResource.updateIndicator(newIndicator._id, {data: updatedIndicator}))
       .then(() => {
-        angular.copy(newIndicator, indicator)
+        angular.copy(newIndicator, indicator);
         this.Toast.show('Indicator Updated Successfully!');
       });
   }

@@ -7,9 +7,8 @@ import './login.css!';
 export default angular.module('admin.login', [])
   .config($stateProvider => {
     $stateProvider
-      .state('login', {
-        parent: 'admin',
-        url: 'login',
+      .state('admin.login', {
+        url: '/login',
         template,
         controller,
         controllerAs: 'vm'
