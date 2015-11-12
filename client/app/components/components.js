@@ -27,6 +27,7 @@ import admineditIndicator from './admin/editIndicator/editIndicator';
 import admineditPublication from './admin/editPublication/editPublication';
 import adminindicators from './admin/indicators/indicators';
 import adminlandingPage from './admin/landingPage/landingPage';
+import adminlogin from './admin/login/login';
 import adminpartners from './admin/partners/partners';
 import adminphotos from './admin/photos/photos';
 import adminprimaryArticles from './admin/primaryArticles/primaryArticles';
@@ -62,6 +63,7 @@ export default angular.module('app.components', [
   admineditPublication.name,
   adminindicators.name,
   adminlandingPage.name,
+  adminlogin.name,
   adminpartners.name,
   adminphotos.name,
   adminprimaryArticles.name,
