@@ -1,7 +1,7 @@
 'use strict';
 
 import template from './login.html!text';
-import controller from './login.controller';
+import controller from './login.controller.js';
 import './login.css!';
 
 export default angular.module('admin.login', [])

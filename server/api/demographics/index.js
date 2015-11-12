@@ -7,8 +7,8 @@ var errors = require('../../errors');
 
 var router = express.Router();
 
-router.get('/all', getAll);
-router.post('/:id/updateYearValues', updateYearValues);
+router.get('', getAll);
+router.post('/:demographyId', updateYearValues);
 
 module.exports = router;
 
@@ -20,9 +20,9 @@ function getAll(req, res) {
 }
 
 function updateYearValues(req, res) {
-  var demographicsId = req.params.id;
-  controller.updateYearValues(demographicsId, req.body.yearValues)
+  var demographyId = req.params.demographyId;
+  controller.updateYearValues(demographyId, req.body.yearValues)
     .then(() => res.sendStatus(200))
-    .catch(errors.logError(`Failed to update year-values of demographics ${req. params.id}`))
+    .catch(errors.logError(`Failed to update year-values of demographics ${demographyId}`))
     .catch(errors.handleError(res));
 }

@@ -17,7 +17,8 @@ export default angular.module('admin', [])
         content: ContentResource => ContentResource.getContent(),
         indicators: IndicatorResource => IndicatorResource.getIndicators(),
         categories: CategoryResource => CategoryResource.getCategories(),
-        publications: PublicationResource => PublicationResource.getPublications()
+        publications: PublicationResource => PublicationResource.getPublications(),
+        demographics: DemographyResource => DemographyResource.getDemographics()
       }
     });
 });

@@ -1,3 +1,63 @@
-<md-dialog aria-label="" ng-cloak>
+<md-dialog aria-label="{{vm.title}}" style="min-width:30%">
+  <md-toolbar>
+    <div class="md-toolbar-tools">
+      <h2>Update Demography</h2>
+    </div>
+  </md-toolbar>
 
+  <md-dialog-content style="max-width:800px;max-height:810px; " class="dialog_content">
+    <div flex class="year_container" style="padding-right:0;padding-left:0;" ng-repeat="pair in vm.pairs track by $index">
+      <div layout="row">
+        <md-input-container class="md-block">
+          <label>წელი</label>
+          <input type="text" ng-model="pair.year" readonly>
+        </md-input-container>
+
+        <div style="margin-top: 30px;" flex="5" class="text-center">
+          <i class="fa fa-angle-double-right"></i>
+        </div>
+
+        <md-input-container style="padding-bottom:0" flex="20">
+          <label>მაჩვენებელი</label>
+          <input type="number" ng-model="pair.value" readonly>
+        </md-input-container>
+
+        <md-button ng-click="vm.removePair($index, pair); $event.preventDefault()" class="md-fab md-mini md-primary" aria-label="Edit">
+          <i class="fa fa-trash-o"></i>
+        </md-button>
+      </div>
+      <span flex></span>
+    </div>
+
+
+    <div flex class="year_container" style="padding-right:0;padding-left:0;">
+      <div layout="row">
+        <md-input-container class="md-block">
+          <label>წელი</label>
+          <md-select ng-model="vm.pair.year">
+            <md-option ng-repeat="year in vm.years" value="{{year}}">{{year}}</md-option>
+          </md-select>
+        </md-input-container>
+
+        <div style="margin-top: 30px;" flex="5" class="text-center">
+          <i class="fa fa-angle-double-right"></i>
+        </div>
+
+        <md-input-container style="padding-bottom:0" flex="20">
+          <label>მაჩვენებელი</label>
+          <input type="number" ng-model="vm.pair.value">
+        </md-input-container>
+
+        <md-button ng-click="vm.addPair(); $event.preventDefault()" ng-disabled="!vm.pair.year || (vm.pair.value == undefined)" class="md-fab md-mini md-primary" aria-label="Add">
+          <i class="fa fa-plus"></i>
+        </md-button>
+      </div>
+      <span flex></span>
+    </div>
+
+  </md-dialog-content>
+  <div class="md-actions" layout="row">
+    <md-button ng-click="vm.save()" class="md-raised md-primary" style="margin-right:20px;" >Save</md-button>
+  </div>
 </md-dialog>
+

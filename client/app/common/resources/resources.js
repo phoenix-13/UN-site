@@ -5,6 +5,7 @@ import ImageResource from './image.resource';
 import IndicatorResource from './indicator.resource';
 import CategoryResource from './category.resource';
 import PublicationResource from './publication.resource';
+import DemographyResource from './demography.resource';
 
 export default angular
   .module('resources', [])
@@ -12,4 +13,5 @@ export default angular
   .factory('ImageResource', ImageResource)
   .factory('CategoryResource', CategoryResource)
   .factory('PublicationResource', PublicationResource)
+  .factory('DemographyResource', DemographyResource)
   .factory('IndicatorResource', IndicatorResource);
