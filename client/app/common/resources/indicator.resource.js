@@ -4,7 +4,7 @@ export default Restangular => {
   'ngInject';
 
   return {
-    getIndicators: () => Restangular.one('indicators').get(),
+    getIndicatorsLimited: offset => Restangular.one('indicators', 'page').one('', offset).get(),
     addIndicator: data => Restangular.one('indicators', '').post('', data),
     updateIndicator: (indicatorId, data) => Restangular.one('indicators', indicatorId).post('', data),
     removeIndicator: indicatorId => Restangular.one('indicators', indicatorId).remove()

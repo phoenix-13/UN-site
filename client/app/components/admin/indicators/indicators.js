@@ -8,9 +8,12 @@ export default angular.module('admin.indicators', [])
 .config($stateProvider => {
   $stateProvider
     .state('admin.indicators', {
-      url: '/indicators',
+      url: '/indicators/:pageIndex',
       template,
       controller,
       controllerAs: 'vm',
+      resolve: {
+        indicators: (IndicatorResource, $stateParams) => IndicatorResource.getIndicatorsLimited(($stateParams.pageIndex -1) * 10)
+      }
     });
 });

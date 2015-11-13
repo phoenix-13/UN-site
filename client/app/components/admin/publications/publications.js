@@ -8,9 +8,12 @@ export default angular.module('admin.publications', [])
 .config($stateProvider => {
   $stateProvider
     .state('admin.publications', {
-      url: '/publications',
+      url: '/publications/:pageIndex',
       template,
       controller,
       controllerAs: 'vm',
+      resolve: {
+        publications: (PublicationResource, $stateParams) => PublicationResource.getPublicationsLimited(($stateParams.pageIndex -1) * 10)
+      }
     });
 });

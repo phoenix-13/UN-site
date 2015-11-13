@@ -1,30 +1,31 @@
 'use strict';
 
 export default class {
-  constructor(Toast, IndicatorResource, indicatorModal, confirmModal, indicators, categories) {
+  constructor($state, $stateParams, Toast, IndicatorResource, indicatorModal, confirmModal, indicators, categories) {
     'ngInject';
+    this.$state = $state;
     this.Toast = Toast;
     this.IndicatorResource = IndicatorResource;
     this.indicatorModal = indicatorModal;
     this.confirmModal = confirmModal;
-    this.indicators = indicators;
     this.categories = categories;
-    this.currentPage = 1;
-    this.numItemsInPage = 10;
-    this.pagesMaxSize = 10;
-    this.pageChanged();
+
+    this.indicators = indicators.items;
+    this.numTotal = indicators.numTotal;
+    this.pageIndex = $stateParams.pageIndex;
+    this.maxSize = 10;
   }
 
-  pageChanged() {
-    this.pageIndicators = this.indicators.slice((this.currentPage - 1) * this.numItemsInPage, this.currentPage * this.numItemsInPage);
+  loadPage() {
+    this.$state.go('admin.indicators', {pageIndex: this.pageIndex});
   }
 
   openAddIndicatorModal(targetEvent) {
     this.indicatorModal.open(targetEvent, this.categories)
       .then(indicator => this.IndicatorResource.addIndicator({indicator}))
       .then(indicator => {
-        this.indicators.push(indicator)
         this.Toast.show('Indicator Added Successfully!');
+        this.$state.reload();
       });
   }
 
@@ -43,8 +44,8 @@ export default class {
     this.confirmModal.open(targetEvent)
       .then(() => this.IndicatorResource.removeIndicator(indicator._id))
       .then(() => {
-        this.indicators.splice(index, 1);
         this.Toast.show('Indicator Removed Successfully!');
+        this.$state.reload();
       });
   }
 }

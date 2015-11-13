@@ -15,7 +15,7 @@
 
 <md-content class="md-padding">
   <md-list ng-cloak>
-    <md-list-item class="md-3-line indicators_list_item" ng-repeat="indicator in vm.pageIndicators track by $index">
+    <md-list-item class="md-3-line indicators_list_item" ng-repeat="indicator in vm.indicators track by $index">
       <div class="md-list-item-text">
         <h3>{{indicator.title.geo}}</h3>
         <span layout="column">
@@ -34,5 +34,13 @@
       </div>
     </md-list-item>
   </md-list>
-  <uib-pagination ng-change="vm.pageChanged()" total-items="vm.indicators.length" ng-model="vm.currentPage" max-size="vm.pagesMaxSize" class="pagination-sm" boundary-links="true" rotate="false"></uib-pagination>
+  <uib-pagination
+    ng-change="vm.loadPage()"
+    total-items="vm.numTotal"
+    ng-model="vm.pageIndex"
+    max-size="vm.maxSize"
+    class="pagination-sm"
+    boundary-links="true"
+    rotate="false">
+  </uib-pagination>
 </md-content>

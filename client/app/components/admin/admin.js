@@ -15,9 +15,7 @@ export default angular.module('admin', [])
       abstract: true,
       resolve: {
         content: ContentResource => ContentResource.getContent(),
-        indicators: IndicatorResource => IndicatorResource.getIndicators(),
         categories: CategoryResource => CategoryResource.getCategories(),
-        publications: PublicationResource => PublicationResource.getPublications(),
         demographics: DemographyResource => DemographyResource.getDemographics()
       }
     });
