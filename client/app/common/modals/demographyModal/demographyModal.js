@@ -12,6 +12,7 @@ export default class {
   open(targetEvent, demography) {
     return this.$mdDialog.show({
       controller($mdDialog) {
+        this.title = `Update "${demography.region.eng}" Demography`;
         this.pairs = demography.values;
         this.years = getUnUsedYears(this.pairs);
         this.pair = {};

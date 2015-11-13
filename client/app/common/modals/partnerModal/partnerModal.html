@@ -20,12 +20,17 @@
           <input ng-model="vm.partner.link">
         </md-input-container>
       </div>
-      <div layout layout-sm="column">
-        <div ng-if="vm.partner.image" class="thumbnail" style="margin-bottom:0; width:25%">
+      <div ng-if="!vm.partner.image" layout layout-sm="column">
+        <md-input-container>
+          <md-button ng-click="vm.openGallery()" class="md-raised md-primary">Upload Photo</md-button>
+        </md-input-container>
+      </div>
+      <div ng-if="vm.partner.image" layout layout-sm="column">
+        <div class="thumbnail" style="margin-bottom:0; width:25%">
           <img ng-src="{{vm.partner.image}}">
         </div>
         <md-input-container>
-          <md-button ng-click="vm.openGallery()" class="md-raised md-primary">Upload photo</md-button>
+          <md-button ng-click="vm.openGallery()" class="md-raised md-primary">Change Photo</md-button>
         </md-input-container>
       </div>
     </md-content>
