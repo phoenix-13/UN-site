@@ -22,7 +22,7 @@ function seedContent() {
       geo: 'ახალგაზრდობის ინდექსი',
       eng: 'youth index'
     },
-    image: 'http://pre00.deviantart.net/d929/th/pre/i/2012/332/2/5/phoenix_by_darkheroic-d5g7m4m.png',
+    image: 'http://www.tsitsikammacrystal.co.za/system/images/W1siZiIsIjIwMTIvMDUvMTEvMDkvMjkvNTUvMjYvbmF0dXJlX2Jhbm5lci5qcGciXSxbInAiLCJ0aHVtYiIsIjkwMHgzNzAjYyJdXQ/nature_banner.jpg',
     link: 'https://www.youtube.com/watch?v=HgzGwKwLmgM'
   };
   var contacts = {
@@ -89,22 +89,21 @@ function seedIndicators() {
     .then(() => Category.getAll())
     .then(categories => {
       var indicators = generateIndicators(categories);
-      console.log(indicators.length);
       return Indicators.create(indicators);
     });
 }
 
 function generateIndicators(categories) {
-  return _.flatten(categories.map(category => {
-    return _.range(100).map(() => getIndicator(category._id))
+  return _.flatten(categories.map((category, categoryIndex) => {
+    return _.range(100).map((elem, elemIndex) => getIndicator(categoryIndex * 100 + elemIndex + 1, category._id))
   }));
 }
 
-function getIndicator(categoryId) {
+function getIndicator(index, categoryId) {
   return {
     title: {
-      geo: 'Lorem Ipsum საბეჭდი და ტიპოგრაფიული ',
-      eng: 'Lorem Ipsum is simply!',
+      geo: `${index} Lorem Ipsum საბეჭდი და ტიპოგრაფიული `,
+      eng: `${index} Lorem Ipsum is simply!`,
     },
     content: {
       geo: `<p>Lorem Ipsum საბეჭდი და ტიპოგრაფიული ინდუსტრიის უშინაარსო ტექსტია. იგი სტანდარტად 1500-იანი წლებიდან იქცა, როდესაც უცნობმა მბეჭდავმა ამწყობ დაზგაზე წიგნის საცდელი ეგზემპლარი დაბეჭდა. მისი ტექსტი არამარტო 5 საუკუნის მანძილზე შემორჩა, არამედ მან დღემდე, ელექტრონული ტიპოგრაფიის დრომდეც უცვლელად მოაღწია. განსაკუთრებული პოპულარობა მას 1960-იან წლებში გამოსულმა Letraset-ის ცნობილმა ტრაფარეტებმა მოუტანა, უფრო მოგვიანებით კი — Aldus PageMaker-ის ტიპის საგამომცემლო პროგრამებმა, რომლებშიც Lorem Ipsum-ის სხვადასხვა ვერსიები იყო ჩაშენებული.</p>`,
@@ -132,16 +131,16 @@ function seedPublications() {
 }
 
 function generatePublications(categories) {
-  return _.flatten(categories.map(category => {
-    return _.range(100).map(() => getPublication(category._id))
+  return _.flatten(categories.map((category, categoryIndex) => {
+    return _.range(100).map((elem, elemIndex) => getPublication(100 * categoryIndex + elemIndex + 1, category._id))
   }));
 }
 
-function getPublication(categoryId) {
+function getPublication(index, categoryId) {
   return {
     title: {
-      geo: 'Lorem Ipsum საბეჭდი და ტიპოგრაფიული ',
-      eng: 'Lorem Ipsum is simply!',
+      geo: `${index} Lorem Ipsum საბეჭდი და ტიპოგრაფიული `,
+      eng: `${index} Lorem Ipsum is simply!`,
     },
     content: {
       geo: `<p>Lorem Ipsum საბეჭდი და ტიპოგრაფიული ინდუსტრიის უშინაარსო ტექსტია. იგი სტანდარტად 1500-იანი წლებიდან იქცა, როდესაც უცნობმა მბეჭდავმა ამწყობ დაზგაზე წიგნის საცდელი ეგზემპლარი დაბეჭდა. მისი ტექსტი არამარტო 5 საუკუნის მანძილზე შემორჩა, არამედ მან დღემდე, ელექტრონული ტიპოგრაფიის დრომდეც უცვლელად მოაღწია. განსაკუთრებული პოპულარობა მას 1960-იან წლებში გამოსულმა Letraset-ის ცნობილმა ტრაფარეტებმა მოუტანა, უფრო მოგვიანებით კი — Aldus PageMaker-ის ტიპის საგამომცემლო პროგრამებმა, რომლებშიც Lorem Ipsum-ის სხვადასხვა ვერსიები იყო ჩაშენებული.</p>`,
