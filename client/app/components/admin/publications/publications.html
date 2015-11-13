@@ -1,31 +1,46 @@
-<div>
-  <md-button ng-click="vm.openAddPublicationModal($event)" class="md-fab md-fab-bottom-right md-primary" style="position:fixed;" aria-label="Add">
-    <i class="fa fa-plus"></i>
-    <md-tooltip md-direction="left">
-      Add new
-    </md-tooltip>
-  </md-button>
-
-  <md-content class="md-padding">
-    <md-list ng-cloak>
-      <md-list-item class="md-3-line" ng-repeat="publication in vm.publications track by $index">
-        <div class="md-list-item-text">
-          <h3>{{publication.title.geo}}</h3>
-        <span layout="column">
-          <span flex>
-            <p ng-bind-html="publication.content.geo"></p>
-          </span>
-          <span flex>
-            <md-button class="md-fab md-mini md-primary" ng-click="vm.openUpdatePublicationModal($event, publication)" aria-label="Edit">
-              <i class="fa fa-pencil-square-o"></i>
-            </md-button>
-            <md-button class="md-fab md-mini md-primary" ng-click="vm.openRemovePublicationModal($event, publication, $index)" aria-label="Edit">
-              <i class="fa fa-trash-o"></i>
-            </md-button>
-          </span>
-        </span>
-        </div>
-      </md-list-item>
-    </md-list>
-  </md-content>
+<div layout layout-sm="column">
+  <div flex></div>
+  <div>
+    <h3>Publications</h3>
+  </div>
+  <div flex></div>
 </div>
+
+<md-button ng-click="vm.openAddPublicationModal($event)" class="md-fab md-fab-bottom-right md-primary" style="position:fixed;" aria-label="Add">
+  <i class="fa fa-plus"></i>
+  <md-tooltip md-direction="left">
+    Add new
+  </md-tooltip>
+</md-button>
+
+<md-content class="md-padding">
+  <md-list ng-cloak>
+    <md-list-item class="md-3-line" ng-repeat="publication in vm.pagePublications track by $index">
+      <div class="md-list-item-text">
+        <h3>{{publication.title.geo}}</h3>
+      <span layout="column">
+        <span flex>
+          <p ng-bind-html="publication.content.geo"></p>
+        </span>
+        <span flex>
+          <md-button class="md-fab md-mini md-primary" ng-click="vm.openUpdatePublicationModal($event, publication)" aria-label="Edit">
+            <i class="fa fa-pencil-square-o"></i>
+          </md-button>
+          <md-button class="md-fab md-mini md-primary" ng-click="vm.openRemovePublicationModal($event, publication, $index)" aria-label="Edit">
+            <i class="fa fa-trash-o"></i>
+          </md-button>
+        </span>
+      </span>
+      </div>
+    </md-list-item>
+  </md-list>
+  <uib-pagination
+    ng-change="vm.pageChanged()"
+    total-items="vm.publications.length"
+    ng-model="vm.currentPage"
+    max-size="vm.pagesMaxSize"
+    class="pagination-sm"
+    boundary-links="true"
+    rotate="false">
+  </uib-pagination>
+</md-content>

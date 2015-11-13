@@ -9,6 +9,14 @@ export default class {
     this.confirmModal = confirmModal;
     this.publications = publications;
     this.categories = categories;
+    this.currentPage = 1;
+    this.numItemsInPage = 10;
+    this.pagesMaxSize = 10;
+    this.pageChanged();
+  }
+
+  pageChanged() {
+    this.pagePublications = this.publications.slice((this.currentPage - 1) * this.numItemsInPage, this.currentPage * this.numItemsInPage);
   }
 
   openAddPublicationModal(targetEvent) {
