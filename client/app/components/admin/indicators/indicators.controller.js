@@ -9,6 +9,15 @@ export default class {
     this.confirmModal = confirmModal;
     this.indicators = indicators;
     this.categories = categories;
+    this.currentPage = 1;
+    this.pagesMaxSize = 10;
+    this.pageChanged();
+  }
+
+  pageChanged() {
+    var numItemsInPage = 10;
+    console.log(this.currentPage);
+    this.pageIndicators = this.indicators.slice((this.currentPage - 1) * numItemsInPage, this.currentPage * numItemsInPage);
   }
 
   openAddIndicatorModal(targetEvent) {

@@ -5,6 +5,7 @@
   </div>
   <div flex></div>
 </div>
+
 <md-button ng-click="vm.openAddIndicatorModal($event)" class="md-fab md-fab-bottom-right md-primary" style="position:fixed;" aria-label="Add">
   <i class="fa fa-plus"></i>
   <md-tooltip md-direction="left">
@@ -14,7 +15,7 @@
 
 <md-content class="md-padding">
   <md-list ng-cloak>
-    <md-list-item class="md-3-line indicators_list_item" ng-repeat="indicator in vm.indicators track by $index">
+    <md-list-item class="md-3-line indicators_list_item" ng-repeat="indicator in vm.pageIndicators track by $index">
       <div class="md-list-item-text">
         <h3>{{indicator.title.geo}}</h3>
         <span layout="column">
@@ -33,4 +34,5 @@
       </div>
     </md-list-item>
   </md-list>
+  <uib-pagination ng-change="vm.pageChanged()" total-items="vm.indicators.length" ng-model="vm.currentPage" max-size="vm.pagesMaxSize" class="pagination-sm" boundary-links="true" rotate="false"></uib-pagination>
 </md-content>

@@ -4,11 +4,15 @@ var _ = require('lodash');
 var Content = require('../api/content/content.dao');
 var Category = require('../api/category/category.dao');
 var Demographics = require('../api/demographics/demographics.dao');
+var Indicators = require('../api/indicator/indicator.dao');
+var Publications = require('../api/publication/publication.dao');
 
 module.exports = function () {
-  seedContent();
-  seedCategories();
-  seedDemographics();
+  seedContent()
+    .then(() => seedCategories())
+    .then(() => seedDemographics())
+    .then(() => seedIndicators())
+    .then(() => seedPublications());
 };
 
 function seedContent() {
@@ -41,7 +45,7 @@ function seedContent() {
     contacts
   };
 
-  Content.removeAll().then(() => Content.create(content));
+  return Content.removeAll().then(() => Content.create(content));
 }
 
 function seedCategories() {
@@ -50,7 +54,7 @@ function seedCategories() {
   var category2 = bilingCategory('ჯანმრთელობა', 'health');
   var category3 = bilingCategory('განათლება, დასაქმება და მობილობა', 'Education, Employment and Mobility');
 
-  Category.removeAll().then(() => Category.create(category0, category1, category2, category3));
+  return Category.removeAll().then(() => Category.create(category0, category1, category2, category3));
 }
 
 function bilingCategory(titleGeo, titleEng) {
@@ -73,9 +77,79 @@ function seedDemographics() {
     bilingDemographics('კახეთი', 'Kakheti')
   ];
 
-  Demographics.removeAll().then(() => Demographics.create(demographicsArr));
+  return Demographics.removeAll().then(() => Demographics.create(demographicsArr));
 }
 
 function bilingDemographics(regionGeo, regionEng) {
   return { region: { geo: regionGeo, eng: regionEng } };
 }
+
+function seedIndicators() {
+  return Indicators.removeAll()
+    .then(() => Category.getAll())
+    .then(categories => {
+      var indicators = generateIndicators(categories);
+      console.log(indicators.length);
+      return Indicators.create(indicators);
+    });
+}
+
+function generateIndicators(categories) {
+  return _.flatten(categories.map(category => {
+    return _.range(100).map(() => getIndicator(category._id))
+  }));
+}
+
+function getIndicator(categoryId) {
+  return {
+    title: {
+      geo: 'Lorem Ipsum საბეჭდი და ტიპოგრაფიული ',
+      eng: 'Lorem Ipsum is simply!',
+    },
+    content: {
+      geo: `<p>Lorem Ipsum საბეჭდი და ტიპოგრაფიული ინდუსტრიის უშინაარსო ტექსტია. იგი სტანდარტად 1500-იანი წლებიდან იქცა, როდესაც უცნობმა მბეჭდავმა ამწყობ დაზგაზე წიგნის საცდელი ეგზემპლარი დაბეჭდა. მისი ტექსტი არამარტო 5 საუკუნის მანძილზე შემორჩა, არამედ მან დღემდე, ელექტრონული ტიპოგრაფიის დრომდეც უცვლელად მოაღწია. განსაკუთრებული პოპულარობა მას 1960-იან წლებში გამოსულმა Letraset-ის ცნობილმა ტრაფარეტებმა მოუტანა, უფრო მოგვიანებით კი — Aldus PageMaker-ის ტიპის საგამომცემლო პროგრამებმა, რომლებშიც Lorem Ipsum-ის სხვადასხვა ვერსიები იყო ჩაშენებული.</p>`,
+      eng: `<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>`
+    },
+    date: Date.now(),
+    category: categoryId,
+    values: [
+      {year: 2009, value: 4},
+      {year: 2011, value: 6},
+      {year: 2013, value: 5},
+      {year: 2016, value: 7},
+      {year: 2017, value: 12},
+    ]
+  }
+}
+
+function seedPublications() {
+  return Publications.removeAll()
+    .then(() => Category.getAll())
+    .then(categories => {
+      var publications = generatePublications(categories);
+      return Publications.create(publications);
+    });
+}
+
+function generatePublications(categories) {
+  return _.flatten(categories.map(category => {
+    return _.range(100).map(() => getPublication(category._id))
+  }));
+}
+
+function getPublication(categoryId) {
+  return {
+    title: {
+      geo: 'Lorem Ipsum საბეჭდი და ტიპოგრაფიული ',
+      eng: 'Lorem Ipsum is simply!',
+    },
+    content: {
+      geo: `<p>Lorem Ipsum საბეჭდი და ტიპოგრაფიული ინდუსტრიის უშინაარსო ტექსტია. იგი სტანდარტად 1500-იანი წლებიდან იქცა, როდესაც უცნობმა მბეჭდავმა ამწყობ დაზგაზე წიგნის საცდელი ეგზემპლარი დაბეჭდა. მისი ტექსტი არამარტო 5 საუკუნის მანძილზე შემორჩა, არამედ მან დღემდე, ელექტრონული ტიპოგრაფიის დრომდეც უცვლელად მოაღწია. განსაკუთრებული პოპულარობა მას 1960-იან წლებში გამოსულმა Letraset-ის ცნობილმა ტრაფარეტებმა მოუტანა, უფრო მოგვიანებით კი — Aldus PageMaker-ის ტიპის საგამომცემლო პროგრამებმა, რომლებშიც Lorem Ipsum-ის სხვადასხვა ვერსიები იყო ჩაშენებული.</p>`,
+      eng: `<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>`
+    },
+    date: Date.now(),
+    category: categoryId
+  }
+}
+
+
