@@ -6,6 +6,7 @@ import IndicatorResource from './indicator.resource';
 import CategoryResource from './category.resource';
 import PublicationResource from './publication.resource';
 import DemographyResource from './demography.resource';
+import ArticleResource from './article.resource';
 
 export default angular
   .module('resources', [])
@@ -14,4 +15,5 @@ export default angular
   .factory('CategoryResource', CategoryResource)
   .factory('PublicationResource', PublicationResource)
   .factory('DemographyResource', DemographyResource)
+  .factory('ArticleResource', ArticleResource)
   .factory('IndicatorResource', IndicatorResource);

@@ -15,9 +15,21 @@
           <label>article name</label>
           <input ng-model="vm.slide.title.eng">
         </md-input-container>
+      </div>
+      <div layout layout-sm="column">
         <md-input-container flex>
-          <label>article URL</label>
-          <input ng-model="vm.slide.link">
+          <md-autocomplete
+            md-items="article in vm.searchArticles()"
+            md-search-text="vm.searchText"
+            md-selected-item="vm.selectedArticle"
+            md-item-text="article.title.geo">
+            <md-item-template>
+              <span md-highlight-text="vm.searchText">{{article.title.geo}}</span>
+            </md-item-template>
+            <md-not-found>
+              No matches found.
+            </md-not-found>
+          </md-autocomplete>
         </md-input-container>
       </div>
       <div ng-if="!vm.slide.image" layout layout-sm="column">

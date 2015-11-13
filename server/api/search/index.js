@@ -1,15 +1,15 @@
 'use strict';
 
 var express = require('express');
-var controller = require('./indicator.controller');
+var controller = require('./search.controller');
 var searchConstants = require('./search.constants');
 // var authService = require('../../utils/auth.service');
 var errors = require('../../errors');
 
 var router = express.Router();
 
-router.get('/autocompleteAdmin/:searchQuery', autocompleteAdmin);
-router.get('/autocompleteMain/:searchQuery', autocompleteMain);
+router.get('/admin/:searchQuery', autocompleteAdmin);
+router.get('/main/:searchQuery', autocompleteMain);
 
 module.exports = router;
 

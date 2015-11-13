@@ -31,16 +31,24 @@ var bilingAddressSchema = Joi.object().keys({
   eng: addressSchema
 }).required();
 
+var refSchema = Joi.object().keys({
+  _id: Joi.string().required(),
+  type: Joi.string().required().empty(''),
+  title: Joi.string().required().empty('')
+});
+
 var featuredItemSchema = Joi.object().keys({
   title: bilingTitleSchema,
-  link: Joi.string().required().empty('')
+  ref: refSchema
+  // link: Joi.string().required().empty('')
 });
 
 var featuredSchema = Joi.array().items(featuredItemSchema).required();
 var slideSchema = Joi.object().keys({
   title: bilingTitleSchema,
   image: Joi.string().required(),
-  link: Joi.string().required().empty('')
+  ref: refSchema
+  // link: Joi.string().required().empty('')
 }).required();
 var bannerSchema = Joi.object().keys({
   title: bilingTitleSchema,

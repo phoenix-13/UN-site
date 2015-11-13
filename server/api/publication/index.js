@@ -17,7 +17,7 @@ router.delete('/:publicationId', remove);
 module.exports = router;
 
 function getById(req, res) {
-  var publicationId = req.params.id;
+  var publicationId = req.params.publicationId;
   controller.getById(publicationId)
     .then(publication => res.json(publication))
     .catch(errors.logError(`Failed to load publication ${publicationId}`))

@@ -12,7 +12,11 @@ module.exports = {
 function parseFeatured(featured) {
   var res = [];
   for (let item of featured) {
-    let current = { title: biling(item.title), link: item.link };
+    let current = {
+      title: biling(item.title),
+      ref: ref(item)
+      // link: item.link
+    };
     res.push(current);
   }
   return res;
@@ -22,7 +26,8 @@ function parseSlide(slide) {
   return {
     title: biling(slide.title),
     image: slide.image,
-    link: slide.link
+    ref: ref(slide)
+    // link: slide.link
   };
 }
 
@@ -64,4 +69,12 @@ function biling(value) {
     geo: value.geo,
     eng: value.eng
   };
+}
+
+function ref(value) {
+  return {
+    _id: value.ref._id,
+    type: value.ref.type,
+    title: value.ref.title
+  }
 }

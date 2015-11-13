@@ -4,7 +4,7 @@ export default Restangular => {
   'ngInject';
 
   return {
-    getPublications: () => Restangular.one('publications').get(),
+    getPublicationsLimited: offset => Restangular.one('publications', 'page').one('', offset).get(),
     addPublication: data => Restangular.one('publications', '').post('', data),
     updatePublication: (publicationId, data) => Restangular.one('publications', publicationId).post('', data),
     removePublication: publicationId => Restangular.one('publications', publicationId).remove()

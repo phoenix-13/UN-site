@@ -13,9 +13,21 @@ export default class {
     var defaultSlide = {title: {eng: '', geo: ''}};
 
     return this.$mdDialog.show({
-      controller($mdDialog, galleryModal, Toast) {
+      controller($q, $mdDialog, galleryModal, Toast, ArticleResource) {
         this.slide = slide || defaultSlide;
         this.title = (slide) ? 'Update Slide' : 'Add Slide';
+
+        this.searchArticles = () => {
+          if (this.searchText && this.searchText.length > 3) {
+            var deferred = $q.defer();
+            ArticleResource.searchAdminArticles(this.searchText)
+              .then(articles => parseArticles(articles))
+              .then(parsedArticles => deferred.resolve(parsedArticles));
+            return deferred.promise;
+          } else {
+            return [];
+          }
+        };
 
         this.openGallery = () => {
           galleryModal.open()
@@ -23,7 +35,8 @@ export default class {
         };
 
         this.save = () => {
-          if (this.slide.image && this.slide.link) {
+          if (this.slide.image && this.selectedArticle) {
+            this.slide.link = `${this.selectedArticle.type}/${this.selectedArticle._id}`
             $mdDialog.hide(this.slide);
           } else {
             Toast.show('Image And Link Should Be Provided!');
@@ -31,6 +44,21 @@ export default class {
         };
 
         this.cancel = () => $mdDialog.cancel();
+
+        function parseArticles(articles) {
+          var parsedArticles = [];
+          articles.indicators.items.forEach(indicator => parsedArticles.push(getArticle(indicator, 'indicators')));
+          articles.publications.items.forEach(publication => parsedArticles.push(getArticle(publication, 'publications')));
+          return parsedArticles;
+        }
+
+        function getArticle(article, type) {
+          return {
+            type: type,
+            title: article.title,
+            _id: article._id
+          }
+        }
       },
       controllerAs: 'vm',
       template,
