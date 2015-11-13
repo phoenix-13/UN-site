@@ -15,10 +15,9 @@ var all = {
 
   seedDB: false,
 
-  tokenExpireTimeInSeconds: 60 * 24 * 30 * 1000,
-
-  secrets: {
-    session: new ObjectId().toString()
+  session: {
+    expireTimeInSeconds: 60 * 24 * 30 * 1000,
+    secret: 'un-site-secret'
   },
 
   mongo: {

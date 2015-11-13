@@ -2,7 +2,7 @@
 
 var encryption = require('../encryption');
 
-describe('encryption', () => {
+describe.only('encryption', () => {
   describe('compareHash', () => {
     it('hash should be equal of data\'s hash', (done) => {
       var data = 'data';

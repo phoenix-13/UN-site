@@ -1,28 +1,28 @@
 'use strict';
 
 var compose = require('composable-middleware');
-var config = require('../config/environment');
+var session = require('../config/environment').session;
 var expressJwt = require('express-jwt');
-var validateJwt = expressJwt({secret: config.secrets.session});
 var jwt = require('jsonwebtoken');
+var validateJwt = expressJwt({secret: session.secret});
 
 module.exports = {
-  signToken,
-  isAuthenticated,
+  verifyToken,
+  signToken
 };
 
-function isAuthenticated() {
-  console.log('is authen')
+function verifyToken() {
   return compose().use(validateJwt)
     .use(function (err, req, res, next) {
       if (err.name === 'UnauthorizedError') {
-        res.json({role: 'guest'});
+        return res.json({role: 'guest'});
       } else {
-        next(err);
+        return next(err);
       }
     });
 }
 
 function signToken(tokenData) {
-  return jwt.sign(tokenData, config.secrets.session, {expiresIn: config.tokenExpireTimeInSeconds});
+  return jwt.sign(tokenData, session.secret , {expiresIn: session.expireTimeInSeconds});
 }
+

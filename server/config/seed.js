@@ -4,15 +4,17 @@ var _ = require('lodash');
 var Content = require('../api/content/content.dao');
 var Category = require('../api/category/category.dao');
 var Demographics = require('../api/demographics/demographics.dao');
-var Indicators = require('../api/indicator/indicator.dao');
-var Publications = require('../api/publication/publication.dao');
+var Indicator = require('../api/indicator/indicator.dao');
+var Publication = require('../api/publication/publication.dao');
+var Admin = require('../api/admin/admin.dao');
 
 module.exports = function () {
-  seedContent()
+  seedAdmins()
     .then(() => seedCategories())
     .then(() => seedDemographics())
     .then(() => seedIndicators())
-    .then(() => seedPublications());
+    .then(() => seedPublications())
+    .then(() => seedContent());
 };
 
 function seedContent() {
@@ -85,11 +87,11 @@ function bilingDemographics(regionGeo, regionEng) {
 }
 
 function seedIndicators() {
-  return Indicators.removeAll()
+  return Indicator.removeAll()
     .then(() => Category.getAll())
     .then(categories => {
       var indicators = generateIndicators(categories);
-      return Indicators.create(indicators);
+      return Indicator.create(indicators);
     });
 }
 
@@ -122,11 +124,11 @@ function getIndicator(index, categoryId) {
 }
 
 function seedPublications() {
-  return Publications.removeAll()
+  return Publication.removeAll()
     .then(() => Category.getAll())
     .then(categories => {
       var publications = generatePublications(categories);
-      return Publications.create(publications);
+      return Publication.create(publications);
     });
 }
 
@@ -151,4 +153,7 @@ function getPublication(index, categoryId) {
   }
 }
 
-
+var seedAdmins = function () {
+  return Admin.removeAll()
+    .then(() => Admin.create('name', 'password'));
+}

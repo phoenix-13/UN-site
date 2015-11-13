@@ -12,7 +12,7 @@ function generateHash(data) {
   return new Q(function (resolve, reject) {
     encrypt.hash(data, null, null, function (err, hash) {
       if (err) {
-        reject(err);
+        reject(new Error(`could not hash data ${data}`));
       } else {
         resolve(hash);
       }
@@ -26,8 +26,9 @@ function compareHash(data, hash) {
       if (res) {
         resolve(data);
       } else {
-        reject(new Error('hash not valid'));
+        reject(new Error(`hash of ${data} does not equla ${hash}`));
       }
     });
   });
 }
+

@@ -1,12 +1,17 @@
 'use strict';
 
 export default class {
-  constructor($mdSidenav) {
+  constructor($state, $mdSidenav, Auth) {
     'ngInject';
+    this.$state = $state;
     this.$mdSidenav = $mdSidenav;
+    this.Auth = Auth;
   }
 
-  toggleNavbar() {
-    this.$mdSidenav('left').toggle();
+  toggleNavbar = () => this.$mdSidenav('left').toggle();
+
+  logout = () => {
+    this.$state.go('main.login');
+    this.Auth.logout();
   }
 }

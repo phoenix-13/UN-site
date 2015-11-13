@@ -1,42 +1,27 @@
-<main layout="row">
-  <md-content class="login_wrapper" flex flex-offset="33">
-<!--     <div class="logo_wrapp md-padding" layout="row">
-      <div class="unfpa_logo logo">
-        <img src="assets/images/unfpa-logo.png">
-      </div>
-      <div flex></div>
-      <div class="minstry_logo logo">
-        <img src="assets/images/sportis-saministro1.png">
-      </div>
-    </div> -->
-    <div class="login_inputs_wrapp  md-padding">
-      <div class="login_background"></div>
-      <div class="login_inputs md-padding">
-        <form name="loginForm">
-          <md-input-container class="login_input">
-            <label>მომხმარებელი (ელ. ფოსტა)</label>
-            <input
-              type="email"
-              aria-label="email">
-          </md-input-container>
-          <md-input-container class="login_input">
-            <label>პაროლი</label>
-            <input
-              type="password"
-              aria-label="password">
-          </md-input-container>
-          <div class="md-padding">
-            <md-button
-              type="submit"
-              class="md-raised md-primary main_title_bold"
-              aria-label="log in">
-              შესვლა
-            </md-button>
-          </div>
-        </form>
-      </div>
-    </div>
-  </md-content>
-  <div flex></div>
-</main>
+<form
+  name="form"
+  class="form-signin"
+  ng-submit="vm.login(form)"
+  novalidate>
+  <input
+    type="text"
+    class="form-control"
+    placeholder="Name"
+    ng-model="vm.admin.name"
+    autofocus>
+  <input
+    type="password"
+    class="form-control"
+    placeholder="Password"
+    ng-model="vm.admin.password">
+  <p
+    ng-if="vm.showError"
+    class="form-group has-error text-danger">
+    Incorrect name or password
+  </p>
+  <input
+    type="submit"
+    class="btn btn-lg btn-primary btn-block"
+    value="Log In">
+</form>
 
