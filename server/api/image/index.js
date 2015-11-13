@@ -9,17 +9,10 @@ var errors = require('../../errors');
 var router = express.Router();
 
 router.get('', getAll);
-router.post('', multer(multerOptions), createImage);
-router.delete('/:imageId', removeImage);
+router.post('', multer(multerOptions), create);
+router.delete('/:imageId', remove);
 
 module.exports = router;
-
-function createImage(req, res) {
-  controller.create(req.imageName)
-    .then(createdImage => res.json(createdImage))
-    .catch(errors.logError('Failed to create image: ' + req.imageName))
-    .catch(errors.handleError(res));
-}
 
 function getAll(req, res) {
   controller.getAll()
@@ -28,9 +21,16 @@ function getAll(req, res) {
     .catch(errors.handleError(res));
 }
 
-function removeImage(req, res) {
+function create(req, res) {
+  controller.create(req.imageName)
+    .then(createdImage => res.json(createdImage))
+    .catch(errors.logError('Failed to create image: ' + req.imageName))
+    .catch(errors.handleError(res));
+}
+
+function remove(req, res) {
   controller.remove(req.params.imageId)
-    .then(images => res.json(images))
-    .catch(errors.logError(`Failed to remove images with id: ${req.params.imageId}`))
+    .then(() => res.sendStatus(200))
+    .catch(errors.logError(`Failed to remove image with id: ${req.params.imageId}`))
     .catch(errors.handleError(res));
 }

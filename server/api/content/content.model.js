@@ -8,15 +8,23 @@ var bilingStringSchema = {
   eng: { type: String, default: '' }
 };
 
+var refSchema = {
+  _id: Schema.Types.ObjectId,
+  type: { type: String, default: '' },
+  title: { type: String, default: '' }
+}
+
 var featuredSchema = {
   title: bilingStringSchema,
-  link: { type: String, default: '' },
+  ref: refSchema
+  // link: { type: String, default: '' },
 };
 
 var slideSchema = {
   title: bilingStringSchema,
   image: { type: String, default: '' },
-  link: { type: String, default: '' }
+  ref: refSchema
+  // link: { type: String, default: '' }
 };
 
 var bannerSchema = {
