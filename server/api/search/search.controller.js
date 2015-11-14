@@ -1,20 +1,22 @@
 'use strict';
 
 var Search = require('./search.dao');
-var searchConstants = require('./search.constants');
+var searchParser = require('./search.parser');
 
 module.exports = {
-  autocomplete
+  autocomplete,
+  search
 };
 
 function autocomplete(searchQuery, limit) {
-  searchQuery = manageSearchQueryLength(searchQuery);
+  searchQuery = searchParser.parseQueryParam(searchQuery);
   return Search.autocomplete(searchQuery, limit);
 }
 
-function manageSearchQueryLength(searchQuery) {
-  if (searchQuery.length > searchConstants.searchQueryMaxLength)
-    return searchQuery.substring(0, searchConstants.searchQueryMaxLength - 1);
-
-  return searchQuery;
+function search(searchQuery, categoryId, year, offset, limit) {
+  searchQuery = searchParser.parseQueryParam(searchQuery);
+  categoryId = searchParser.parseCategoryId(categoryId);
+  year = searchParser.parseQueryParam(year);
+  offset = searchParser.parseQueryParam(offset);
+  return Search.search(searchQuery, categoryId, year, offset, limit);
 }
