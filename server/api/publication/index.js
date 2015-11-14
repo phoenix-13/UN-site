@@ -10,6 +10,7 @@ var router = express.Router();
 router.get('', getAll);
 router.get('/:publicationId', getById);
 router.get('/page/:pageIndex', getLimited);
+router.get('/latest', getLatest);
 router.post('', create);
 router.post('/:publicationId', update);
 router.delete('/:publicationId', remove);
@@ -36,6 +37,13 @@ function getLimited(req, res) {
   controller.getLimited(pageIndex)
     .then(publications => res.json(publications))
     .catch(errors.logError(`Failed to load limited publications from pageIndex: ${pageIndex}`))
+    .catch(errors.handleError(res));
+}
+
+function getLatest(req, res) {
+  controller.getLatest()
+    .then(publications => res.json(publications))
+    .catch(errors.logError(`Failed to load latest publications`))
     .catch(errors.handleError(res));
 }
 

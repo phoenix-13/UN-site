@@ -11,6 +11,7 @@ module.exports = {
   getById,
   getAll,
   getLimited,
+  getLatest,
   create,
   update,
   remove
@@ -36,6 +37,10 @@ function getLimited(offset) {
       res.numTotal = numTotal;
       return Q.resolve(res);
     })
+}
+
+function getLatest() {
+  return Publication.getLimited(0, publicationConstants.latestLimit);
 }
 
 function create(publication) {
