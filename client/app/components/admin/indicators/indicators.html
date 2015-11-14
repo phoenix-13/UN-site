@@ -1,7 +1,7 @@
 <div layout layout-sm="column">
   <div flex></div>
   <div>
-    <h3>Indicators</h3>
+    <h3 class="title_text">ინდიკატორები</h3>
   </div>
   <div flex></div>
 </div>
@@ -16,31 +16,44 @@
 <md-content class="md-padding">
   <md-list ng-cloak>
     <md-list-item class="md-3-line indicators_list_item" ng-repeat="indicator in vm.indicators track by $index">
+
       <div class="md-list-item-text">
-        <h3>{{indicator.title.geo}}</h3>
-        <span layout="column">
-          <span flex>
-            <p ng-bind-html="indicator.content.geo"></p>
+        <div layout="row">
+          <span layout="column" flex>
+            <h3 class="title_text text_bold">{{indicator.title.geo}}</h3>
+            <span>
+              <p ng-bind-html="indicator.content.geo"></p>
+            </span>
           </span>
-          <span flex>
-            <md-button class="md-fab md-mini md-primary" ng-click="vm.openUpdateIndicatorModal($event, indicator)" aria-label="Edit">
-              <i class="fa fa-pencil-square-o"></i>
-            </md-button>
-            <md-button class="md-fab md-mini md-primary" ng-click="vm.openRemoveIndicatorModal($event, indicator, $index)" aria-label="Edit">
-              <i class="fa fa-trash-o"></i>
-            </md-button>
+          <span layout="column" flex="10">
+            <span flex>
+              <md-button class="md-fab md-mini md-primary" ng-click="vm.openUpdateIndicatorModal($event, indicator)" aria-label="Edit">
+                <i class="fa fa-pencil-square-o"></i>
+              </md-button>
+              <md-button class="md-fab md-mini md-primary" ng-click="vm.openRemoveIndicatorModal($event, indicator, $index)" aria-label="Edit">
+                <i class="fa fa-trash-o"></i>
+              </md-button>
+            </span>
           </span>
-        </span>
+        </div>
+        <hr>
       </div>
     </md-list-item>
   </md-list>
-  <uib-pagination
-    ng-change="vm.loadPage()"
-    total-items="vm.numTotal"
-    ng-model="vm.pageIndex"
-    max-size="vm.maxSize"
-    class="pagination-sm"
-    boundary-links="true"
-    rotate="false">
-  </uib-pagination>
+
+  <div layout="row">
+    <div flex></div>
+    <div>
+      <uib-pagination
+        ng-change="vm.loadPage()"
+        total-items="vm.numTotal"
+        ng-model="vm.pageIndex"
+        max-size="vm.maxSize"
+        class="pagination-sm"
+        boundary-links="true"
+        rotate="false">
+      </uib-pagination>
+    </div>
+    <div flex></div>
+  </div>
 </md-content>

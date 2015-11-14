@@ -10,7 +10,7 @@
       </div>
     </md-toolbar>
 
-    <md-dialog-content style="max-width:800px;max-height:810px; " class="dialog_content">
+    <md-dialog-content style="max-height:810px; " class="dialog_content md-padding indicator_dialog">
       <md-tabs md-dynamic-height md-border-bottom class="page_tabs">
         <md-tab label="ქართული">
           <div layout layout-sm="column">
@@ -26,7 +26,7 @@
 
           <div flex class="year_container" style="padding-right:0;padding-left:0;" ng-repeat="pair in vm.indicator.values track by $index">
             <div layout="row">
-              <md-input-container class="md-block">
+              <md-input-container class="md-block" flex="25">
                 <label>წელი</label>
                 <input type="text" ng-model="pair.year" readonly>
               </md-input-container>
@@ -35,7 +35,7 @@
                 <i class="fa fa-angle-double-right"></i>
               </div>
 
-              <md-input-container style="padding-bottom:0" flex="20">
+              <md-input-container style="padding-bottom:0" flex="25">
                 <label>მაჩვენებელი</label>
                 <input type="number" ng-model="pair.value" readonly>
               </md-input-container>
@@ -49,7 +49,7 @@
 
           <div flex class="year_container" style="padding-right:0;padding-left:0;">
             <div layout="row">
-              <md-input-container class="md-block">
+              <md-input-container class="md-block" flex="25">
                 <label>წელი</label>
                 <md-select ng-model="vm.pair.year">
                   <md-option ng-repeat="year in vm.years" value="{{year}}">{{year}}</md-option>
@@ -60,7 +60,7 @@
                 <i class="fa fa-angle-double-right"></i>
               </div>
 
-              <md-input-container style="padding-bottom:0" flex="20">
+              <md-input-container style="padding-bottom:0" flex="25">
                 <label>მაჩვენებელი</label>
                 <input type="number" ng-model="vm.pair.value">
               </md-input-container>
@@ -72,24 +72,24 @@
             <span flex></span>
           </div>
 
-          <md-content class="md-padding">
+          <md-content>
             <md-input-container flex>
               <label>სათაური</label>
               <input type="text" name="titleGeo" ng-model="vm.indicator.title.geo" required>
             </md-input-container>
-            <div>
+            <div class="text_editor_wrapp">
               <input type="text" name="contentGeo" ng-model="vm.indicator.content.geo" required hidden>
               <text-angular ng-model="vm.indicator.content.geo"></text-angular>
             </div>
           </md-content>
         </md-tab>
         <md-tab label="English">
-          <md-content class="md-padding">
+          <md-content >
             <md-input-container flex>
               <label>title</label>
               <input type="text" name="titleEng" ng-model="vm.indicator.title.eng" required>
             </md-input-container>
-            <div>
+            <div class="text_editor_wrapp">
               <input type="text" name="contentEng" ng-model="vm.indicator.content.eng" required hidden>
               <text-angular ng-model="vm.indicator.content.eng"></text-angular>
             </div>
