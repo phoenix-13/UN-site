@@ -10,7 +10,8 @@ Q.promisifyAll(Publication);
 Q.promisifyAll(Publication.prototype);
 
 module.exports = {
-  autocomplete
+  autocomplete,
+  search
 };
 
 function autocomplete(queryString, limit) {
@@ -26,10 +27,27 @@ function autocomplete(queryString, limit) {
       Publication.find().or(orQuery).select(selectFields).limit(limit).execAsync(),
       Publication.find().or(orQuery).countAsync()
     ])
-    .then(result => Q.resolve(getAutocompleteResultObject.apply(null, result)));
+    .then(result => Q.resolve(getResultObject.apply(null, result)));
 }
 
-function getAutocompleteResultObject(indicators, indicatorsNum, publications, publicationsNum) {
+function search(queryString, categoryId, year, offset, limit) {
+  var orQuery = [
+    { 'title.geo': { $regex: queryString, $options: 'gi' } },
+    { 'title.eng': { $regex: queryString, $options: 'gi' } }
+  ];
+  var indFindQuery = getIndFindQueryObject(categoryId);
+  var pubFindQuery = getPubFindQueryObject(categoryId, year);
+
+  return Q.all([
+      Indicator.find(indFindQuery).or(orQuery).skip(offset).limit(limit).execAsync(),
+      Indicator.find(indFindQuery).or(orQuery).countAsync(),
+      Publication.find(pubFindQuery).or(orQuery).skip(offset).limit(limit).execAsync(),
+      Publication.find(pubFindQuery).or(orQuery).countAsync()
+    ])
+    .then(result => Q.resolve(getResultObject.apply(null, result)));
+}
+
+function getResultObject(indicators, indicatorsNum, publications, publicationsNum) {
   return {
     indicators: {
       items: indicators,
@@ -40,4 +58,18 @@ function getAutocompleteResultObject(indicators, indicatorsNum, publications, pu
       numTotal: publicationsNum
     }
   };
+}
+
+function getIndFindQueryObject(categoryId) {
+  if (categoryId)
+    return { category: categoryId };
+  else
+    return {};
+}
+
+function getPubFindQueryObject(categoryId, year) {
+  var res = {};
+  if (categoryId) res.category = categoryId;
+  if (year) res.year = year;
+  return res;
 }

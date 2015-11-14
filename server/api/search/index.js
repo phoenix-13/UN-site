@@ -10,6 +10,7 @@ var router = express.Router();
 
 router.get('/admin/:searchQuery', autocompleteAdmin);
 router.get('/main/:searchQuery', autocompleteMain);
+router.get('', search);
 
 module.exports = router;
 
@@ -28,5 +29,17 @@ function autocompleteMain(req, res) {
   controller.autocomplete(searchQuery, limit)
     .then(result => res.json(result))
     .catch(errors.logError(`Failed to load main autocomplete results of '${searchQuery}'`))
+    .catch(errors.handleError(res));
+}
+
+function search(req, res) {
+  var searchQuery = req.query.searchQuery;
+  var categoryId = req.query.categoryId;
+  var year = req.query.year;
+  var offset = req.query.offset;
+  var limit = searchConstants.searchLimit;
+  controller.search(searchQuery, categoryId, year, offset, limit)
+    .then(result => res.json(result))
+    .catch(errors.logError(`Failed to load search results of params: ${searchQuery}, ${categoryId}, ${year}., ${offset}`))
     .catch(errors.handleError(res));
 }
