@@ -15,8 +15,6 @@ module.exports = {
   getLimited,
   create,
   update,
-  // addYearValue,
-  // removeYearValue,
   remove,
   countAll,
   removeAll
@@ -35,6 +33,7 @@ function getLimited(offset, limit) {
   return Indicator
     .find()
     .select('')
+    .sort({ '_id': -1 })
     .skip(offset)
     .limit(limit)
     .execAsync();
@@ -49,16 +48,6 @@ function update(id, doc) {
   return Indicator.updateAsync({ _id: id }, doc)
     .then(assertDBUpdateAffected);
 }
-
-// function addYearValue(id, yearValue) {
-//   return Indicator.updateAsync({ _id: id }, { $push: { 'values': yearValue } })
-//     .then(assertDBUpdateAffected);
-// }
-
-// function removeYearValue(id, yearValueId) {
-//   return Indicator.updateAsync({ _id: id }, { $pull: { 'values': { _id: yearValueId } } })
-//     .then(assertDBUpdateAffected);
-// }
 
 function remove(id) {
   return Indicator.removeAsync({ _id: id })
