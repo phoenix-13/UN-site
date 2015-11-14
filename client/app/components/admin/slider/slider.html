@@ -17,15 +17,15 @@
     </md-input-container>
     <md-input-container flex>
       <label>სტატიის სახელი</label>
-      <input type="text" ng-model="slide.title.geo">
+      <input type="text" ng-model="slide.title.geo" readonly>
     </md-input-container>
     <md-input-container flex>
       <label>Article Name</label>
-      <input type="text" ng-model="slide.title.eng">
+      <input type="text" ng-model="slide.title.eng" readonly>
     </md-input-container>
     <md-input-container flex>
       <label>Article Url</label>
-      <input type="text" ng-model="slide.link">
+      <input type="text" ng-model="slide.ref.title" readonly>
     </md-input-container>
     <md-input-container style="width:10%">
       <md-button ng-click="vm.openRemoveSlideModal($event, slide, $index)" class="md-raised md-primary">Remove</md-button>

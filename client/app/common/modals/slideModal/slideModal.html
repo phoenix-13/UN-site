@@ -22,9 +22,9 @@
             md-items="article in vm.searchArticles()"
             md-search-text="vm.searchText"
             md-selected-item="vm.selectedArticle"
-            md-item-text="article.title.geo">
+            md-item-text="article.title">
             <md-item-template>
-              <span md-highlight-text="vm.searchText">{{article.title.geo}}</span>
+              <span md-highlight-text="vm.searchText">{{article.title}}</span>
             </md-item-template>
             <md-not-found>
               No matches found.

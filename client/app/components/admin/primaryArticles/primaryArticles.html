@@ -12,8 +12,18 @@
       <input type="text" ng-model="primaryArticle.title.eng">
     </md-input-container>
     <md-input-container flex>
-      <label>Article Url</label>
-      <input type="text" ng-model="primaryArticle.link">
+      <md-autocomplete
+        md-items="article in vm.searchArticles(primaryArticle.searchText)"
+        md-search-text="primaryArticle.searchText"
+        md-selected-item="primaryArticle.selectedArticle"
+        md-item-text="article.title">
+        <md-item-template>
+          <span md-highlight-text="primaryArticle.searchText">{{article.title}}</span>
+        </md-item-template>
+        <md-not-found>
+          No matches found.
+        </md-not-found>
+      </md-autocomplete>
     </md-input-container>
   </div>
   <div layout layout-sm="column" style="margin-top: 10px">

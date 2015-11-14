@@ -10,12 +10,15 @@ export default class {
   }
 
   open(targetEvent, slide) {
-    var defaultSlide = {title: {eng: '', geo: ''}};
 
     return this.$mdDialog.show({
       controller($q, $mdDialog, galleryModal, Toast, ArticleResource) {
-        this.slide = slide || defaultSlide;
-        this.title = (slide) ? 'Update Slide' : 'Add Slide';
+        this.slide = {title: {eng: '', geo: ''}};
+        this.title = 'Add slide';
+        if (slide) {
+          this.slide = slide;
+          this.selectedArticle = slide.ref;
+        }
 
         this.searchArticles = () => {
           if (this.searchText && this.searchText.length > 3) {
@@ -36,7 +39,7 @@ export default class {
 
         this.save = () => {
           if (this.slide.image && this.selectedArticle) {
-            this.slide.link = `${this.selectedArticle.type}/${this.selectedArticle._id}`
+            this.slide.ref = this.selectedArticle;
             $mdDialog.hide(this.slide);
           } else {
             Toast.show('Image And Link Should Be Provided!');
@@ -55,7 +58,7 @@ export default class {
         function getArticle(article, type) {
           return {
             type: type,
-            title: article.title,
+            title: article.title.geo,
             _id: article._id
           }
         }

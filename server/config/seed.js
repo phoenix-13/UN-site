@@ -1,6 +1,7 @@
 'use strict';
 
 var _ = require('lodash');
+var ObjectId = require('mongoose').Types.ObjectId;
 var Content = require('../api/content/content.dao');
 var Category = require('../api/category/category.dao');
 var Demographics = require('../api/demographics/demographics.dao');
@@ -18,7 +19,9 @@ module.exports = function () {
 };
 
 function seedContent() {
-  var featured = _.range(6).map(function() { return {}; });
+  var featured = _.range(6).map(() => {
+    return {ref: {_id: new ObjectId()}}
+  });
   var banner = {
     title: {
       geo: 'ახალგაზრდობის ინდექსი',
