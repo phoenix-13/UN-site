@@ -67,26 +67,81 @@ function bilingCategory(titleGeo, titleEng) {
 }
 
 function seedDemographics() {
-  var demographicsArr = [
-    bilingDemographics('აფხაზეთი', 'Apkhazeti'),
-    bilingDemographics('სამეგრელი - ზემო სვანეთი', 'Samegrelo - Zemo Svaneti'),
-    bilingDemographics('გურია', 'Guria'),
-    bilingDemographics('აჭარა', 'Ajaria'),
-    bilingDemographics('რაჭა - ლეჩხუმი და ქვემო სვანეთი', 'Racha - Lechkhumi and Kvemo Svaneti'),
-    bilingDemographics('იმერეთი', 'Imereti'),
-    bilingDemographics('სამცხე - ჯავახეთი', 'Samtskhe - Javakheti'),
-    bilingDemographics('შიდა ქართლი', 'Shida - Kartli'),
-    bilingDemographics('ქვემო ქართლი', 'Kvemo - Kartli'),
-    bilingDemographics('თბილისი', 'Tbilisi'),
-    bilingDemographics('მცხეთა - მთიანეთი', 'Mtskheta - Mtianeti'),
-    bilingDemographics('კახეთი', 'Kakheti')
-  ];
+  var demographicsArr = [{
+    region: {
+      geo: 'აფხაზეთი',
+      eng: 'Apkhazeti'
+    },
+    values: [{year: 2009, value: 100100}, {year: 2014, value: 100100}, {year: 2018, value: 100100}]
+  }, {
+    region: {
+      geo: 'სამეგრელი - ზემო სვანეთი',
+      eng: 'Samegrelo - Zemo Svaneti'
+    },
+    values: [{year: 2009, value: 10000}, {year: 2012, value: 100100}, {year: 2013, value: 100100}]
+  }, {
+    region: {
+      geo: 'გურია',
+      eng: 'Guria'
+    },
+    values: [{year: 2010, value: 10000}, {year: 2012, value: 100100}, {year: 2014, value: 100100}]
+  }, {
+    region: {
+      geo: 'აჭარა',
+      eng: 'Ajaria'
+    },
+    values: [{year: 2009, value: 10000}, {year: 2012, value: 100100}, {year: 2015, value: 100100}]
+  }, {
+    region: {
+      geo: 'რაჭა - ლეჩხუმი და ქვემო სვანეთი',
+      eng: 'Racha - Lechkhumi and Kvemo Svaneti'
+    },
+    values: [{year: 2014, value: 10000}, {year: 2017, value: 100100}, {year: 2019, value: 100100}]
+  }, {
+    region: {
+      geo: 'იმერეთი',
+      eng: 'Imereti'
+    },
+    values: [{year: 2013, value: 10000}, {year: 2014, value: 100100}, {year: 2016, value: 100100}]
+  }, {
+    region: {
+      geo: 'სამცხე - ჯავახეთი',
+      eng: 'Samtskhe - Javakheti'
+    },
+    values: [{year: 2015, value: 10000}, {year: 2017, value: 100100}, {year: 2019, value: 100100}]
+  }, {
+    region: {
+      geo: 'შიდა ქართლი',
+      eng: 'Shida - Kartli'
+    },
+    values: [{year: 2013, value: 10000}, {year: 2015, value: 100100}, {year: 2016, value: 100100}]
+  }, {
+    region: {
+      geo: 'ქვემო ქართლი',
+      eng: 'Kvemo - Kartli'
+    },
+    values: [{year: 2010, value: 10000}, {year: 2011, value: 100100}, {year: 2013, value: 100100}]
+  }, {
+    region: {
+      geo: 'თბილისი',
+      eng: 'Tbilisi'
+    },
+    values: [{year: 2011, value: 10000}, {year: 2012, value: 100100}, {year: 2014, value: 100100}]
+  }, {
+    region: {
+      geo: 'მცხეთა - მთიანეთი',
+      eng: 'Mtskheta - Mtianeti'
+    },
+    values: [{year: 2014, value: 10000}, {year: 2015, value: 100100}, {year: 2017, value: 100100}]
+  }, {
+    region: {
+      geo: 'კახეთი',
+      eng: 'Kakheti'
+    },
+    values: [{year: 2011, value: 10000}, {year: 2013, value: 100100}, {year: 2016, value: 100100}]
+  }];
 
   return Demographics.removeAll().then(() => Demographics.create(demographicsArr));
-}
-
-function bilingDemographics(regionGeo, regionEng) {
-  return { region: { geo: regionGeo, eng: regionEng } };
 }
 
 function seedIndicators() {

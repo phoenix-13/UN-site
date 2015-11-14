@@ -8,9 +8,9 @@ var errors = require('../../errors');
 var router = express.Router();
 
 router.get('', getAll);
+router.get('/latest', getLatest);
 router.get('/:publicationId', getById);
 router.get('/page/:pageIndex', getLimited);
-router.get('/latest', getLatest);
 router.post('', create);
 router.post('/:publicationId', update);
 router.delete('/:publicationId', remove);

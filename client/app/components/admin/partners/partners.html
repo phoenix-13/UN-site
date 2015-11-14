@@ -25,15 +25,15 @@
     </md-input-container>
     <md-input-container flex>
       <label>სტატიის სახელი</label>
-      <input type="text" ng-model="partner.name.geo">
+      <input type="text" ng-model="partner.name.geo" readonly>
     </md-input-container>
     <md-input-container flex>
       <label>Article Name</label>
-      <input type="text" ng-model="partner.name.eng">
+      <input type="text" ng-model="partner.name.eng" readonly>
     </md-input-container>
     <md-input-container flex>
       <label>Article Url</label>
-      <input type="text" ng-model="partner.link">
+      <input type="text" ng-model="partner.link" readonly>
     </md-input-container>
     <md-input-container style="width:10%">
       <md-button ng-click="vm.openRemovePartnerModal($event, partner, $index)" class="md-raised md-primary">Remove</md-button>

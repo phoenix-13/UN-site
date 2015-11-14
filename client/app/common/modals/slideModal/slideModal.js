@@ -50,8 +50,12 @@ export default class {
 
         function parseArticles(articles) {
           var parsedArticles = [];
-          articles.indicators.items.forEach(indicator => parsedArticles.push(getArticle(indicator, 'indicators')));
-          articles.publications.items.forEach(publication => parsedArticles.push(getArticle(publication, 'publications')));
+          articles.indicators.items.forEach(indicator => {
+            parsedArticles.push(getArticle(indicator, 'indicator'));
+          });
+          articles.publications.items.forEach(publication => {
+            parsedArticles.push(getArticle(publication, 'publication'));
+          });
           return parsedArticles;
         }
 
