@@ -1,12 +1,22 @@
 'use strict';
 
 export default class {
-  constructor($timeout, content) {
+  constructor(Toast, $timeout, emailService, content) {
     'ngInject';
+    this.Toast = Toast;
     this.contacts = content.contacts;
+    this.emailService = emailService;
     this.location = content.contacts.coordinates;
     this.message = {};
     $timeout(() => this.initMap());
+  }
+
+  sendEmail(form) {
+    if (form.$valid) {
+      this.emailService.sendEmail(this.message)
+        .then(() => this.Toast.show('Email Sent Successfully!'))
+        .catch(() => this.Toast.show('Email Has Not Sent!'))
+    }
   }
 
   initMap() {
