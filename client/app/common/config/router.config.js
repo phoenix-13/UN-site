@@ -3,10 +3,9 @@
 export default ($urlRouterProvider, $locationProvider, $mdThemingProvider) => {
   'ngInject';
   $locationProvider.html5Mode(true).hashPrefix('!');
-  $urlRouterProvider.otherwise('/');
+  $urlRouterProvider.otherwise('/home');
+  $urlRouterProvider.when('', '/home');
   $urlRouterProvider.when('/', '/home');
   $urlRouterProvider.when('/admin', '/admin/landingPage');
-
-  $mdThemingProvider.theme('default')
-    .primaryPalette('blue-grey');
+  $urlRouterProvider.when('/admin/', '/admin/landingPage');
 };

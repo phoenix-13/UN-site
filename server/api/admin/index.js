@@ -25,6 +25,5 @@ function authenticate(req, res) {
 function me(req, res) {
   adminDao.getById(req.user.id)
     .then(admin => res.json(admin))
-    .catch(errors.logError(`Failed to get admin by id: ${req.user.id}`))
-    .catch(errors.handleError(res));
+    .catch(() => res.json({role: 'guest'}));
 }

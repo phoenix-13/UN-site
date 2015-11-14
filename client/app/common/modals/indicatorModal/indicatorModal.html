@@ -13,15 +13,18 @@
     <md-dialog-content style="max-height:810px; " class="dialog_content md-padding indicator_dialog">
       <md-tabs md-dynamic-height md-border-bottom class="page_tabs">
         <md-tab label="ქართული">
-          <div layout layout-sm="column">
-            <input type="text" name="category" ng-model="vm.indicator.category" required hidden>
-            <md-input-container style="width:60%">
-              <label>მიმართულება</label>
-              <md-select ng-model="vm.indicator.category">
-                <md-option value="{{category._id}}" ng-repeat="category in vm.categories track by $index">{{category.title.geo}}</md-option>
-              </md-select>
-            </md-input-container>
-            <md-datepicker ng-model="vm.indicator.date"></md-datepicker>
+          <div flex class="year_container" style="padding-right:0;padding-left:0;">
+            <div layout="row">
+              <input type="text" name="category" ng-model="vm.indicator.category" required hidden>
+              <md-input-container class="md-block" flex="25">
+                <label>მიმართულება</label>
+                <md-select ng-model="vm.indicator.category">
+                  <md-option value="{{category._id}}" ng-repeat="category in vm.categories track by $index">{{category.title.geo}}</md-option>
+                </md-select>
+              </md-input-container>
+              <md-datepicker style="margin-top: 15px;" flex="25" ng-model="vm.indicator.date"></md-datepicker>
+            </div>
+            <span flex></span>
           </div>
 
           <div flex class="year_container" style="padding-right:0;padding-left:0;" ng-repeat="pair in vm.indicator.values track by $index">

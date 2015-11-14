@@ -16,8 +16,8 @@
           <input ng-model="vm.slide.title.eng">
         </md-input-container>
       </div>
-      <div style="margin-top: 25px;margin-bottom: 20px;">
-        <md-input-container flex>
+      <div layout layout-sm="column">
+        <md-input-container flex style="margin-top: 20px;">
           <md-autocomplete
             md-items="article in vm.searchArticles()"
             md-search-text="vm.searchText"

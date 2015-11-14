@@ -16,13 +16,13 @@
         <md-tab label="ქართული">
           <div layout layout-sm="column">
             <input type="text" name="category" ng-model="vm.publication.category" required hidden>
-            <md-input-container style="width:60%">
+            <md-input-container style="width:40%">
               <label>მიმართულება</label>
               <md-select ng-model="vm.publication.category">
                 <md-option value="{{category._id}}" ng-repeat="category in vm.categories track by $index">{{category.title.geo}}</md-option>
               </md-select>
             </md-input-container>
-            <md-datepicker ng-model="vm.publication.date"></md-datepicker>
+            <md-datepicker style="margin-top: 15px; width: 40%;" ng-model="vm.publication.date"></md-datepicker>
           </div>
           <md-content>
             <md-input-container flex>
