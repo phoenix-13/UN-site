@@ -15,7 +15,6 @@ export default angular.module('main', [])
       resolve: {
         content: ContentResource => ContentResource.getContent(),
         categories: CategoryResource => CategoryResource.getCategories(),
-        demographics: DemographyResource => DemographyResource.getDemographics(),
         latestPublications: PublicationResource => PublicationResource.getLatestPublications()
       }
     });
