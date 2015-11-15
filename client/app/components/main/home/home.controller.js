@@ -12,10 +12,18 @@ export default class {
   }
 
   initOwlCarousel() {
+    //$("#owl2-slider").owlCarousel({
+    //  autoPlay: 5000,
+    //  singleItem: true,
+    //  navigation: false
+    //});
     $("#owl2-slider").owlCarousel({
-      autoPlay: 5000,
-      singleItem: true,
-      navigation: false
+      items:1,
+      loop:true,
+      margin:10,
+      autoplay:true,
+      autoplayTimeout:4000,
+      autoplayHoverPause:true
     });
   }
 }

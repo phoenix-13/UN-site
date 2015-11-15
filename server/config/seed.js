@@ -98,8 +98,9 @@ function seedCategories() {
   var category1 = bilingCategory('სპეციალური მხარდაჭერა და დაცვა', 'special support and protection');
   var category2 = bilingCategory('ჯანმრთელობა', 'health');
   var category3 = bilingCategory('განათლება, დასაქმება და მობილობა', 'Education, Employment and Mobility');
+  var category4 = bilingCategory('ახალგაზრდები და ოჯახი', 'children and family');
 
-  return Category.removeAll().then(() => Category.create(category0, category1, category2, category3));
+  return Category.removeAll().then(() => Category.create(category0, category1, category2, category3, category4));
 }
 
 function bilingCategory(titleGeo, titleEng) {
