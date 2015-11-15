@@ -7,17 +7,26 @@ export default class {
     this.demographics = demographics;
     this.indexValuesByYears();
     this.years = _.range(this.yearsDelta()).map((elem, index) => this.yearBounds.minYear + index);
-    this.selectedDemography = {lastValue: {region: {}}};
+    this.selectedDemography = {
+      region: {},
+      lastValue: {
+        region: {}
+      }
+    };
   }
 
   showDemographyInfo(event, demographyRegionName) {
-    //$('#selectedDemography').removeClass('hidden');
-    this.selectedDemography = this.demographics.filter(demography => demography.region.geo === demographyRegionName)[0];
-    //$('#selectedDemography').css({"top": event.pageY, "left": event.pageX});
+    if (this.selectedDemography.region.geo !== demographyRegionName) {
+      $('#selectedDemography').removeClass('hidden');
+      this.selectedDemography = this.demographics.filter(demography => demography.region.geo === demographyRegionName)[0];
+      $('#selectedDemography').css({"top": event.pageY + 20, "left": event.pageX - 50});
+    }
   }
 
-  hideDemographyInfo() {
-    //$('#selectedDemography').addClass('hidden');
+  hideDemographyInfo(demographyRegionName) {
+    if (this.selectedDemography.region.geo !== demographyRegionName) {
+      $('#selectedDemography').addClass('hidden');
+    }
   }
 
   getDemographicsYearBounds(demographics) {
