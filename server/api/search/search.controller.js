@@ -14,7 +14,7 @@ function autocomplete(searchQuery, limit) {
 }
 
 function search(searchQuery, categoryId, year, indicatorsOffset, publicationsOffset, limit) {
-  searchQuery = searchParser.parseQueryParam(searchQuery);
+  searchQuery = searchParser.parseSearchQuery(searchQuery);
   categoryId = searchParser.parseCategoryId(categoryId);
   year = searchParser.parseQueryParam(year);
   indicatorsOffset = searchParser.parseQueryParam(indicatorsOffset);

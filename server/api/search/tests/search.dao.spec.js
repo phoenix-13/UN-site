@@ -55,10 +55,6 @@ describe('Search.dao', () => {
           result.indicators.items.length.should.equal(limit);
           result.publications.items.length.should.equal(limit);
           done();
-        })
-        .catch(err => {
-          console.log(err);
-          done();
         });
     });
   });

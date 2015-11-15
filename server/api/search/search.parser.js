@@ -3,9 +3,14 @@
 var searchConstants = require('./search.constants');
 
 module.exports = {
+  parseSearchQuery,
   parseQueryParam,
   parseCategoryId
 };
+
+function parseSearchQuery(searchQuery) {
+  return (searchQuery) ? searchQuery : '';
+}
 
 function parseQueryParam(queryParam) {
   return (queryParam) ? manageQueryParamLength(queryParam) : queryParam;
