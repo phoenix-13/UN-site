@@ -1,88 +1,104 @@
-<div class="navbar_wrapper">
-  <div class="navbar_inner">
-    <div class="nav_logo">
-      <div class="logo title_text">
-        <span>
-          <a href="" ui-sref="main.home">
-            ახალგაზრდული პოლიტიკის მონიტორი
-          </a>
-        </span>
+<div>
+  <div class="navbar_wrapper">
+    <div class="navbar_inner">
+      <div class="nav_logo">
+        <div class="logo title_text">
+          <span>
+            <a href="" ui-sref="main.home">
+              ახალგაზრდული პოლიტიკის მონიტორი
+            </a>
+          </span>
+        </div>
+      </div>
+      <div class="navbar_buttons">
+        <div class="head">
+          <div class="lang">
+            <a href="">ENG</a>
+          </div>
+          <div class="lang">
+            <a href="" class="active">GEO</a>
+          </div>
+          <div class="icon_wrapp">
+            <a ui-sref="main.contact" href="">
+              <i class="fa fa-envelope-o"></i>
+            </a>
+            <a ui-sref="main.sitemap" href="">
+              <i class="fa fa-sitemap"></i>
+            </a>
+          </div>
+          <div class="search">
+            <div class="search_wrapper">
+              <div class="search_wrapper_autocomplete animated fadeIn hidden">
+                <div class="autocomplete_section">
+                  <div class="autocomplete_section_header">
+                    <div style="display: inline-block">ინდიკატორები - {{vm.indicators.numTotal}}</div>
+                    <div style="display: inline-block" ui-sref="main.publications">ყველა</div>
+                  </div>
+                  <div class="autocomplete_section_body">
+                    <div class="autucomplete_item" ng-repeat="indicator in vm.indicators.items">{{indicator.title.geo}}</div>
+                  </div>
+                </div>
+                <div class="autocomplete_section">
+                  <div class="autocomplete_section_header">
+                    <div style="display: inline-block">პუბლიკაციები - {{vm.publications.numTotal}}</div>
+                    <div style="display: inline-block">ყველა</div>
+                  </div>
+                  <div class="autocomplete_section_body">
+                    <div class="autucomplete_item" ng-repeat="publication in vm.publications.items">{{publication.title.geo}}</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <form>
+              <div class="search_input">
+                <input
+                  ng-model="vm.searchText"
+                  ng-change="vm.searchArticles(vm.searchText)"
+                  maxlength="{{vm.search.max}}"
+                  name="value"
+                  placeholder="ძიება"
+                  type="text">
+              </div>
+              <div>
+                <a href="">
+                  <i class="fa fa-search search_icon"></i>
+                </a>
+              </div>
+            </form>
+          </div>
+        </div>
+        <div class="navbar_navigation">
+          <ul class="menu title_text">
+            <li>
+              <a href="#" ui-sref="main.home">მთავარი</a>
+            </li>
+            <li>
+              <a href="#" ui-sref="main.about">ჩვენ შესახებ</a>
+            </li>
+            <li>
+              <a href="#" ui-sref="main.indicators">ინდიკატორები</a>
+            </li>
+            <li>
+              <a href="#" ui-sref="main.publications">პუბლიკაციები</a>
+            </li>
+          </ul>
+        </div>
       </div>
     </div>
-    <div class="navbar_buttons">
-      <div class="head">
-        <div class="lang">
-          <a href="">ENG</a>
-        </div>
-        <div class="lang">
-          <a href="" class="active">GEO</a>
-        </div>
-        <div class="icon_wrapp">
-          <a ui-sref="main.contact" href="">
-            <i class="fa fa-envelope-o"></i>
-          </a>
-          <a ui-sref="main.sitemap" href="">
-            <i class="fa fa-sitemap"></i>
-          </a>
-        </div>
-        <div class="search">
-          <div class="search_wrapper">
-            <div class="search_wrapper_autocomplete animated fadeIn hidden">
-              <div class="autocomplete_section">
-                <div class="autocomplete_section_header">
-                  <div style="display: inline-block">ინდიკატორები - {{vm.indicators.numTotal}}</div>
-                  <div style="display: inline-block" ui-sref="main.publications">ყველა</div>
-                </div>
-                <div class="autocomplete_section_body">
-                  <div class="autucomplete_item" ng-repeat="indicator in vm.indicators.items">{{indicator.title.geo}}</div>
-                </div>
-              </div>
-              <div class="autocomplete_section">
-                <div class="autocomplete_section_header">
-                  <div style="display: inline-block">პუბლიკაციები - {{vm.publications.numTotal}}</div>
-                  <div style="display: inline-block">ყველა</div>
-                </div>
-                <div class="autocomplete_section_body">
-                  <div class="autucomplete_item" ng-repeat="publication in vm.publications.items">{{publication.title.geo}}</div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <form>
-            <div class="search_input">
-              <input
-                ng-model="vm.searchText"
-                ng-change="vm.searchArticles(vm.searchText)"
-                maxlength="{{vm.search.max}}"
-                name="value"
-                placeholder="ძიება"
-                type="text">
-            </div>
-            <div>
-              <a href="">
-                <i class="fa fa-search search_icon"></i>
-              </a>
-            </div>
-          </form>
-        </div>
-      </div>
-      <div class="navbar_navigation">
-        <ul class="menu title_text">
-          <li>
-            <a href="#" ui-sref="main.home">მთავარი</a>
-          </li>
-          <li>
-            <a href="#" ui-sref="main.about">ჩვენ შესახებ</a>
-          </li>
-          <li>
-            <a href="#" ui-sref="main.indicators">ინდიკატორები</a>
-          </li>
-          <li>
-            <a href="#" ui-sref="main.publications">პუბლიკაციები</a>
-          </li>
-        </ul>
-      </div>
+  </div>
+  <div class="page_header_wrapp">
+    <div class="page_header" layout="row">
+      <span class="navigation">
+        <a ui-sref="main.home" href="">
+          მთავარი
+        </a>
+        <i class="fa fa-angle-right" style="padding-left:5px;padding-right:5px;"></i>
+        <a href="">
+          საიტის რუკა
+        </a>
+      </span>
+      <span flex></span>
     </div>
   </div>
 </div>
