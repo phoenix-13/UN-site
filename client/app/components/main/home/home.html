@@ -121,10 +121,15 @@
     </div>
 
     <div layout="row" class="slider_wrapper md-padding">
-      <div class="" style="width: 500px; max-height: 400px">
+      <div class="" style="width: 500px; max-height: 400px" layout="row">
         <div class="item">
           <a href="{{vm.banner.link}}" target="_blank">
             <img ng-src="{{vm.banner.image}}" alt="{{vm.banner.title.geo}}">
+          </a>
+        </div>
+        <div class="item">
+          <a href="" ui-sref="main.demographics" >
+            place map here
           </a>
         </div>
       </div>

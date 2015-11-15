@@ -1,60 +1,57 @@
-<nav class="navbar navbar-default main_page_navbar">
-  <div class="navbar_pad_color"></div>
-  <div>
-    <div layout="row">
-      <div flex="15"></div>
-      <div class="navbar-header" flex="25">
-        <a class="navbar-brand title_text" href="#" ui-sref="main.home">ახალგაზრდული პოლიტიკის მონიტორი</a>
+<div class="navbar_wrapper">
+  <div class="navbar_inner">
+    <div class="nav_logo">
+      <div class="logo title_text">
+        <span>
+          ახალგაზრდული პოლიტიკის მონიტორი
+        </span>
       </div>
-      <div flex="10"></div>
-      <div class="navbar_button_wrapp text-center" flex="35">
-        <div>
-          <span>
-            <a href="#">ENG</a>
-          </span>
-          <span>
-            <a href="#">GEO</a>
-          </span>
-          <span class="line_separator"></span>
-          <span>
-            <a ui-sref="main.contact" href="">
-              <i class="fa fa-envelope-o"></i>
-            </a>
-          </span>
-          <span>
-            <a ui-sref="main.sitemap" href="">
-              <i class="fa fa-sitemap"></i>
-            </a>
-          </span>
-          <span class="line_separator"></span>
-          <span style="margin-left:10px;">
-            <input type="text" class="search_container" placeholder="Search">
-          </span>
+    </div>
+    <div class="navbar_buttons">
+      <div class="head">
+        <div class="lang">
+          <a href="">ENG</a>
+        </div>
+        <div class="lang">
+          <a href="">GEO</a>
+        </div>
+        <div class="icon_wrapp">
+          <a ui-sref="main.contact" href="">
+            <i class="fa fa-envelope-o"></i>
+          </a>
+          <a ui-sref="main.sitemap" href="">
+            <i class="fa fa-sitemap"></i>
+          </a>
+        </div>
+        <div class="search">
+          <form>
+            <div class="search_input">
+              <input name="value" placeholder="ძიება" type="text">
+            </div>
+            <div>
+              <a href="">
+                <i class="fa fa-search" style="margin-top: 6px;"></i>
+              </a>
+            </div>
+          </form>
         </div>
       </div>
-      <div flex></div>
-    </div>
-  </div>
-  <div class="sub_navbar">
-    <div layout="row">
-      <div flex="50"></div>
-      <div class="text-center nav_buttons" flex="35">
-        <div layout="row" class="title_text">
-          <span flex>
+      <div class="navbar_navigation">
+        <ul class="menu title_text">
+          <li>
             <a href="#" ui-sref="main.home">მთავარი</a>
-          </span>
-          <span flex>
+          </li>
+          <li>
             <a href="#" ui-sref="main.about">ჩვენ შესახებ</a>
-          </span>
-          <span flex>
+          </li>
+          <li>
             <a href="#" ui-sref="main.indicators">ინდიკატორები</a>
-          </span>
-          <span flex>
+          </li>
+          <li>
             <a href="#" ui-sref="main.publications">პუბლიკაციები</a>
-          </span>
-        </div>
+          </li>
+        </ul>
       </div>
-      <div flex></div>
     </div>
   </div>
-</nav>
+</div>
