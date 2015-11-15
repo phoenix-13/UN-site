@@ -39,16 +39,15 @@ var refSchema = Joi.object().keys({
 
 var featuredItemSchema = Joi.object().keys({
   title: bilingTitleSchema,
-  ref: refSchema
-  // link: Joi.string().required().empty('')
+  ref: refSchema.required()
 });
 
 var featuredSchema = Joi.array().items(featuredItemSchema).required();
 var slideSchema = Joi.object().keys({
   title: bilingTitleSchema,
   image: Joi.string().required(),
-  ref: refSchema
-  // link: Joi.string().required().empty('')
+  ref: refSchema,
+  link: Joi.string()
 }).required();
 var bannerSchema = Joi.object().keys({
   title: bilingTitleSchema,

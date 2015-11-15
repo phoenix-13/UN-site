@@ -13,10 +13,11 @@ function autocomplete(searchQuery, limit) {
   return Search.autocomplete(searchQuery, limit);
 }
 
-function search(searchQuery, categoryId, year, offset, limit) {
+function search(searchQuery, categoryId, year, indicatorsOffset, publicationsOffset, limit) {
   searchQuery = searchParser.parseQueryParam(searchQuery);
   categoryId = searchParser.parseCategoryId(categoryId);
   year = searchParser.parseQueryParam(year);
-  offset = searchParser.parseQueryParam(offset);
-  return Search.search(searchQuery, categoryId, year, offset, limit);
+  indicatorsOffset = searchParser.parseQueryParam(indicatorsOffset);
+  publicationsOffset = searchParser.parseQueryParam(publicationsOffset);
+  return Search.search(searchQuery, categoryId, year, indicatorsOffset, publicationsOffset, limit);
 }

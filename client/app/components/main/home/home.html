@@ -36,7 +36,7 @@
           </div>
         </div>
         <div layout="row" class="slider_wrapper md-padding">
-          <div id="owl2-slider" class="" style="width: 500px; max-height: 400px">
+          <div id="owl2-slider" class="owl-carousel owl-theme" style="width: 500px; max-height: 400px">
             <div class="item" ng-repeat="slide in vm.slider">
               <a ui-sref="{{'main.' + slide.ref.type}}({id: slide.ref._id})">
                 <img ng-src="{{slide.image}}" alt="{{slide.title.geo}}">

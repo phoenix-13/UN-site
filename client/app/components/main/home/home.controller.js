@@ -12,10 +12,11 @@ export default class {
   }
 
   initOwlCarousel() {
-    $("#owl2-slider").owlCarousel({
-      autoPlay: 5000,
-      singleItem: true,
-      navigation: false
-    });
+    //$("#owl2-slider").owlCarousel({
+    //  autoPlay: 5000,
+    //  singleItem: true,
+    //  navigation: false
+    //});
+    $("#owl2-slider").owlCarousel({});
   }
 }
