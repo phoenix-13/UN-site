@@ -28,7 +28,7 @@
           </span>
           <span class="line_separator"></span>
           <span style="margin-left:10px;">
-            <input type="text" class="search_container" placeholder="Search">
+            <input type="text" class="search_container" ng-model="vm.searchText" ng-change="vm.searchArticles(vm.searchText)" placeholder="Search" maxlength="{{vm.search.max}}">
           </span>
         </div>
       </div>

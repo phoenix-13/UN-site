@@ -10,7 +10,7 @@ System.config({
   separateCSS: true,
 
   map: {
-    "OwlCarousel": "github:OwlFonk/OwlCarousel@1.3.2",
+    "OwlCarousel": "github:smashingboxes/OwlCarousel2@2.0.0-beta.3",
     "angular": "github:angular/bower-angular@1.4.7",
     "angular-animate": "github:angular/bower-angular-animate@1.4.7",
     "angular-bootstrap": "github:angular-ui/bootstrap-bower@0.14.3",
@@ -28,7 +28,6 @@ System.config({
     "font-awesome": "npm:font-awesome@4.4.0",
     "jquery": "github:components/jquery@2.1.4",
     "lodash": "github:lodash/lodash@3.10.1",
-    "owl-carousel": "github:OwlFonk/OwlCarousel@1.3.2",
     "restangular": "github:mgonto/restangular@1.5.1",
     "text": "github:systemjs/plugin-text@0.0.2",
     "textAngular": "github:fraywing/textAngular@1.4.6",
