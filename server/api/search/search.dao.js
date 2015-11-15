@@ -27,7 +27,7 @@ function autocomplete(queryString, limit) {
       Publication.find().or(orQuery).select(selectFields).limit(limit).execAsync(),
       Publication.find().or(orQuery).countAsync()
     ])
-    .then(result => Q.resolve(getResultObject.apply(null, result)));
+    .spread(getResultObject);
 }
 
 function search(queryString, categoryId, year, indicatorsOffset, publicationsOffset, limit) {
@@ -39,12 +39,12 @@ function search(queryString, categoryId, year, indicatorsOffset, publicationsOff
   var pubFindQuery = getPubFindQueryObject(categoryId, year);
 
   return Q.all([
-      Indicator.find(indFindQuery).or(orQuery).skip(indicatorsOffset).limit(limit).execAsync(),
+      Indicator.find(indFindQuery).or(orQuery).sort({ '_id': -1 }).skip(indicatorsOffset).limit(limit).execAsync(),
       Indicator.find(indFindQuery).or(orQuery).countAsync(),
-      Publication.find(pubFindQuery).or(orQuery).skip(publicationsOffset).limit(limit).execAsync(),
+      Publication.find(pubFindQuery).or(orQuery).sort({ '_id': -1 }).skip(publicationsOffset).limit(limit).execAsync(),
       Publication.find(pubFindQuery).or(orQuery).countAsync()
     ])
-    .then(result => Q.resolve(getResultObject.apply(null, result)));
+    .spread(getResultObject);
 }
 
 function getResultObject(indicators, indicatorsNum, publications, publicationsNum) {
