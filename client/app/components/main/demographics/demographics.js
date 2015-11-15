@@ -11,6 +11,9 @@ export default angular.module('main.demographics', [])
         url: 'demographics',
         template,
         controller,
-        controllerAs: 'vm'
+        controllerAs: 'vm',
+        resolve: {
+          demographics: DemographyResource => DemographyResource.getDemographics()
+        }
       });
   });
