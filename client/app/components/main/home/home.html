@@ -48,51 +48,75 @@
 
       <div flex="30" class="categories_wrapp title_text">
         <div layout="row" layout-wrap layout-fill ng-cloak>
-          <md-whiteframe class="md-whiteframe-1dp whiteframe" flex layout>
+          <md-whiteframe class="md-whiteframe-1dp whiteframe participation" flex layout>
             <a class="unstyled_link" ui-sref="main" href="" layout="row">
-              <span flex="20"><i class="fa fa-hand-paper-o fa-2x"></i></span>
-              <span flex>
-              მონაწილეობა
+              <span flex="20" class="category_image">
+                <img src="/assets/images/participation.png">
+
+
+              <!-- <i class="fa fa-hand-paper-o fa-2x"></i> -->
+              </span>
+              <span flex class="single_line_category">
+                მონაწილეობა
               </span>
             </a>
           </md-whiteframe>
         </div>
         <div layout="row" layout-wrap layout-fill ng-cloak>
-          <md-whiteframe class="md-whiteframe-1dp whiteframe" flex layout>
+          <md-whiteframe class="md-whiteframe-1dp whiteframe protection" flex layout>
             <a class="unstyled_link" ui-sref="main" href="" layout="row">
-              <span flex="20"><i class="fa fa-balance-scale fa-2x"></i></span>
-              <span flex>
-              სპეციალური მხარდაჭერა და დაცვა
+              <span flex="20" class="category_image">
+                <img src="/assets/images/scales.png">
+              <!-- <i class="fa fa-balance-scale fa-2x"></i> -->
+              </span>
+              <span flex class="double_line_category">
+                <p style="margin-bottom: 0">სპეციალური მხარდაჭერა</p>
+                <p>და დაცვა</p>
               </span>
             </a>
           </md-whiteframe>
         </div>
         <div layout="row" layout-wrap layout-fill ng-cloak>
-          <md-whiteframe class="md-whiteframe-1dp whiteframe" flex layout>
+          <md-whiteframe class="md-whiteframe-1dp whiteframe health" flex layout>
             <a class="unstyled_link" ui-sref="main" href="" layout="row">
-              <span flex="20"><i class="fa fa-heartbeat fa-2x"></i></span>
-              <span flex>
+              <span flex="20" class="category_image">
+                <img src="/assets/images/heart.png">
+
+                <!-- <i class="fa fa-heartbeat fa-2x"></i> -->
+
+                </span>
+              <span flex class="single_line_category">
               ჯანმრთელობა
               </span>
             </a>
           </md-whiteframe>
         </div>
         <div layout="row" layout-wrap layout-fill ng-cloak>
-          <md-whiteframe class="md-whiteframe-1dp whiteframe" flex layout>
-            <a class="unstyled_link" ui-sref="main.demographics" href="" layout="row">
-              <span flex="20"><i class="fa fa-child fa-2x"></i></span>
-              <span flex>
+          <md-whiteframe class="md-whiteframe-1dp whiteframe youth" flex layout>
+            <a class="unstyled_link" href="" layout="row">
+              <span flex="20" class="category_image">
+                <img src="/assets/images/family.png">
+
+                <!-- <i class="fa fa-child fa-2x"></i> -->
+
+                </span>
+              <span flex class="single_line_category">
               ახალგაზრდები და ოჯახი
               </span>
             </a>
           </md-whiteframe>
         </div>
         <div layout="row" layout-wrap layout-fill ng-cloak>
-          <md-whiteframe class="md-whiteframe-1dp whiteframe" flex layout>
+          <md-whiteframe class="md-whiteframe-1dp whiteframe education" flex layout>
             <a class="unstyled_link" ui-sref="main" href="" layout="row">
-              <span flex="20"><i class="fa fa-graduation-cap fa-2x"></i></span>
-              <span flex>
-              განათლება, დასაქმება და მობილობა
+              <span flex="20" class="category_image">
+                <img src="/assets/images/education.png" style="padding-top: 10px;">
+                <!-- <i class="fa fa-graduation-cap fa-2x"></i> -->
+
+                </span>
+              <span flex class="double_line_category">
+                <p style="margin-bottom: 0">განათლება, დასაქმება</p>
+                <p>და მობილობა</p>
               </span>
             </a>
           </md-whiteframe>
@@ -112,7 +136,7 @@
           <a ui-sref="main.publication({id: publication._id})" class="unstyled_link">
             <div class="md-list-item-text" layout="column" >
               <h3 class="title_text" style="font-size:1em">{{publication.title.geo}}</h3>
-              <p style="font-size:0.9em;" ng-bind-html="publication.content.geo"></p>
+              <p style="font-size:0.9em;" ng-bind-html="publication.content.geo" class="publication_text_part"></p>
               <p style="font-size:0.8em;">{{publication.date | date: 'yyyy-MM-dd': 'GMT+03:00'}}</p>
             </div>
           </a>

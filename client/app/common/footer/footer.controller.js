@@ -20,6 +20,10 @@ export default class {
     //  navigation:true,
     //  //navigationText: ["<i class='fa fa-angle-left fa-3x'></i>", "<i class='fa fa-angle-right fa-3x'></i>"]
     //});
-    $('#owl2-partners').owlCarousel();
+    $('#owl2-partners').owlCarousel({
+      items:7,
+      loop:true,
+      nav:true,
+    });
   }
 }

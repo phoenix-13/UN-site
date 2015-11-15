@@ -24,7 +24,29 @@
       ng-submit="vm.sendEmail(form)"
       name="form">
       <div layout="row" layout-wrap>
-        <div flex="33">
+
+        <div class="contact_inputs">
+          <h3>სახელი, გვარი</h3>
+          <input  name="person" type="text" ng-model="vm.message.person" required>
+          <h3>ელექტრონული ფოსტა</h3>
+          <input name="from" type="email" ng-model="vm.message.from" required>
+          <h3>თემა</h3>
+          <input name="theme" type="text" ng-model="vm.message.theme" required>
+        </div>
+        <div class="contact_note">
+          <h3>შეტყობინება</h3>
+          <textarea name="msg"></textarea>
+        </div>
+        <div flex="100">
+          <md-content layout="row" layout-sm="column">
+            <span flex></span>
+            <md-button type="submit" ng-disabled="form.$invalid" class="send_btn title_text">
+              <span class="title_text"> გაგზავნა</span>
+            </md-button>
+          </md-content>
+        </div>
+
+<!--         <div flex="33">
           <md-input-container>
             <label class="contact_label title_text">სახელი, გვარი</label>
             <input name="person" type="text" ng-model="vm.message.person" required>
@@ -53,7 +75,7 @@
             <span flex></span>
             <md-button type="submit" ng-disabled="form.$invalid" class="send_btn">გაგზავნა</md-button>
           </md-content>
-        </div>
+        </div> -->
       </div>
     </form>
   </div>
