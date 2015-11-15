@@ -30,7 +30,7 @@ function autocomplete(queryString, limit) {
     .then(result => Q.resolve(getResultObject.apply(null, result)));
 }
 
-function search(queryString, categoryId, year, offset, limit) {
+function search(queryString, categoryId, year, indicatorsOffset, publicationsOffset, limit) {
   var orQuery = [
     { 'title.geo': { $regex: queryString, $options: 'gi' } },
     { 'title.eng': { $regex: queryString, $options: 'gi' } }
@@ -39,9 +39,9 @@ function search(queryString, categoryId, year, offset, limit) {
   var pubFindQuery = getPubFindQueryObject(categoryId, year);
 
   return Q.all([
-      Indicator.find(indFindQuery).or(orQuery).skip(offset).limit(limit).execAsync(),
+      Indicator.find(indFindQuery).or(orQuery).skip(indicatorsOffset).limit(limit).execAsync(),
       Indicator.find(indFindQuery).or(orQuery).countAsync(),
-      Publication.find(pubFindQuery).or(orQuery).skip(offset).limit(limit).execAsync(),
+      Publication.find(pubFindQuery).or(orQuery).skip(publicationsOffset).limit(limit).execAsync(),
       Publication.find(pubFindQuery).or(orQuery).countAsync()
     ])
     .then(result => Q.resolve(getResultObject.apply(null, result)));

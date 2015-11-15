@@ -4,7 +4,6 @@ require('should');
 require('../../../config/mongoose');
 var Content = require('../content.dao');
 var DBEmptyResultError = require('../../../errors').DBEmptyResultError;
-// var DBUnaffectedUpdateError = require('../../../errors').DBUnaffectedUpdateError;
 var ObjectId = require('mongoose').Types.ObjectId;
 
 describe('content.dao', () => {

@@ -36,10 +36,11 @@ function search(req, res) {
   var searchQuery = req.query.searchQuery;
   var categoryId = req.query.categoryId;
   var year = req.query.year;
-  var offset = req.query.offset;
+  var indicatorsOffset = req.query.indicatorsOffset;
+  var publicationsOffset = req.query.publicationsOffset;
   var limit = searchConstants.searchLimit;
-  controller.search(searchQuery, categoryId, year, offset, limit)
+  controller.search(searchQuery, categoryId, year, indicatorsOffset, publicationsOffset, limit)
     .then(result => res.json(result))
-    .catch(errors.logError(`Failed to load search results of params: ${searchQuery}, ${categoryId}, ${year}., ${offset}`))
+    .catch(errors.logError(`Failed to load search results of params: ${searchQuery}, ${categoryId}, ${year} and offsets`))
     .catch(errors.handleError(res));
 }

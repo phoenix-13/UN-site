@@ -17,14 +17,13 @@ var refSchema = {
 var featuredSchema = {
   title: bilingStringSchema,
   ref: refSchema
-  // link: { type: String, default: '' },
 };
 
 var slideSchema = {
   title: bilingStringSchema,
   image: { type: String, default: '' },
-  ref: refSchema
-  // link: { type: String, default: '' }
+  ref: refSchema,
+  link: { type: String, default: '' }
 };
 
 var bannerSchema = {
