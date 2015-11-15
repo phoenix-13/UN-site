@@ -74,8 +74,8 @@
 
 .navbar_navigation ul li a
   display: block;
-  line-height: 42px;
-  font-size: 13px;
+  line-height: 50px;
+  font-size: 15px;
   color: #616668;
   text-decoration: none;
 
@@ -139,8 +139,39 @@
   background: none;
   outline: 0;
 
+.search_icon
+  color #aa1a24
+  font-size 19px
+  margin-top 2px
+  padding-left 5px
+  border-left 1px dotted #777
 
-.search_results
-  width 100px
-  height 100px
-  background blue
+.search_wrapper
+  position: relative
+
+  .search_wrapper_autocomplete
+    width: 250px
+    position: absolute
+    top: 28px
+    right: 0
+    border: 1px solid #DDD
+    background-color #FFF
+    box-shadow 0 0 10px #888
+    border-radius 3px
+    z-index 100
+
+    .autocomplete_section
+
+      .autocomplete_section_header
+        padding: 10px
+        text-align: left
+        font-size 16px
+
+      .autocomplete_section_body
+        text-align: left
+        padding: 10px 30px
+        padding-top: 0
+
+        .autocomplete_item
+          font-size: 12px
+          padding-bottom: 5px

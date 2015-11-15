@@ -3,6 +3,7 @@
 import Main from './main/main';
 //inject:import.main
 import mainabout from './main/about/about';
+import mainarticles from './main/articles/articles';
 import maincontact from './main/contact/contact';
 import maindemographics from './main/demographics/demographics';
 import mainhome from './main/home/home';
@@ -34,6 +35,7 @@ export default angular.module('app.components', [
   Main.name,
   //inject:ngmodule.main
   mainabout.name,
+  mainarticles.name,
   maincontact.name,
   maindemographics.name,
   mainhome.name,

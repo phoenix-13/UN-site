@@ -26,9 +26,38 @@
           </a>
         </div>
         <div class="search">
+          <div class="search_wrapper">
+            <div class="search_wrapper_autocomplete animated fadeIn hidden">
+              <div class="autocomplete_section">
+                <div class="autocomplete_section_header">
+                  <div style="display: inline-block">ინდიკატორები - {{vm.indicators.numTotal}}</div>
+                  <div style="display: inline-block" ui-sref="main.publications">ყველა</div>
+                </div>
+                <div class="autocomplete_section_body">
+                  <div class="autucomplete_item" ng-repeat="indicator in vm.indicators.items">{{indicator.title.geo}}</div>
+                </div>
+              </div>
+              <div class="autocomplete_section">
+                <div class="autocomplete_section_header">
+                  <div style="display: inline-block">პუბლიკაციები - {{vm.publications.numTotal}}</div>
+                  <div style="display: inline-block">ყველა</div>
+                </div>
+                <div class="autocomplete_section_body">
+                  <div class="autucomplete_item" ng-repeat="publication in vm.publications.items">{{publication.title.geo}}</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
           <form>
             <div class="search_input">
-              <input name="value" placeholder="ძიება" type="text">
+              <input
+                ng-model="vm.searchText"
+                ng-change="vm.searchArticles(vm.searchText)"
+                maxlength="{{vm.search.max}}"
+                name="value"
+                placeholder="ძიება"
+                type="text">
             </div>
             <div>
               <a href="">
