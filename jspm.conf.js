@@ -20,6 +20,8 @@ System.config({
     "angular-sanitize": "github:angular/bower-angular-sanitize@1.4.7",
     "angular-translate": "github:angular-translate/bower-angular-translate@2.8.1",
     "angular-ui-router": "github:angular-ui/ui-router@0.2.15",
+    "angular-ui-select": "github:angular-ui/ui-select@0.13.2",
+    "animated": "github:daneden/animate.css@3.4.0",
     "babel": "npm:babel-core@5.8.25",
     "bootstrap": "github:twbs/bootstrap@3.3.5",
     "clean-css": "npm:clean-css@3.4.6",

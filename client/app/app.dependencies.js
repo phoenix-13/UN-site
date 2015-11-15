@@ -5,6 +5,7 @@ import 'bootstrap/css/bootstrap.min.css!';
 import 'textAngular/dist/textAngular.css!';
 import 'OwlCarousel/dist/assets/owl.carousel.min.css!';
 import 'OwlCarousel/dist/assets/owl.theme.default.min.css!';
+import 'angular-ui-select/dist/select.css!';
 
 import 'jquery';
 import 'angular';
@@ -21,6 +22,8 @@ import 'textAngular/dist/textAngularSetup';
 import 'textAngular/dist/textAngular';
 import 'danialfarid/ng-file-upload';
 import 'OwlCarousel/dist/owl.carousel';
+import 'angular-ui-select';
+import 'animated';
 
 export default angular.module('dependencies', [
   'ngAnimate',
@@ -30,6 +33,7 @@ export default angular.module('dependencies', [
   'ngMaterial',
   'pascalprecht.translate',
   'ui.router',
+  'ui.select',
   'ui.bootstrap',
   'restangular',
   'textAngular',
