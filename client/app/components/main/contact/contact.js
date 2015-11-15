@@ -7,8 +7,7 @@ import './contact.css!';
 export default angular.module('main.contact', [])
   .config($stateProvider => {
     $stateProvider
-      .state('contact', {
-        parent: 'main',
+      .state('main.contact', {
         url: 'contact',
         template,
         controller,

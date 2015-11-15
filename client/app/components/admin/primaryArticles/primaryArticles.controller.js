@@ -40,10 +40,10 @@ export default class {
   parseArticles(articles) {
     var parsedArticles = [];
     articles.indicators.items.forEach(indicator => {
-      parsedArticles.push(this.getArticle(indicator, 'indicators'))
+      parsedArticles.push(this.getArticle(indicator, 'indicator'))
     });
     articles.publications.items.forEach(publication => {
-      parsedArticles.push(this.getArticle(publication, 'publications'))
+      parsedArticles.push(this.getArticle(publication, 'publication'))
     });
     return parsedArticles;
   }

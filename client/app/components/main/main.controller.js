@@ -2,8 +2,8 @@
 
 
 export default class {
-  constructor() {
+  constructor(content) {
     'ngInject';
-
+    this.partners = content.partners;
   }
 }

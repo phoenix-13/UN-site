@@ -7,8 +7,7 @@ import './publications.css!';
 export default angular.module('main.publications', [])
   .config($stateProvider => {
     $stateProvider
-      .state('publications', {
-        parent: 'main',
+      .state('main.publications', {
         url: 'publications',
         template,
         controller,

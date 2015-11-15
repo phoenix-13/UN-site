@@ -1,8 +1,8 @@
 'use strict';
 
 export default class {
-  constructor() {
+  constructor(content) {
     'ngInject';
-
+    this.about = content.about;
   }
 }

@@ -1,6 +1,7 @@
 'use strict';
 
 var _ = require('lodash');
+var Q = require('bluebird');
 var ObjectId = require('mongoose').Types.ObjectId;
 var Content = require('../api/content/content.dao');
 var Category = require('../api/category/category.dao');
@@ -13,23 +14,32 @@ module.exports = function () {
   seedAdmins()
     .then(() => seedCategories())
     .then(() => seedDemographics())
-    .then(() => seedIndicators())
-    .then(() => seedPublications())
-    .then(() => seedContent());
+    .then(() => Q.all([
+      seedIndicators(),
+      seedPublications()
+    ]))
+    .spread((indicators, publications) => seedContent(indicators, publications));
 };
 
-function seedContent() {
-  var featured = _.range(6).map(() => {
-    return {ref: {_id: new ObjectId()}}
-  });
+function seedContent(indicators, publications) {
+  var featured = indicators
+    .slice(0, 6)
+    .map((indicator, i) => {
+      return {
+        title: {eng: 'Lorem Ipsum', geo: 'Lorem Ipsum'},
+        ref: {_id: indicator._id, type: 'indicator', title: indicator.title.geo}
+      };
+    });
+
   var banner = {
     title: {
       geo: 'ახალგაზრდობის ინდექსი',
       eng: 'youth index'
     },
-    image: 'http://www.tsitsikammacrystal.co.za/system/images/W1siZiIsIjIwMTIvMDUvMTEvMDkvMjkvNTUvMjYvbmF0dXJlX2Jhbm5lci5qcGciXSxbInAiLCJ0aHVtYiIsIjkwMHgzNzAjYyJdXQ/nature_banner.jpg',
+    image: 'http://thumb9.shutterstock.com/display_pic_with_logo/675421/327855152/stock-vector-happy-diwali-burning-diya-eps-327855152.jpg',
     link: 'https://www.youtube.com/watch?v=HgzGwKwLmgM'
   };
+
   var contacts = {
     address: {
       geo: 'თბილისი ჭავჭავაძის 46,',
@@ -44,10 +54,40 @@ function seedContent() {
     }
   };
 
+  var partners = _.range(12).map(() => {
+    return {
+      name: {
+        geo: 'partner',
+        eng: 'partner'
+      },
+      image: 'http://thumb9.shutterstock.com/display_pic_with_logo/675421/327855152/stock-vector-happy-diwali-burning-diya-eps-327855152.jpg',
+      link: 'http://thumb9.shutterstock.com/display_pic_with_logo/675421/327855152/stock-vector-happy-diwali-burning-diya-eps-327855152.jpg'
+    };
+  });
+
+  var slider = publications.slice(0, 6).map(publication => {
+    return {
+      name: {
+        geo: 'slide',
+        eng: 'slide'
+      },
+      image: 'http://thumb9.shutterstock.com/display_pic_with_logo/675421/327855152/stock-vector-happy-diwali-burning-diya-eps-327855152.jpg',
+      ref: {_id: publication._id, type: 'publication', title: publication.title.geo}
+    }
+  });
+
+  var about = {
+    geo: `<p>Lorem Ipsum საბეჭდი და ტიპოგრაფიული ინდუსტრიის უშინაარსო ტექსტია. იგი სტანდარტად 1500-იანი წლებიდან იქცა, როდესაც უცნობმა მბეჭდავმა ამწყობ დაზგაზე წიგნის საცდელი ეგზემპლარი დაბეჭდა. მისი ტექსტი არამარტო 5 საუკუნის მანძილზე შემორჩა, არამედ მან დღემდე, ელექტრონული ტიპოგრაფიის დრომდეც უცვლელად მოაღწია. განსაკუთრებული პოპულარობა მას 1960-იან წლებში გამოსულმა Letraset-ის ცნობილმა ტრაფარეტებმა მოუტანა, უფრო მოგვიანებით კი — Aldus PageMaker-ის ტიპის საგამომცემლო პროგრამებმა, რომლებშიც Lorem Ipsum-ის სხვადასხვა ვერსიები იყო ჩაშენებული.</p>`,
+    eng: `<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>`
+  };
+
   var content = {
+    about,
     featured,
     banner,
-    contacts
+    contacts,
+    partners,
+    slider,
   };
 
   return Content.removeAll().then(() => Content.create(content));
@@ -67,26 +107,81 @@ function bilingCategory(titleGeo, titleEng) {
 }
 
 function seedDemographics() {
-  var demographicsArr = [
-    bilingDemographics('აფხაზეთი', 'Apkhazeti'),
-    bilingDemographics('სამეგრელი - ზემო სვანეთი', 'Samegrelo - Zemo Svaneti'),
-    bilingDemographics('გურია', 'Guria'),
-    bilingDemographics('აჭარა', 'Ajaria'),
-    bilingDemographics('რაჭა - ლეჩხუმი და ქვემო სვანეთი', 'Racha - Lechkhumi and Kvemo Svaneti'),
-    bilingDemographics('იმერეთი', 'Imereti'),
-    bilingDemographics('სამცხე - ჯავახეთი', 'Samtskhe - Javakheti'),
-    bilingDemographics('შიდა ქართლი', 'Shida - Kartli'),
-    bilingDemographics('ქვემო ქართლი', 'Kvemo - Kartli'),
-    bilingDemographics('თბილისი', 'Tbilisi'),
-    bilingDemographics('მცხეთა - მთიანეთი', 'Mtskheta - Mtianeti'),
-    bilingDemographics('კახეთი', 'Kakheti')
-  ];
+  var demographicsArr = [{
+    region: {
+      geo: 'აფხაზეთი',
+      eng: 'Apkhazeti'
+    },
+    values: [{year: 2009, value: 100100}, {year: 2014, value: 100100}, {year: 2018, value: 100100}]
+  }, {
+    region: {
+      geo: 'სამეგრელი - ზემო სვანეთი',
+      eng: 'Samegrelo - Zemo Svaneti'
+    },
+    values: [{year: 2009, value: 10000}, {year: 2012, value: 100100}, {year: 2013, value: 100100}]
+  }, {
+    region: {
+      geo: 'გურია',
+      eng: 'Guria'
+    },
+    values: [{year: 2010, value: 10000}, {year: 2012, value: 100100}, {year: 2014, value: 100100}]
+  }, {
+    region: {
+      geo: 'აჭარა',
+      eng: 'Ajaria'
+    },
+    values: [{year: 2009, value: 10000}, {year: 2012, value: 100100}, {year: 2015, value: 100100}]
+  }, {
+    region: {
+      geo: 'რაჭა - ლეჩხუმი და ქვემო სვანეთი',
+      eng: 'Racha - Lechkhumi and Kvemo Svaneti'
+    },
+    values: [{year: 2014, value: 10000}, {year: 2017, value: 100100}, {year: 2019, value: 100100}]
+  }, {
+    region: {
+      geo: 'იმერეთი',
+      eng: 'Imereti'
+    },
+    values: [{year: 2013, value: 10000}, {year: 2014, value: 100100}, {year: 2016, value: 100100}]
+  }, {
+    region: {
+      geo: 'სამცხე - ჯავახეთი',
+      eng: 'Samtskhe - Javakheti'
+    },
+    values: [{year: 2015, value: 10000}, {year: 2017, value: 100100}, {year: 2019, value: 100100}]
+  }, {
+    region: {
+      geo: 'შიდა ქართლი',
+      eng: 'Shida - Kartli'
+    },
+    values: [{year: 2013, value: 10000}, {year: 2015, value: 100100}, {year: 2016, value: 100100}]
+  }, {
+    region: {
+      geo: 'ქვემო ქართლი',
+      eng: 'Kvemo - Kartli'
+    },
+    values: [{year: 2010, value: 10000}, {year: 2011, value: 100100}, {year: 2013, value: 100100}]
+  }, {
+    region: {
+      geo: 'თბილისი',
+      eng: 'Tbilisi'
+    },
+    values: [{year: 2011, value: 10000}, {year: 2012, value: 100100}, {year: 2014, value: 100100}]
+  }, {
+    region: {
+      geo: 'მცხეთა - მთიანეთი',
+      eng: 'Mtskheta - Mtianeti'
+    },
+    values: [{year: 2014, value: 10000}, {year: 2015, value: 100100}, {year: 2017, value: 100100}]
+  }, {
+    region: {
+      geo: 'კახეთი',
+      eng: 'Kakheti'
+    },
+    values: [{year: 2011, value: 10000}, {year: 2013, value: 100100}, {year: 2016, value: 100100}]
+  }];
 
   return Demographics.removeAll().then(() => Demographics.create(demographicsArr));
-}
-
-function bilingDemographics(regionGeo, regionEng) {
-  return { region: { geo: regionGeo, eng: regionEng } };
 }
 
 function seedIndicators() {

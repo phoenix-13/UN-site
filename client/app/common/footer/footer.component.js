@@ -11,7 +11,9 @@ export default () => {
     controller,
     controllerAs: 'vm',
     scope: {},
-    bindToController: {},
+    bindToController: {
+      partners: '='
+    },
     replace: true
   };
 };

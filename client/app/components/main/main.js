@@ -12,5 +12,10 @@ export default angular.module('main', [])
       template,
       controller,
       controllerAs: 'vm',
+      resolve: {
+        content: ContentResource => ContentResource.getContent(),
+        categories: CategoryResource => CategoryResource.getCategories(),
+        latestPublications: PublicationResource => PublicationResource.getLatestPublications()
+      }
     });
 });

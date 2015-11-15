@@ -7,8 +7,7 @@ import './indicators.css!';
 export default angular.module('main.indicators', [])
   .config($stateProvider => {
     $stateProvider
-      .state('indicators', {
-        parent: 'main',
+      .state('main.indicators', {
         url: 'indicators',
         template,
         controller,
