@@ -12,18 +12,22 @@ export default class {
   }
 
   initOwlCarousel() {
-    //$("#owl2-slider").owlCarousel({
-    //  autoPlay: 5000,
-    //  singleItem: true,
-    //  navigation: false
-    //});
-    $("#owl2-slider").owlCarousel({
-      items:1,
-      loop:true,
-      margin:10,
-      autoplay:true,
-      autoplayTimeout:4000,
-      autoplayHoverPause:true
+
+    var owl = $('#owl2-slider');
+    owl.owlCarousel({
+        items:1,
+        loop:true,
+        margin:10,
+        autoplay:true,
+        autoplayTimeout:2000,
+        autoplayHoverPause:true
     });
+    $('.play').on('click',function(){
+        owl.trigger('play.owl.autoplay',[2000])
+    })
+    $('.stop').on('click',function(){
+        owl.trigger('stop.owl.autoplay')
+    })
+
   }
 }
