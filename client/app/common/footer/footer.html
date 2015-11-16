@@ -1,20 +1,26 @@
 <footer class="footer">
-  <div layout="row" class="sposors_list" class="footer_row">
-    <div style="width:90px"></div>
-    <div flex>
-      <div id="owl2-partners" class="owl-carousel owl-theme">
-        <div class="item" ng-repeat="partner in vm.partners">
-          <a href="{{partner.link}}" target="_blank">
-            <img ng-src="{{partner.image}}" alt="{{partner.title.geo}}">
-          </a>
+  <div layout="row" class="sposors_list">
+    <div class="footer_row">
+      <div layout="row">
+        <div class="btn prev">
+          <i class="fa fa-angle-left fa-2x"></i>
+        </div>
+        <div id="owl2-partners" class="owl-carousel owl-theme">
+          <div class="item" ng-repeat="partner in vm.partners">
+            <a href="{{partner.link}}" target="_blank">
+              <img ng-src="{{partner.image}}" alt="{{partner.title.geo}}">
+            </a>
+          </div>
+        </div>
+        <div class="btn next">
+          <i class="fa fa-angle-right fa-2x"></i>
         </div>
       </div>
     </div>
-    <div style="width:90px"></div>
   </div>
   <div layout="row" class="footer_row">
     <div class="logo_container">
-      <a href="http://www.unfpa.org/" target="_blank">
+      <a href="http://georgiaunfpa.ge/" target="_blank">
         <img src="/assets/images/unfpa-logo.png">
         <md-tooltip md-direction="top">
           United Nations Population Fund
@@ -38,3 +44,4 @@
     </div>
   </div>
 </footer>
+

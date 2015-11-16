@@ -1,18 +1,25 @@
 <div class="single_page_container">
-  <div class="single_page_content">
+  <div class="single_page_title">
     <div layout="row">
       <span flex></span>
       <span class="title_text page_title">
         კონტაქტი
+        <hr>
       </span>
       <span flex></span>
+    </div>
+  </div>
+  <div class="single_page_content small_text">
+    <div layout="row">
+      <h4 class="title_text">
+        თუ მოგვწერთ გაგვიხარდება...
+      </h4>
     </div>
     <form
       novalidate
       ng-submit="vm.sendEmail(form)"
       name="form">
       <div layout="row" layout-wrap>
-
         <div class="contact_inputs">
           <h3>სახელი, გვარი</h3>
           <input  name="person" type="text" ng-model="vm.message.person" required>
@@ -33,37 +40,6 @@
             </md-button>
           </md-content>
         </div>
-
-<!--         <div flex="33">
-          <md-input-container>
-            <label class="contact_label title_text">სახელი, გვარი</label>
-            <input name="person" type="text" ng-model="vm.message.person" required>
-          </md-input-container>
-        </div>
-        <div flex="33">
-          <md-input-container>
-            <label class="contact_label title_text">ელექტრონული ფოსტა</label>
-            <input name="from" type="email" ng-model="vm.message.from" required>
-          </md-input-container>
-        </div>
-        <div flex="33">
-          <md-input-container>
-            <label class="contact_label title_text">თემა</label>
-            <input name="theme" type="text" ng-model="vm.message.theme" required>
-          </md-input-container>
-        </div>
-        <div flex="100">
-          <md-input-container flex>
-            <label class="contact_label title_text">შეტყობინება</label>
-            <input name="content" type="text" ng-model="vm.message.content" required>
-          </md-input-container>
-        </div>
-        <div flex="100">
-          <md-content layout="row" layout-sm="column">
-            <span flex></span>
-            <md-button type="submit" ng-disabled="form.$invalid" class="send_btn">გაგზავნა</md-button>
-          </md-content>
-        </div> -->
       </div>
     </form>
   </div>
@@ -74,14 +50,14 @@
         <div layout="row">
           <div layout="column">
             <div>
-              <div class="title_text" style="color: #777;"><i style="padding-right:10px" class="fa fa-map-marker"></i> თბილისი</div>
+              <div class="title_text"><i style="padding-right:10px" class="fa fa-map-marker"></i> თბილისი</div>
               <div style="padding-left:25px; font-size:11px">{{vm.contacts.address.geo}}</div>
             </div>
             <div class="space_separator"></div>
             <div>
-              <div class="title_text" style="color: #777;"><i style="padding-right:10px" class="fa fa-phone"></i> ტელეფონი</div>
+              <div class="title_text"><i style="padding-right:10px" class="fa fa-phone"></i> ტელეფონი</div>
               <div style="margin-left: -17px; font-size:11px">
-                <ul>
+                <ul class="unstyled_list">
                   <li ng-repeat="phone in vm.contacts.phones">{{phone}}</li>
                 </ul>
               </div>
@@ -90,12 +66,12 @@
           <div flex></div>
           <div layout="column">
             <div>
-              <div class="title_text" style="color: #777;"><i style="padding-right:10px" class="fa fa-fax"></i> ფაქსი</div>
+              <div class="title_text"><i style="padding-right:10px" class="fa fa-fax"></i> ფაქსი</div>
               <div style="padding-left:25px; font-size:11px">{{vm.contacts.fax}}</div>
             </div>
             <div class="space_separator"></div>
             <div>
-              <div class="title_text" style="color: #777;"><i style="padding-right:10px" class="fa fa-envelope-o"></i> ელ ფოსტა</div>
+              <div class="title_text"><i style="padding-right:10px" class="fa fa-envelope-o"></i> ელ ფოსტა</div>
               <div style="padding-left:25px; font-size:11px">{{vm.contacts.mail}}</div>
             </div>
           </div>
