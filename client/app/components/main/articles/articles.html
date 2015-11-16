@@ -24,32 +24,19 @@
             <md-content>
               <table class="table table-striped indicators_table">
                 <thead>
-                <tr>
-                  <td></td>
-                  <td>
-                    2010
-                  </td>
-                  <td>
-                    2011
-                  </td>
-                </tr>
+                  <tr>
+                    <td></td>
+                    <td ng-repeat="indicatorYear in vm.indicatorYears">{{indicatorYear}}</td>
+                  </tr>
                 </thead>
                 <tbody>
-                  <tr>
-                    <td class="title_text">
-                      <a href="" ui-sref="indicator">Lorem Ipsum საბეჭდი და ტიპოგრაფიული ინდუსტრიის უშინაარსო ტექსტია.</a>
-                    </td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
+                  <tr ng-repeat="indicator in vm.indicators.items">
+                    <td style="cursor: pointer" ui-sref="main.indicator({id: indicator._id})" class="title_text">{{indicator.title.geo}}</td>
+                    <td ng-repeat="indicatorYear in vm.indicatorYears">{{indicator.valuesMap[indicatorYear].value}}</td>
                   </tr>
                 </tbody>
               </table>
-              <div ng-show="vm.indicators.numTotal > 0">
+              <div ng-show="vm.indicators.numTotal > 0" class="pagination_wrapp">
                 <uib-pagination
                   ng-change="vm.changeIndicatorPage()"
                   total-items="vm.indicators.numTotal"
