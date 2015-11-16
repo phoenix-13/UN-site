@@ -15,10 +15,7 @@ module.exports = {
 };
 
 function autocomplete(queryString, limit) {
-  var orQuery = [
-    { 'title.geo': { $regex: queryString, $options: 'gi' } },
-    { 'title.eng': { $regex: queryString, $options: 'gi' } }
-  ];
+  var orQuery = getOrQueryArr(queryString);
   var selectFields = '_id title';
 
   return Q.all([
@@ -31,10 +28,7 @@ function autocomplete(queryString, limit) {
 }
 
 function search(queryString, categoryId, year, indicatorsOffset, publicationsOffset, limit) {
-  var orQuery = [
-    { 'title.geo': { $regex: queryString, $options: 'gi' } },
-    { 'title.eng': { $regex: queryString, $options: 'gi' } }
-  ];
+  var orQuery = getOrQueryArr(queryString);
   var indFindQuery = getIndFindQueryObject(categoryId);
   var pubFindQuery = getPubFindQueryObject(categoryId, year);
 
@@ -58,6 +52,13 @@ function getResultObject(indicators, indicatorsNum, publications, publicationsNu
       numTotal: publicationsNum
     }
   };
+}
+
+function getOrQueryArr(queryString) {
+  return [
+    { 'title.geo': { $regex: queryString, $options: 'gi' } },
+    { 'title.eng': { $regex: queryString, $options: 'gi' } }
+  ];
 }
 
 function getIndFindQueryObject(categoryId) {
