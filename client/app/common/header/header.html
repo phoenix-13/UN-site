@@ -30,21 +30,27 @@
             <div class="search_wrapper">
               <div class="search_wrapper_autocomplete animated fadeIn hidden">
                 <div class="autocomplete_section">
-                  <div class="autocomplete_section_header">
-                    <div style="display: inline-block">ინდიკატორები - {{vm.indicators.numTotal}}</div>
-                    <div style="display: inline-block" ui-sref="main.publications">ყველა</div>
+                  <div class="autocomplete_section_header" layout="row">
+                    <div style="display: inline-block" class="title_text search_title" flex>ინდიკატორები - {{vm.indicators.numTotal}}</div>
+                    <md-button style="display: inline-block; min-width:50px" ui-sref="main.publications">
+                      ყველა
+                    </md-button>
                   </div>
                   <div class="autocomplete_section_body">
-                    <div class="autucomplete_item" ng-repeat="indicator in vm.indicators.items">{{indicator.title.geo}}</div>
+                    <div class="autucomplete_item" ng-repeat="indicator in vm.indicators.items" style="padding: 5px;">
+                    <span>{{indicator.title.geo}}</span></div>
                   </div>
                 </div>
                 <div class="autocomplete_section">
-                  <div class="autocomplete_section_header">
-                    <div style="display: inline-block">პუბლიკაციები - {{vm.publications.numTotal}}</div>
-                    <div style="display: inline-block">ყველა</div>
+                  <div class="autocomplete_section_header" layout="row">
+                    <div style="display: inline-block" class="title_text search_title" flex>პუბლიკაციები - {{vm.publications.numTotal}}</div>
+                    <md-button style="display: inline-block; min-width:50px" ui-sref="main.publications">
+                      ყველა
+                    </md-button>
                   </div>
                   <div class="autocomplete_section_body">
-                    <div class="autucomplete_item" ng-repeat="publication in vm.publications.items">{{publication.title.geo}}</div>
+                    <div class="autucomplete_item" ng-repeat="publication in vm.publications.items" style="padding: 5px;">
+                    <span>{{publication.title.geo}}</span></div>
                   </div>
                 </div>
               </div>
