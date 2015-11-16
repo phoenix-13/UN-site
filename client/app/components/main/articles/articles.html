@@ -1,1 +1,138 @@
-<h1>articles</h1>
+<div class="single_page_content">
+  <div layout="row" class="main_page_container">
+    <div layout="column" flex="30">
+      <div class="title_text" style="font-size:1.2em">მიმართულება</div>
+      <div style="padding-top: 20px">
+        <div class="direction_title title_text" ng-repeat="category in vm.categories">
+          <a style="cursor: pointer" ui-sref="main.articles({tabIndex: vm.query.tabIndex, publicationsOffset: 0, indicatorsOffset: 0, categoryId: category._id, year: vm.query.year, searchQuery: vm.query.searchQuery})"><i class="fa fa-hand-paper-o"></i>{{category.title.geo}}</a>
+        </div>
+      </div>
+
+      <div ng-show="vm.query.tabIndex == 1">
+        <div class="title_text" style="font-size:1.2em;padding-top: 20px">პუბლიკაციები წლების მიხედვით</div>
+        <div style="padding-top: 20px; padding-left: 25px">
+          <div class="publication_year direction_title title_text" ng-repeat="year in vm.years">
+            <a style="cursor: pointer" ui-sref="main.articles({tabIndex: vm.query.tabIndex, publicationsOffset: 0, indicatorsOffset: 0, categoryId: vm.query.categoryId, year: year, searchQuery: vm.query.searchQuery})">{{year}}</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+    <div layout="column" flex="5" ></div>
+    <div layout="column" flex class="">
+      <md-content>
+        <md-tabs md-dynamic-height md-border-bottom md-selected="vm.query.tabIndex">
+          <md-tab label="ინდიკატორები">
+            <md-content>
+              <table class="table table-striped indicators_table">
+                <thead>
+                <tr>
+                  <td></td>
+                  <td>
+                    2010
+                  </td>
+                  <td>
+                    2011
+                  </td>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                  <td class="title_text">
+                    <a href="" ui-sref="indicator">Lorem Ipsum საბეჭდი და ტიპოგრაფიული ინდუსტრიის უშინაარსო ტექსტია.</a>
+                  </td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td class="title_text">
+                    <a href="" ui-sref="indicator">Lorem Ipsum საბეჭდი და ტიპოგრაფიული ინდუსტრიის უშინაარსო ტექსტია.</a>
+                  </td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                </tr>
+                </tbody>
+              </table>
+            </md-content>
+          </md-tab>
+          <md-tab label="პუბლიკაციები">
+            <md-content class=" publications_list">
+              <md-list>
+                <md-list-item class="md-3-line" style="padding: 10px;">
+                  <a href="" ui-sref="publication">
+                    <div class="md-list-item-text" layout="column" >
+                      <h3 class="title_text" style="font-size:1.3em;">
+                        title  სათაური
+                      </h3>
+                      <p style="font-size:0.8em;"> 12/08/2012 </p>
+                      <p>
+                        is simply dummy text of the printing and typesetting industry. Lorem Ipsum
+                        is simply dummy text of the printing and typesetting industry. Lorem Ipsum
+                      </p>
+                    </div>
+                  </a>
+                </md-list-item>
+                <md-divider ></md-divider>
+                <md-list-item class="md-3-line" style="padding: 10px;">
+                  <a href="" ui-sref="publication">
+                    <div class="md-list-item-text" layout="column" >
+                      <h3 class="title_text" style="font-size:1.3em;">
+                        title  სათაური
+                      </h3>
+                      <p style="font-size:0.8em;"> 12/08/2012 </p>
+                      <p>
+                        is simply dummy text of the printing and typesetting industry. Lorem Ipsum
+                        is simply dummy text of the printing and typesetting industry. Lorem Ipsum
+                      </p>
+                    </div>
+                  </a>
+                </md-list-item>
+                <md-divider ></md-divider>
+                <md-list-item class="md-3-line" style="padding: 10px;">
+                  <a href="" ui-sref="publication">
+                    <div class="md-list-item-text" layout="column" >
+                      <h3 class="title_text" style="font-size:1.3em;">
+                        title  სათაური
+                      </h3>
+                      <p style="font-size:0.8em;"> 12/08/2012 </p>
+                      <p>
+                        is simply dummy text of the printing and typesetting industry. Lorem Ipsum
+                        is simply dummy text of the printing and typesetting industry. Lorem Ipsum
+                      </p>
+                    </div>
+                  </a>
+                </md-list-item>
+              </md-list>
+            </md-content>
+          </md-tab>
+        </md-tabs>
+      </md-content>
+      <div layout="row">
+        <div flex></div>
+        <div>
+          <uib-pagination
+            ng-change="vm.changePublicationPage()"
+            total-items="vm.publications.numTotal"
+            ng-model="vm.publications.currentPage"
+            max-size="vm.publications.itemsPerPage"
+            class="pagination-sm"
+            boundary-links="true"
+            rotate="false">
+          </uib-pagination>
+        </div>
+        <div flex></div>
+      </div>
+    </div>
+  </div>
+</div>
+
