@@ -8,7 +8,7 @@ export default angular
   .module('main.articles', [])
   .config($stateProvider => {
     $stateProvider.state('main.articles', {
-      url: 'articles?searchQuery&categoryId&year&indicatorsOffset&publicationsOffset&tabIndex',
+      url: 'articles?categoryId&year&indicatorIndex&publicationIndex&tabIndex&searchQuery',
       template,
       controller,
       controllerAs: 'vm',
@@ -23,8 +23,8 @@ export default angular
       if ($stateParams.searchQuery) query.searchQuery = $stateParams.searchQuery;
       if ($stateParams.categoryId) query.categoryId = $stateParams.categoryId;
       if ($stateParams.year) query.year = $stateParams.year;
-      if ($stateParams.indicatorsOffset) query.indicatorsOffset = $stateParams.indicatorsOffset;
-      if ($stateParams.publicationsOffset) query.publicationsOffset = $stateParams.publicationsOffset;
+      if ($stateParams.indicatorIndex) query.indicatorsOffset = $stateParams.indicatorIndex * 10;
+      if ($stateParams.publicationIndex) query.publicationsOffset = $stateParams.publicationIndex * 10;
       return query;
     }
   });
