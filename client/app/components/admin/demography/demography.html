@@ -187,3 +187,28 @@
     </g>
   </svg>
 </div>
+
+<div class="md-padding">
+  <table class="table table-striped indicators_table demograpy_table">
+    <thead>
+      <tr>
+        <th></th>
+        <th ng-repeat="year in vm.years">{{year}}</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr ng-repeat="(name, demography) in vm.demographics">
+        <td class="table_article_title" style="cursor: pointer" class="title_text">{{demography.region.geo}}</td>
+        <td ng-repeat="demographyYear in vm.years">
+          <input type="number" ng-model="demography.valuesMap[demographyYear].value">
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <div layout="row">
+    <span flex></span>
+    <md-button class="md-primary md-raised"> update </md-button>
+  </div>
+
+</div>
+

@@ -1,3 +1,5 @@
+
+
 .navbar_wrapper
   border-top: 9px solid #ecf0f1;
   border-bottom: 3px solid #aa1a24;
@@ -134,10 +136,13 @@
   border: 0;
   margin: 0;
   padding: 0;
-  font-family: 'Ingiri';
+  font-family: "BPG Ingiri Arial", sans-serif;
   font-size: 12px;
   background: none;
   outline: 0;
+
+.small_text
+  font-family: "BPG Ingiri Arial", sans-serif;
 
 .search_icon
   color #aa1a24
@@ -163,15 +168,66 @@
     .autocomplete_section
 
       .autocomplete_section_header
-        padding: 10px
+        padding: 6px
         text-align: left
         font-size 16px
 
       .autocomplete_section_body
+        padding: 10px 0
         text-align: left
-        padding: 10px 30px
         padding-top: 0
 
         .autocomplete_item
+          padding: 10px 30px
           font-size: 12px
           padding-bottom: 5px
+
+
+.page_header_wrapp
+  background: #f5f8f9;
+  border-bottom: 1px solid #ecf0f1;
+
+.page_header
+  width 1024px
+  margin 0 auto
+  padding-top 10px
+  padding-bottom 10px
+
+.page_header a
+  color: #616668;
+  text-decoration: none;
+  font-family: "BPG Ingiri Arial", sans-serif;
+  font-size 12px
+
+.page_header a:hover
+  color #aa1a24
+
+.search_title
+  padding: 0 6px;
+  margin-top: 9px;
+  line-height: 36px;
+  font-weight normal
+
+.search_title span
+  color #aa1a24
+  font-weight bold
+  margin-left 5px
+
+.autocomplete_section_header
+  background: #f5f8f9;
+  border-bottom: 1px solid #ecf0f1;
+
+.autocomplete_section_header .button
+  color #aa1a24
+
+.autocomplete_section_body .autucomplete_item:hover
+  background: #ECF0F3;
+
+.autucomplete_item
+  height: 25px;
+  overflow: hidden;
+
+.autucomplete_item span
+  margin: 10px 30px
+  cursor pointer
+  color #777

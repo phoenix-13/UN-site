@@ -11,6 +11,9 @@ export default angular.module('main.indicator', [])
         url: 'indicator/:id',
         template,
         controller,
-        controllerAs: 'vm'
+        controllerAs: 'vm',
+        resolve: {
+          indicator: ($stateParams, IndicatorResource) => IndicatorResource.getIndicator($stateParams.id)
+        }
       });
   });

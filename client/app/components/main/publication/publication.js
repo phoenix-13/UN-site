@@ -11,6 +11,9 @@ export default angular.module('main.publication', [])
         url: 'publication/:id',
         template,
         controller,
-        controllerAs: 'vm'
+        controllerAs: 'vm',
+        resolve: {
+          publication: ($stateParams, PublicationResource) => PublicationResource.getPublication($stateParams.id)
+        }
       });
   });

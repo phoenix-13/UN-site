@@ -20,10 +20,25 @@ export default class {
     //  navigation:true,
     //  //navigationText: ["<i class='fa fa-angle-left fa-3x'></i>", "<i class='fa fa-angle-right fa-3x'></i>"]
     //});
+
+    var owl = $("#owl2-partners");
+
     $('#owl2-partners').owlCarousel({
-      items:7,
+      items:5,
       loop:true,
       nav:true,
+      dots:false,
+      autoplay: true,
+      autoplayTimeout:3000,
+      autoplayHoverPause:true
     });
+
+    //console.log(owl);
+    $(".next").click(function(){
+      owl.trigger('next.owl.carousel');
+    })
+    $(".prev").click(function(){
+      owl.trigger('prev.owl.carousel', [200]);
+    })
   }
 }

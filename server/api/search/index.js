@@ -39,6 +39,7 @@ function search(req, res) {
   var indicatorsOffset = req.query.indicatorsOffset;
   var publicationsOffset = req.query.publicationsOffset;
   var limit = searchConstants.searchLimit;
+  console.log(categoryId);
   controller.search(searchQuery, categoryId, year, indicatorsOffset, publicationsOffset, limit)
     .then(result => res.json(result))
     .catch(errors.logError(`Failed to load search results of params: ${searchQuery}, ${categoryId}, ${year} and offsets`))

@@ -1,19 +1,25 @@
 <div class="single_page_container">
-  <div class="single_page_content">
+  <div class="single_page_title">
     <div layout="row">
       <span flex></span>
       <span class="title_text page_title">
-        ახალგაზრდები და ოჯახი
+        დემოგრაფია
+        <hr>
       </span>
       <span flex></span>
     </div>
   </div>
   <div class="single_page_content sitemap_content">
     <div class="demographics_map_container">
-      <div id="selectedDemography" style="width: 100px; position: absolute; z-index: 100; background: rgb(200, 200, 200);border-radius: 5px;">
-        <p>{{vm.selectedDemography.lastValue.region.geo}}</p>
-        <p>{{vm.selectedDemography.lastValue.year}}</p>
-        <p>{{vm.selectedDemography.lastValue.value}}</p>
+      <div id="selectedDemography">
+        <p class="region_title title_text">{{vm.selectedDemography.lastValue.region.geo}}</p>
+        <div layout="row">
+          <p class="year_value">{{vm.selectedDemography.lastValue.year}}</p>
+          <span flex class="text-align:center">
+            <span> - </span>
+          </span>
+          <p class="region_value">{{vm.selectedDemography.lastValue.value}}</p>
+        </div>
       </div>
       <svg
          xmlns:dc="http://purl.org/dc/elements/1.1/"
@@ -157,7 +163,7 @@
       </svg>
     </div>
     <md-content>
-      <table class="table table-striped indicators_table">
+      <table class="table table-striped indicators_table demograpy_table">
         <thead>
           <tr>
             <th></th>

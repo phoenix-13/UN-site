@@ -8,11 +8,8 @@ import maincontact from './main/contact/contact';
 import maindemographics from './main/demographics/demographics';
 import mainhome from './main/home/home';
 import mainindicator from './main/indicator/indicator';
-import mainindicators from './main/indicators/indicators';
 import mainlogin from './main/login/login';
 import mainpublication from './main/publication/publication';
-import mainpublications from './main/publications/publications';
-import mainsearch from './main/search/search';
 import mainsitemap from './main/sitemap/sitemap';
 //endinject
 
@@ -40,11 +37,8 @@ export default angular.module('app.components', [
   maindemographics.name,
   mainhome.name,
   mainindicator.name,
-  mainindicators.name,
   mainlogin.name,
   mainpublication.name,
-  mainpublications.name,
-  mainsearch.name,
   mainsitemap.name,
   //endinject
 

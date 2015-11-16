@@ -1,32 +1,10 @@
 <div class="single_page_content">
   <div layout="row" class="main_page_container">
-    <div layout="column" flex="30">
+    <div layout="column" flex="30" class="filter_wrapp">
       <div class="title_text" style="font-size:1.2em">მიმართულება</div>
-      <div style="padding-top: 20px">
-        <div class="direction_title title_text">
-          <a href="">
-            <i class="fa fa-hand-paper-o"></i>მონაწილეობა
-          </a>
-        </div>
-        <div class="direction_title title_text">
-          <a href="">
-            <i class="fa fa-balance-scale"></i>სპეციალური მხარდაჭერა და დაცვა
-          </a>
-        </div>
-        <div class="direction_title title_text">
-          <a href="">
-            <i class="fa fa-heartbeat"></i>ჯანმრთელობა
-          </a>
-        </div>
-        <div class="direction_title title_text">
-          <a href="">
-            <i class="fa fa-child"></i>ახალგაზრდები და ოჯახი
-          </a>
-        </div>
-        <div class="direction_title title_text">
-          <a href="">
-            <i class="fa fa-graduation-cap"></i>განათლება, დასაქმება და მობილობა
-          </a>
+      <div style="padding-top: 20px; padding-left:15px">
+        <div class="direction_title title_text" ng-repeat="category in vm.categories">
+          <a style="cursor: pointer" ui-sref="main.articles({categoryId: category._id, publicationIndex: 0, indicatorIndex: 0, tabIndex: 0})"><i class="fa fa-circle-o"></i>{{category.title.geo}}</a>
         </div>
       </div>
     </div>
@@ -34,20 +12,10 @@
     <div layout="column" flex>
       <md-content class="md-padding">
         <div class="article_title text-center">
-          <h4 class="title_text">Lorem ipsum dolor sit amet სათაური</h4>
+          <h4 class="title_text" style="margin-top:2px">{{vm.indicator.title.geo}}</h4>
           <hr>
         </div>
-        <div >
-          Lorem ipsum dolor sit amet, qui in quando quodsi. Ut usu impetus suscipiantur conclusionemque. Tota minimum nec eu, ex graeco aliquid ius. Quaeque fierent expetendis ei ius, id delectus gloriatur reprehendunt cum. His duis populo maiestatis ea, pro diam hinc voluptaria cu. Nec rebum tollit incorrupte te.
-
-          Ei duis legimus liberavisse mei, est cetero noluisse id, quo summo commune quaerendum et. Sed ne stet aliquip signiferumque, cum ut etiam labitur prodesset. Est et facilisi comprehensam. Sea veritus gubergren eu, soleat explicari delicatissimi ex sit. At sea solet democritum.
-
-          Modus simul eu usu, quod perfecto sententiae sea id. Solum disputationi ne ius, vel soleat legere definiebas ne. Stet harum ei vix, eros maiestatis duo in. Sint vocent eu nec. Cum recusabo omittantur eu.
-
-          No sea illum pericula ocurreret, mel ne alterum facilis ceteros, ei vix quot epicuri urbanitas. Idque salutandi eu mea. Numquam patrioque cum ne. Cum detracto quaestio intellegam te, vis et altera epicurei. Te vim accusata consulatu.
-
-          Ludus nostrud in sit. Mei clita dolores no, ea tractatos consectetuer ius. Putant accusata qualisque pri te, sea ludus appellantur ut. Porro perfecto qui ex, ea ius commodo electram patrioque, eam dico dicit honestatis eu. Utinam civibus explicari eam ex, adolescens expetendis intellegam at sed, mel ea alterum facilisis.
-        </div>
+        <div ng-bind-html="vm.indicator.content.geo"></div>
       </md-content>
     </div>
   </div>

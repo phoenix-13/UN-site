@@ -36,10 +36,10 @@ export default class {
 
 
     var image = {
-      url: '/assets/images/red_marker.ico',
-      scaledSize: new google.maps.Size(60, 60),
+      url: '/assets/images/marker.png',
+      scaledSize: new google.maps.Size(46, 46),
       origin: new google.maps.Point(0, 0),
-      anchor: new google.maps.Point(0, 30)
+      anchor: new google.maps.Point(0, 23)
     };
 
     this .marker = new google.maps.Marker({
