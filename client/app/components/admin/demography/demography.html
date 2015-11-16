@@ -187,3 +187,26 @@
     </g>
   </svg>
 </div>
+
+<div class="md-padding">
+  <table class="table table-striped indicators_table demograpy_table">
+    <thead>
+      <tr>
+        <th></th>
+        <th ng-repeat="year in vm.years">{{year}}</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr ng-repeat="demography in vm.demographics">
+        <td class="title_text">{{demography.region.geo}}</td>
+        <td ng-repeat="year in vm.years">{{demography.values[year].value}}</td>
+      </tr>
+    </tbody>
+  </table>
+  <div layout="row">
+    <span flex></span>
+    <md-button class="md-primary md-raised"> update </md-button>
+  </div>
+
+</div>
+
