@@ -19,6 +19,7 @@ function parseQueryParam(queryParam) {
 function parseCategoryId(categoryId) {
   if (!categoryId) return categoryId;
   if (categoryId.length !== 24) return undefined;
+  return categoryId;
 }
 
 function manageQueryParamLength(queryParam) {
