@@ -31,7 +31,7 @@
                 </thead>
                 <tbody>
                   <tr ng-repeat="indicator in vm.indicators.items">
-                    <td class="article_title" style="cursor: pointer" ui-sref="main.indicator({id: indicator._id})" class="title_text">{{indicator.title.geo}}</td>
+                    <td class="table_article_title" style="cursor: pointer" ui-sref="main.indicator({id: indicator._id})" class="title_text">{{indicator.title.geo}}</td>
                     <td ng-repeat="indicatorYear in vm.indicatorYears">{{indicator.valuesMap[indicatorYear].value}}</td>
                   </tr>
                 </tbody>
