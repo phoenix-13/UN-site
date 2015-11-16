@@ -19,8 +19,12 @@
     <div layout="column" flex class="">
       <md-content>
         <div class="article_title text-center">
-          <h4 class="title_text" style="margin-top:2px">{{vm.publication.title.geo}}</h4>
+          <h4 class="title_text" style="margin-top:15px">{{vm.publication.title.geo}}</h4>
           <hr>
+          <div class="publication_date_wrapp">
+            <span class="publication_page_date">{{vm.publication.date | date: 'yyyy-MM-dd': 'GMT+03:00'}}</span>
+          </div>
+
         </div>
         <div ng-bind-html="vm.publication.content.geo"></div>
       </md-content>
