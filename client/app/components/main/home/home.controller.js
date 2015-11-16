@@ -19,11 +19,11 @@ export default class {
         loop:true,
         margin:10,
         autoplay:true,
-        autoplayTimeout:2000,
+        autoplayTimeout:4000,
         autoplayHoverPause:true
     });
     $('.play').on('click',function(){
-        owl.trigger('play.owl.autoplay',[2000])
+        owl.trigger('play.owl.autoplay',[4000])
     })
     $('.stop').on('click',function(){
         owl.trigger('stop.owl.autoplay')

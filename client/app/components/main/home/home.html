@@ -1,6 +1,6 @@
 <div class="single_page_container about">
   <div class="single_page_content">
-    <div layout="row" class="" style="height: 590px;">
+    <div layout="row" class="" style="height: 530px;">
       <div flex>
         <div class="title_text">
           <h4 style="margin-top:0; margin-left:15px">ვეძებ სტატისტიკას თემაზე...</h4>
@@ -140,14 +140,28 @@
         </div>
       </div>
     </div>
-    <div layout="row" class="slider_wrapper md-padding">
-      <div class="" style="width: 500px; max-height: 400px" layout="row">
-        <div class="item">
+    <div layout="row" class="banner_row md-padding">
+      <div class="" layout="row" flex>
+        <div class="banner" flex>
           <a href="{{vm.banner.link}}" target="_blank">
             <img ng-src="{{vm.banner.image}}" alt="{{vm.banner.title.geo}}">
           </a>
         </div>
-        <div class="item">
+        <div class="item md-padding" flex>
+          <div>
+            <div layout="row">
+              <span flex></span>
+              <span class="title_text page_title">
+                <a href="" ui-sref="main.demographics" >
+                  დემოგრაფია
+                </a>
+                <hr>
+              </span>
+              <span flex></span>
+            </div>
+          </div>
+          <div>
+          </div>
           <a href="" ui-sref="main.demographics" >
             place map here
           </a>
