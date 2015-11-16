@@ -10,6 +10,8 @@ export default class {
     this.initYears();
     this.initPublications(articles);
     this.initIndicators(articles);
+    this.initIndicatorYearBounds();
+    this.indexIndicatorsByYear();
   }
 
   changeCategory(category) {
@@ -32,9 +34,17 @@ export default class {
     }
   }
 
-  changePublicationPage = () => this.$state.go('main.articles', {publicationIndex: this.publications.currentPage - 1});
+  changePublicationPage = () => {
+    var query = {publicationIndex: this.publications.currentPage - 1};
+    if (this.query.tabIndex !== this.selectedTab) query.tabIndex = this.selectedTab;
+    this.$state.go('main.articles', query);
+  }
 
-  changeIndicatorPage = () => this.$state.go('main.articles', {indicatorIndex: this.indicators.currentPage - 1});
+  changeIndicatorPage = () => {
+    var query = {indicatorIndex: this.indicators.currentPage - 1};
+    if (this.query.tabIndex !== this.selectedTab) query.tabIndex = this.selectedTab;
+    this.$state.go('main.articles', query);
+  }
 
   initYears() {
     var startYear = 2009;
@@ -54,5 +64,33 @@ export default class {
     this.publications = articles.publications;
     this.publications.itemsPerPage = this.publications.items.length;
     this.publications.currentPage = parseInt(this.query.publicationIndex) + 1;
+  }
+
+  initIndicatorYearBounds() {
+    var minYear = 2020;
+    var maxYear = 2009;
+    for (var indicator of this.indicators.items) {
+      indicator.values.forEach(pair => {
+        if (pair.year > maxYear) {
+          maxYear = pair.year;
+        }
+        if (pair.year < minYear) {
+          minYear = pair.year;
+        }
+      });
+    }
+    if (minYear > maxYear) {
+      this.indicatorYears = [];
+    } else {
+      this.indicatorYears = _
+        .range(maxYear - minYear + 1)
+        .map((elem, index) => minYear + index);
+    }
+  }
+
+  indexIndicatorsByYear = () => {
+    for (var indicator of this.indicators.items) {
+      indicator.valuesMap = _.indexBy(indicator.values, 'year');
+    }
   }
 }
