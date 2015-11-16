@@ -2,7 +2,7 @@
   <div layout="row" class="main_page_container">
     <div layout="column" flex="30" class="filter_wrapp">
       <div class="title_text direction_t" style="font-size:1.2em">მიმართულება</div>
-      <div style="padding-top: 20px">
+      <div style="padding-top: 20px; padding-left:15px">
         <div class="direction_title title_text" ng-repeat="category in vm.categories">
           <a style="cursor: pointer" ng-click="vm.changeCategory(category)"><i class="fa fa-circle-o"></i>{{category.title.geo}}</a>
         </div>

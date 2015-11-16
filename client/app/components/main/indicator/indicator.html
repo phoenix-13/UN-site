@@ -2,7 +2,7 @@
   <div layout="row" class="main_page_container">
     <div layout="column" flex="30" class="filter_wrapp">
       <div class="title_text" style="font-size:1.2em">მიმართულება</div>
-      <div style="padding-top: 20px">
+      <div style="padding-top: 20px; padding-left:15px">
         <div class="direction_title title_text" ng-repeat="category in vm.categories">
           <a style="cursor: pointer" ui-sref="main.articles({categoryId: category._id, publicationIndex: 0, indicatorIndex: 0, tabIndex: 0})"><i class="fa fa-circle-o"></i>{{category.title.geo}}</a>
         </div>
@@ -12,7 +12,7 @@
     <div layout="column" flex>
       <md-content class="md-padding">
         <div class="article_title text-center">
-          <h4 class="title_text">{{vm.indicator.title.geo}}</h4>
+          <h4 class="title_text" style="margin-top:2px">{{vm.indicator.title.geo}}</h4>
           <hr>
         </div>
         <div ng-bind-html="vm.indicator.content.geo"></div>
