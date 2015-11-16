@@ -9,6 +9,8 @@
     "bcrypt-nodejs": "0.0.3",
     "bluebird": "^2.9.25",
     "body-parser": "^1.12.4",
+    "bpg-ingiri-arial": "^1.0.1",
+    "bpg-nino-mtavruli": "^1.0.0",
     "composable-middleware": "^0.3.0",
     "compression": "^1.4.4",
     "connect-mongo": "^0.8.1",
