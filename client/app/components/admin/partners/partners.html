@@ -14,40 +14,43 @@
 </md-button>
 
 <md-content class="md-padding">
-  <div layout="row" layout-sm="column" ng-repeat="partner in vm.partners track by $index">
-    <div flex layout="row">
-      <md-input-container>
-        <label>{{$index + 1}}</label>
-      </md-input-container>
-      <md-input-container flex>
-        <div class="thumbnail" style="margin-bottom:0">
-          <img ng-src="{{partner.image}}">
-        </div>
-      </md-input-container>
-    </div>
-    <div layout="column" flex>
-      <md-input-container flex>
-        <label>სტატიის სახელი</label>
-        <input type="text" ng-model="partner.name.geo" readonly>
-      </md-input-container>
-      <md-input-container flex>
-        <label>Article Name</label>
-        <input type="text" ng-model="partner.name.eng" readonly>
-      </md-input-container>
-      <md-input-container flex>
-        <label>Article Url</label>
-        <input type="text" ng-model="partner.link" readonly>
-      </md-input-container>
-    </div>
-    <span layout="column" flex="10">
-      <span flex>
-        <md-button class="md-fab md-mini md-primary" ng-click="vm.openUpdatePartnerModal($event, partner)" aria-label="Edit">
-          <i class="fa fa-pencil-square-o"></i>
-        </md-button>
-        <md-button class="md-fab md-mini md-primary" ng-click="vm.openRemovePartnerModal($event, partner, $index)" aria-label="Remove">
-          <i class="fa fa-trash-o"></i>
-        </md-button>
+  <div ng-repeat="partner in vm.partners track by $index">
+    <div layout>
+      <div layout="row" flex="25">
+        <md-input-container style="padding-bottom:0">
+          <label>{{$index + 1}}</label>
+        </md-input-container>
+        <md-input-container style="padding-bottom:0" flex>
+          <div class="thumbnail" style="margin-bottom:0">
+            <img ng-src="{{partner.image}}">
+          </div>
+        </md-input-container>
+      </div>
+      <div layout="column" flex="65">
+        <md-input-container style="padding-bottom:0" flex>
+          <label>ორგანიზაციის დასახელება</label>
+          <input type="text" ng-model="partner.name.geo" readonly>
+        </md-input-container>
+        <md-input-container style="padding-bottom:0" flex>
+          <label>Organization name</label>
+          <input type="text" ng-model="partner.name.eng" readonly>
+        </md-input-container>
+        <md-input-container style="padding-bottom:0" flex>
+          <label>Company URL</label>
+          <input type="text" ng-model="partner.link" readonly>
+        </md-input-container>
+      </div>
+      <span layout="column" flex="10">
+        <span flex>
+          <md-button class="md-fab md-mini md-primary" ng-click="vm.openUpdatePartnerModal($event, partner)" aria-label="Edit">
+            <i class="fa fa-pencil-square-o"></i>
+          </md-button>
+          <md-button class="md-fab md-mini md-primary" ng-click="vm.openRemovePartnerModal($event, partner, $index)" aria-label="Remove">
+            <i class="fa fa-trash-o"></i>
+          </md-button>
+        </span>
       </span>
-    </span>
+    </div>
+    <hr>
   </div>
 </md-content>
