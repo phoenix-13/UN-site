@@ -6,41 +6,43 @@
 </md-button>
 
 <md-content class="md-padding">
-  <div layout layout-sm="column" ng-repeat="slide in vm.slider track by $index">
-    <div layout="row">
-      <md-input-container>
-        <label>{{$index + 1}}</label>
-      </md-input-container>
-      <md-input-container flex>
-        <div class="thumbnail" style="margin-bottom:0">
-          <img ng-src="{{slide.image}}">
-        </div>
-      </md-input-container>
-    </div>
-    <div layout="column" flex>
-      <md-input-container flex>
-        <label>სტატიის სახელი</label>
-        <input type="text" ng-model="slide.title.geo" readonly>
-      </md-input-container>
-      <md-input-container flex>
-        <label>Article Name</label>
-        <input type="text" ng-model="slide.title.eng" readonly>
-      </md-input-container>
-      <md-input-container flex>
-        <label>Article</label>
-        <input type="text" ng-model="slide.ref.title" readonly>
-      </md-input-container>
-    </div>
-    <span layout="column" flex="10">
-      <span flex>
-        <md-button class="md-fab md-mini md-primary" ng-click="vm.openUpdateSlideModal($event, slide)" aria-label="Edit">
-          <i class="fa fa-pencil-square-o"></i>
-        </md-button>
-        <md-button class="md-fab md-mini md-primary" ng-click="vm.openRemoveSlideModal($event, slide, $index)" aria-label="Remove">
-          <i class="fa fa-trash-o"></i>
-        </md-button>
+  <div ng-repeat="slide in vm.slider track by $index">
+    <div layout>
+      <div layout="row" flex="25">
+        <md-input-container style="padding-bottom:0">
+          <label>{{$index + 1}}</label>
+        </md-input-container>
+        <md-input-container style="padding-bottom:0" flex>
+          <div class="thumbnail" style="margin-bottom:0">
+            <img ng-src="{{slide.image}}">
+          </div>
+        </md-input-container>
+      </div>
+      <div layout="column" flex="65">
+        <md-input-container style="padding-bottom:0" flex>
+          <label>სტატიის სახელი</label>
+          <input type="text" ng-model="slide.title.geo" readonly>
+        </md-input-container>
+        <md-input-container style="padding-bottom:0" flex>
+          <label>Article Name</label>
+          <input type="text" ng-model="slide.title.eng" readonly>
+        </md-input-container>
+        <md-input-container style="padding-bottom:0" flex>
+          <label>Article</label>
+          <input type="text" ng-model="slide.ref.title" readonly>
+        </md-input-container>
+      </div>
+      <span layout="column" flex="10">
+        <span flex>
+          <md-button class="md-fab md-mini md-primary" ng-click="vm.openUpdateSlideModal($event, slide)" aria-label="Edit">
+            <i class="fa fa-pencil-square-o"></i>
+          </md-button>
+          <md-button class="md-fab md-mini md-primary" ng-click="vm.openRemoveSlideModal($event, slide, $index)" aria-label="Remove">
+            <i class="fa fa-trash-o"></i>
+          </md-button>
+        </span>
       </span>
-    </span>
-
+    </div>
+    <hr>
   </div>
 </md-content>
