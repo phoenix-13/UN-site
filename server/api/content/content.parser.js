@@ -26,8 +26,8 @@ function parseSlide(slide) {
   return {
     title: biling(slide.title),
     image: slide.image,
-    ref: ref(slide)
-    // link: slide.link
+    ref: ref(slide),
+    link: slide.link
   };
 }
 
