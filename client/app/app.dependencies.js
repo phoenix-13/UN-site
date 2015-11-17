@@ -1,5 +1,8 @@
 'use strict';
 
+
+import 'bpg-ingiri-arial/css/bpg-ingiri-arial.min.css!';
+import 'bpg-nino-mtavruli/css/bpg-nino-mtavruli.min.css!';
 import 'font-awesome/css/font-awesome.css!';
 import 'bootstrap/css/bootstrap.min.css!';
 import 'textAngular/dist/textAngular.css!';

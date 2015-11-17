@@ -24,6 +24,8 @@ System.config({
     "animated": "github:daneden/animate.css@3.4.0",
     "babel": "npm:babel-core@5.8.25",
     "bootstrap": "github:twbs/bootstrap@3.3.5",
+    "bpg-ingiri-arial": "npm:bpg-ingiri-arial@1.0.1",
+    "bpg-nino-mtavruli": "npm:bpg-nino-mtavruli@1.0.0",
     "clean-css": "npm:clean-css@3.4.6",
     "css": "github:systemjs/plugin-css@0.1.19",
     "danialfarid/ng-file-upload": "github:danialfarid/ng-file-upload@9.1.2",
