@@ -1,8 +1,9 @@
 'use strict';
 
 export default class {
-  constructor() {
+  constructor(categories) {
     'ngInject';
+    this.categories = categories;
     this.indicatorsSlided = false;
     this.publicationsSlided = false;
   }

@@ -56,33 +56,9 @@
     </div>
     <div class="sub_category_list" layout="row">
       <div id="indicators" class="slideable" layout="column">
-        <div layout="row">
+        <div layout="row" ng-repeat="category in vm.categories">
           <span class="navigation title_text">
-            <a ui-sref="indicators" href=""><i class="fa fa-angle-right"></i>მონაწილეობა</a>
-          </span>
-          <span flex></span>
-        </div>
-        <div layout="row">
-          <span class="navigation title_text">
-            <a ui-sref="indicators" href=""><i class="fa fa-angle-right"></i>სპეციალური მხარდაჭერა და დაცვა</a>
-          </span>
-          <span flex></span>
-        </div>
-        <div layout="row">
-          <span class="navigation title_text">
-            <a ui-sref="indicators" href=""><i class="fa fa-angle-right"></i>ჯანმრთელობა</a>
-          </span>
-          <span flex></span>
-        </div>
-        <div layout="row">
-          <span class="navigation title_text">
-            <a ui-sref="indicators" href=""><i class="fa fa-angle-right"></i>ახალგაზრდები და ოჯახი</a>
-          </span>
-          <span flex></span>
-        </div>
-        <div layout="row">
-          <span class="navigation title_text">
-            <a ui-sref="indicators" href=""><i class="fa fa-angle-right"></i>განათლება, დასაქმება და მობილობა</a>
+            <a ui-sref="main.articles({tabIndex: 0, publicationIndex: 0, indicatorIndex: 0, categoryId: category._id, year: undefined, searchQuery: undefined})" href=""><i class="fa fa-angle-right"></i>{{category.title.geo}}</a>
           </span>
           <span flex></span>
         </div>
@@ -100,33 +76,9 @@
     </div>
     <div class="sub_category_list" layout="row">
       <div id="publications" class="slideable" layout="column">
-        <div layout="row">
+        <div layout="row" ng-repeat="category in vm.categories">
           <span class="navigation title_text">
-            <a ui-sref="indicators" href=""><i class="fa fa-angle-right"></i>მონაწილეობა</a>
-          </span>
-          <span flex></span>
-        </div>
-        <div layout="row">
-          <span class="navigation title_text">
-            <a ui-sref="indicators" href=""><i class="fa fa-angle-right"></i>სპეციალური მხარდაჭერა და დაცვა</a>
-          </span>
-          <span flex></span>
-        </div>
-        <div layout="row">
-          <span class="navigation title_text">
-            <a ui-sref="indicators" href=""><i class="fa fa-angle-right"></i>ჯანმრთელობა</a>
-          </span>
-          <span flex></span>
-        </div>
-        <div layout="row">
-          <span class="navigation title_text">
-            <a ui-sref="indicators" href=""><i class="fa fa-angle-right"></i>ახალგაზრდები და ოჯახი</a>
-          </span>
-          <span flex></span>
-        </div>
-        <div layout="row">
-          <span class="navigation title_text">
-            <a ui-sref="indicators" href=""><i class="fa fa-angle-right"></i>განათლება, დასაქმება და მობილობა</a>
+            <a ui-sref="main.articles({tabIndex: 1, publicationIndex: 0, indicatorIndex: 0, categoryId: category._id, year: undefined, searchQuery: undefined})" href=""><i class="fa fa-angle-right"></i>{{category.title.geo}}</a>
           </span>
           <span flex></span>
         </div>
