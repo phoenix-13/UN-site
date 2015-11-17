@@ -32,7 +32,7 @@
                 <div class="autocomplete_section">
                   <div class="autocomplete_section_header" layout="row">
                     <div style="display: inline-block" class="title_text search_title" flex>ინდიკატორები <span>{{vm.indicators.numTotal}}<span></div>
-                    <md-button style="display: inline-block; min-width:50px" ng-click="vm.loadArticles(0)"  class="button">
+                    <md-button ng-show="vm.indicators.items.length > 0" style="display: inline-block; min-width:50px" ng-click="vm.loadArticles(0)"  class="button">
                       ყველა
                     </md-button>
                   </div>
@@ -44,7 +44,7 @@
                 <div class="autocomplete_section">
                   <div class="autocomplete_section_header" layout="row">
                     <div style="display: inline-block" class="title_text search_title" flex>პუბლიკაციები <span>{{vm.publications.numTotal}}</span></div>
-                    <md-button style="display: inline-block; min-width:50px" ng-click="vm.loadArticles(1)" class="button" >
+                    <md-button ng-show="vm.publications.items.length > 0" style="display: inline-block; min-width:50px" ng-click="vm.loadArticles(1)" class="button" >
                       ყველა
                     </md-button>
                   </div>

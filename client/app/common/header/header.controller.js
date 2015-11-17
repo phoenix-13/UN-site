@@ -5,7 +5,7 @@ export default class {
     'ngInject';
     this.$state = $state;
     this.ArticleResource= ArticleResource;
-    this.search = {max: 256, min: 3};
+    this.search = {max: 256, min: 0};
     this.publications = {items: [], numTotal: 0};
     this.indicators = {items: [], numTotal: 0};
   }
@@ -26,16 +26,19 @@ export default class {
 
   loadArticles(tabIndex) {
     $('.search_wrapper_autocomplete').addClass('hidden');
+    this.searchText = '';
     this.$state.go('main.articles', {searchQuery: this.searchText, publicationIndex: 0, indicatorIndex: 0, tabIndex});
   }
 
   loadPublication(publication) {
     $('.search_wrapper_autocomplete').addClass('hidden');
+    this.searchText = '';
     this.$state.go('main.publication', {id: publication._id});
   }
 
   loadIndicator(indicator) {
     $('.search_wrapper_autocomplete').addClass('hidden');
+    this.searchText = '';
     this.$state.go('main.indicator', {id: indicator._id});
   }
 
