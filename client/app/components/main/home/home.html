@@ -3,7 +3,7 @@
     <div layout="row" class="" style="height: 530px;">
       <div flex>
         <div class="title_text">
-          <h4 style="margin-top:0; margin-left:15px">ვეძებ სტატისტიკას თემაზე...</h4>
+          <h4 style="margin-top:0; margin-left:15px">{{'LOOKING_STATISTICS' | translate}}</h4>
         </div>
         <div layout="row">
           <div flex>
@@ -12,7 +12,7 @@
                 <div class="md-list-item-text">
                   <a ui-sref="{{'main.' + article.ref.type}}({id:article.ref._id})" class="unstyled_link">
                     <span><i class="fa fa-angle-double-right"></i></span>
-                    <span>{{article.title.geo}}</span>
+                    <span>{{'T' | translate:article.title}}</span>
                   </a>
                 </div>
               </md-list-item>
@@ -25,7 +25,7 @@
                 <div class="md-list-item-text">
                   <a ui-sref="{{'main.' + article.ref.type}}({id:article.ref._id})" class="unstyled_link">
                     <span><i class="fa fa-angle-double-right"></i></span>
-                    <span>{{article.title.geo}}</span>
+                    <span>{{'T' | translate:article.title}}</span>
                   </a>
                 </div>
               </md-list-item>
@@ -42,7 +42,7 @@
               <img ng-src="{{slide.image}}" alt="{{slide.title.geo}}">
               <div layout="column" class="md-padding">
                 <div>
-                  <h4 class="title_text">{{slide.title.geo}}</h4>
+                  <h4 class="title_text">{{'T' | translate:slide.title}}</h4>
                 </div>
                 <a ng-if="slide.ref._id" ui-sref="{{'main.' + slide.ref.type}}({id: slide.ref._id})" class="more_btn">
                   <md-button> read more</md-button>
@@ -69,7 +69,7 @@
                 <img ng-src="/assets/images/{{category.title.eng}}.png">
               </span>
               <span flex class="single_line_category">
-                {{category.title.geo}}
+                {{'T' | translate:category.title}}
               </span>
             </a>
           </md-whiteframe>
@@ -79,7 +79,7 @@
     <div class="publications_container md-padding">
       <div layout="row">
         <div class="title_text">
-          <h4 style="margin:0">პუბლიკაციები</h4>
+          <h4 style="margin:0">{{'PUBLICATIONS' | translate}}</h4>
         </div>
         <div flex></div>
         <div></div>
@@ -88,7 +88,7 @@
         <div flex class="md-padding" ng-repeat="publication in vm.latestPublications">
           <a ui-sref="main.publication({id: publication._id})" class="unstyled_link">
             <div class="md-list-item-text" layout="column" >
-              <h3 class="title_text" style="font-size:1em">{{publication.title.geo}}</h3>
+              <h3 class="title_text" style="font-size:1em">{{'T' | translate:publication.title}}</h3>
               <p style="font-size:0.9em;" ng-bind-html="publication.content.geo" class="publication_text_part"></p>
               <p style="font-size:0.8em;">{{publication.date | date: 'yyyy-MM-dd': 'GMT+03:00'}}</p>
             </div>
@@ -109,7 +109,7 @@
               <span flex></span>
               <span class="title_text page_title">
                 <a href="" ui-sref="main.demographics" >
-                  დემოგრაფია
+                  {{'DEMOGRAPHICS' | translate}}
                 </a>
                 <hr>
               </span>
