@@ -57,7 +57,7 @@
 
       <div flex="30" class="categories_wrapp title_text">
         <div ng-repeat="category in vm.categories" layout="row" layout-wrap ng-cloak>
-          <md-whiteframe class="md-whiteframe-1dp whiteframe" ng-class="{{category.title.eng}}" flex layout>
+          <md-whiteframe class="md-whiteframe-1dp whiteframe" ng-class="category.title.eng" flex layout>
             <a class="unstyled_link" ui-sref="main" href="" layout="row">
               <span flex="20" class="category_image">
                 <img ng-src="/assets/images/{{category.title.eng}}.png">
