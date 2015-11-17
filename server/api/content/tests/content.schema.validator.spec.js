@@ -87,20 +87,8 @@ describe('content.schema.validator', () => {
         .catch(SchemaError, () => done());
     });
 
-    it('should not validate when ref _id is not provided', done => {
-      delete featured[0].ref._id;
-      contentSchemaValidator.validateFeatured(featured)
-        .catch(SchemaError, () => done());
-    });
-
     it('should not validate when ref _id is not string', done => {
       featured[0].ref._id = {};
-      contentSchemaValidator.validateFeatured(featured)
-        .catch(SchemaError, () => done());
-    });
-
-    it('should not validate when ref type is not provided', done => {
-      delete featured[0].ref.type;
       contentSchemaValidator.validateFeatured(featured)
         .catch(SchemaError, () => done());
     });
@@ -111,28 +99,10 @@ describe('content.schema.validator', () => {
         .catch(SchemaError, () => done());
     });
 
-    it('should validate when ref type is empty string', done => {
-      featured[0].ref.type = '';
-      contentSchemaValidator.validateFeatured(featured)
-        .then(() => done());
-    });
-
-    it('should not validate when ref title is not provided', done => {
-      delete featured[0].ref.title;
-      contentSchemaValidator.validateFeatured(featured)
-        .catch(SchemaError, () => done());
-    });
-
     it('should not validate when ref title is not string', done => {
       featured[0].ref.title = {};
       contentSchemaValidator.validateFeatured(featured)
         .catch(SchemaError, () => done());
-    });
-
-    it('should validate when ref title is empty string', done => {
-      featured[0].ref.title = '';
-      contentSchemaValidator.validateFeatured(featured)
-        .then(() => done());
     });
 
   });
@@ -225,20 +195,8 @@ describe('content.schema.validator', () => {
         .catch(SchemaError, () => done());
     });
 
-    it('should not validate when ref _id is not provided', done => {
-      delete slide.ref._id;
-      contentSchemaValidator.validateSlide(slide)
-        .catch(SchemaError, () => done());
-    });
-
     it('should not validate when ref _id is not string', done => {
       slide.ref._id = {};
-      contentSchemaValidator.validateSlide(slide)
-        .catch(SchemaError, () => done());
-    });
-
-    it('should not validate when ref type is not provided', done => {
-      delete slide.ref.type;
       contentSchemaValidator.validateSlide(slide)
         .catch(SchemaError, () => done());
     });
@@ -249,28 +207,10 @@ describe('content.schema.validator', () => {
         .catch(SchemaError, () => done());
     });
 
-    it('should validate when ref type is empty string', done => {
-      slide.ref.type = '';
-      contentSchemaValidator.validateSlide(slide)
-        .then(() => done());
-    });
-
-    it('should not validate when ref title is not provided', done => {
-      delete slide.ref.title;
-      contentSchemaValidator.validateSlide(slide)
-        .catch(SchemaError, () => done());
-    });
-
     it('should not validate when ref title is not string', done => {
       slide.ref.title = {};
       contentSchemaValidator.validateSlide(slide)
         .catch(SchemaError, () => done());
-    });
-
-    it('should validate when ref title is empty string', done => {
-      slide.ref.title = '';
-      contentSchemaValidator.validateSlide(slide)
-        .then(() => done());
     });
 
     it('should not validate when link is not string', done => {

@@ -32,9 +32,9 @@ var bilingAddressSchema = Joi.object().keys({
 }).required();
 
 var refSchema = Joi.object().keys({
-  _id: Joi.string().required(),
-  type: Joi.string().required().empty(''),
-  title: Joi.string().required().empty('')
+  _id: Joi.string(),
+  type: Joi.string(),
+  title: Joi.string()
 });
 
 var featuredItemSchema = Joi.object().keys({
