@@ -41,7 +41,10 @@
                 <div>
                   <h4 class="title_text">{{slide.title.geo}}</h4>
                 </div>
-                <a ui-sref="{{'main.' + slide.ref.type}}({id: slide.ref._id})" class="more_btn">
+                <a ng-show="{{slide.ref._id}}" ui-sref="{{'main.' + slide.ref.type}}({id: slide.ref._id})" class="more_btn">
+                  <md-button> read more</md-button>
+                </a>
+                <a ng-show="{{!slide.ref._id}}" href="{{slide.link}}" target="_blank" class="more_btn">
                   <md-button> read more</md-button>
                 </a>
               </div>

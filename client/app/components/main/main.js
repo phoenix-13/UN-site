@@ -23,7 +23,7 @@ export default angular.module('main', [])
                   if (slide.ref.type === 'publication') {
                     return PublicationResource.getPublication(slide.ref._id)
                       .then(publication => slide.category = publication.category);
-                  } else if (slider.ref.type === 'indicator') {
+                  } else if (slide.ref.type === 'indicator') {
                     return IndicatorResource.getIndicator(slide.ref._id)
                       .then(indicator => slide.category = indicator.category);
                   }

@@ -8,13 +8,23 @@ export default class {
     this.slideModal = slideModal;
     this.confirmModal = confirmModal;
     this.slider = content.slider;
+    this.slider.forEach(slide => this.updateSliderReference(slide));
+  }
+
+  updateSliderReference(slide) {
+    if (slide.ref._id) {
+      slide.reference = slide.ref.title;
+    } else {
+      slide.reference = slide.link;
+    }
   }
 
   openAddSlideModal(targetEvent) {
     this.slideModal.open(targetEvent)
       .then(slide => this.ContentResource.addSlide({slide}))
       .then(slide => {
-        this.slider.push(slide)
+        this.slider.push(slide);
+        this.updateSliderReference(slide);
         this.Toast.show('Slide Added Successfully!');
       });
   }
@@ -24,7 +34,8 @@ export default class {
     this.slideModal.open(targetEvent, newSlide)
       .then(updatedSlide => this.ContentResource.updateSlide(newSlide._id, {updateData: updatedSlide}))
       .then(() => {
-        angular.copy(newSlide, slide)
+        angular.copy(newSlide, slide);
+        this.updateSliderReference(slide);
         this.Toast.show('Slide Updated Successfully!');
       });
   }

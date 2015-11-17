@@ -10,14 +10,17 @@ export default class {
   }
 
   open(targetEvent, slide) {
-
     return this.$mdDialog.show({
       controller($q, $mdDialog, galleryModal, Toast, ArticleResource) {
-        this.slide = {title: {eng: '', geo: ''}};
+        this.slide = {ref: {}, title: {eng: '', geo: ''}};
         this.title = 'Add slide';
         if (slide) {
           this.slide = slide;
-          this.selectedArticle = slide.ref;
+          if (this.slide.ref._id) {
+            this.selectedArticle = slide.ref;
+          } else {
+            this.searchText = slide.link;
+          }
         }
 
         this.searchArticles = () => {
@@ -28,6 +31,7 @@ export default class {
               .then(parsedArticles => deferred.resolve(parsedArticles));
             return deferred.promise;
           } else {
+            this.selectedArticle = undefined;
             return [];
           }
         };
@@ -38,8 +42,14 @@ export default class {
         };
 
         this.save = () => {
-          if (this.slide.image && this.selectedArticle) {
-            this.slide.ref = this.selectedArticle;
+          if (this.slide.image && (this.selectedArticle || this.searchText)) {
+            if (this.selectedArticle) {
+              this.slide.ref = this.selectedArticle;
+              this.link = '';
+            } else {
+              this.slide.ref = {};
+              this.slide.link = this.searchText;
+            }
             $mdDialog.hide(this.slide);
           } else {
             Toast.show('Image And Link Should Be Provided!');

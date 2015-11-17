@@ -12,6 +12,7 @@ export default class {
     this.slider = content.slider;
     this.sliderPlaying = true;
     this.populateCategory();
+    this.parseSliderLinks();
     $timeout(() => this.initOwlCarousel());
   }
 
@@ -23,6 +24,14 @@ export default class {
         }
       });
     });
+  }
+
+  parseSliderLinks() {
+    this.slider.forEach(slide => {
+      if (slide.link && slide.link.substring(0, 7) !== 'http://' && slide.link.substring(0, 8) !== 'https://') {
+        slide.link = 'http://' + slide.link;
+      }
+    })
   }
 
   initOwlCarousel() {
