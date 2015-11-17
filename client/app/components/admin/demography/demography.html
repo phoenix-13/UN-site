@@ -1,7 +1,7 @@
 <div layout layout-sm="column">
   <div flex></div>
   <div>
-    <h3 class="title_text">ახალგაზრდები და ოჯახი</h3>
+    <h3 class="title_text">დემოგრაფია</h3>
   </div>
   <div flex></div>
 </div>
@@ -189,7 +189,7 @@
 </div>
 
 <div class="md-padding">
-  <table class="table table-striped indicators_table demograpy_table">
+  <table class="table table-bordered indicators_table demograpy_table">
     <thead>
       <tr>
         <th></th>
@@ -200,15 +200,14 @@
       <tr ng-repeat="(name, demography) in vm.demographics">
         <td class="table_article_title" style="cursor: pointer" class="title_text">{{demography.region.geo}}</td>
         <td ng-repeat="demographyYear in vm.years">
-          <input type="number" ng-model="demography.valuesMap[demographyYear].value">
+          <input type="text" class="demograpy_input" ng-model="demography.valuesMap[demographyYear]">
         </td>
       </tr>
     </tbody>
   </table>
   <div layout="row">
     <span flex></span>
-    <md-button class="md-primary md-raised"> update </md-button>
+    <md-button ng-click="vm.updateDemographics()" class="md-primary md-raised"> update </md-button>
   </div>
-
 </div>
 

@@ -1,118 +1,4 @@
-<div class="single_page_container about">
-  <div class="single_page_content">
-    <div layout="row" class="" style="height: 530px;">
-      <div flex>
-        <div class="title_text">
-          <h4 style="margin-top:0; margin-left:15px">ვეძებ სტატისტიკას თემაზე...</h4>
-        </div>
-        <div layout="row">
-          <div flex>
-            <md-list flex="90" ng-repeat="article in vm.firstLevelPrimaryArticles" style="padding:0">
-              <md-list-item class="main_article_item">
-                <div class="md-list-item-text">
-                  <a ui-sref="{{'main.' + article.ref.type}}({id:article.ref._id})" class="unstyled_link">
-                    <span><i class="fa fa-angle-double-right"></i></span>
-                    <span>{{article.title.geo}}</span>
-                  </a>
-                </div>
-              </md-list-item>
-            </md-list>
-            <div flex></div>
-          </div>
-          <div flex>
-            <md-list flex="90" ng-repeat="article in vm.secondLevelPrimaryArticles" style="padding:0">
-              <md-list-item class="main_article_item">
-                <div class="md-list-item-text">
-                  <a ui-sref="{{'main.' + article.ref.type}}({id:article.ref._id})" class="unstyled_link">
-                    <span><i class="fa fa-angle-double-right"></i></span>
-                    <span>{{article.title.geo}}</span>
-                  </a>
-                </div>
-              </md-list-item>
-            </md-list>
-            <div flex></div>
-          </div>
-        </div>
-        <div layout="row" class="slider_wrapper md-padding">
-          <div id="owl2-slider" class="owl-carousel owl-theme" style="width: 620px; max-height: 400px">
-            <div class="item" ng-repeat="slide in vm.slider" layout="row">
-              <img ng-src="{{slide.image}}" alt="{{slide.title.geo}}">
-              <div layout="column" class="md-padding">
-                <div>
-                  <h4 class="title_text">{{slide.title.geo}}</h4>
-                </div>
-                <a ui-sref="{{'main.' + slide.ref.type}}({id: slide.ref._id})" class="more_btn">
-                  <md-button> read more</md-button>
-                </a>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="btn_wrapper" layout="row">
-            <div ng-show="!vm.sliderPlaying" class="play btn btn-default"><i class="fa fa-play"></i></div>
-            <div ng-show="vm.sliderPlaying" class="stop btn btn-default"><i class="fa fa-pause"></i></div>
-            <div flex></div>
-          </div>
-      </div>
-
-      <div flex="30" class="categories_wrapp title_text">
-        <div ng-repeat="category in vm.categories" layout="row" layout-wrap ng-cloak>
-          <md-whiteframe class="md-whiteframe-1dp whiteframe" ng-class="category.title.eng" flex layout>
-            <a class="unstyled_link" ui-sref="main.articles({tabIndex: 0, publicationIndex: 0, indicatorIndex: 0, categoryId: category._id, year: undefined, searchQuery: undefined})" href="" layout="row">
-              <span flex="20" class="category_image">
-                <img ng-src="/assets/images/{{category.title.eng}}.png">
-              </span>
-              <span flex class="single_line_category">
-                {{category.title.geo}}
-              </span>
-            </a>
-          </md-whiteframe>
-        </div>
-      </div>
-    </div>
-    <div class="publications_container md-padding">
-      <div layout="row">
-        <div class="title_text">
-          <h4 style="margin:0">პუბლიკაციები</h4>
-        </div>
-        <div flex></div>
-        <div></div>
-      </div>
-      <div layout="row">
-        <div flex class="md-padding" ng-repeat="publication in vm.latestPublications">
-          <a ui-sref="main.publication({id: publication._id})" class="unstyled_link">
-            <div class="md-list-item-text" layout="column" >
-              <h3 class="title_text" style="font-size:1em">{{publication.title.geo}}</h3>
-              <p style="font-size:0.9em;" ng-bind-html="publication.content.geo" class="publication_text_part"></p>
-              <p style="font-size:0.8em;">{{publication.date | date: 'yyyy-MM-dd': 'GMT+03:00'}}</p>
-            </div>
-          </a>
-        </div>
-      </div>
-    </div>
-    <div layout="row" class="banner_row md-padding">
-      <div class="" layout="row" flex>
-        <div class="banner" flex>
-          <a href="{{vm.banner.link}}" target="_blank">
-            <img ng-src="{{vm.banner.image}}" alt="{{vm.banner.title.geo}}">
-          </a>
-        </div>
-        <div class="item md-padding" flex>
-          <div>
-            <div layout="row">
-              <span flex></span>
-              <span class="title_text page_title">
-                <a href="" ui-sref="main.demographics" >
-                  დემოგრაფია
-                </a>
-                <hr>
-              </span>
-              <span flex></span>
-            </div>
-          </div>
-          <div class="home_map_wrapper">
-            <a href="" ui-sref="main.demographics" >
-              <svg
+<svg
      xmlns:dc="http://purl.org/dc/elements/1.1/"
      xmlns:cc="http://creativecommons.org/ns#"
      xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
@@ -125,9 +11,7 @@
      height="412.6658"
      id="svg2"
      inkscape:version="0.48.4 r9939"
-     sodipodi:docname="Georgia.svg"
-
-      style="zoom:60%; margin-top:30px; -moz-transform: scale(0.4);">
+     sodipodi:docname="Georgia.svg">
     <metadata
        id="metadata34">
       <rdf:RDF>
@@ -292,17 +176,3 @@
       </g>
     </g>
   </svg>
-
-
-
-
-
-
-
-            </a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>

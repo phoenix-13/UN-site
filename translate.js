@@ -16,12 +16,10 @@ export default $translateProvider => {
       SITEMAP: 'site map',
 
       PARTICIPATION: 'Participation',
-      PROTECTION_1: 'Special Support',
-      PROTECTION_2: 'and Protection',
+      PROTECTION: 'Special Support and Protection',
       HEALTH: 'Health',
       FAMILY: 'Youth and Family',
-      EDUCATION_1: 'Education, Employment',
-      EDUCATION_2: 'and Mobility',
+      EDUCATION: 'Education, Employment and Mobility',
 
       READ MORE: 'Read More',
       LOOKING_STATISTICS: 'I am looking for statistics on',
@@ -45,12 +43,10 @@ export default $translateProvider => {
       SITEMAP: 'საიტის რუკა',
 
       PARTICIPATION: 'მონაწილეობა',
-      PROTECTION_1: 'სპეციალური მხარდაჭერა',
-      PROTECTION_2: 'და დაცვა',
+      PROTECTION: 'სპეციალური მხარდაჭერა და დაცვა',
       HEALTH: 'ჯანმრთელობა',
       FAMILY: 'ახალგაზრდები და ოჯახი',
-      EDUCATION_1: 'განათლება, დასაქმება',
-      EDUCATION_2: 'და მობილობა',
+      EDUCATION: 'განათლება, დასაქმება და მობილობა',
 
 
       READ MORE: 'სრულად ნახვა',

@@ -1,5 +1,8 @@
 'use strict';
 
+
+import 'bpg-ingiri-arial/css/bpg-ingiri-arial.min.css!';
+import 'bpg-nino-mtavruli/css/bpg-nino-mtavruli.min.css!';
 import 'font-awesome/css/font-awesome.css!';
 import 'bootstrap/css/bootstrap.min.css!';
 import 'textAngular/dist/textAngular.css!';
@@ -24,6 +27,7 @@ import 'danialfarid/ng-file-upload';
 import 'OwlCarousel/dist/owl.carousel';
 import 'angular-ui-select';
 import 'animated';
+import 'AngularSlideables/angularSlideables';
 
 export default angular.module('dependencies', [
   'ngAnimate',
@@ -37,5 +41,6 @@ export default angular.module('dependencies', [
   'ui.bootstrap',
   'restangular',
   'textAngular',
-  'ngFileUpload'
+  'ngFileUpload',
+  'angularSlideables'
 ]);
