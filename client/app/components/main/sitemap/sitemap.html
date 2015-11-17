@@ -47,8 +47,8 @@
     <hr>
     <div class="" layout="row">
       <span class="navigation title_text">
-        <i ng-click="vm.toggleIndicators()" slide-toggle="#indicators"  class="fa" ng-class="{'fa-plus-square-o': !vm.indicatorsSlided, 'fa-minus-square-o': vm.indicatorsSlided}"></i>
-        <a ui-sref="indicators" href="">
+        <i ng-click="vm.toggleIndicators()" slide-toggle="#indicators"  class="fa plus_sign" ng-class="{'fa-plus-square-o': !vm.indicatorsSlided, 'fa-minus-square-o': vm.indicatorsSlided}"></i>
+        <a ui-sref="main.articles({tabIndex: 0, publicationIndex: 0, indicatorIndex: 0, categoryId: undefined, year: undefined, searchQuery: undefined})" href="">
           ინდიკატორები
         </a>
       </span>
@@ -91,8 +91,8 @@
     <hr>
     <div class="" layout="row">
       <span class="navigation title_text">
-        <i ng-click="vm.togglePublications()" slide-toggle="#publications"  class="fa" ng-class="{'fa-plus-square-o': !vm.publicationsSlided, 'fa-minus-square-o': vm.publicationsSlided}"></i>
-        <a ui-sref="publications" href="">
+        <i ng-click="vm.togglePublications()" slide-toggle="#publications"  class="fa plus_sign" ng-class="{'fa-plus-square-o': !vm.publicationsSlided, 'fa-minus-square-o': vm.publicationsSlided}"></i>
+        <a ui-sref="main.articles({tabIndex: 1, publicationIndex: 0, indicatorIndex: 0, categoryId: undefined, year: undefined, searchQuery: undefined})" href="">
           პუბლიკაციები
         </a>
       </span>
@@ -136,7 +136,7 @@
     <div class="" layout="row">
       <span class="navigation title_text">
         <i class="fa fa-minus-square-o"></i>
-        <a ui-sref="contact" href="">
+        <a ui-sref="main.contact" href="">
           კონტაქტი
         </a>
       </span>
