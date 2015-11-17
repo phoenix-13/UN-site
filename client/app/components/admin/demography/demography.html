@@ -200,15 +200,14 @@
       <tr ng-repeat="(name, demography) in vm.demographics">
         <td class="table_article_title" style="cursor: pointer" class="title_text">{{demography.region.geo}}</td>
         <td ng-repeat="demographyYear in vm.years">
-          <input type="text" class="demograpy_input" ng-model="demography.valuesMap[demographyYear].value">
+          <input type="text" class="demograpy_input" ng-model="demography.valuesMap[demographyYear]">
         </td>
       </tr>
     </tbody>
   </table>
   <div layout="row">
     <span flex></span>
-    <md-button class="md-primary md-raised"> update </md-button>
+    <md-button ng-click="vm.updateDemographics()" class="md-primary md-raised"> update </md-button>
   </div>
-
 </div>
 

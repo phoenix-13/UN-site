@@ -1,13 +1,15 @@
 'use strict';
 
 export default class {
-  constructor($state, demographyModal, DemographyResource, Toast, demographics) {
+  constructor($q, $state, demographyModal, DemographyResource, Toast, demographics) {
     'ngInject';
+    this.$q = $q;
     this.$state = $state;
     this.demographyModal = demographyModal;
     this.DemographyResource = DemographyResource;
     this.Toast = Toast;
     this.demographics = {};
+    demographics = _.sortBy(demographics, 'region.geo')
     this.indexDemographicsByRegion(demographics);
     this.indexDemographicsByYear();
     this.years = _.range(12).map((elem, i) => 2009 + i);
@@ -20,6 +22,30 @@ export default class {
       .then(yearValues => this.DemographyResource.updateDemography(region._id, {yearValues}))
       .then(() => this.Toast.show('Demography Updated Successfully!'))
       .then(() => this.$state.reload());
+  }
+
+  updateDemographics() {
+    var promises = [];
+    _.forIn(this.demographics, demography => {
+      var yearValues = this.getValuesArray(demography.valuesMap);
+      this.DemographyResource.updateDemography(demography._id, {yearValues});
+    });
+    this.$q
+      .all(promises)
+      .then(() => this.Toast.show('Demographics Updated Successfully!'))
+      .then(() => this.$state.reload())
+  }
+
+  getValuesArray(valuesMap) {
+    var array = [];
+    _.forIn(valuesMap, (strValue, strYear) => {
+      if (this.isInt(strValue) && this.isInt(strYear)) {
+        var year = parseInt(strYear);
+        var value = parseInt(strValue);
+        array.push({value, year});
+      }
+    });
+    return array;
   }
 
   showDemographyInfo(event, demographyRegionName) {
@@ -41,8 +67,15 @@ export default class {
   }
 
   indexDemographicsByYear = () => {
-    _.forIn(this.demographics, (value, key) => {
-      value.valuesMap = _.indexBy(value.values, 'year');
+    _.forIn(this.demographics, demography => {
+      demography.valuesMap = {};
+      demography.values.forEach(pair => {
+        demography.valuesMap[pair.year] = pair.value;
+      });
     });
+  }
+
+  isInt(value) {
+    return !isNaN(value) && (function(x) { return (x | 0) === x; })(parseFloat(value));
   }
 }
