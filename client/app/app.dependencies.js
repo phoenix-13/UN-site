@@ -1,6 +1,5 @@
 'use strict';
 
-
 import 'bpg-ingiri-arial/css/bpg-ingiri-arial.min.css!';
 import 'bpg-nino-mtavruli/css/bpg-nino-mtavruli.min.css!';
 import 'font-awesome/css/font-awesome.css!';
@@ -28,6 +27,7 @@ import 'OwlCarousel/dist/owl.carousel';
 import 'angular-ui-select';
 import 'animated';
 import 'AngularSlideables/angularSlideables';
+import 'AngularFusionCharts';
 
 export default angular.module('dependencies', [
   'ngAnimate',
@@ -42,5 +42,6 @@ export default angular.module('dependencies', [
   'restangular',
   'textAngular',
   'ngFileUpload',
-  'angularSlideables'
+  'angularSlideables',
+  //'ng-fusioncharts'
 ]);
