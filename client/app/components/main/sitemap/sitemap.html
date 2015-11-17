@@ -47,7 +47,7 @@
     <hr>
     <div class="" layout="row">
       <span class="navigation title_text">
-        <i class="fa fa-plus-square-o"></i>
+        <i ng-click="vm.toggleIndicators()" slide-toggle="#indicators"  class="fa" ng-class="{'fa-plus-square-o': !vm.indicatorsSlided, 'fa-minus-square-o': vm.indicatorsSlided}"></i>
         <a ui-sref="indicators" href="">
           ინდიკატორები
         </a>
@@ -55,7 +55,7 @@
       <span flex></span>
     </div>
     <div class="sub_category_list" layout="row">
-      <div layout="column">
+      <div id="indicators" class="slideable" layout="column">
         <div layout="row">
           <span class="navigation title_text">
             <a ui-sref="indicators" href=""><i class="fa fa-angle-right"></i>მონაწილეობა</a>
@@ -91,7 +91,7 @@
     <hr>
     <div class="" layout="row">
       <span class="navigation title_text">
-        <i class="fa fa-plus-square-o"></i>
+        <i ng-click="vm.togglePublications()" slide-toggle="#publications"  class="fa" ng-class="{'fa-plus-square-o': !vm.publicationsSlided, 'fa-minus-square-o': vm.publicationsSlided}"></i>
         <a ui-sref="publications" href="">
           პუბლიკაციები
         </a>
@@ -99,7 +99,7 @@
       <span flex></span>
     </div>
     <div class="sub_category_list" layout="row">
-      <div layout="column">
+      <div id="publications" class="slideable" layout="column">
         <div layout="row">
           <span class="navigation title_text">
             <a ui-sref="indicators" href=""><i class="fa fa-angle-right"></i>მონაწილეობა</a>

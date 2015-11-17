@@ -1,18 +1,19 @@
 'use strict';
 
 export default class {
-  constructor($timeout, content, latestPublications) {
+  constructor($scope, $timeout, content, latestPublications) {
     'ngInject';
+    this.$scope = $scope;
     this.latestPublications = latestPublications.slice(0, 3);
     this.firstLevelPrimaryArticles = content.featured.slice(0, 3);
     this.secondLevelPrimaryArticles = content.featured.slice(3);
     this.banner = content.banner;
     this.slider = content.slider;
+    this.sliderPlaying = true;
     $timeout(() => this.initOwlCarousel());
   }
 
   initOwlCarousel() {
-
     var owl = $('#owl2-slider');
     owl.owlCarousel({
         items:1,
@@ -22,12 +23,13 @@ export default class {
         autoplayTimeout:4000,
         autoplayHoverPause:true
     });
-    $('.play').on('click',function(){
-        owl.trigger('play.owl.autoplay',[4000])
-    })
-    $('.stop').on('click',function(){
-        owl.trigger('stop.owl.autoplay')
-    })
-
+    $('.play').on('click', () => {
+      owl.trigger('play.owl.autoplay',[4000]);
+      this.$scope.$apply(() => this.sliderPlaying = true);
+    });
+    $('.stop').on('click', () => {
+      owl.trigger('stop.owl.autoplay')
+      this.$scope.$apply(() => this.sliderPlaying = false);
+    });
   }
 }

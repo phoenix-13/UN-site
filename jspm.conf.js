@@ -10,6 +10,7 @@ System.config({
   separateCSS: true,
 
   map: {
+    "AngularSlideables": "github:EricWVGG/AngularSlideables@master",
     "OwlCarousel": "github:smashingboxes/OwlCarousel2@2.0.0-beta.3",
     "angular": "github:angular/bower-angular@1.4.7",
     "angular-animate": "github:angular/bower-angular-animate@1.4.7",

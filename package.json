@@ -74,6 +74,7 @@
   "jspm": {
     "configFile": "jspm.conf.js",
     "dependencies": {
+      "AngularSlideables": "github:EricWVGG/AngularSlideables@master",
       "OwlCarousel": "github:smashingboxes/OwlCarousel2@^2.0.0-beta.3",
       "angular": "github:angular/bower-angular@^1.4.7",
       "angular-animate": "github:angular/bower-angular-animate@^1.4.7",
@@ -102,7 +103,7 @@
     "devDependencies": {}
   },
   "gulp": {
-    "sshAddress": "lucy@46.101.138.62",
+    "sshAddress": "ymf@46.101.189.54",
     "localhostPort": "8080",
     "browserSyncPort": "4000",
     "externalHelpersPath": "jspm_packages/npm/babel-core@5.8.25/external-helpers.min.js",

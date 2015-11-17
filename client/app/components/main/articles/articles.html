@@ -5,8 +5,11 @@
         მთავარი
       </a>
       <i class="fa fa-angle-right" style="padding-left:5px;padding-right:5px;"></i>
-      <a href="" ui-sref="main.articles({tabIndex: 0, publicationIndex: 0, indicatorIndex: 0, categoryId: undefined, year: undefined, searchQuery: undefined})">
+      <a ng-show="!vm.selectedTab" href="" ui-sref="main.articles({tabIndex: 0, publicationIndex: 0, indicatorIndex: 0, categoryId: undefined, year: undefined, searchQuery: undefined})">
         ინდიკატორები
+      </a>
+      <a ng-show="vm.selectedTab" href="" ui-sref="main.articles({tabIndex: 1, publicationIndex: 0, indicatorIndex: 0, categoryId: undefined, year: undefined, searchQuery: undefined})">
+        პუბლიკაციები
       </a>
     </span>
     <span flex></span>
