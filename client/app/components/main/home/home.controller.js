@@ -11,7 +11,18 @@ export default class {
     this.banner = content.banner;
     this.slider = content.slider;
     this.sliderPlaying = true;
+    this.populateCategory();
     $timeout(() => this.initOwlCarousel());
+  }
+
+  populateCategory() {
+    this.slider.forEach(slide => {
+      this.categories.forEach(category => {
+        if (category._id === slide.category) {
+          slide.categoryClass = category.title.eng;
+        }
+      });
+    });
   }
 
   initOwlCarousel() {
