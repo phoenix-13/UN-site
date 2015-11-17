@@ -27,6 +27,7 @@ import 'danialfarid/ng-file-upload';
 import 'OwlCarousel/dist/owl.carousel';
 import 'angular-ui-select';
 import 'animated';
+import 'AngularSlideables/angularSlideables';
 
 export default angular.module('dependencies', [
   'ngAnimate',
@@ -40,5 +41,6 @@ export default angular.module('dependencies', [
   'ui.bootstrap',
   'restangular',
   'textAngular',
-  'ngFileUpload'
+  'ngFileUpload',
+  'angularSlideables'
 ]);
