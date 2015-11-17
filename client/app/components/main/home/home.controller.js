@@ -1,9 +1,10 @@
 'use strict';
 
 export default class {
-  constructor($scope, $timeout, content, latestPublications) {
+  constructor($scope, $timeout, content, latestPublications, categories) {
     'ngInject';
     this.$scope = $scope;
+    this.categories = categories;
     this.latestPublications = latestPublications.slice(0, 3);
     this.firstLevelPrimaryArticles = content.featured.slice(0, 3);
     this.secondLevelPrimaryArticles = content.featured.slice(3);
