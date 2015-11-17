@@ -1,13 +1,14 @@
 'use strict';
 
 export default class {
-  constructor($state, ArticleResource) {
+  constructor($rootScope, $state, ArticleResource) {
     'ngInject';
     this.$state = $state;
     this.ArticleResource= ArticleResource;
     this.search = {max: 256, min: 0};
     this.publications = {items: [], numTotal: 0};
     this.indicators = {items: [], numTotal: 0};
+    $rootScope.$on('$stateChangeStart', () => this.cleanSearchState());
   }
 
   searchArticles(searchText) {
@@ -25,26 +26,26 @@ export default class {
   }
 
   loadArticles(tabIndex) {
-    $('.search_wrapper_autocomplete').addClass('hidden');
-    this.searchText = '';
+    this.cleanSearchState();
     this.$state.go('main.articles', {searchQuery: this.searchText, publicationIndex: 0, indicatorIndex: 0, tabIndex});
   }
 
   loadPublication(publication) {
-    $('.search_wrapper_autocomplete').addClass('hidden');
-    this.searchText = '';
+    this.cleanSearchState();
     this.$state.go('main.publication', {id: publication._id});
   }
 
   loadIndicator(indicator) {
+    this.cleanSearchState();
+    this.$state.go('main.indicator', {id: indicator._id});
+  }
+
+  cleanSearchState() {
     $('.search_wrapper_autocomplete').addClass('hidden');
     this.searchText = '';
-    this.$state.go('main.indicator', {id: indicator._id});
   }
 
   searchTextIsInBounds(searchText) {
     return searchText.length > this.search.min && searchText.length < this.search.max;
   }
-
-
 }
