@@ -5,19 +5,14 @@
         <div class="logo title_text">
           <span>
             <a href="" ui-sref="main.home">
-              ახალგაზრდული პოლიტიკის მონიტორი
+              {{'JUNIOR_POLITICS_MONITORING' | translate}}
             </a>
           </span>
         </div>
       </div>
       <div class="navbar_buttons">
         <div class="head">
-          <div class="lang">
-            <a href="">ENG</a>
-          </div>
-          <div class="lang">
-            <a href="" class="active">GEO</a>
-          </div>
+          <lang-translate></lang-translate>
           <div class="icon_wrapp">
             <a ui-sref="main.contact" href="">
               <i class="fa fa-envelope-o"></i>
@@ -33,24 +28,24 @@
                   <div class="autocomplete_section_header" layout="row">
                     <div style="display: inline-block" class="title_text search_title" flex>ინდიკატორები <span>{{vm.indicators.numTotal}}<span></div>
                     <md-button ng-show="vm.indicators.items.length > 0" style="display: inline-block; min-width:50px" ng-click="vm.loadArticles(0)"  class="button">
-                      ყველა
+                      {{'ALL' | translate}}
                     </md-button>
                   </div>
                   <div class="autocomplete_section_body">
                     <div class="autucomplete_item" ng-repeat="indicator in vm.indicators.items" style="padding: 5px;">
-                    <span ng-click="vm.loadIndicator(indicator)">{{indicator.title.geo}}</span></div>
+                    <span ng-click="vm.loadIndicator(indicator)">{{indicator.title}}</span></div>
                   </div>
                 </div>
                 <div class="autocomplete_section">
                   <div class="autocomplete_section_header" layout="row">
                     <div style="display: inline-block" class="title_text search_title" flex>პუბლიკაციები <span>{{vm.publications.numTotal}}</span></div>
                     <md-button ng-show="vm.publications.items.length > 0" style="display: inline-block; min-width:50px" ng-click="vm.loadArticles(1)" class="button" >
-                      ყველა
+                      {{'ALL' | translate}}
                     </md-button>
                   </div>
                   <div class="autocomplete_section_body">
                     <div class="autucomplete_item" ng-repeat="publication in vm.publications.items" style="padding: 5px;">
-                    <span ng-click="vm.loadPublication(publication)">{{publication.title.geo}}</span></div>
+                    <span ng-click="vm.loadPublication(publication)">{{publication.title}}</span></div>
                   </div>
                 </div>
               </div>
@@ -63,7 +58,7 @@
                   ng-change="vm.searchArticles(vm.searchText)"
                   maxlength="{{vm.search.max}}"
                   name="value"
-                  placeholder="ძიება"
+                  placeholder="{{'SEARCH' | translate}}"
                   type="text">
               </div>
               <div>
@@ -77,16 +72,16 @@
         <div class="navbar_navigation">
           <ul class="menu title_text">
             <li>
-              <a ui-sref="main.home">მთავარი</a>
+              <a ui-sref="main.home">{{'HOME' | translate}}</a>
             </li>
             <li>
-              <a ui-sref="main.about">ჩვენ შესახებ</a>
+              <a ui-sref="main.about">{{'ABOUT' | translate}}</a>
             </li>
             <li>
-              <a ui-sref="main.articles({tabIndex: 0, publicationIndex: 0, indicatorIndex: 0, categoryId: undefined, year: undefined, searchQuery: undefined})">ინდიკატორები</a>
+              <a ui-sref="main.articles({tabIndex: 0, publicationIndex: 0, indicatorIndex: 0, categoryId: undefined, year: undefined, searchQuery: undefined})">{{'INDICATORS' | translate}}</a>
             </li>
             <li>
-              <a ui-sref="main.articles({tabIndex: 1, publicationIndex: 0, indicatorIndex: 0, categoryId: undefined, year: undefined, searchQuery: undefined})">პუბლიკაციები</a>
+              <a ui-sref="main.articles({tabIndex: 1, publicationIndex: 0, indicatorIndex: 0, categoryId: undefined, year: undefined, searchQuery: undefined})">{{'PUBLICATIONS' | translate}}</a>
             </li>
           </ul>
         </div>

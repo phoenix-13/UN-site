@@ -31,7 +31,7 @@ export default class {
       if (slide.link && slide.link.substring(0, 7) !== 'http://' && slide.link.substring(0, 8) !== 'https://') {
         slide.link = 'http://' + slide.link;
       }
-    })
+    });
   }
 
   initOwlCarousel() {

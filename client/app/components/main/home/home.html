@@ -33,6 +33,9 @@
             <div flex></div>
           </div>
         </div>
+
+
+
         <div layout="row" class="slider_wrapper md-padding">
           <div id="owl2-slider" class="owl-carousel owl-theme" style="width: 620px; max-height: 400px">
             <div class="item" ng-repeat="slide in vm.slider" layout="row">
@@ -41,10 +44,10 @@
                 <div>
                   <h4 class="title_text">{{slide.title.geo}}</h4>
                 </div>
-                <a ng-show="{{slide.ref._id}}" ui-sref="{{'main.' + slide.ref.type}}({id: slide.ref._id})" class="more_btn">
+                <a ng-if="slide.ref._id" ui-sref="{{'main.' + slide.ref.type}}({id: slide.ref._id})" class="more_btn">
                   <md-button> read more</md-button>
                 </a>
-                <a ng-show="{{!slide.ref._id}}" href="{{slide.link}}" target="_blank" class="more_btn">
+                <a ng-if="!slide.ref._id" href="{{slide.link}}" target="_blank" class="more_btn">
                   <md-button> read more</md-button>
                 </a>
               </div>
@@ -295,13 +298,6 @@
       </g>
     </g>
   </svg>
-
-
-
-
-
-
-
             </a>
           </div>
         </div>
