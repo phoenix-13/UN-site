@@ -79,7 +79,11 @@
           <h4 style="margin:0">{{'PUBLICATIONS' | translate}}</h4>
         </div>
         <div flex></div>
-        <div></div>
+        <div class="all_publications_btn">
+          <a href="" ui-sref="main.articles({tabIndex: 1, publicationIndex: 0, indicatorIndex: 0, categoryId: undefined, year: undefined, searchQuery: undefined})">
+            {{'ALL' | translate}}
+          </a>
+        </div>
       </div>
       <div layout="row">
         <div flex class="md-padding" ng-repeat="publication in vm.latestPublications">
