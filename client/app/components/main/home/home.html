@@ -113,11 +113,12 @@
               <span flex></span>
             </div>
           </div>
-          <div class="home_map_wrapper">
-            <a href="" ui-sref="main.demographics" >
-
-            </a>
-          </div>
+          <fc-chart
+            width="600"
+            height="400"
+            fc-chart-type="maps/asiageorgia"
+            fc-data="vm.demographyRangedData">
+          </fc-chart>
         </div>
       </div>
     </div>

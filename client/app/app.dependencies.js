@@ -43,5 +43,5 @@ export default angular.module('dependencies', [
   'textAngular',
   'ngFileUpload',
   'angularSlideables',
-  //'ng-fusioncharts'
+  'fusioncharts'
 ]);

@@ -12,5 +12,8 @@ export default angular.module('main.home', [])
       template,
       controller,
       controllerAs: 'vm',
+      resolve: {
+        demographics: DemographyResource => DemographyResource.getDemographics()
+      }
     });
 });
