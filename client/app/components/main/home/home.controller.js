@@ -4,7 +4,7 @@ export default class {
   constructor($scope, $timeout, content, latestPublications, categories, demographics) {
     'ngInject';
     this.$scope = $scope;
-    this.categories = categories;
+    this.categories = _.sortBy(categories, 'title.geo');
     this.latestPublications = latestPublications.slice(0, 3);
     this.firstLevelPrimaryArticles = content.featured.slice(0, 3);
     this.secondLevelPrimaryArticles = content.featured.slice(3);
@@ -19,7 +19,11 @@ export default class {
   }
 
   getRangedDemographyMapData() {
-    var chart = {'theme': 'fint', 'formatNumberScale': '0'};
+    var chart = {
+      "useHoverColor": "0",
+      'theme': 'fint',
+      'formatNumberScale': '0'
+    };
     var colorrange = {
       'color': [{
         'minvalue': '0',
@@ -50,7 +54,7 @@ export default class {
         'minvalue': '250000',
         'maxvalue': '500000',
         'code': '#215f40',
-        'displayValue': '250000 - 500000'
+        'displayValue': '250000 >'
       }]
     };
     var regionsMap = {
@@ -68,9 +72,7 @@ export default class {
       'თბილისი': '12'
     };
     var data = [];
-    console.log(this.demographics);
     this.addDemographicsPropertyLastValue();
-    _.sortBy(this.demographics, 'lastYearValue');
     _.forIn(this.demographics, demography => {
       if (demography && demography.region) {
         var id = regionsMap[demography.region.geo];
@@ -122,7 +124,7 @@ export default class {
       this.$scope.$apply(() => this.sliderPlaying = true);
     });
     $('.stop').on('click', () => {
-      owl.trigger('stop.owl.autoplay')
+      owl.trigger('stop.owl.autoplay');
       this.$scope.$apply(() => this.sliderPlaying = false);
     });
   }
