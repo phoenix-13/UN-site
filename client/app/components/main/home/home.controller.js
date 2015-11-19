@@ -4,7 +4,7 @@ export default class {
   constructor($scope, $timeout, content, latestPublications, categories, demographics) {
     'ngInject';
     this.$scope = $scope;
-    this.categories = _.sortBy(categories, 'title.geo');
+    this.categories = categories;
     this.latestPublications = latestPublications.slice(0, 3);
     this.firstLevelPrimaryArticles = content.featured.slice(0, 3);
     this.secondLevelPrimaryArticles = content.featured.slice(3);
