@@ -44,11 +44,12 @@
     <div layout="column" flex="5" ></div>
     <div layout="column" flex class="">
       <md-content>
+        <p ng-show="vm.isSearchResult()">საძიებო სიტყვისათვის <<{{vm.query.searchQuery}}>> ნაპოვნია</p>
         <md-tabs md-dynamic-height md-border-bottom md-selected="vm.selectedTab">
           <md-tab>
             <md-tab-label>
               {{'INDICATORS' | translate}}
-              <span class="badge">{{vm.indicators.numTotal}}</span>
+              <span ng-show="vm.isSearchResult()" class="badge">{{vm.indicators.numTotal}}</span>
             </md-tab-label>
             <md-tab-body>
               <md-content>
@@ -83,7 +84,7 @@
           <md-tab>
             <md-tab-label>
               {{'PUBLICATIONS' | translate}}
-              <span class="badge">{{vm.publications.numTotal}}</span>
+              <span ng-show="vm.isSearchResult()" class="badge">{{vm.publications.numTotal}}</span>
             </md-tab-label>
             <md-tab-body>
               <md-content class=" publications_list">
@@ -94,7 +95,7 @@
                         <div class="md-list-item-text" layout="column" >
                           <h3 class="title_text" style="font-size:1.3em;">{{'T' | translate:publication.title}}</h3>
                           <p class="publication_date" >{{publication.date | date: 'yyyy-MM-dd': 'GMT+03:00'}}</p>
-                          <p style="font-size:0.8em;" ng-bind-html="publication.content.geo" class="article_text_part"></p>
+                          <p style="font-size:0.8em;" ng-bind-html="'T' | translate:publication.content" class="article_text_part"></p>
                         </div>
                       </a>
                     </md-list-item>
@@ -119,4 +120,3 @@
     </div>
   </div>
 </div>
-

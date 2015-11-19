@@ -14,6 +14,10 @@ export default class {
     this.indexIndicatorsByYear();
   }
 
+  isSearchResult() {
+    return this.query.searchQuery && this.query.searchQuery.length > 0;
+  }
+
   changeCategory(category) {
     if (this.query.categoryId !== category._id) {
       var query = {categoryId: category._id};
@@ -56,13 +60,13 @@ export default class {
 
   initIndicators(articles) {
     this.indicators = articles.indicators;
-    this.indicators.itemsPerPage = this.indicators.items.length;
+    this.indicators.itemsPerPage = 5;
     this.indicators.currentPage = parseInt(this.query.indicatorIndex) + 1;
   }
 
   initPublications(articles) {
     this.publications = articles.publications;
-    this.publications.itemsPerPage = this.publications.items.length;
+    this.publications.itemsPerPage = 5;
     this.publications.currentPage = parseInt(this.query.publicationIndex) + 1;
   }
 

@@ -6,8 +6,7 @@ export default class {
     this.$state = $state;
     this.ArticleResource= ArticleResource;
     this.search = {max: 256, min: 0};
-    this.publications = {items: [], numTotal: 0};
-    this.indicators = {items: [], numTotal: 0};
+    this.articles = {items: [], numTotal: 0};
     $rootScope.$on('$stateChangeStart', () => this.cleanSearchState());
   }
 
@@ -16,8 +15,11 @@ export default class {
       this.ArticleResource
         .searchMainArticles(searchText)
         .then(response => {
-          this.publications = response.publications;
-          this.indicators = response.indicators;
+          response.indicators.items.forEach(indicator => indicator.link = 'main.indicator');
+          response.publications.items.forEach(publication => publication.link = 'main.publication');
+          this.articles.items = response.publications.items.concat(response.indicators.items).slice(0, 5);
+          this.articles.numTotal = response.publications.numTotal + response.indicators.numTotal;
+          this.boldSearchTextSequences();
           $('.search_wrapper_autocomplete').removeClass('hidden');
         });
     } else {
@@ -37,13 +39,8 @@ export default class {
     this.cleanSearchState();
   }
 
-  loadPublication(publication) {
-    this.$state.go('main.publication', {id: publication._id});
-    this.cleanSearchState();
-  }
-
-  loadIndicator(indicator) {
-    this.$state.go('main.indicator', {id: indicator._id});
+  loadArticle(article) {
+    this.$state.go(article.link, {id: article._id});
     this.cleanSearchState();
   }
 
@@ -54,5 +51,25 @@ export default class {
 
   searchTextIsInBounds(searchText) {
     return searchText.length > this.search.min && searchText.length < this.search.max;
+  }
+
+  boldSearchTextSequences() {
+    this.articles.items.forEach(article => article.title = this.getBoldedSearchTextSequence(article.title, this.searchText));
+  }
+
+  getBoldedSearchTextSequence(title, searchText) {
+    var searchText = searchText.toLowerCase();
+    return {
+      geo: this.getBoldedTitle(title.geo.toLowerCase(), searchText),
+      eng: this.getBoldedTitle(title.eng.toLowerCase(), searchText)
+    }
+  }
+
+  getBoldedTitle(title, searchText) {
+    var index = title.indexOf(searchText);
+    if (index > -1) {
+      return title.substring(0, index) + '<b>' + title.substr(index, searchText.length) + '</b>' + title.substring(index + searchText.length);
+    }
+    return title;
   }
 }
