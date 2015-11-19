@@ -1,90 +1,93 @@
-<div>
-  <div class="navbar_wrapper">
-    <div class="navbar_inner">
-      <div class="nav_logo">
-        <div class="logo title_text">
-          <span>
-            <a href="" ui-sref="main.home">
-              {{'JUNIOR_POLITICS_MONITORING' | translate}}
-            </a>
-          </span>
-        </div>
+<div class="navbar_wrapper">
+  <div class="navbar_inner">
+    <div class="nav_logo">
+      <div class="logo title_text">
+        <span>
+          <a href="" ui-sref="main.home">
+            {{'JUNIOR_POLITICS_MONITORING' | translate}}
+          </a>
+        </span>
       </div>
-      <div class="navbar_buttons">
-        <div class="head">
-          <lang-translate></lang-translate>
-          <div class="icon_wrapp">
-            <a ui-sref="main.contact" href="">
-              <i class="fa fa-envelope-o"></i>
-            </a>
-            <a ui-sref="main.sitemap" href="">
-              <i class="fa fa-sitemap"></i>
-            </a>
-          </div>
-          <div class="search">
-            <div class="search_wrapper">
-              <div class="search_wrapper_autocomplete animated fadeIn hidden">
-                <div class="autocomplete_section">
-                  <div class="autocomplete_section_header" layout="row">
-                    <div style="display: inline-block" class="title_text search_title" flex>{{'INDICATORS' | translate}} <span>{{vm.indicators.numTotal}}<span></div>
-                    <md-button ng-show="vm.indicators.items.length > 0" style="display: inline-block; min-width:50px" ng-click="vm.loadArticles(0)"  class="button">
-                      {{'ALL' | translate}}
-                    </md-button>
-                  </div>
-                  <div class="autocomplete_section_body">
-                    <div class="autucomplete_item" ng-repeat="indicator in vm.indicators.items" style="padding: 5px;">
-                    <span ng-click="vm.loadIndicator(indicator)">{{'T' | translate:indicator.title}}</span></div>
-                  </div>
+    </div>
+    <div class="navbar_buttons">
+      <div class="head">
+        <lang-translate></lang-translate>
+        <div class="icon_wrapp">
+          <a ui-sref="main.contact" href="">
+            <i class="fa fa-envelope-o"></i>
+          </a>
+          <a ui-sref="main.sitemap" href="">
+            <i class="fa fa-sitemap"></i>
+          </a>
+        </div>
+        <div class="search">
+          <div class="search_wrapper">
+            <div class="search_wrapper_autocomplete animated fadeIn hidden">
+              <div class="autocomplete_section">
+<!--                 <div class="autocomplete_section_header" layout="row">
+                  <div style="display: inline-block" class="title_text search_title" flex>{{'INDICATORS' | translate}} <span>{{vm.indicators.numTotal}}<span></div>
+                  <md-button ng-show="vm.indicators.items.length > 0" style="display: inline-block; min-width:50px" ng-click="vm.loadArticles(0)"  class="button">
+                    {{'ALL' | translate}}
+                  </md-button>
+                </div> -->
+                <div class="autocomplete_section_body">
+                  <div class="autucomplete_item" ng-repeat="indicator in vm.indicators.items" style="padding: 5px;">
+                  <span ng-click="vm.loadIndicator(indicator)">{{'T' | translate:indicator.title}}</span></div>
                 </div>
-                <div class="autocomplete_section">
-                  <div class="autocomplete_section_header" layout="row">
-                    <div style="display: inline-block" class="title_text search_title" flex>{{'PUBLICATIONS' | translate}} <span>{{vm.publications.numTotal}}</span></div>
-                    <md-button ng-show="vm.publications.items.length > 0" style="display: inline-block; min-width:50px" ng-click="vm.loadArticles(1)" class="button" >
-                      {{'ALL' | translate}}
-                    </md-button>
-                  </div>
-                  <div class="autocomplete_section_body">
-                    <div class="autucomplete_item" ng-repeat="publication in vm.publications.items" style="padding: 5px;">
-                    <span ng-click="vm.loadPublication(publication)">{{'T' | translate:publication.title}}</span></div>
+              </div>
+              <div class="autocomplete_section">
+<!--                 <div class="autocomplete_section_header" layout="row">
+                  <div style="display: inline-block" class="title_text search_title" flex>{{'PUBLICATIONS' | translate}} <span>{{vm.publications.numTotal}}</span></div>
+                  <md-button ng-show="vm.publications.items.length > 0" style="display: inline-block; min-width:50px" ng-click="vm.loadArticles(1)" class="button" >
+                    {{'ALL' | translate}}
+                  </md-button>
+                </div> -->
+                <div class="autocomplete_section_body">
+                  <div class="autucomplete_item" ng-repeat="publication in vm.publications.items" style="padding: 5px;">
+                  <span ng-click="vm.loadPublication(publication)">{{'T' | translate:publication.title}}</span></div>
+                </div>
+                <div class="autocomplete_section_btn text-center" layout="row">
+                  <div style="display: inline-block" class="title_text search_title" ng-click="vm.loadArticles(0)">
+                    {{'ALL' | translate}}
                   </div>
                 </div>
               </div>
             </div>
-
-            <form>
-              <div class="search_input">
-                <input
-                  ng-model="vm.searchText"
-                  ng-change="vm.searchArticles(vm.searchText)"
-                  maxlength="{{vm.search.max}}"
-                  name="value"
-                  placeholder="{{'SEARCH' | translate}}"
-                  type="text">
-              </div>
-              <div>
-                <a href="">
-                  <i class="fa fa-search search_icon"></i>
-                </a>
-              </div>
-            </form>
           </div>
+
+          <form>
+            <div class="search_input">
+              <input
+                ng-model="vm.searchText"
+                ng-change="vm.searchArticles(vm.searchText)"
+                maxlength="{{vm.search.max}}"
+                name="value"
+                placeholder="{{'SEARCH' | translate}}"
+                type="text">
+            </div>
+            <div>
+              <a href="">
+                <i class="fa fa-search search_icon"></i>
+              </a>
+            </div>
+          </form>
         </div>
-        <div class="navbar_navigation">
-          <ul class="menu title_text">
-            <li>
-              <a ui-sref="main.home">{{'HOME' | translate}}</a>
-            </li>
-            <li>
-              <a ui-sref="main.about">{{'ABOUT' | translate}}</a>
-            </li>
-            <li>
-              <a ui-sref="main.articles({tabIndex: 0, publicationIndex: 0, indicatorIndex: 0, categoryId: undefined, year: undefined, searchQuery: undefined})">{{'INDICATORS' | translate}}</a>
-            </li>
-            <li>
-              <a ui-sref="main.articles({tabIndex: 1, publicationIndex: 0, indicatorIndex: 0, categoryId: undefined, year: undefined, searchQuery: undefined})">{{'PUBLICATIONS' | translate}}</a>
-            </li>
-          </ul>
-        </div>
+      </div>
+      <div class="navbar_navigation">
+        <ul class="menu title_text">
+          <li>
+            <a ui-sref="main.home">{{'HOME' | translate}}</a>
+          </li>
+          <li>
+            <a ui-sref="main.about">{{'ABOUT' | translate}}</a>
+          </li>
+          <li>
+            <a ui-sref="main.articles({tabIndex: 0, publicationIndex: 0, indicatorIndex: 0, categoryId: undefined, year: undefined, searchQuery: undefined})">{{'INDICATORS' | translate}}</a>
+          </li>
+          <li>
+            <a ui-sref="main.articles({tabIndex: 1, publicationIndex: 0, indicatorIndex: 0, categoryId: undefined, year: undefined, searchQuery: undefined})">{{'PUBLICATIONS' | translate}}</a>
+          </li>
+        </ul>
       </div>
     </div>
   </div>

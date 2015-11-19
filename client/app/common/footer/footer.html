@@ -3,45 +3,50 @@
     <div class="footer_row">
       <div layout="row">
         <div class="btn prev">
-          <i class="fa fa-angle-left fa-2x"></i>
+          <i class="fa fa-chevron-left"></i>
         </div>
         <div id="owl2-partners" class="owl-carousel owl-theme">
           <div class="item" ng-repeat="partner in vm.partners">
-            <a href="{{partner.link}}" target="_blank">
-              <img ng-src="{{partner.image}}" alt="{{partner.title.geo}}">
-            </a>
+            <div class="innner_item">
+              <a href="{{partner.link}}" target="_blank">
+                <img ng-src="{{partner.image}}" alt="{{partner.title.geo}}">
+              </a>
+            </div>
           </div>
         </div>
         <div class="btn next">
-          <i class="fa fa-angle-right fa-2x"></i>
+          <i class="fa fa-chevron-right"></i>
         </div>
       </div>
     </div>
   </div>
-  <div layout="row" class="footer_row">
-    <div class="logo_container">
-      <a href="http://georgiaunfpa.ge/" target="_blank">
-        <img src="/assets/images/unfpa-logo.png" style="height: 80%">
-        <md-tooltip md-direction="top">
-          United Nations Population Fund
-        </md-tooltip>
-      </a>
-    </div>
-    <div flex class="text-center made_by_part">
-      <span>
-        <p style="margin-bottom: 2px">{{'MADE_BY_1' | translate}}</p>
-        <p>{{'MADE_BY_2' | translate}}</p>
-        <p>&copy; 2015</p>
-      </span>
-    </div>
-    <div class="logo_container">
-      <a href="http://msy.gov.ge/" target="_blank">
-        <md-tooltip md-direction="top">
-          საქართველოს სპორტისა და ახალგაზრდობის საქმეთა სამინისტრო
-        </md-tooltip>
-        <img src="/assets/images/sportis-saministro1.png">
-      </a>
+  <div layout="row" class="footer_row_wrapp">
+    <div layout="row" class="footer_row">
+      <div class="logo_container">
+        <a href="http://georgiaunfpa.ge/" target="_blank">
+          <img src="/assets/images/unfpa-logo.png" style="height: 80%; margin-top: 10px">
+          <md-tooltip md-direction="top">
+            United Nations Population Fund
+          </md-tooltip>
+        </a>
+      </div>
+      <div flex class="text-center made_by_part">
+        <span>
+          <p style="margin-bottom: 2px">{{'MADE_BY_1' | translate}}</p>
+          <p>{{'MADE_BY_2' | translate}}</p>
+          <p>&copy; 2015</p>
+        </span>
+      </div>
+      <div class="logo_container">
+        <a href="http://msy.gov.ge/" target="_blank">
+          <md-tooltip md-direction="top">
+            საქართველოს სპორტისა და ახალგაზრდობის საქმეთა სამინისტრო
+          </md-tooltip>
+          <img src="/assets/images/sportis-saministro1.png">
+        </a>
+      </div>
     </div>
   </div>
 </footer>
+
 

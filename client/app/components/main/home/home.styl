@@ -24,11 +24,30 @@
   margin-right 10px
 
 .unstyled_link
-  color #333
+  color ##616668
   text-decoration none
 
 .unstyled_link:hover
-  color #777
+  color #aa1a24
+  text-decoration none
+
+.main_publications_wrapp .publicatons_delimiter
+  border-left 1px solid #aa1a24
+
+
+.main_publications_wrapp .main_publications:nth-child(3) .publicatons_delimiter
+  border-left none
+
+.main_publications .publication_date
+  color #888
+  font-size 0.8em
+
+.main_publications a
+  color #333
+  text-decoration none
+
+.main_publications a:hover .title_text
+  color #aa1a24
   text-decoration none
 
 .category_image img
@@ -47,19 +66,39 @@
   overflow hidden
 
 .participation
-  background-color #7E57C2
+  background-color #a947ba
 
 .protection
-   background-color #FFCC33
+   background-color #f59402
 
 .health
-   background-color #7CB342
+   background-color #66ba69
 
 .children
-   background-color #FF7043
+   background-color #ed5351
 
 .Employment
-  background-color #536DFE
+  background-color #1f93ff
+
+
+
+
+.participation.main_slider_item
+  background-color rgba(169, 71, 186, 0.3)
+
+.protection.main_slider_item
+   background-color rgba(245, 148, 2, 0.3)
+
+.health.main_slider_item
+   background-color rgba(102, 186, 105, 0.3)
+
+.children.main_slider_item
+   background-color rgba(237, 83, 81, 0.3)
+
+.Employment.main_slider_item
+  background-color rgba(31, 147, 255, 0.3)
+
+
 
 #owl2-slider
   width 100%
@@ -71,24 +110,45 @@
   height 300px
   width 300px
 
-.more_btn
+#owl2-slider .owl-dots .owl-dot span
+  background #d48a92
+
+#owl2-slider .owl-dots .owl-dot.active span
+  background #aa1a24
+
+.more_btn button
   position absolute
-  bottom 30px
+  bottom 20px
   right 20px
-  color #333
+  color #ffffff
+  background rgba(0,0,0,0.4)
+  border-radius 3px
+
+.more_btn span
+  font-weight bold
+  font-size 15px
+
+.more_btn:hover
+  color #ffffff
 
 .btn_wrapper
-  margin-top -13px
+  margin-top -65px;
   z-index 100
   position relative
   width 80px
-  padding-left 15px
+  padding-left 22px
 
 .btn_wrapper .btn
   border none
   border-radius 0
-  background-color #e6e6e6
-  color rgba(0, 0, 0, 0.5)
+  background-color transparent
+  color #ffffff
+
+.btn_wrapper .btn:active,
+.btn_wrapper .btn:focus
+  background-color transparent
+  outline none
+  border none
 
 .banner_row .banner img
   height 480px
@@ -106,11 +166,42 @@
 
 
 .all_publications_btn a
-  background-color #ecf0f1
-  color #aa1a24
+  background-color #aa1a24
+  color #ffffff
   border-radius 4px
   padding 5px 15px
   text-decoration none
+  font-size 13px
 
 .all_publications_btn a:hover
   text-decoration none
+
+.publications_con_wrapp
+  background-color #fafafa
+
+.publications_container
+  width 1000px
+  margin 0 auto
+
+.banner_wrapp
+  background-color #ededed
+
+.banner_row
+  width 1000px
+  margin 0 auto
+
+.banner_row fc-chart g rect
+  fill #ededed !important
+
+.banner_row .page_title a
+  color #aa1a24
+  text-decoration none
+  font-size 1.4em
+
+.banner_row .page_title hr
+  border-color #aa1a24
+  margin-top 5px
+
+.publications_btn
+  background-color #aa1a24 !important
+  color #ffffff !important

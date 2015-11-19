@@ -7,6 +7,10 @@
 .main_page_container .direction_title i
   margin-right 10px
 
+.main_page_container .direction_title i.overlay
+  margin-left -22px
+  color transparent
+
 .main_page_container .direction_title a
   font-size 0.9em
   color #777
@@ -15,7 +19,11 @@
   text-decoration none
   color #aa1a24
 
-.main_page_container .direction_title a.active
+.main_page_container .direction_title a:hover .overlay
+  color #aa1a24
+
+.main_page_container .direction_title a.active,
+.main_page_container .direction_title a.active .overlay
   color #aa1a24
 
 .md-toolbar.md-warn > md-tabs.md-default-theme,
@@ -32,10 +40,22 @@ md-tabs > md-tabs-wrapper > md-tabs-canvas > md-pagination-wrapper > md-tab-item
   opacity 1
 
 
-.indicators_table a
-  font-size 0.9em
-  color #333
-  text-decoration none
+.indicators_table
+  border-collapse collapse
+  border-top 1px solid #ddd
+  border-bottom 1px solid #ddd
+
+.indicators_table tr
+  border none
+  cursor pointer
+
+.indicators_table tr:hover td:first-child
+  color #aa1a24
+
+.indicators_table td
+  border-right solid 1px #ddd
+  border-left solid 1px #ddd
+  border-top 0 !important
 
 .indicators_table td
   text-align center
@@ -52,6 +72,15 @@ md-tabs > md-tabs-wrapper > md-tabs-canvas > md-pagination-wrapper > md-tab-item
 .article_item:focus
   text-decoration none
 
+.publication_item:nth-child(odd)
+  background #f5f5f5
+
+.publication_item .publication_date
+  font-size 0.8em !important
+
+.article_item:hover .title_text
+  color #aa1a24
+
 .pagination_wrapp
   text-align center
 
@@ -59,10 +88,14 @@ md-tabs > md-tabs-wrapper > md-tabs-canvas > md-pagination-wrapper > md-tab-item
   color: #777 !important
 
 .pagination_wrapp .pagination>.active>a
-  color #b42323 !important
-  background-color: #f5f8f9;
-  border-color: #ddd;
+  color #ffffff !important
+  background-color: #b42323;
+  border-color: #b42323;
   font-weight bold
+
+.pagination>li>a:hover
+  color #b42323 !important
+  background-color #fff
 
 .filter_wrapp .direction_t
   font-weight normal
@@ -71,3 +104,6 @@ md-tabs > md-tabs-wrapper > md-tabs-canvas > md-pagination-wrapper > md-tab-item
   position fixed
   top 0
   padding 5px 6px
+
+
+

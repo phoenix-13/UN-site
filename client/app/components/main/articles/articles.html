@@ -21,14 +21,22 @@
       <div class="title_text direction_t" style="font-size:1.2em">{{'DIRECTION' | translate}}</div>
       <div style="padding-top: 20px; padding-left:15px">
         <div class="direction_title title_text" ng-repeat="category in vm.categories">
-          <a style="cursor: pointer" ng-click="vm.changeCategory(category)" ng-class="{'active': category._id === vm.query.categoryId}"><i class="fa fa-circle-o"></i>{{'T' | translate:category.title}}</a>
+          <a style="cursor: pointer" ng-click="vm.changeCategory(category)" ng-class="{'active': category._id === vm.query.categoryId}">
+            <i class="fa fa-square-o"></i>
+            <i class="fa fa-square overlay"></i>
+            {{'T' | translate:category.title}}
+          </a>
         </div>
       </div>
       <div ng-show="vm.selectedTab == 1">
         <div class="title_text direction_t" style="font-size:1.2em;padding-top: 20px">{{'PUBLICATIONS_BY_YEAR' | translate}}</div>
         <div style="padding-top: 20px; padding-left: 25px">
           <div class="publication_year direction_title title_text" ng-repeat="year in vm.years">
-            <a style="cursor: pointer" ng-click="vm.changeYear(year)" ng-class="{'active': '' + year === vm.query.year}">{{year}}</a>
+            <a style="cursor: pointer" ng-click="vm.changeYear(year)" ng-class="{'active': '' + year === vm.query.year}">
+              <i class="fa fa-square-o"></i>
+              <i class="fa fa-square overlay"></i>
+              {{year}}
+            </a>
           </div>
         </div>
       </div>
@@ -44,16 +52,16 @@
             </md-tab-label>
             <md-tab-body>
               <md-content>
-                <table class="table table-striped table-bordered indicators_table">
+                <table class="table table-striped indicators_table">
                   <thead>
                     <tr>
-                      <td></td>
+                      <td>კვლევა</td>
                       <td ng-repeat="indicatorYear in vm.indicatorYears">{{indicatorYear}}</td>
                     </tr>
                   </thead>
                   <tbody>
-                    <tr ng-repeat="indicator in vm.indicators.items">
-                      <td class="table_article_title" style="cursor: pointer" ui-sref="main.indicator({id: indicator._id})" class="title_text">{{'T' | translate:indicator.title}}</td>
+                    <tr ng-repeat="indicator in vm.indicators.items" ui-sref="main.indicator({id: indicator._id})">
+                      <td class="table_article_title" style="cursor: pointer" class="title_text">{{'T' | translate:indicator.title}}</td>
                       <td ng-repeat="indicatorYear in vm.indicatorYears">{{indicator.valuesMap[indicatorYear].value}}</td>
                     </tr>
                   </tbody>
@@ -80,17 +88,16 @@
             <md-tab-body>
               <md-content class=" publications_list">
                 <md-list>
-                  <div ng-repeat="publication in vm.publications.items">
+                  <div ng-repeat="publication in vm.publications.items" class="publication_item">
                     <md-list-item class="md-3-line" style="padding: 10px;">
                       <a ui-sref="main.publication({id: publication._id})" class="article_item">
                         <div class="md-list-item-text" layout="column" >
                           <h3 class="title_text" style="font-size:1.3em;">{{'T' | translate:publication.title}}</h3>
-                          <p style="font-size:0.8em;">{{publication.date | date: 'yyyy-MM-dd': 'GMT+03:00'}}</p>
+                          <p class="publication_date" >{{publication.date | date: 'yyyy-MM-dd': 'GMT+03:00'}}</p>
                           <p style="font-size:0.8em;" ng-bind-html="publication.content.geo" class="article_text_part"></p>
                         </div>
                       </a>
                     </md-list-item>
-                    <md-divider ></md-divider>
                   </div>
                 </md-list>
                 <div ng-show="vm.publications.numTotal > 0" class="pagination_wrapp">

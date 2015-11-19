@@ -35,17 +35,17 @@
         </div>
         <div layout="row" class="slider_wrapper md-padding">
           <div id="owl2-slider" class="owl-carousel owl-theme" style="width: 620px; max-height: 400px">
-            <div class="item" ng-repeat="slide in vm.slider" layout="row">
+            <div class="item main_slider_item" ng-repeat="slide in vm.slider" layout="row" ng-class="slide.categoryClass">
               <img ng-src="{{slide.image}}" alt="{{slide.title.geo}}">
               <div layout="column" class="md-padding">
                 <div>
                   <h4 class="title_text">{{'T' | translate:slide.title}}</h4>
                 </div>
-                <a ng-if="slide.ref._id" ui-sref="{{'main.' + slide.ref.type}}({id: slide.ref._id})" class="more_btn">
-                  <md-button> read more</md-button>
+                <a ng-if="slide.ref._id" ui-sref="{{'main.' + slide.ref.type}}({id: slide.ref._id})" class="more_btn title_text">
+                  <md-button>{{'READ_MORE' | translate}}</md-button>
                 </a>
-                <a ng-if="!slide.ref._id" href="{{slide.link}}" target="_blank" class="more_btn">
-                  <md-button> read more</md-button>
+                <a ng-if="!slide.ref._id" href="{{slide.link}}" target="_blank" class="more_btn title_text">
+                  <md-button>{{'READ_MORE' | translate}}</md-button>
                 </a>
               </div>
             </div>
@@ -73,30 +73,40 @@
         </div>
       </div>
     </div>
+  </div>
+
+  <div class="publications_con_wrapp">
     <div class="publications_container md-padding">
       <div layout="row">
         <div class="title_text">
-          <h4 style="margin:0">{{'PUBLICATIONS' | translate}}</h4>
+          <h4 style="margin:0; padding-top:20px">{{'PUBLICATIONS' | translate}}</h4>
         </div>
         <div flex></div>
-        <div class="all_publications_btn">
+        <md-button class="publications_btn" ui-sref="main.articles({tabIndex: 1, publicationIndex: 0, indicatorIndex: 0, categoryId: undefined, year: undefined, searchQuery: undefined})">
+         {{'ALL' | translate}}
+        </md-button>
+
+    <!--     <div class="all_publications_btn">
           <a href="" ui-sref="main.articles({tabIndex: 1, publicationIndex: 0, indicatorIndex: 0, categoryId: undefined, year: undefined, searchQuery: undefined})">
             {{'ALL' | translate}}
           </a>
-        </div>
+        </div> -->
       </div>
-      <div layout="row">
-        <div flex class="md-padding" ng-repeat="publication in vm.latestPublications">
-          <a ui-sref="main.publication({id: publication._id})" class="unstyled_link">
+      <div layout="row" class="main_publications_wrapp">
+        <div flex class="md-padding main_publications" layout="row" ng-repeat="publication in vm.latestPublications" >
+          <a ui-sref="main.publication({id: publication._id})">
             <div class="md-list-item-text" layout="column" >
               <h3 class="title_text" style="font-size:1em">{{'T' | translate:publication.title}}</h3>
               <p style="font-size:0.9em;" ng-bind-html="publication.content.geo" class="publication_text_part"></p>
-              <p style="font-size:0.8em;">{{publication.date | date: 'yyyy-MM-dd': 'GMT+03:00'}}</p>
+              <p class="publication_date">{{publication.date | date: 'yyyy-MM-dd': 'GMT+03:00'}}</p>
             </div>
           </a>
+          <span class="publicatons_delimiter"></span>
         </div>
       </div>
     </div>
+  </div>
+  <div class="banner_wrapp">
     <div layout="row" class="banner_row md-padding">
       <div class="" layout="row" flex>
         <div class="banner" flex>
@@ -128,3 +138,4 @@
     </div>
   </div>
 </div>
+

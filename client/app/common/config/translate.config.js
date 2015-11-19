@@ -12,6 +12,8 @@ export default $translateProvider => {
       JUNIOR_POLITICS_MONITORING: 'Youth Policy Monitor',
       SEARCH: 'search..',
 
+      READ_MORE: 'Read More',
+
       CONTACT: 'Contact',
       SITEMAP: 'Sitemap',
       DEMOGRAPHICS: 'Demographics',
@@ -40,12 +42,14 @@ export default $translateProvider => {
     })
     .translations('geo', {
       HOME: 'მთავარი',
-      ABOUT: 'ჩვენს შესახებ',
+      ABOUT: 'ჩვენ შესახებ',
       PUBLICATIONS: 'პუბლიკაციები',
       INDICATORS: 'ინდიკატორები',
       ALL: 'ყველა',
       JUNIOR_POLITICS_MONITORING: 'ახალგაზრდული პოლიტიკის მონიტორი',
       SEARCH: 'ძებნა..',
+
+      READ_MORE: 'სრულად ნახვა',
 
       CONTACT: 'კონტაქტი',
       SITEMAP: 'საიტის რუკა',
