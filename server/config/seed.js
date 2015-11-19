@@ -113,73 +113,73 @@ function seedDemographics() {
       geo: 'აფხაზეთი',
       eng: 'Apkhazeti'
     },
-    values: [{year: 2009, value: 100100}, {year: 2014, value: 100100}, {year: 2018, value: 100100}]
+    values: [{year: 2009, value: 100100}, {year: 2014, value: 100100}, {year: 2018, value: 210000}]
   }, {
     region: {
       geo: 'სამეგრელი - ზემო სვანეთი',
       eng: 'Samegrelo - Zemo Svaneti'
     },
-    values: [{year: 2009, value: 10000}, {year: 2012, value: 100100}, {year: 2013, value: 100100}]
+    values: [{year: 2009, value: 10000}, {year: 2012, value: 100100}, {year: 2013, value: 10000}]
   }, {
     region: {
       geo: 'გურია',
       eng: 'Guria'
     },
-    values: [{year: 2010, value: 10000}, {year: 2012, value: 100100}, {year: 2014, value: 100100}]
+    values: [{year: 2010, value: 10000}, {year: 2012, value: 100100}, {year: 2014, value: 50000}]
   }, {
     region: {
       geo: 'აჭარა',
       eng: 'Ajaria'
     },
-    values: [{year: 2009, value: 10000}, {year: 2012, value: 100100}, {year: 2015, value: 100100}]
+    values: [{year: 2009, value: 10000}, {year: 2012, value: 100100}, {year: 2015, value: 250000}]
   }, {
     region: {
       geo: 'რაჭა - ლეჩხუმი და ქვემო სვანეთი',
       eng: 'Racha - Lechkhumi and Kvemo Svaneti'
     },
-    values: [{year: 2014, value: 10000}, {year: 2017, value: 100100}, {year: 2019, value: 100100}]
+    values: [{year: 2014, value: 10000}, {year: 2017, value: 100100}, {year: 2019, value: 100000}]
   }, {
     region: {
       geo: 'იმერეთი',
       eng: 'Imereti'
     },
-    values: [{year: 2013, value: 10000}, {year: 2014, value: 100100}, {year: 2016, value: 100100}]
+    values: [{year: 2013, value: 10000}, {year: 2014, value: 100100}, {year: 2016, value: 1000}]
   }, {
     region: {
       geo: 'სამცხე - ჯავახეთი',
       eng: 'Samtskhe - Javakheti'
     },
-    values: [{year: 2015, value: 10000}, {year: 2017, value: 100100}, {year: 2019, value: 100100}]
+    values: [{year: 2015, value: 10000}, {year: 2017, value: 100100}, {year: 2019, value: 50100}]
   }, {
     region: {
       geo: 'შიდა ქართლი',
       eng: 'Shida - Kartli'
     },
-    values: [{year: 2013, value: 10000}, {year: 2015, value: 100100}, {year: 2016, value: 100100}]
+    values: [{year: 2013, value: 10000}, {year: 2015, value: 100100}, {year: 2016, value: 10100}]
   }, {
     region: {
       geo: 'ქვემო ქართლი',
       eng: 'Kvemo - Kartli'
     },
-    values: [{year: 2010, value: 10000}, {year: 2011, value: 100100}, {year: 2013, value: 100100}]
+    values: [{year: 2010, value: 10000}, {year: 2011, value: 100100}, {year: 2013, value: 80100}]
   }, {
     region: {
       geo: 'თბილისი',
       eng: 'Tbilisi'
     },
-    values: [{year: 2011, value: 10000}, {year: 2012, value: 100100}, {year: 2014, value: 100100}]
+    values: [{year: 2011, value: 10000}, {year: 2012, value: 100100}, {year: 2014, value: 20100}]
   }, {
     region: {
       geo: 'მცხეთა - მთიანეთი',
       eng: 'Mtskheta - Mtianeti'
     },
-    values: [{year: 2014, value: 10000}, {year: 2015, value: 100100}, {year: 2017, value: 100100}]
+    values: [{year: 2014, value: 10000}, {year: 2015, value: 100100}, {year: 2017, value: 30100}]
   }, {
     region: {
       geo: 'კახეთი',
       eng: 'Kakheti'
     },
-    values: [{year: 2011, value: 10000}, {year: 2013, value: 100100}, {year: 2016, value: 100100}]
+    values: [{year: 2011, value: 10000}, {year: 2013, value: 100100}, {year: 2016, value: 40100}]
   }];
 
   return Demographics.removeAll().then(() => Demographics.create(demographicsArr));

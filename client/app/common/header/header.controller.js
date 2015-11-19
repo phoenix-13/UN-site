@@ -26,18 +26,25 @@ export default class {
   }
 
   loadArticles(tabIndex) {
+    this.$state.go('main.articles', {
+      searchQuery: this.searchText,
+      publicationIndex: 0,
+      indicatorIndex: 0,
+      tabIndex,
+      year: undefined,
+      categoryId: undefined
+    });
     this.cleanSearchState();
-    this.$state.go('main.articles', {searchQuery: this.searchText, publicationIndex: 0, indicatorIndex: 0, tabIndex});
   }
 
   loadPublication(publication) {
-    this.cleanSearchState();
     this.$state.go('main.publication', {id: publication._id});
+    this.cleanSearchState();
   }
 
   loadIndicator(indicator) {
-    this.cleanSearchState();
     this.$state.go('main.indicator', {id: indicator._id});
+    this.cleanSearchState();
   }
 
   cleanSearchState() {

@@ -2,11 +2,11 @@
   <div class="page_header" layout="row">
     <span class="navigation">
       <a ui-sref="main.home" href="">
-        მთავარი
+        {{'HOME' | translate}}
       </a>
       <i class="fa fa-angle-right" style="padding-left:5px;padding-right:5px;"></i>
       <a href="">
-        საიტის რუკა
+        {{'SITEMAP' | translate}}
       </a>
     </span>
     <span flex></span>
@@ -18,7 +18,7 @@
     <div layout="row">
       <span flex></span>
       <span class="title_text page_title">
-        საიტის რუკა
+        {{'SITEMAP' | translate}}
         <hr>
       </span>
       <span flex></span>
@@ -29,7 +29,7 @@
       <span class="navigation title_text">
         <i class="fa fa-minus-square-o"></i>
         <a ui-sref="main.home" href="">
-          მთავარი
+          {{'HOME' | translate}}
         </a>
       </span>
       <span flex></span>
@@ -39,7 +39,7 @@
       <span class="navigation title_text">
         <i class="fa fa-minus-square-o"></i>
         <a ui-sref="main.about" href="">
-          ჩვენ შესახებ
+          {{'ABOUT' | translate}}
         </a>
       </span>
       <span flex></span>
@@ -49,7 +49,7 @@
       <span class="navigation title_text">
         <i ng-click="vm.toggleIndicators()" slide-toggle="#indicators"  class="fa plus_sign" ng-class="{'fa-plus-square-o': !vm.indicatorsSlided, 'fa-minus-square-o': vm.indicatorsSlided}"></i>
         <a ui-sref="main.articles({tabIndex: 0, publicationIndex: 0, indicatorIndex: 0, categoryId: undefined, year: undefined, searchQuery: undefined})" href="">
-          ინდიკატორები
+          {{'INDICATORS' | translate}}
         </a>
       </span>
       <span flex></span>
@@ -58,7 +58,7 @@
       <div id="indicators" class="slideable" layout="column">
         <div layout="row" ng-repeat="category in vm.categories">
           <span class="navigation title_text">
-            <a ui-sref="main.articles({tabIndex: 0, publicationIndex: 0, indicatorIndex: 0, categoryId: category._id, year: undefined, searchQuery: undefined})" href=""><i class="fa fa-angle-right"></i>{{category.title.geo}}</a>
+            <a ui-sref="main.articles({tabIndex: 0, publicationIndex: 0, indicatorIndex: 0, categoryId: category._id, year: undefined, searchQuery: undefined})" href=""><i class="fa fa-angle-right"></i>{{'T' | translate:category.title}}</a>
           </span>
           <span flex></span>
         </div>
@@ -69,7 +69,7 @@
       <span class="navigation title_text">
         <i ng-click="vm.togglePublications()" slide-toggle="#publications"  class="fa plus_sign" ng-class="{'fa-plus-square-o': !vm.publicationsSlided, 'fa-minus-square-o': vm.publicationsSlided}"></i>
         <a ui-sref="main.articles({tabIndex: 1, publicationIndex: 0, indicatorIndex: 0, categoryId: undefined, year: undefined, searchQuery: undefined})" href="">
-          პუბლიკაციები
+          {{'PUBLICATIONS' | translate}}
         </a>
       </span>
       <span flex></span>
@@ -78,7 +78,7 @@
       <div id="publications" class="slideable" layout="column">
         <div layout="row" ng-repeat="category in vm.categories">
           <span class="navigation title_text">
-            <a ui-sref="main.articles({tabIndex: 1, publicationIndex: 0, indicatorIndex: 0, categoryId: category._id, year: undefined, searchQuery: undefined})" href=""><i class="fa fa-angle-right"></i>{{category.title.geo}}</a>
+            <a ui-sref="main.articles({tabIndex: 1, publicationIndex: 0, indicatorIndex: 0, categoryId: category._id, year: undefined, searchQuery: undefined})" href=""><i class="fa fa-angle-right"></i>{{'T' | translate:category.title}}</a>
           </span>
           <span flex></span>
         </div>
@@ -89,7 +89,7 @@
       <span class="navigation title_text">
         <i class="fa fa-minus-square-o"></i>
         <a ui-sref="main.contact" href="">
-          კონტაქტი
+          {{'CONTACT' | translate}}
         </a>
       </span>
       <span flex></span>
@@ -99,7 +99,7 @@
       <span class="navigation title_text">
         <i class="fa fa-minus-square-o"></i>
         <a ui-sref="main.sitemap" href="">
-          საიტის რუკა
+          {{'SITEMAP' | translate}}
         </a>
       </span>
       <span flex></span>

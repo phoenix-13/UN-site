@@ -1,0 +1,5 @@
+<div>
+  <div class="lang" ng-repeat="lang in vm.languages" ng-click="vm.use(lang)">
+    <a ng-class="{'active': vm.isActive(lang)}">{{lang}}</a>
+  </div>
+</div>

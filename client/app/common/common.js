@@ -7,6 +7,7 @@ import header from './header/header';
 import modals from './modals/modals';
 import resources from './resources/resources';
 import services from './services/services';
+import translate from './translate/translate';
 //endinject
 
 export default angular.module('app.common', [
@@ -17,5 +18,6 @@ export default angular.module('app.common', [
   modals.name,
   resources.name,
   services.name,
+  translate.name,
   //endinject
 ]);

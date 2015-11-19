@@ -2,14 +2,14 @@
   <div class="page_header" layout="row">
     <span class="navigation">
       <a ui-sref="main.home" href="">
-        მთავარი
+        {{'HOME' | translate}}
       </a>
       <i class="fa fa-angle-right" style="padding-left:5px;padding-right:5px;"></i>
       <a ng-show="!vm.selectedTab" href="" ui-sref="main.articles({tabIndex: 0, publicationIndex: 0, indicatorIndex: 0, categoryId: undefined, year: undefined, searchQuery: undefined})">
-        ინდიკატორები
+        {{'INDICATORS' | translate}}
       </a>
       <a ng-show="vm.selectedTab" href="" ui-sref="main.articles({tabIndex: 1, publicationIndex: 0, indicatorIndex: 0, categoryId: undefined, year: undefined, searchQuery: undefined})">
-        პუბლიკაციები
+        {{'PUBLICATIONS' | translate}}
       </a>
     </span>
     <span flex></span>
@@ -18,14 +18,14 @@
 <div class="single_page_content">
   <div layout="row" class="main_page_container">
     <div layout="column" flex="30" class="filter_wrapp">
-      <div class="title_text direction_t" style="font-size:1.2em">მიმართულება</div>
+      <div class="title_text direction_t" style="font-size:1.2em">{{'DIRECTION' | translate}}</div>
       <div style="padding-top: 20px; padding-left:15px">
         <div class="direction_title title_text" ng-repeat="category in vm.categories">
-          <a style="cursor: pointer" ng-click="vm.changeCategory(category)" ng-class="{'active': category._id === vm.query.categoryId}"><i class="fa fa-circle-o"></i>{{category.title.geo}}</a>
+          <a style="cursor: pointer" ng-click="vm.changeCategory(category)" ng-class="{'active': category._id === vm.query.categoryId}"><i class="fa fa-circle-o"></i>{{'T' | translate:category.title}}</a>
         </div>
       </div>
       <div ng-show="vm.selectedTab == 1">
-        <div class="title_text direction_t" style="font-size:1.2em;padding-top: 20px">პუბლიკაციები წლების მიხედვით</div>
+        <div class="title_text direction_t" style="font-size:1.2em;padding-top: 20px">{{'PUBLICATIONS_BY_YEAR' | translate}}</div>
         <div style="padding-top: 20px; padding-left: 25px">
           <div class="publication_year direction_title title_text" ng-repeat="year in vm.years">
             <a style="cursor: pointer" ng-click="vm.changeYear(year)" ng-class="{'active': '' + year === vm.query.year}">{{year}}</a>
@@ -37,63 +37,75 @@
     <div layout="column" flex class="">
       <md-content>
         <md-tabs md-dynamic-height md-border-bottom md-selected="vm.selectedTab">
-          <md-tab label="ინდიკატორები">
-            <md-content>
-              <table class="table table-striped table-bordered indicators_table">
-                <thead>
-                  <tr>
-                    <td></td>
-                    <td ng-repeat="indicatorYear in vm.indicatorYears">{{indicatorYear}}</td>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr ng-repeat="indicator in vm.indicators.items">
-                    <td class="table_article_title" style="cursor: pointer" ui-sref="main.indicator({id: indicator._id})" class="title_text">{{indicator.title.geo}}</td>
-                    <td ng-repeat="indicatorYear in vm.indicatorYears">{{indicator.valuesMap[indicatorYear].value}}</td>
-                  </tr>
-                </tbody>
-              </table>
-              <div ng-show="vm.indicators.numTotal > 0" class="pagination_wrapp">
-                <uib-pagination
-                  ng-change="vm.changeIndicatorPage()"
-                  total-items="vm.indicators.numTotal"
-                  ng-model="vm.indicators.currentPage"
-                  max-size="vm.indicators.itemsPerPage"
-                  class="pagination-sm"
-                  boundary-links="true"
-                  rotate="false">
-                </uib-pagination>
-              </div>
-            </md-content>
-          </md-tab>
-          <md-tab label="პუბლიკაციები">
-            <md-content class=" publications_list">
-              <md-list>
-                <div ng-repeat="publication in vm.publications.items">
-                  <md-list-item class="md-3-line" style="padding: 10px;">
-                    <a ui-sref="main.publication({id: publication._id})" class="article_item">
-                      <div class="md-list-item-text" layout="column" >
-                        <h3 class="title_text" style="font-size:1.3em;">{{publication.title.geo}}</h3>
-                        <p style="font-size:0.8em;">{{publication.date | date: 'yyyy-MM-dd': 'GMT+03:00'}}</p>
-                        <p style="font-size:0.8em;" ng-bind-html="publication.content.geo" class="article_text_part"><p>
-                      </div>
-                    </a>
-                  </md-list-item>
-                  <md-divider ></md-divider>
+          <md-tab>
+            <md-tab-label>
+              {{'INDICATORS' | translate}}
+              <span class="badge">{{vm.indicators.numTotal}}</span>
+            </md-tab-label>
+            <md-tab-body>
+              <md-content>
+                <table class="table table-striped table-bordered indicators_table">
+                  <thead>
+                    <tr>
+                      <td></td>
+                      <td ng-repeat="indicatorYear in vm.indicatorYears">{{indicatorYear}}</td>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr ng-repeat="indicator in vm.indicators.items">
+                      <td class="table_article_title" style="cursor: pointer" ui-sref="main.indicator({id: indicator._id})" class="title_text">{{'T' | translate:indicator.title}}</td>
+                      <td ng-repeat="indicatorYear in vm.indicatorYears">{{indicator.valuesMap[indicatorYear].value}}</td>
+                    </tr>
+                  </tbody>
+                </table>
+                <div ng-show="vm.indicators.numTotal > 0" class="pagination_wrapp">
+                  <uib-pagination
+                    ng-change="vm.changeIndicatorPage()"
+                    total-items="vm.indicators.numTotal"
+                    ng-model="vm.indicators.currentPage"
+                    max-size="vm.indicators.itemsPerPage"
+                    class="pagination-sm"
+                    boundary-links="true"
+                    rotate="false">
+                  </uib-pagination>
                 </div>
-              </md-list>
-              <div ng-show="vm.publications.numTotal > 0" class="pagination_wrapp">
-                <uib-pagination
-                  ng-change="vm.changePublicationPage()"
-                  total-items="vm.publications.numTotal"
-                  ng-model="vm.publications.currentPage"
-                  max-size="vm.publications.itemsPerPage"
-                  class="pagination-sm"
-                  boundary-links="true"
-                  rotate="false">
-                </uib-pagination>
-              </div>
-            </md-content>
+              </md-content>
+            </md-tab-body>
+          </md-tab>
+          <md-tab>
+            <md-tab-label>
+              {{'PUBLICATIONS' | translate}}
+              <span class="badge">{{vm.publications.numTotal}}</span>
+            </md-tab-label>
+            <md-tab-body>
+              <md-content class=" publications_list">
+                <md-list>
+                  <div ng-repeat="publication in vm.publications.items">
+                    <md-list-item class="md-3-line" style="padding: 10px;">
+                      <a ui-sref="main.publication({id: publication._id})" class="article_item">
+                        <div class="md-list-item-text" layout="column" >
+                          <h3 class="title_text" style="font-size:1.3em;">{{'T' | translate:publication.title}}</h3>
+                          <p style="font-size:0.8em;">{{publication.date | date: 'yyyy-MM-dd': 'GMT+03:00'}}</p>
+                          <p style="font-size:0.8em;" ng-bind-html="publication.content.geo" class="article_text_part"></p>
+                        </div>
+                      </a>
+                    </md-list-item>
+                    <md-divider ></md-divider>
+                  </div>
+                </md-list>
+                <div ng-show="vm.publications.numTotal > 0" class="pagination_wrapp">
+                  <uib-pagination
+                    ng-change="vm.changePublicationPage()"
+                    total-items="vm.publications.numTotal"
+                    ng-model="vm.publications.currentPage"
+                    max-size="vm.publications.itemsPerPage"
+                    class="pagination-sm"
+                    boundary-links="true"
+                    rotate="false">
+                  </uib-pagination>
+                </div>
+              </md-content>
+            </md-tab-body>
           </md-tab>
         </md-tabs>
       </md-content>

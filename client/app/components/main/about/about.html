@@ -2,11 +2,11 @@
   <div class="page_header" layout="row">
     <span class="navigation">
       <a ui-sref="main.home" href="">
-        მთავარი
+        {{'HOME' | translate}}
       </a>
       <i class="fa fa-angle-right" style="padding-left:5px;padding-right:5px;"></i>
       <a href="">
-        ჩვენ შესახებ
+        {{'ABOUT' | translate}}
       </a>
     </span>
     <span flex></span>
@@ -17,14 +17,14 @@
     <div layout="row">
       <span flex></span>
       <span class="title_text page_title">
-        ჩვენ შესახებ
+        {{'ABOUT' | translate}}
         <hr>
       </span>
       <span flex></span>
     </div>
   </div>
   <div class="single_page_content ">
-    <div class="about_text" ng-bind-html="vm.about.geo"></div>
+    <div class="about_text" ng-bind-html="'T' | translate:vm.about"></div>
   </div>
 </div>
 

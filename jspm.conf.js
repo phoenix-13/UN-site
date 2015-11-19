@@ -10,6 +10,7 @@ System.config({
   separateCSS: true,
 
   map: {
+    "AngularFusionCharts": "github:SunGard-Labs/angular-fusioncharts@0.0.2",
     "AngularSlideables": "github:EricWVGG/AngularSlideables@master",
     "OwlCarousel": "github:smashingboxes/OwlCarousel2@2.0.0-beta.3",
     "angular": "github:angular/bower-angular@1.4.7",
