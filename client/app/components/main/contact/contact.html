@@ -61,33 +61,29 @@
 
   <div class="contact_map_wrapper">
     <div layout="row" class="contact_info_wrapp">
-      <div class="contact_info md-whiteframe-4dp md-padding" flex>
-        <div layout="row">
-          <div layout="column">
+      <div class="contact_info md-padding">
+        <div layout="row" style="font-size:11px">
+          <div layout="column" class="column">
             <div>
-              <div class="title_text"><i style="padding-right:10px" class="fa fa-map-marker"></i> {{'TBILISI' | translate}}</div>
-              <div style="padding-left:25px; font-size:11px">{{ 'T' | translate:vm.contacts.address}}</div>
+              <div><i class="fa fa-map-marker fa-2x"></i></div>
+              <div>{{ 'T' | translate:vm.contacts.address}}</div>
             </div>
             <div class="space_separator"></div>
+          </div>
+          <div layout="column" class="column">
             <div>
-              <div class="title_text"><i style="padding-right:10px" class="fa fa-phone"></i> {{'PHONE' | translate}}</div>
-              <div style="margin-left: -17px; font-size:11px">
+              <div><i class="fa fa-envelope-o fa-2x"></i></div>
+              <div>{{vm.contacts.mail}}</div>
+            </div>
+          </div>
+          <div layout="column" class="column">
+            <div>
+              <div><i class="fa fa-phone fa-2x"></i></div>
+              <div>
                 <ul class="unstyled_list">
                   <li ng-repeat="phone in vm.contacts.phones">{{phone}}</li>
                 </ul>
               </div>
-            </div>
-          </div>
-          <div flex></div>
-          <div layout="column">
-            <div>
-              <div class="title_text"><i style="padding-right:10px" class="fa fa-fax"></i> {{'FAX' | translate}}</div>
-              <div style="padding-left:25px; font-size:11px">{{vm.contacts.fax}}</div>
-            </div>
-            <div class="space_separator"></div>
-            <div>
-              <div class="title_text"><i style="padding-right:10px" class="fa fa-envelope-o"></i> {{'EMAIL' | translate}}</div>
-              <div style="padding-left:25px; font-size:11px">{{vm.contacts.mail}}</div>
             </div>
           </div>
         </div>
