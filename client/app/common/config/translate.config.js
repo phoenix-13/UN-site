@@ -8,7 +8,7 @@ export default $translateProvider => {
       ABOUT: 'About Us',
       PUBLICATIONS: 'Publications',
       INDICATORS: 'Indicators',
-      ALL: 'all',
+      ALL: 'see all results',
       JUNIOR_POLITICS_MONITORING: 'Youth Policy Monitor',
       SEARCH: 'search..',
 
@@ -38,6 +38,13 @@ export default $translateProvider => {
       MADE_BY_1: 'Made by the Ministry of Sport and Youth Affairs and',
       MADE_BY_2: 'The UN Population Fund office',
 
+      FIRST: 'first',
+      PREV: 'previous',
+      NEXT: 'next',
+      LAST: 'last',
+
+      'NO_RESULT': 'no result found',
+
       T: '{{eng}}'
     })
     .translations('geo', {
@@ -45,7 +52,7 @@ export default $translateProvider => {
       ABOUT: 'ჩვენ შესახებ',
       PUBLICATIONS: 'პუბლიკაციები',
       INDICATORS: 'ინდიკატორები',
-      ALL: 'ყველა',
+      ALL: 'ყველა შედეგის ნახვა',
       JUNIOR_POLITICS_MONITORING: 'ახალგაზრდული პოლიტიკის მონიტორი',
       SEARCH: 'ძებნა..',
 
@@ -74,6 +81,13 @@ export default $translateProvider => {
 
       MADE_BY_1: 'ვებ გვერდი შექმნილია სპორტისა და ახლაგაზრდობის საქმეთა სამინისტროსა და',
       MADE_BY_2: 'გაეროს მოსახლოების ფონდის საქართველოს ოფისის მიერ',
+
+      FIRST: 'პირველი',
+      PREV: 'წინა',
+      NEXT: 'შემდეგი',
+      LAST: 'ბოლო',
+
+      'NO_RESULT': 'შედეგი ვერ მოიძებნა',
 
       T: '{{geo}}'
     })

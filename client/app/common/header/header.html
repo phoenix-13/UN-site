@@ -24,53 +24,37 @@
           <div class="search_wrapper">
             <div class="search_wrapper_autocomplete animated fadeIn hidden">
               <div class="autocomplete_section">
-<!--                 <div class="autocomplete_section_header" layout="row">
-                  <div style="display: inline-block" class="title_text search_title" flex>{{'INDICATORS' | translate}} <span>{{vm.indicators.numTotal}}<span></div>
-                  <md-button ng-show="vm.indicators.items.length > 0" style="display: inline-block; min-width:50px" ng-click="vm.loadArticles(0)"  class="button">
-                    {{'ALL' | translate}}
-                  </md-button>
-                </div> -->
-                <div class="autocomplete_section_body">
-                  <div class="autucomplete_item" ng-repeat="indicator in vm.indicators.items" style="padding: 5px;">
-                  <span ng-click="vm.loadIndicator(indicator)">{{'T' | translate:indicator.title}}</span></div>
-                </div>
-              </div>
-              <div class="autocomplete_section">
-<!--                 <div class="autocomplete_section_header" layout="row">
-                  <div style="display: inline-block" class="title_text search_title" flex>{{'PUBLICATIONS' | translate}} <span>{{vm.publications.numTotal}}</span></div>
-                  <md-button ng-show="vm.publications.items.length > 0" style="display: inline-block; min-width:50px" ng-click="vm.loadArticles(1)" class="button" >
-                    {{'ALL' | translate}}
-                  </md-button>
-                </div> -->
-                <div class="autocomplete_section_body">
-                  <div class="autucomplete_item" ng-repeat="publication in vm.publications.items" style="padding: 5px;">
-                  <span ng-click="vm.loadPublication(publication)">{{'T' | translate:publication.title}}</span></div>
+                <div ng-show="vm.articles.numTotal" class="autocomplete_section_body">
+                  <div class="autucomplete_item" ng-repeat="article in vm.articles.items" style="padding: 5px;">
+                    <span ng-click="vm.loadArticle(article)" ng-bind-html="'T' | translate:article.title"></span>
+                  </div>
                 </div>
                 <div class="autocomplete_section_btn text-center" layout="row">
-                  <div style="display: inline-block" class="title_text search_title" ng-click="vm.loadArticles(0)">
-                    {{'ALL' | translate}}
+                  <div ng-show="vm.articles.numTotal" style="display: inline-block" class="title_text search_title" ng-click="vm.loadArticles(0)">
+                    {{'ALL' | translate}} ({{vm.articles.numTotal}})
+                  </div>
+                  <div ng-show="!vm.articles.numTotal" style="display: inline-block" class="title_text search_title">
+                    {{'NO_RESULT' | translate}}
                   </div>
                 </div>
               </div>
             </div>
           </div>
 
-          <form>
-            <div class="search_input">
-              <input
-                ng-model="vm.searchText"
-                ng-change="vm.searchArticles(vm.searchText)"
-                maxlength="{{vm.search.max}}"
-                name="value"
-                placeholder="{{'SEARCH' | translate}}"
-                type="text">
-            </div>
-            <div>
-              <a href="">
-                <i class="fa fa-search search_icon"></i>
-              </a>
-            </div>
-          </form>
+          <div class="search_input">
+            <input
+              ng-model="vm.searchText"
+              ng-change="vm.searchArticles(vm.searchText)"
+              maxlength="{{vm.search.max}}"
+              name="value"
+              placeholder="{{'SEARCH' | translate}}"
+              type="text">
+          </div>
+          <div>
+            <a href="">
+              <i class="fa fa-search search_icon"></i>
+            </a>
+          </div>
         </div>
       </div>
       <div class="navbar_navigation">
