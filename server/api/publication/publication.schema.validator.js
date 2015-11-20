@@ -23,9 +23,9 @@ var bilingContentSchema = Joi.object().keys({
 
 var publicationSchema = Joi.object().keys({
   title: bilingTitleSchema,
-  date: Joi.date().required(), // questions exist
+  date: Joi.date().required(),
   content: bilingContentSchema,
-  category: Joi.string().required()
+  categories: Joi.array().items(Joi.string()).required()
 }).required();
 
 function validatePublication(publication) {
