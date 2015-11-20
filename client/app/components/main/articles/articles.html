@@ -69,28 +69,26 @@
           <div ng-show="vm.isSearchResult()">
             <div ng-show="vm.indicators.numTotal + vm.publications.numTotal > 0">
               <p class="search_result_sentence">
-                საძიებო სიტყვისათვის
+                {{'SEARCH_RESULT' | translate}}
               <span class="search_keyword">
                 <i class="fa fa-angle-double-left"></i>
                 {{vm.query.searchQuery}}
                 <i class="fa fa-angle-double-right"></i>
-              </span>ნაპოვნია:
+              </span>{{'FOUND' | translate}}:
               </p>
             </div>
             <div ng-show="vm.indicators.numTotal + vm.publications.numTotal === 0">
               <p class="search_result_sentence">
-                საძიებო სიტყვისათვის
+                {{'SEARCH_RESULT' | translate}}
               <span class="search_keyword">
                 <i class="fa fa-angle-double-left"></i>
                 {{vm.query.searchQuery}}
                 <i class="fa fa-angle-double-right"></i>
-              </span>შედეგი ვერ მოიძებნა:
+              </span>
+              {{'COULDNOT_FIND' | translate}}:
               </p>
             </div>
           </div>
-
-
-
           <md-tabs md-dynamic-height md-selected="vm.selectedTab" class="article_tabs">
             <md-tab>
               <md-tab-label class="tab_label">

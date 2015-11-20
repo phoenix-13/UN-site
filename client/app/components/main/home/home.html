@@ -52,12 +52,11 @@
           </div>
         </div>
         <div class="btn_wrapper" layout="row">
-            <div ng-show="!vm.sliderPlaying" class="play btn btn-default"><i class="fa fa-play"></i></div>
-            <div ng-show="vm.sliderPlaying" class="stop btn btn-default"><i class="fa fa-pause"></i></div>
-            <div flex></div>
-          </div>
+          <div ng-show="!vm.sliderPlaying" class="play btn btn-default"><i class="fa fa-play"></i></div>
+          <div ng-show="vm.sliderPlaying" class="stop btn btn-default"><i class="fa fa-pause"></i></div>
+          <div flex></div>
+        </div>
       </div>
-
       <div flex="30" class="categories_wrapp title_text">
         <div ng-repeat="category in vm.categories" layout="row" layout-wrap ng-cloak>
           <md-whiteframe class="md-whiteframe-1dp whiteframe" ng-class="category.title.eng" flex layout>
@@ -74,7 +73,6 @@
       </div>
     </div>
   </div>
-
   <div class="publications_con_wrapp">
     <div class="publications_container md-padding">
       <div layout="row">
@@ -85,12 +83,6 @@
         <md-button class="publications_btn" ui-sref="main.articles({tabIndex: 1, publicationIndex: 0, indicatorIndex: 0, categoryId: undefined, year: undefined, searchQuery: undefined})">
          {{'ALL' | translate}}
         </md-button>
-
-    <!--     <div class="all_publications_btn">
-          <a href="" ui-sref="main.articles({tabIndex: 1, publicationIndex: 0, indicatorIndex: 0, categoryId: undefined, year: undefined, searchQuery: undefined})">
-            {{'ALL' | translate}}
-          </a>
-        </div> -->
       </div>
       <div layout="row" class="main_publications_wrapp">
         <div flex class="md-padding main_publications" layout="row" ng-repeat="publication in vm.latestPublications" >
@@ -109,25 +101,39 @@
   <div class="banner_wrapp">
     <div layout="row" class="banner_row md-padding">
       <div class="" layout="row" flex>
-        <div class="banner" flex>
-          <a href="{{vm.banner.link}}" target="_blank">
-            <img ng-src="{{vm.banner.image}}" alt="{{vm.banner.title.geo}}">
-          </a>
-        </div>
         <div class="item md-padding" flex>
-          <div>
-            <div layout="row">
-              <span flex></span>
-              <span class="title_text page_title">
-                <a href="" ui-sref="main.demographics" >
-                  {{'DEMOGRAPHICS' | translate}}
-                </a>
-                <hr>
-              </span>
-              <span flex></span>
+          <div layout="row">
+            <span flex></span>
+            <span class="title_text page_title">
+              <a href="{{vm.banner.link}}">
+                {{'T' | translate:vm.banner.title}}
+              </a>
+              <hr>
+            </span>
+            <span flex></span>
+          </div>
+          <div class="home_map_wrapp">
+            <div class="banner" flex>
+              <a href="{{vm.banner.link}}" target="_blank">
+                <img ng-src="{{vm.banner.image}}" alt="{{vm.banner.title.geo}}">
+              </a>
             </div>
           </div>
-          <fusion-map height="400" width="600" demographics="vm.demographics" ></fusion-map>
+        </div>
+        <div class="item md-padding" flex>
+          <div layout="row">
+            <span flex></span>
+            <span class="title_text page_title">
+              <a href="" ui-sref="main.demographics" >
+                {{'DEMOGRAPHICS' | translate}}
+              </a>
+              <hr>
+            </span>
+            <span flex></span>
+          </div>
+          <div class="home_map_wrapp">
+            <fusion-map bg-color="'#ebebeb'" height="300" width="480" demographics="vm.demographics" ></fusion-map>
+          </div>
         </div>
       </div>
     </div>

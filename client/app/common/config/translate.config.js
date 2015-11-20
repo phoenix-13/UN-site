@@ -12,7 +12,11 @@ export default $translateProvider => {
       ALL: 'see all',
       YOUTH_POLICY_MONITOR: 'Youth Policy Monitor',
       SEARCH: 'search..',
+      SEARCH_RESULT: 'For the searched word',
+      FOUND: 'found',
+      COULDNOT_FIND: 'we could not find result',
 
+      MAN: 'man',
       READ_MORE: 'Read More',
 
       CONTACT: 'Contact',
@@ -60,7 +64,11 @@ export default $translateProvider => {
       ALL: 'ყველა',
       YOUTH_POLICY_MONITOR: 'ახალგაზრდული პოლიტიკის მონიტორი',
       SEARCH: 'ძებნა..',
+      SEARCH_RESULT: 'საძიებო სიტყვისათვის',
+      FOUND: 'ნაპოვნია',
+      COULDNOT_FIND: 'შედეგი ვერ მოიძებნა:',
 
+      MAN: 'კაცი',
       READ_MORE: 'სრულად ნახვა',
 
       CONTACT: 'კონტაქტი',

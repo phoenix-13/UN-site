@@ -1,12 +1,12 @@
 <div>
-  <div href="" id="selectedDemography">
+  <div href="" id="selectedDemography" class="hidden">
     <p class="region_title title_text">{{'T' |translate:vm.selectedDemography.lastValue.region}}</p>
-    <div layout="row">
+    <div layout="row" class="data_container">
       <p class="year_value">{{vm.selectedDemography.lastValue.year}}</p>
-        <span flex class="text-align:center">
+        <span flex style="text-align:center">
           <span> - </span>
         </span>
-      <p class="region_value">{{vm.selectedDemography.lastValue.value}}</p>
+      <p class="region_value">{{vm.selectedDemography.lastValue.value}} <span>{{'MAN' | translate}}</span></p>
     </div>
   </div>
   <div id="chart-container"></div>
