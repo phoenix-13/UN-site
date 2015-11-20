@@ -9,6 +9,10 @@
         {{'INDICATORS' | translate}}
       </a>
       <i class="fa fa-angle-right" style="padding-left:5px;padding-right:5px;"></i>
+      <a href="" ui-sref="main.articles({tabIndex: 0, publicationIndex: 0, indicatorIndex: 0, categoryId: vm.indicator.category, year: undefined, searchQuery: undefined})">
+        {{'T' | translate:vm.getSelectedCategory().title}}
+      </a>
+      <i class="fa fa-angle-right" style="padding-left:5px;padding-right:5px;"></i>
       <a href="">
         {{'T' | translate:vm.indicator.title}}
       </a>

@@ -47,6 +47,7 @@ export default $translateProvider => {
       LAST: 'last',
 
       'NO_RESULT': 'no result found',
+      'ALL_YEAR': 'every',
 
       T: '{{eng}}'
     })
@@ -95,6 +96,7 @@ export default $translateProvider => {
       LAST: 'ბოლო',
 
       'NO_RESULT': 'შედეგი ვერ მოიძებნა',
+      'ALL_YEAR': 'ყველა',
 
       T: '{{geo}}'
     })

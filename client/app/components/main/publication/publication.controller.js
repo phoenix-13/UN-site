@@ -6,6 +6,7 @@ export default class {
     this.publication = publication;
     this.categories = categories;
     this.initYears();
+    this.selectedTab = 1;
   }
 
   initYears() {
@@ -14,5 +15,9 @@ export default class {
     this.years = _
       .range(stopYear - startYear + 1)
       .map((elem, index) => startYear + index);
+  }
+
+  getSelectedCategory() {
+    return this.categories.filter(category => category._id === this.publication.category)[0];
   }
 }

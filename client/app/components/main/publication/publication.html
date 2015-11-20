@@ -9,6 +9,10 @@
         {{'PUBLICATIONS' | translate}}
       </a>
       <i class="fa fa-angle-right" style="padding-left:5px;padding-right:5px;"></i>
+      <a href="" ui-sref="main.articles({tabIndex: 1, publicationIndex: 0, indicatorIndex: 0, categoryId: vm.indicator.category, year: undefined, searchQuery: undefined})">
+        {{'T' | translate:vm.getSelectedCategory().title}}
+      </a>
+      <i class="fa fa-angle-right" style="padding-left:5px;padding-right:5px;"></i>
       <a href="">
         {{'T' | translate:vm.publication.title}}
       </a>
@@ -39,6 +43,13 @@
               <i class="fa fa-square-o"></i>
               <i class="fa fa-square overlay"></i>
               {{year}}
+            </a>
+          </div>
+          <div class="publication_year direction_title title_text">
+            <a style="cursor: pointer" ui-sref="main.articles({year: undefined, publicationIndex: 0, indicatorIndex: 0, tabIndex: 1})">
+              <i class="fa fa-square-o"></i>
+              <i class="fa fa-square overlay"></i>
+              {{'ALL_YEAR' | translate}}
             </a>
           </div>
         </div>

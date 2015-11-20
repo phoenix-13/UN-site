@@ -26,7 +26,7 @@ export default class {
   }
 
   searchArticles(searchText) {
-    if (searchText && searchText.length > 1) {
+    if (searchText && searchText.length > 0) {
       var deferred = this.$q.defer();
       this.ArticleResource.searchAdminArticles(searchText)
         .then(articles => this.parseArticles(articles))
