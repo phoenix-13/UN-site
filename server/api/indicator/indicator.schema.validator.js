@@ -27,10 +27,11 @@ var bilingContentSchema = Joi.object().keys({
 
 var indicatorSchema = Joi.object().keys({
   title: bilingTitleSchema,
-  date: Joi.date().required(), // questions exist
+  date: Joi.date().required(),
   values: Joi.array().items(yearValueSchema).required(),
   content: bilingContentSchema,
   category: Joi.string().required()
+  // categories: Joi.array().items(Joi.string()).required()
 }).required();
 
 function validateIndicator(indicator) {
