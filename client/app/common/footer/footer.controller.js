@@ -24,7 +24,7 @@ export default class {
     var owl = $("#owl2-partners");
 
     $('#owl2-partners').owlCarousel({
-      items:5,
+      items:4,
       loop:true,
       nav:true,
       dots:false,
