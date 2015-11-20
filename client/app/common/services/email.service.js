@@ -26,7 +26,7 @@ export default class {
             'to': this.to,
             'autotext': 'true',
             'subject': message.theme,
-            'html': `<p>${message.content}<br>${message.person}</p>`
+            'html': `<p>${message.content}<br><br>from ${message.person}</p>`
           }
         }
       })
