@@ -23,7 +23,7 @@
       <div class="title_text" style="font-size:1.2em">{{'DIRECTION' | translate}}</div>
       <div style="padding-top: 20px; padding-left:15px">
         <div ng-repeat="category in vm.categories" class="direction_title title_text">
-          <a style="cursor: pointer" ui-sref="main.articles({categoryId: category._id, publicationIndex: 0, indicatorIndex: 0, tabIndex: 1})">
+          <a style="cursor: pointer" ui-sref="main.articles({categoryId: category._id, publicationIndex: 0, indicatorIndex: 0, tabIndex: 1})" ng-class="{'active': category._id === vm.publication.category}">
             <i class="fa fa-square-o"></i>
             {{'T' | translate:category.title}}
           </a>
@@ -33,7 +33,7 @@
       <div class="title_text" style="font-size:1.2em;padding-top: 20px"> {{'PUBLICATIONS_BY_YEAR' | translate}}</div>
       <div style="padding-top: 20px; padding-left: 25px">
         <div ng-repeat="year in vm.years" class="publication_year direction_title title_text">
-          <a style="cursor: pointer" ui-sref="main.articles({year: year, publicationIndex: 0, indicatorIndex: 0, tabIndex: 1})">
+          <a style="cursor: pointer" ui-sref="main.articles({year: year, publicationIndex: 0, indicatorIndex: 0, tabIndex: 1})" ng-class="{'active': year === vm.publication.year}">
             <i class="fa fa-square-o"></i>
             {{year}}
           </a>

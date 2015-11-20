@@ -23,7 +23,12 @@
       <div class="title_text" style="font-size:1.2em">{{'DIRECTION' | translate}}</div>
       <div style="padding-top: 20px; padding-left:15px">
         <div class="direction_title title_text" ng-repeat="category in vm.categories">
-          <a style="cursor: pointer" ui-sref="main.articles({categoryId: category._id, publicationIndex: 0, indicatorIndex: 0, tabIndex: 0})"><i class="fa fa-square-o"></i>{{'T' | translate:category.title}}</a>
+          <a
+            style="cursor: pointer" ui-sref="main.articles({categoryId: category._id, publicationIndex: 0, indicatorIndex: 0, tabIndex: 0})"
+            ng-class="{'active': category._id === vm.indicator.category}">
+            <i class="fa fa-square-o"></i>
+            {{'T' | translate:category.title}}
+          </a>
         </div>
       </div>
     </div>
