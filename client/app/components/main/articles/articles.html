@@ -53,21 +53,44 @@
                 {{year}}
               </a>
             </div>
+            <div class="publication_year direction_title title_text">
+              <a style="cursor: pointer" ui-sref="main.articles({year: undefined, publicationIndex: 0, indicatorIndex: 0, tabIndex: 1})" ng-class="{'active': !vm.query.year}">
+                <i class="fa fa-square-o"></i>
+                <i class="fa fa-square overlay"></i>
+                {{'ALL_YEAR' | translate}}
+              </a>
+            </div>
           </div>
         </div>
       </div>
       <div layout="column" flex="5" ></div>
       <div layout="column" flex class="">
         <md-content>
-          <p ng-show="vm.isSearchResult()" class="search_result_sentence">საძიებო სიტყვისათვის
+          <div ng-show="vm.isSearchResult()">
+            <div ng-show="vm.indicators.numTotal + vm.publications.numTotal > 0">
+              <p class="search_result_sentence">
+                საძიებო სიტყვისათვის
+              <span class="search_keyword">
+                <i class="fa fa-angle-double-left"></i>
+                {{vm.query.searchQuery}}
+                <i class="fa fa-angle-double-right"></i>
+              </span>ნაპოვნია:
+              </p>
+            </div>
+            <div ng-show="vm.indicators.numTotal + vm.publications.numTotal === 0">
+              <p class="search_result_sentence">
+                საძიებო სიტყვისათვის
+              <span class="search_keyword">
+                <i class="fa fa-angle-double-left"></i>
+                {{vm.query.searchQuery}}
+                <i class="fa fa-angle-double-right"></i>
+              </span>შედეგი ვერ მოიძებნა:
+              </p>
+            </div>
+          </div>
 
-          <span class="search_keyword">
-            <i class="fa fa-angle-double-left"></i>
-            {{vm.query.searchQuery}}
-            <i class="fa fa-angle-double-right"></i>
-          </span>
 
-           ნაპოვნია:</p>
+
           <md-tabs md-dynamic-height md-selected="vm.selectedTab" class="article_tabs">
             <md-tab>
               <md-tab-label class="tab_label">
@@ -76,7 +99,7 @@
               </md-tab-label>
               <md-tab-body>
                 <md-content class="top_padding">
-                  <table class="table table-striped indicators_table">
+                  <table ng-show="vm.indicators.numTotal" class="table table-striped indicators_table">
                     <thead>
                       <tr>
                         <td>კვლევა</td>

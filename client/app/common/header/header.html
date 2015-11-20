@@ -33,7 +33,7 @@
                   <div ng-show="vm.articles.numTotal" style="display: inline-block" class="title_text search_title" ng-click="vm.loadArticles(0)">
                     {{'ALL_RESULTS' | translate}} ({{vm.articles.numTotal}})
                   </div>
-                  <div ng-show="!vm.articles.numTotal" style="display: inline-block" class="title_text search_title">
+                  <div ng-show="!vm.articles.numTotal" style="display: inline-block" class="title_text search_title" ng-click="vm.loadArticles(0)">
                     {{'NO_RESULT' | translate}}
                   </div>
                 </div>
@@ -41,15 +41,19 @@
             </div>
           </div>
 
-          <div class="search_input">
-            <input
-              ng-model="vm.searchText"
-              ng-change="vm.searchArticles(vm.searchText)"
-              maxlength="{{vm.search.max}}"
-              name="value"
-              placeholder="{{'SEARCH' | translate}}"
-              type="text">
-          </div>
+          <form novalidate ng-submit="vm.loadArticles(0)">
+            <div class="search_input">
+              <input
+                ng-model="vm.searchText"
+                ng-change="vm.searchArticles(vm.searchText)"
+                maxlength="{{vm.search.max}}"
+                name="value"
+                placeholder="{{'SEARCH' | translate}}"
+                type="text">
+            </div>
+            <input type="submit" hidden>
+          </form>
+
           <div>
             <a href="">
               <i class="fa fa-search search_icon"></i>
