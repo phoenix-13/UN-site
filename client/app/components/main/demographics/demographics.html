@@ -38,7 +38,7 @@
         </thead>
         <tbody>
           <tr ng-repeat="demography in vm.demographics">
-            <td class="title_text">{{demography.region.geo}}</td>
+            <td class="title_text">{{'T' | translate:demography.region}}</td>
             <td ng-repeat="year in vm.years">{{demography.values[year].value}}</td>
           </tr>
         </tbody>
