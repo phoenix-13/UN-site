@@ -4,16 +4,18 @@ require('../../../config/mongoose');
 var Search = require('../search.dao');
 var Indicator = require('../../indicator/indicator.dao');
 var Publication = require('../../publication/publication.dao');
+var ObjectId = require('mongoose').Types.ObjectId;
 
 describe('Search.dao', () => {
   var titleGeo = 'title';
   var year = 2015;
+  var category = new ObjectId();
 
   beforeEach(done => {
     Indicator.removeAll()
     .then(() => Publication.removeAll())
     .then(() => Indicator.create({ 'title.geo': titleGeo }, {}))
-    .then(() => Publication.create({ 'title.geo': titleGeo }, { 'title.geo': titleGeo, year: year }, {}))
+    .then(() => Publication.create({ 'title.geo': titleGeo, categories: [category] }, { 'title.geo': titleGeo, year: year }, {}))
     .then(() => done());
   });
 
@@ -48,12 +50,10 @@ describe('Search.dao', () => {
       var queryString = 'tl';
       var offset = 0;
       var limit = 1;
-      Search.search(queryString, undefined, undefined, offset, limit)
+      Search.search(queryString, category, undefined, offset, offset, limit)
         .then(result => {
-          result.indicators.numTotal.should.equal(1);
-          result.publications.numTotal.should.equal(2);
-          result.indicators.items.length.should.equal(limit);
-          result.publications.items.length.should.equal(limit);
+          result.indicators.numTotal.should.equal(0);
+          result.publications.numTotal.should.equal(1);
           done();
         });
     });
