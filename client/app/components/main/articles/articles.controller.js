@@ -14,6 +14,10 @@ export default class {
     this.indexIndicatorsByYear();
   }
 
+  getSelectedCategory() {
+    return this.categories.filter(category => category._id === this.query.categoryId)[0];
+  }
+
   isSearchResult() {
     return this.query.searchQuery && this.query.searchQuery.length > 0;
   }

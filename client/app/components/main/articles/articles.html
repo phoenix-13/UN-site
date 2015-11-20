@@ -5,12 +5,26 @@
         {{'HOME' | translate}}
       </a>
       <i class="fa fa-angle-right" style="padding-left:5px;padding-right:5px;"></i>
-      <a ng-show="!vm.selectedTab" href="" ui-sref="main.articles({tabIndex: 0, publicationIndex: 0, indicatorIndex: 0, categoryId: undefined, year: undefined, searchQuery: undefined})">
-        {{'INDICATORS' | translate}}
-      </a>
-      <a ng-show="vm.selectedTab" href="" ui-sref="main.articles({tabIndex: 1, publicationIndex: 0, indicatorIndex: 0, categoryId: undefined, year: undefined, searchQuery: undefined})">
-        {{'PUBLICATIONS' | translate}}
-      </a>
+      <span ng-show="!vm.query.categoryId">
+        <a ng-show="!vm.selectedTab" href="">
+          {{'INDICATORS' | translate}}
+        </a>
+        <a ng-show="vm.selectedTab" href="">
+          {{'PUBLICATIONS' | translate}}
+        </a>
+      </span>
+      <span ng-show="vm.query.categoryId">
+        <a ng-show="!vm.selectedTab" href="" ui-sref="main.articles({tabIndex: vm.selectedTab, publicationIndex: 0, indicatorIndex: 0, categoryId: undefined, year: undefined, searchQuery: undefined})">
+          {{'INDICATORS' | translate}}
+        </a>
+        <a ng-show="vm.selectedTab" href="" ui-sref="main.articles({tabIndex: 1, publicationIndex: 0, indicatorIndex: 0, categoryId: undefined, year: undefined, searchQuery: undefined})">
+          {{'PUBLICATIONS' | translate}}
+        </a>
+        <i class="fa fa-angle-right" style="padding-left:5px;padding-right:5px;"></i>
+        <a href="">
+          {{'T' | translate:vm.getSelectedCategory().title}}
+        </a>
+      </span>
     </span>
     <span flex></span>
   </div>
