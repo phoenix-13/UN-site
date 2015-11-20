@@ -63,14 +63,14 @@ function getOrQueryArr(queryString) {
 
 function getIndFindQueryObject(categoryId) {
   if (categoryId)
-    return { category: categoryId };
+    return { categories: categoryId };
   else
     return {};
 }
 
 function getPubFindQueryObject(categoryId, year) {
   var res = {};
-  if (categoryId) res.category = categoryId;
+  if (categoryId) res.categories = categoryId;
   if (year) res.year = year;
   return res;
 }
