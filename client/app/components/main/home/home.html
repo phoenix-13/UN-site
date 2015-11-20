@@ -39,7 +39,7 @@
               <img ng-src="{{slide.image}}" alt="{{slide.title.geo}}">
               <div layout="column" class="md-padding">
                 <div>
-                  <h4 class="title_text">{{'T' | translate:slide.title}}</h4>
+                  <h4 class="title_text" style="width: 280px; max-height: 150px; overflow-y:hidden;">{{'T' | translate:slide.title}}</h4>
                 </div>
                 <a ng-if="slide.ref._id" ui-sref="{{'main.' + slide.ref.type}}({id: slide.ref._id})" class="more_btn title_text">
                   <md-button>{{'READ_MORE' | translate}}</md-button>
