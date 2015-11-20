@@ -8,7 +8,8 @@ export default $translateProvider => {
       ABOUT: 'About Us',
       PUBLICATIONS: 'Publications',
       INDICATORS: 'Indicators',
-      ALL: 'see all results',
+      ALL_RESULTS: 'see all results',
+      ALL: 'see all',
       JUNIOR_POLITICS_MONITORING: 'Youth Policy Monitor',
       SEARCH: 'search..',
 
@@ -27,7 +28,9 @@ export default $translateProvider => {
       SUBJECT: 'Subject',
       CONTENT: 'Content',
       SEND: 'Send',
-      GLAD_TO_RECIEVE: 'We would be Delighted to Hear from You...',
+      GLAD_TO_RECIEVE_1: 'We would be ',
+      GLAD: 'Delighted',
+      GLAD_TO_RECIEVE_2: 'to Hear from You',
 
       TBILISI: 'Tbilisi',
       PHONE: 'Phone',
@@ -52,7 +55,8 @@ export default $translateProvider => {
       ABOUT: 'ჩვენ შესახებ',
       PUBLICATIONS: 'პუბლიკაციები',
       INDICATORS: 'ინდიკატორები',
-      ALL: 'ყველა შედეგის ნახვა',
+      ALL_RESULTS: 'ყველა შედეგის ნახვა',
+      ALL: 'ყველა',
       JUNIOR_POLITICS_MONITORING: 'ახალგაზრდული პოლიტიკის მონიტორი',
       SEARCH: 'ძებნა..',
 
@@ -71,7 +75,10 @@ export default $translateProvider => {
       SUBJECT: 'თემა',
       CONTENT: 'შეტყობინება',
       SEND: 'გაგზავნა',
-      GLAD_TO_RECIEVE: 'თუ მოგვწერთ გაგვიხარდება...',
+      GLAD_TO_RECIEVE_1: 'თუ მოგვწერთ ',
+      GLAD: 'გაგვიხარდება',
+      GLAD_TO_RECIEVE_2: '',
+
 
       TBILISI: 'თბილისი',
       PHONE: 'ტელეფონი',

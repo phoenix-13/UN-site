@@ -17,31 +17,49 @@
   </div>
 </div>
 
-<div class="single_page_content">
-  <div layout="row" class="main_page_container">
-    <div layout="column" flex="30" class="filter_wrapp">
-      <div class="title_text" style="font-size:1.2em">{{'DIRECTION' | translate}}</div>
-      <div style="padding-top: 20px; padding-left:15px">
-        <div class="direction_title title_text" ng-repeat="category in vm.categories">
-          <a
-            style="cursor: pointer" ui-sref="main.articles({categoryId: category._id, publicationIndex: 0, indicatorIndex: 0, tabIndex: 0})"
-            ng-class="{'active': category._id === vm.indicator.category}">
-            <i class="fa fa-square-o"></i>
-            {{'T' | translate:category.title}}
-          </a>
+<div class="page_bottom_border">
+  <div class="single_page_content" style="padding-bottom:0">
+    <div layout="row" class="main_page_container">
+      <div layout="column" flex="30" class="filter_wrapp">
+        <div class="title_text" style="font-size:1.2em">{{'DIRECTION' | translate}}</div>
+        <div style="padding-top: 20px; padding-left:15px">
+          <div class="direction_title title_text" ng-repeat="category in vm.categories">
+            <a
+              style="cursor: pointer" ui-sref="main.articles({categoryId: category._id, publicationIndex: 0, indicatorIndex: 0, tabIndex: 0})"
+              ng-class="{'active': category._id === vm.indicator.category}">
+              <i class="fa fa-square-o"></i>
+              <i class="fa fa-square overlay"></i>
+              {{'T' | translate:category.title}}
+            </a>
+          </div>
         </div>
       </div>
-    </div>
-    <div layout="column" flex="5" ></div>
-    <div layout="column" flex>
-      <md-content class="md-padding">
-        <div class="article_title text-center">
-          <h4 class="title_text" style="margin-top:2px">{{'T' | translate:vm.indicator.title}}</h4>
-          <hr>
-        </div>
-        <div ng-bind-html="'T' | translate: vm.indicator.content"></div>
-      </md-content>
+      <div layout="column" flex="5" ></div>
+      <div layout="column" flex>
+        <md-content >
+          <md-tabs md-dynamic-height md-selected="vm.selectedTab">
+            <md-tab>
+              <md-tab-label>
+                <a class="article_category_link" href="" ui-sref="main.articles({tabIndex: 0, publicationIndex: 0, indicatorIndex: 0, categoryId: undefined, year: undefined, searchQuery: undefined})">
+                  {{'INDICATORS' | translate}}
+                </a>
+              </md-tab-label>
+            </md-tab>
+            <md-tab>
+              <md-tab-label>
+                <a class="article_category_link" href="" ui-sref="main.articles({tabIndex: 1, publicationIndex: 0, indicatorIndex: 0, categoryId: undefined, year: undefined, searchQuery: undefined})">
+                {{'PUBLICATIONS' | translate}}
+                </a>
+              </md-tab-label>
+            </md-tab>
+          </md-tabs>
+
+          <div class="article_title top_padding">
+            <h4 class="title_text" style="margin-top:2px">{{'T' | translate:vm.indicator.title}}</h4>
+          </div>
+          <div ng-bind-html="'T' | translate: vm.indicator.content"></div>
+        </md-content>
+      </div>
     </div>
   </div>
 </div>
-

@@ -29,116 +29,118 @@
     <span flex></span>
   </div>
 </div>
-<div class="single_page_content">
-  <div layout="row" class="main_page_container">
-    <div layout="column" flex="30" class="filter_wrapp">
-      <div class="title_text direction_t" style="font-size:1.2em">{{'DIRECTION' | translate}}</div>
-      <div style="padding-top: 20px; padding-left:15px">
-        <div class="direction_title title_text" ng-repeat="category in vm.categories">
-          <a style="cursor: pointer" ng-click="vm.changeCategory(category)" ng-class="{'active': category._id === vm.query.categoryId}">
-            <i class="fa fa-square-o"></i>
-            <i class="fa fa-square overlay"></i>
-            {{'T' | translate:category.title}}
-          </a>
-        </div>
-      </div>
-      <div ng-show="vm.selectedTab == 1">
-        <div class="title_text direction_t" style="font-size:1.2em;padding-top: 20px">{{'PUBLICATIONS_BY_YEAR' | translate}}</div>
-        <div style="padding-top: 20px; padding-left: 25px">
-          <div class="publication_year direction_title title_text" ng-repeat="year in vm.years">
-            <a style="cursor: pointer" ng-click="vm.changeYear(year)" ng-class="{'active': '' + year === vm.query.year}">
+<div class="page_bottom_border">
+  <div class="single_page_content" style="padding-bottom: 0">
+    <div layout="row" class="main_page_container">
+      <div layout="column" flex="30" class="filter_wrapp">
+        <div class="title_text direction_t" style="font-size:1.2em">{{'DIRECTION' | translate}}</div>
+        <div style="padding-top: 20px; padding-left:15px">
+          <div class="direction_title title_text" ng-repeat="category in vm.categories">
+            <a style="cursor: pointer" ng-click="vm.changeCategory(category)" ng-class="{'active': category._id === vm.query.categoryId}">
               <i class="fa fa-square-o"></i>
               <i class="fa fa-square overlay"></i>
-              {{year}}
+              {{'T' | translate:category.title}}
             </a>
           </div>
         </div>
+        <div ng-show="vm.selectedTab == 1">
+          <div class="title_text direction_t" style="font-size:1.2em;padding-top: 20px">{{'PUBLICATIONS_BY_YEAR' | translate}}</div>
+          <div style="padding-top: 20px; padding-left: 25px">
+            <div class="publication_year direction_title title_text" ng-repeat="year in vm.years">
+              <a style="cursor: pointer" ng-click="vm.changeYear(year)" ng-class="{'active': '' + year === vm.query.year}">
+                <i class="fa fa-square-o"></i>
+                <i class="fa fa-square overlay"></i>
+                {{year}}
+              </a>
+            </div>
+          </div>
+        </div>
       </div>
-    </div>
-    <div layout="column" flex="5" ></div>
-    <div layout="column" flex class="">
-      <md-content>
-        <p ng-show="vm.isSearchResult()" class="search_result_sentence">საძიებო სიტყვისათვის
+      <div layout="column" flex="5" ></div>
+      <div layout="column" flex class="">
+        <md-content>
+          <p ng-show="vm.isSearchResult()" class="search_result_sentence">საძიებო სიტყვისათვის
 
-        <span class="search_keyword">
-          <i class="fa fa-angle-double-left"></i>
-          {{vm.query.searchQuery}}
-          <i class="fa fa-angle-double-right"></i>
-        </span>
+          <span class="search_keyword">
+            <i class="fa fa-angle-double-left"></i>
+            {{vm.query.searchQuery}}
+            <i class="fa fa-angle-double-right"></i>
+          </span>
 
-         ნაპოვნია:</p>
-        <md-tabs md-dynamic-height md-border-bottom md-selected="vm.selectedTab">
-          <md-tab>
-            <md-tab-label>
-              {{'INDICATORS' | translate}}
-              <span ng-show="vm.isSearchResult()" class="badge">{{vm.indicators.numTotal}}</span>
-            </md-tab-label>
-            <md-tab-body>
-              <md-content>
-                <table class="table table-striped indicators_table">
-                  <thead>
-                    <tr>
-                      <td>კვლევა</td>
-                      <td ng-repeat="indicatorYear in vm.indicatorYears">{{indicatorYear}}</td>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr ng-repeat="indicator in vm.indicators.items" ui-sref="main.indicator({id: indicator._id})">
-                      <td class="table_article_title" style="cursor: pointer" class="title_text">{{'T' | translate:indicator.title}}</td>
-                      <td ng-repeat="indicatorYear in vm.indicatorYears">{{indicator.valuesMap[indicatorYear].value}}</td>
-                    </tr>
-                  </tbody>
-                </table>
-                <div ng-show="vm.indicators.numTotal > 0" class="pagination_wrapp">
-                  <uib-pagination
-                    ng-change="vm.changeIndicatorPage()"
-                    total-items="vm.indicators.numTotal"
-                    ng-model="vm.indicators.currentPage"
-                    max-size="vm.indicators.itemsPerPage"
-                    class="pagination-sm"
-                    boundary-links="true"
-                    rotate="false">
-                  </uib-pagination>
-                </div>
-              </md-content>
-            </md-tab-body>
-          </md-tab>
-          <md-tab>
-            <md-tab-label>
-              {{'PUBLICATIONS' | translate}}
-              <span ng-show="vm.isSearchResult()" class="badge">{{vm.publications.numTotal}}</span>
-            </md-tab-label>
-            <md-tab-body>
-              <md-content class=" publications_list">
-                <md-list>
-                  <div ng-repeat="publication in vm.publications.items" class="publication_item">
-                    <md-list-item class="md-3-line" style="padding: 10px;">
-                      <a ui-sref="main.publication({id: publication._id})" class="article_item">
-                        <div class="md-list-item-text" layout="column" >
-                          <h3 class="title_text" style="font-size:1.3em;">{{'T' | translate:publication.title}}</h3>
-                          <p class="publication_date" >{{publication.date | date: 'yyyy-MM-dd': 'GMT+03:00'}}</p>
-                          <p style="font-size:0.8em;" ng-bind-html="'T' | translate:publication.content" class="article_text_part"></p>
-                        </div>
-                      </a>
-                    </md-list-item>
+           ნაპოვნია:</p>
+          <md-tabs md-dynamic-height md-selected="vm.selectedTab" class="article_tabs">
+            <md-tab>
+              <md-tab-label>
+                {{'INDICATORS' | translate}}
+                <span ng-show="vm.isSearchResult()"> - {{vm.indicators.numTotal}}</span>
+              </md-tab-label>
+              <md-tab-body>
+                <md-content class="top_padding">
+                  <table class="table table-striped indicators_table">
+                    <thead>
+                      <tr>
+                        <td>კვლევა</td>
+                        <td ng-repeat="indicatorYear in vm.indicatorYears">{{indicatorYear}}</td>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr ng-repeat="indicator in vm.indicators.items" ui-sref="main.indicator({id: indicator._id})">
+                        <td class="table_article_title" style="cursor: pointer" class="title_text">{{'T' | translate:indicator.title}}</td>
+                        <td ng-repeat="indicatorYear in vm.indicatorYears">{{indicator.valuesMap[indicatorYear].value}}</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                  <div ng-show="vm.indicators.numTotal > 0" class="pagination_wrapp">
+                    <uib-pagination
+                      ng-change="vm.changeIndicatorPage()"
+                      total-items="vm.indicators.numTotal"
+                      ng-model="vm.indicators.currentPage"
+                      max-size="vm.indicators.itemsPerPage"
+                      class="pagination-sm"
+                      boundary-links="true"
+                      rotate="false">
+                    </uib-pagination>
                   </div>
-                </md-list>
-                <div ng-show="vm.publications.numTotal > 0" class="pagination_wrapp">
-                  <uib-pagination
-                    ng-change="vm.changePublicationPage()"
-                    total-items="vm.publications.numTotal"
-                    ng-model="vm.publications.currentPage"
-                    max-size="vm.publications.itemsPerPage"
-                    class="pagination-sm"
-                    boundary-links="true"
-                    rotate="false">
-                  </uib-pagination>
-                </div>
-              </md-content>
-            </md-tab-body>
-          </md-tab>
-        </md-tabs>
-      </md-content>
+                </md-content>
+              </md-tab-body>
+            </md-tab>
+            <md-tab>
+              <md-tab-label>
+                {{'PUBLICATIONS' | translate}}
+                <span ng-show="vm.isSearchResult()"> - {{vm.publications.numTotal}}</span>
+              </md-tab-label>
+              <md-tab-body>
+                <md-content class=" publications_list">
+                  <md-list class="top_padding">
+                    <div ng-repeat="publication in vm.publications.items" class="publication_item">
+                      <md-list-item class="md-3-line" style="padding: 10px;">
+                        <a ui-sref="main.publication({id: publication._id})" class="article_item">
+                          <div class="md-list-item-text" layout="column" >
+                            <h3 class="title_text" style="font-size:1.3em;">{{'T' | translate:publication.title}}</h3>
+                            <p class="publication_date" >{{publication.date | date: 'yyyy-MM-dd': 'GMT+03:00'}}</p>
+                            <p style="font-size:0.8em;" ng-bind-html="'T' | translate:publication.content" class="article_text_part"></p>
+                          </div>
+                        </a>
+                      </md-list-item>
+                    </div>
+                  </md-list>
+                  <div ng-show="vm.publications.numTotal > 0" class="pagination_wrapp">
+                    <uib-pagination
+                      ng-change="vm.changePublicationPage()"
+                      total-items="vm.publications.numTotal"
+                      ng-model="vm.publications.currentPage"
+                      max-size="vm.publications.itemsPerPage"
+                      class="pagination-sm"
+                      boundary-links="true"
+                      rotate="false">
+                    </uib-pagination>
+                  </div>
+                </md-content>
+              </md-tab-body>
+            </md-tab>
+          </md-tabs>
+        </md-content>
+      </div>
     </div>
   </div>
 </div>
