@@ -25,8 +25,8 @@ export default class {
             'from_email': message.from,
             'to': this.to,
             'autotext': 'true',
-            'subject': `${message.person} sent new email!`,
-            'html': `<p>theme: ${message.theme}</p><p>content: ${message.content}</p>`
+            'subject': message.theme,
+            'html': `<p>${message.content}<br>${message.person}</p>`
           }
         }
       })
