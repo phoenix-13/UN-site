@@ -19,7 +19,6 @@ var IndicatorSchema = new Schema({
   values: [yearValueSchema],
   content: bilingStringSchema,
   category: Schema.Types.ObjectId
-  // categories: [Schema.Types.ObjectId]
 }, { collection: 'indicator' });
 
 module.exports = mongoose.model('Indicator', IndicatorSchema);

@@ -31,7 +31,6 @@ var indicatorSchema = Joi.object().keys({
   values: Joi.array().items(yearValueSchema).required(),
   content: bilingContentSchema,
   category: Joi.string().required()
-  // categories: Joi.array().items(Joi.string()).required()
 }).required();
 
 function validateIndicator(indicator) {

@@ -11,7 +11,6 @@ function parseIndicator(indicator) {
     values: extractIds(indicator.values),
     content: biling(indicator.content),
     category: indicator.category
-    // categories: indicator.categories
   };
 }
 
