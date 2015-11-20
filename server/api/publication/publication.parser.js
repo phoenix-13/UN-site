@@ -9,7 +9,7 @@ function parsePublication(publication) {
     title: biling(publication.title),
     date: publication.date,
     content: biling(publication.content),
-    category: publication.category
+    categories: publication.categories
   };
 }
 

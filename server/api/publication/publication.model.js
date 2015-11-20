@@ -13,7 +13,7 @@ var PublicationSchema = new Schema({
   date: Date,
   year: Number,
   content: bilingStringSchema,
-  category: Schema.Types.ObjectId
+  categories: [Schema.Types.ObjectId]
 }, { collection: 'publication' });
 
 module.exports = mongoose.model('Publication', PublicationSchema);

@@ -13,7 +13,7 @@ describe('publication.schema.validator', () => {
         title: biling('title'),
         date: new Date('2010/12/31'),
         content: biling('content'),
-        category: 'category ID'
+        categories: ['category ID']
       };
       done();
     });
@@ -113,14 +113,20 @@ describe('publication.schema.validator', () => {
         .then(() => done());
     });
 
-    it('should not validate when category is not  provided', done => {
-      delete publication.category;
+    it('should not validate when categories is not provided', done => {
+      delete publication.categories;
       publicationSchemaValidator.validatePublication(publication)
         .catch(SchemaError, () => done());
     });
 
-    it('should not validate when category is not string', done => {
-      publication.category = [];
+    it('should not validate when categories is not an array', done => {
+      publication.categories = 'not_an_array';
+      publicationSchemaValidator.validatePublication(publication)
+        .catch(SchemaError, () => done());
+    });
+
+    it('should not validate when categories item is not string', done => {
+      publication.categories[0] = [];
       publicationSchemaValidator.validatePublication(publication)
         .catch(SchemaError, () => done());
     });
