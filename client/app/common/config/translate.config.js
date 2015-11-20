@@ -10,7 +10,7 @@ export default $translateProvider => {
       INDICATORS: 'Indicators',
       ALL_RESULTS: 'see all results',
       ALL: 'see all',
-      JUNIOR_POLITICS_MONITORING: 'Youth Policy Monitor',
+      YOUTH_POLICY_MONITOR: 'Youth Policy Monitor',
       SEARCH: 'search..',
 
       READ_MORE: 'Read More',
@@ -58,7 +58,7 @@ export default $translateProvider => {
       INDICATORS: 'ინდიკატორები',
       ALL_RESULTS: 'ყველა შედეგის ნახვა',
       ALL: 'ყველა',
-      JUNIOR_POLITICS_MONITORING: 'ახალგაზრდული პოლიტიკის მონიტორი',
+      YOUTH_POLICY_MONITOR: 'ახალგაზრდული პოლიტიკის მონიტორი',
       SEARCH: 'ძებნა..',
 
       READ_MORE: 'სრულად ნახვა',
