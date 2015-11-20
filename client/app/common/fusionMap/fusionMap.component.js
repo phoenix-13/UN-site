@@ -14,7 +14,8 @@ export default () => {
     bindToController: {
       width: '=',
       height: '=',
-      demographics: '='
+      demographics: '=',
+      bgColor: '='
     },
     replace: true
   };

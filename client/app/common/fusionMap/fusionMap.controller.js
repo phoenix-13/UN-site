@@ -28,7 +28,7 @@ export default class {
               $('#selectedDemography').addClass('hidden');
               this.$scope.$apply(() => {
                 this.selectedDemography = this.demographics.filter(demography => demography.id === data.id)[0];
-              })
+              });
               $('#selectedDemography').css({"top": window.event.clientY + document.body.scrollTop + 20, "left": window.event.clientX - 50});
               $('#selectedDemography').removeClass('hidden');
             }
@@ -40,6 +40,7 @@ export default class {
 
   getChart() {
     return {
+      bgColor: this.bgColor,
       baseFont: 'BPG Nino Mtavruli',
       baseFontSize: 16,
       useHoverColor: 0,
