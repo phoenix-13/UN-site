@@ -201,6 +201,12 @@ describe('content.schema.validator', () => {
         .catch(SchemaError, () => done());
     });
 
+    it('should validate when ref _id is empty string', done => {
+      slide.ref._id = '';
+      contentSchemaValidator.validateSlide(slide)
+        .then(() => done());
+    });
+
     it('should not validate when ref type is not string', done => {
       slide.ref.type = [];
       contentSchemaValidator.validateSlide(slide)
@@ -217,6 +223,12 @@ describe('content.schema.validator', () => {
       slide.link = {};
       contentSchemaValidator.validateSlide(slide)
         .catch(SchemaError, () => done());
+    });
+
+    it('should validate when link is empty string', done => {
+      slide.link = '';
+      contentSchemaValidator.validateSlide(slide)
+        .then(() => done());
     });
   });
 

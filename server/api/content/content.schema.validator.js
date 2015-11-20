@@ -32,9 +32,9 @@ var bilingAddressSchema = Joi.object().keys({
 }).required();
 
 var refSchema = Joi.object().keys({
-  _id: Joi.string(),
-  type: Joi.string(),
-  title: Joi.string()
+  _id: Joi.string().empty(''),
+  type: Joi.string().empty(''),
+  title: Joi.string().empty('')
 });
 
 var featuredItemSchema = Joi.object().keys({
@@ -47,7 +47,7 @@ var slideSchema = Joi.object().keys({
   title: bilingTitleSchema,
   image: Joi.string().required(),
   ref: refSchema,
-  link: Joi.string()
+  link: Joi.string().empty('')
 }).required();
 var bannerSchema = Joi.object().keys({
   title: bilingTitleSchema,
