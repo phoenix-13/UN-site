@@ -1,0 +1,13 @@
+<div>
+  <div href="" id="selectedDemography">
+    <p class="region_title title_text">{{'T' |translate:vm.selectedDemography.lastValue.region}}</p>
+    <div layout="row">
+      <p class="year_value">{{vm.selectedDemography.lastValue.year}}</p>
+        <span flex class="text-align:center">
+          <span> - </span>
+        </span>
+      <p class="region_value">{{vm.selectedDemography.lastValue.value}}</p>
+    </div>
+  </div>
+  <div id="chart-container"></div>
+</div>
