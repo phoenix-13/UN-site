@@ -44,7 +44,15 @@
     <div layout="column" flex="5" ></div>
     <div layout="column" flex class="">
       <md-content>
-        <p ng-show="vm.isSearchResult()">საძიებო სიტყვისათვის <<{{vm.query.searchQuery}}>> ნაპოვნია</p>
+        <p ng-show="vm.isSearchResult()" class="search_result_sentence">საძიებო სიტყვისათვის
+
+        <span class="search_keyword">
+          <i class="fa fa-angle-double-left"></i>
+          {{vm.query.searchQuery}}
+          <i class="fa fa-angle-double-right"></i>
+        </span>
+
+         ნაპოვნია:</p>
         <md-tabs md-dynamic-height md-border-bottom md-selected="vm.selectedTab">
           <md-tab>
             <md-tab-label>
