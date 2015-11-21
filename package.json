@@ -105,7 +105,8 @@
   },
   "gulp": {
     "sshAddress": "ymf@46.101.189.54",
-    "localhostPort": "8080",
+    "developmentPort": "9000",
+    "productionPort": "8080",
     "browserSyncPort": "4000",
     "externalHelpersPath": "jspm_packages/npm/babel-core@5.8.25/external-helpers.min.js",
     "fontsPaths": [

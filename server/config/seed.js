@@ -11,15 +11,19 @@ var Publication = require('../api/publication/publication.dao');
 var Admin = require('../api/admin/admin.dao');
 
 module.exports = function () {
-  seedAdmins()
-    .then(() => seedCategories())
-    //.then(() => seedDemographics())
-    .then(() => seedContent())
-    //.then(() => Q.all([
-    //  seedIndicators(),
-    //  seedPublications()
-    //]))
-    //.spread((indicators, publications) => seedContent(indicators, publications));
+  Q.all([
+    Indicator.removeAll(),
+    Publication.removeAll()
+  ])
+  .then(() => seedAdmins())
+  .then(() => seedCategories())
+  .then(() => seedDemographics())
+  .then(() => seedContent())
+  //.then(() => Q.all([
+  //  seedIndicators(),
+  //  seedPublications()
+  //]))
+  //.spread((indicators, publications) => seedContent(indicators, publications));
 };
 
 function seedContent(indicators, publications) {
@@ -90,73 +94,73 @@ function seedDemographics() {
       geo: 'აფხაზეთი',
       eng: 'Apkhazeti'
     },
-    values: []
+    values: [{year: 2015, value: 0}]
   }, {
     region: {
       geo: 'სამეგრელი - ზემო სვანეთი',
       eng: 'Samegrelo - Zemo Svaneti'
     },
-    values: []
+    values: [{year: 2015, value: 0}]
   }, {
     region: {
       geo: 'გურია',
       eng: 'Guria'
     },
-    values: []
+    values: [{year: 2015, value: 0}]
   }, {
     region: {
       geo: 'აჭარა',
       eng: 'Ajaria'
     },
-    values: []
+    values: [{year: 2015, value: 0}]
   }, {
     region: {
       geo: 'რაჭა - ლეჩხუმი და ქვემო სვანეთი',
       eng: 'Racha - Lechkhumi and Kvemo Svaneti'
     },
-    values: []
+    values: [{year: 2015, value: 0}]
   }, {
     region: {
       geo: 'იმერეთი',
       eng: 'Imereti'
     },
-    values: []
+    values: [{year: 2015, value: 0}]
   }, {
     region: {
       geo: 'სამცხე - ჯავახეთი',
       eng: 'Samtskhe - Javakheti'
     },
-    values: []
+    values: [{year: 2015, value: 0}]
   }, {
     region: {
       geo: 'შიდა ქართლი',
       eng: 'Shida - Kartli'
     },
-    values: []
+    values: [{year: 2015, value: 0}]
   }, {
     region: {
       geo: 'ქვემო ქართლი',
       eng: 'Kvemo - Kartli'
     },
-    values: []
+    values: [{year: 2015, value: 0}]
   }, {
     region: {
       geo: 'თბილისი',
       eng: 'Tbilisi'
     },
-    values: []
+    values: [{year: 2015, value: 0}]
   }, {
     region: {
       geo: 'მცხეთა - მთიანეთი',
       eng: 'Mtskheta - Mtianeti'
     },
-    values: []
+    values: [{year: 2015, value: 0}]
   }, {
     region: {
       geo: 'კახეთი',
       eng: 'Kakheti'
     },
-    values: []
+    values: [{year: 2015, value: 0}]
   }];
 
   return Demographics.removeAll().then(() => Demographics.create(demographicsArr));

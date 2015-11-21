@@ -1,9 +1,11 @@
 'use strict';
 
+var pkg = require('../../../package.json');
+
 module.exports = {
   ip: process.env.IP || undefined,
 
-  port: process.env.PORT || 8080,
+  port: pkg.gulp.productionPort,
 
   mongo: {
     uri: 'mongodb://localhost/UN-site'
