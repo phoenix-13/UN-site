@@ -2,13 +2,13 @@
 
 var express = require('express');
 var controller = require('./demographics.controller');
-// var authService = require('../../utils/auth.service');
 var errors = require('../../errors');
+var authService = require('../../utils/auth.service');
 
 var router = express.Router();
 
 router.get('', getAll);
-router.post('/:demographyId', updateYearValues);
+router.post('/:demographyId', authService.verifyToken(), updateYearValues);
 
 module.exports = router;
 

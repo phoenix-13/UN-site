@@ -2,18 +2,18 @@
 
 var express = require('express');
 var controller = require('./publication.controller');
-// var authService = require('../../utils/auth.service');
+var authService = require('../../utils/auth.service');
 var errors = require('../../errors');
 
 var router = express.Router();
 
-router.get('', getAll);
+//router.get('', getAll);
 router.get('/latest', getLatest);
 router.get('/:publicationId', getById);
 router.get('/page/:pageIndex', getLimited);
-router.post('', create);
-router.post('/:publicationId', update);
-router.delete('/:publicationId', remove);
+router.post('', authService.verifyToken(), create);
+router.post('/:publicationId', authService.verifyToken(), update);
+router.delete('/:publicationId', authService.verifyToken(), remove);
 
 module.exports = router;
 

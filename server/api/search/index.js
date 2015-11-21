@@ -3,7 +3,6 @@
 var express = require('express');
 var controller = require('./search.controller');
 var searchConstants = require('./search.constants');
-// var authService = require('../../utils/auth.service');
 var errors = require('../../errors');
 
 var router = express.Router();

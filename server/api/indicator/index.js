@@ -2,17 +2,17 @@
 
 var express = require('express');
 var controller = require('./indicator.controller');
-// var authService = require('../../utils/auth.service');
 var errors = require('../../errors');
+var authService = require('../../utils/auth.service');
 
 var router = express.Router();
 
-router.get('', getAll);
+//router.get('', authService.verifyToken(), getAll);
 router.get('/:indicatorId', getById);
 router.get('/page/:pageIndex', getLimited);
-router.post('', create);
-router.post('/:indicatorId', update);
-router.delete('/:indicatorId', remove);
+router.post('', authService.verifyToken(), create);
+router.post('/:indicatorId', authService.verifyToken(), update);
+router.delete('/:indicatorId', authService.verifyToken(), remove);
 
 module.exports = router;
 

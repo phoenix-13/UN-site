@@ -5,12 +5,13 @@ var multer = require('multer');
 var multerOptions = require('../../config/multer');
 var controller = require('./image.controller');
 var errors = require('../../errors');
+var authService = require('../../utils/auth.service');
 
 var router = express.Router();
 
-router.get('', getAll);
-router.post('', multer(multerOptions), create);
-router.delete('/:imageId', remove);
+router.get('', authService.verifyToken(), getAll);
+router.post('', authService.verifyToken(), multer(multerOptions), create);
+router.delete('/:imageId', authService.verifyToken(), remove);
 
 module.exports = router;
 

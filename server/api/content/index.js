@@ -2,22 +2,21 @@
 
 var express = require('express');
 var controller = require('./content.controller');
-// var authService = require('../../utils/auth.service');
+var authService = require('../../utils/auth.service');
 var errors = require('../../errors');
 
 var router = express.Router();
-//authService.isAdmin() needed
 router.get('/', getOne);
-router.post('/updateFeatured', updateFeatured);
-router.post('/addSlide', addSlide);
-router.post('/updateSlide/:slideId', updateSlide);
-router.post('/removeSlide/:slideId', removeSlide);
-router.post('/updateBanner', updateBanner);
-router.post('/addPartner', addPartner);
-router.post('/updatePartner/:partnerId', updatePartner);
-router.post('/removePartner/:partnerId', removePartner);
-router.post('/updateContacts', updateContacts);
-router.post('/updateAbout', updateAbout);
+router.post('/updateFeatured', authService.verifyToken(), updateFeatured);
+router.post('/addSlide', authService.verifyToken(), addSlide);
+router.post('/updateSlide/:slideId', authService.verifyToken(), updateSlide);
+router.post('/removeSlide/:slideId', authService.verifyToken(), removeSlide);
+router.post('/updateBanner', authService.verifyToken(), updateBanner);
+router.post('/addPartner', authService.verifyToken(), addPartner);
+router.post('/updatePartner/:partnerId', authService.verifyToken(), updatePartner);
+router.post('/removePartner/:partnerId', authService.verifyToken(), removePartner);
+router.post('/updateContacts', authService.verifyToken(), updateContacts);
+router.post('/updateAbout', authService.verifyToken(), updateAbout);
 
 module.exports = router;
 
