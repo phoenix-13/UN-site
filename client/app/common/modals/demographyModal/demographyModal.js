@@ -36,7 +36,7 @@ export default class {
         this.cancel = () => $mdDialog.cancel();
 
         function getUnUsedYears(usedYears) {
-          var years = _.range(12).map((elem, i) => 2009 + i);
+          var years = _.range(6).map((elem, i) => 2015 + i);
           var unUsedYears = [];
           var i, j;
           for (j = 0, i = 0; i < years.length; i++) {

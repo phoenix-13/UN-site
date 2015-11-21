@@ -13,21 +13,22 @@ var Admin = require('../api/admin/admin.dao');
 module.exports = function () {
   seedAdmins()
     .then(() => seedCategories())
-    .then(() => seedDemographics())
+    //.then(() => seedDemographics())
+    .then(() => seedContent())
     .then(() => Q.all([
       seedIndicators(),
       seedPublications()
     ]))
-    .spread((indicators, publications) => seedContent(indicators, publications));
+    //.spread((indicators, publications) => seedContent(indicators, publications));
 };
 
 function seedContent(indicators, publications) {
-  var featured = indicators
-    .slice(0, 6)
-    .map((indicator, i) => {
+  var featured = _
+    .range(6)
+    .map(() => {
       return {
         title: {eng: 'Lorem Ipsum', geo: 'Lorem Ipsum'},
-        ref: {_id: indicator._id, type: 'indicator', title: indicator.title.geo}
+        ref: {}
       };
     });
 
@@ -42,52 +43,28 @@ function seedContent(indicators, publications) {
 
   var contacts = {
     address: {
-      geo: 'თბილისი ჭავჭავაძის 46,',
-      eng: 'Tbilisi chavchavadze ave 46,'
+      geo: '',
+      eng: ''
     },
-    phones: ['(+995 32) 2222222', '(+995 32) 3222222'],
-    fax: '(+995 32) 3333333',
-    mail: 'gkochakidze@gmail.com',
+    phones: [],
+    fax: '',
+    mail: '',
     coordinates: {
       latitude: 41.7234113,
       longitude: 44.7685127
     }
   };
 
-  var partners = _.range(12).map(() => {
-    return {
-      name: {
-        geo: 'partner',
-        eng: 'partner'
-      },
-      image: 'http://thumb9.shutterstock.com/display_pic_with_logo/675421/327855152/stock-vector-happy-diwali-burning-diya-eps-327855152.jpg',
-      link: 'http://thumb9.shutterstock.com/display_pic_with_logo/675421/327855152/stock-vector-happy-diwali-burning-diya-eps-327855152.jpg'
-    };
-  });
-
-  var slider = publications.slice(0, 6).map(publication => {
-    return {
-      name: {
-        geo: 'slide',
-        eng: 'slide'
-      },
-      image: 'http://thumb9.shutterstock.com/display_pic_with_logo/675421/327855152/stock-vector-happy-diwali-burning-diya-eps-327855152.jpg',
-      ref: {_id: publication._id, type: 'publication', title: publication.title.geo}
-    }
-  });
-
   var about = {
-    geo: `<p>Lorem Ipsum საბეჭდი და ტიპოგრაფიული ინდუსტრიის უშინაარსო ტექსტია. იგი სტანდარტად 1500-იანი წლებიდან იქცა, როდესაც უცნობმა მბეჭდავმა ამწყობ დაზგაზე წიგნის საცდელი ეგზემპლარი დაბეჭდა. მისი ტექსტი არამარტო 5 საუკუნის მანძილზე შემორჩა, არამედ მან დღემდე, ელექტრონული ტიპოგრაფიის დრომდეც უცვლელად მოაღწია. განსაკუთრებული პოპულარობა მას 1960-იან წლებში გამოსულმა Letraset-ის ცნობილმა ტრაფარეტებმა მოუტანა, უფრო მოგვიანებით კი — Aldus PageMaker-ის ტიპის საგამომცემლო პროგრამებმა, რომლებშიც Lorem Ipsum-ის სხვადასხვა ვერსიები იყო ჩაშენებული.</p>`,
-    eng: `<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>`
+    geo: '',
+    eng: ''
   };
 
   var content = {
     about,
     featured,
     banner,
-    contacts,
-    partners,
-    slider,
+    contacts
   };
 
   return Content.removeAll().then(() => Content.create(content));
@@ -113,73 +90,73 @@ function seedDemographics() {
       geo: 'აფხაზეთი',
       eng: 'Apkhazeti'
     },
-    values: [{year: 2009, value: 100100}, {year: 2014, value: 100100}, {year: 2018, value: 210000}]
+    values: []
   }, {
     region: {
       geo: 'სამეგრელი - ზემო სვანეთი',
       eng: 'Samegrelo - Zemo Svaneti'
     },
-    values: [{year: 2009, value: 10000}, {year: 2012, value: 100100}, {year: 2013, value: 10000}]
+    values: []
   }, {
     region: {
       geo: 'გურია',
       eng: 'Guria'
     },
-    values: [{year: 2010, value: 10000}, {year: 2012, value: 100100}, {year: 2014, value: 50000}]
+    values: []
   }, {
     region: {
       geo: 'აჭარა',
       eng: 'Ajaria'
     },
-    values: [{year: 2009, value: 10000}, {year: 2012, value: 100100}, {year: 2015, value: 250000}]
+    values: []
   }, {
     region: {
       geo: 'რაჭა - ლეჩხუმი და ქვემო სვანეთი',
       eng: 'Racha - Lechkhumi and Kvemo Svaneti'
     },
-    values: [{year: 2014, value: 10000}, {year: 2017, value: 100100}, {year: 2019, value: 100000}]
+    values: []
   }, {
     region: {
       geo: 'იმერეთი',
       eng: 'Imereti'
     },
-    values: [{year: 2013, value: 10000}, {year: 2014, value: 100100}, {year: 2016, value: 1000}]
+    values: []
   }, {
     region: {
       geo: 'სამცხე - ჯავახეთი',
       eng: 'Samtskhe - Javakheti'
     },
-    values: [{year: 2015, value: 10000}, {year: 2017, value: 100100}, {year: 2019, value: 50100}]
+    values: []
   }, {
     region: {
       geo: 'შიდა ქართლი',
       eng: 'Shida - Kartli'
     },
-    values: [{year: 2013, value: 10000}, {year: 2015, value: 100100}, {year: 2016, value: 10100}]
+    values: []
   }, {
     region: {
       geo: 'ქვემო ქართლი',
       eng: 'Kvemo - Kartli'
     },
-    values: [{year: 2010, value: 10000}, {year: 2011, value: 100100}, {year: 2013, value: 80100}]
+    values: []
   }, {
     region: {
       geo: 'თბილისი',
       eng: 'Tbilisi'
     },
-    values: [{year: 2011, value: 10000}, {year: 2012, value: 100100}, {year: 2014, value: 20100}]
+    values: []
   }, {
     region: {
       geo: 'მცხეთა - მთიანეთი',
       eng: 'Mtskheta - Mtianeti'
     },
-    values: [{year: 2014, value: 10000}, {year: 2015, value: 100100}, {year: 2017, value: 30100}]
+    values: []
   }, {
     region: {
       geo: 'კახეთი',
       eng: 'Kakheti'
     },
-    values: [{year: 2011, value: 10000}, {year: 2013, value: 100100}, {year: 2016, value: 40100}]
+    values: []
   }];
 
   return Demographics.removeAll().then(() => Demographics.create(demographicsArr));
@@ -233,11 +210,12 @@ function seedPublications() {
 
 function generatePublications(categories) {
   return _.flatten(categories.map((category, categoryIndex) => {
-    return _.range(100).map((elem, elemIndex) => getPublication(100 * categoryIndex + elemIndex + 1, category._id))
+    return _.range(100).map((elem, elemIndex) =>
+      getPublication(100 * categoryIndex + elemIndex + 1, categories[categoryIndex], categories[(categoryIndex + 1) % categories.length]));
   }));
 }
 
-function getPublication(index, categoryId) {
+function getPublication(index, categoryId1, categoryId2) {
   return {
     title: {
       geo: `${index} Lorem Ipsum საბეჭდი და ტიპოგრაფიული `,
@@ -248,7 +226,7 @@ function getPublication(index, categoryId) {
       eng: `<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>`
     },
     date: Date.now(),
-    category: categoryId,
+    categories: [categoryId1, categoryId2],
     year: (new Date()).getFullYear()
   }
 }

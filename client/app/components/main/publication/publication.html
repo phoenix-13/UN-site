@@ -9,7 +9,7 @@
         {{'PUBLICATIONS' | translate}}
       </a>
       <i class="fa fa-angle-right" style="padding-left:5px;padding-right:5px;"></i>
-      <a href="" ui-sref="main.articles({tabIndex: 1, publicationIndex: 0, indicatorIndex: 0, categoryId: vm.indicator.category, year: undefined, searchQuery: undefined})">
+      <a href="" ui-sref="main.articles({tabIndex: 1, publicationIndex: 0, indicatorIndex: 0, categoryId: vm.getSelectedCategory()._id, year: undefined, searchQuery: undefined})">
         {{'T' | translate:vm.getSelectedCategory().title}}
       </a>
       <i class="fa fa-angle-right" style="padding-left:5px;padding-right:5px;"></i>
@@ -28,7 +28,7 @@
         <div class="title_text" style="font-size:1.2em">{{'DIRECTION' | translate}}</div>
         <div style="padding-top: 20px; padding-left:15px">
           <div ng-repeat="category in vm.categories" class="direction_title title_text">
-            <a style="cursor: pointer" ui-sref="main.articles({categoryId: category._id, publicationIndex: 0, indicatorIndex: 0, tabIndex: 1})" ng-class="{'active': category._id === vm.publication.category}">
+            <a style="cursor: pointer" ui-sref="main.articles({categoryId: category._id, publicationIndex: 0, indicatorIndex: 0, tabIndex: 1})" ng-class="{'active': vm.publicationHasCategory(category._id)}">
               <i class="fa fa-square-o"></i>
               <i class="fa fa-square overlay"></i>
               {{'T' | translate:category.title}}

@@ -10,8 +10,8 @@ export default class {
   }
 
   getDemographicsYearBounds(demographics) {
-    var minYear = 2020;
-    var maxYear = 2009;
+    var minYear = (new Date()).getFullYear();
+    var maxYear = 2015;
     for (var demography of demographics) {
       demography.values.forEach(pair => {
         if (pair.year > maxYear) {

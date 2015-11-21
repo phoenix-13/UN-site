@@ -55,7 +55,7 @@ export default class {
   }
 
   initYears() {
-    var startYear = 2009;
+    var startYear = 2015;
     var stopYear = (new Date).getFullYear();
     this.years = _
       .range(stopYear - startYear + 1)
@@ -75,8 +75,8 @@ export default class {
   }
 
   initIndicatorYearBounds() {
-    var minYear = 2020;
-    var maxYear = 2009;
+    var minYear = (new Date()).getFullYear();
+    var maxYear = 2015;
     for (var indicator of this.indicators.items) {
       indicator.values.forEach(pair => {
         if (pair.year > maxYear) {

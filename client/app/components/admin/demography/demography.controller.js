@@ -12,7 +12,7 @@ export default class {
     demographics = _.sortBy(demographics, 'region.geo')
     this.indexDemographicsByRegion(demographics);
     this.indexDemographicsByYear();
-    this.years = _.range(12).map((elem, i) => 2009 + i);
+    this.years = _.range(6).map((elem, i) => 2015 + i);
   }
 
   openUpdateDemographyModal(targetEvent, regionName) {

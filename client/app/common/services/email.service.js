@@ -14,7 +14,6 @@ export default class {
   }
 
   sendEmail(message) {
-    console.log(message);
     return this.$q((resolve, reject) => {
       $.ajax({
         type: 'POST',

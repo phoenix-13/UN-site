@@ -12,17 +12,31 @@
 
     <md-dialog-content style="max-height:810px; " class="dialog_content md-padding">
       <md-tabs md-dynamic-height md-border-bottom class="page_tabs">
-
         <md-tab label="ქართული">
-          <div layout layout-sm="column">
-            <input type="text" name="category" ng-model="vm.publication.category" required hidden>
-            <md-input-container style="width:40%">
-              <label>მიმართულება</label>
-              <md-select ng-model="vm.publication.category">
-                <md-option value="{{category._id}}" ng-repeat="category in vm.categories track by $index">{{category.title.geo}}</md-option>
-              </md-select>
-            </md-input-container>
-            <md-datepicker style="margin-top: 15px; width: 40%;" ng-model="vm.publication.date"></md-datepicker>
+          <div layout layout-sm="column" style="margin-top: 15px">
+            <input type="number" name="categories" ng-model="vm.publication.categories.length" required min="1" hidden>
+            <md-chips
+              style="width: 70%"
+              ng-model="vm.publication.categories"
+              md-autocomplete-snap=""
+              md-require-match="true">
+              <md-autocomplete
+                md-selected-item="vm.selectedItem"
+                md-search-text="vm.searchText"
+                md-items="category in vm.getPossibleCategories(vm.searchText)"
+                md-item-text="category.title.geo"
+                placeholder="მიმართულება"
+                md-autoselect>
+                <span md-highlight-text="vm.searchText" md-highlight-flags="^i">{{category.title.geo}}</span>
+              </md-autocomplete>
+              <md-chip-template>
+                <span>
+                  <strong>{{$chip.title.geo}}</strong>
+                </span>
+              </md-chip-template>
+            </md-chips>
+
+            <md-datepicker style="width: 30%;" ng-model="vm.publication.date"></md-datepicker>
           </div>
           <md-content>
             <md-input-container flex>

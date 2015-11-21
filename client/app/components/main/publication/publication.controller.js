@@ -18,6 +18,10 @@ export default class {
   }
 
   getSelectedCategory() {
-    return this.categories.filter(category => category._id === this.publication.category)[0];
+    return this.categories.filter(category => this.publicationHasCategory(category._id))[0];
+  }
+
+  publicationHasCategory(categoryId) {
+    return this.publication.categories.some(publicationCategory => publicationCategory === categoryId);
   }
 }

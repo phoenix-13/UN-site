@@ -63,7 +63,7 @@ function getOrQueryArr(queryString) {
 
 function getIndFindQueryObject(categoryId) {
   if (categoryId)
-    return { categories: categoryId };
+    return { category: categoryId };
   else
     return {};
 }
