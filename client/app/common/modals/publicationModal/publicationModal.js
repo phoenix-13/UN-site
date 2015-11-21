@@ -22,22 +22,24 @@ export default class {
         this.title = (publication) ? 'Update Publication' : 'Add Publication';
         this.categories = categories;
         this.publication = publication || defaultPublication;
-        this.publication.categories.forEach((categoryId, index) => {
-          this.publication.categories[index] = _.find(this.categories, {_id: categoryId});
-        });
 
         this.save = form => {
           if (form.$valid) {
-            this.publication.categories = _.pluck(this.publication.categories, '_id');
             $mdDialog.hide(this.publication);
           }
         };
 
-        this.getPossibleCategories = searchText => {
-          return this.categories.filter(category => {
-            return this.categoryTitleContainsString(category.title.geo, searchText);
-          });
+        this.categoryIsSelected = categoryId => {
+          return this.publication.categories.some(selectedCategoryId => selectedCategoryId === categoryId);
         };
+
+        this.toggleCategory = categoryId => {
+          var idx = this.publication.categories.indexOf(categoryId);
+          if (idx > -1) {
+            return this.publication.categories.splice(idx, 1);
+          }
+          this.publication.categories.push(categoryId);
+        }
 
         this.cancel = () => $mdDialog.cancel();
 
