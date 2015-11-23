@@ -17,9 +17,11 @@
             <div flex="40">
               <input type="number" name="categories" ng-model="vm.publication.categories.length" required min="1" hidden>
               <md-checkbox
+                class="md-primary"
                 ng-checked="vm.categoryIsSelected(category._id)"
                 ng-click="vm.toggleCategory(category._id)"
-                ng-repeat="category in vm.categories">
+                ng-repeat="category in vm.categories"
+                >
                 {{category.title.geo}}
               </md-checkbox>
             </div>

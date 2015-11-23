@@ -11,8 +11,7 @@
               <md-list-item class="main_article_item">
                 <div class="md-list-item-text">
                   <a ui-sref="{{'main.' + article.ref.type}}({id:article.ref._id})" class="unstyled_link">
-                    <span><i class="fa fa-angle-double-right"></i></span>
-                    <span>{{'T' | translate:article.title}}</span>
+                    <p class="main_article_p"><i class="fa fa-angle-double-right"></i>{{'T' | translate:article.title}}</p>
                   </a>
                 </div>
               </md-list-item>
@@ -24,8 +23,7 @@
               <md-list-item class="main_article_item">
                 <div class="md-list-item-text">
                   <a ui-sref="{{'main.' + article.ref.type}}({id:article.ref._id})" class="unstyled_link">
-                    <span><i class="fa fa-angle-double-right"></i></span>
-                    <span>{{'T' | translate:article.title}}</span>
+                  <p class="main_article_p"><i class="fa fa-angle-double-right"></i>{{'T' | translate:article.title}}</p>
                   </a>
                 </div>
               </md-list-item>
@@ -93,6 +91,7 @@
               <p class="publication_date">{{publication.date | date: 'yyyy-MM-dd': 'GMT+03:00'}}</p>
             </div>
           </a>
+          <span flex></span>
           <span class="publicatons_delimiter"></span>
         </div>
       </div>
@@ -105,7 +104,7 @@
           <div layout="row">
             <span flex></span>
             <span class="title_text page_title">
-              <a href="{{vm.banner.link}}">
+              <a href="{{vm.banner.link}}" target="_blank">
                 {{'T' | translate:vm.banner.title}}
               </a>
               <hr>
