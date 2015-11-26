@@ -8,28 +8,23 @@ module.exports = {
   validateIndicator
 };
 
-var titleSchema = Joi.string().required().empty('');
+var textSchema = Joi.string().required().allow('');
+
 var yearValueSchema = Joi.object().keys({
   year: Joi.number().required(),
-  value: Joi.number().required()
+  value: textSchema
 });
-var contentSchema = Joi.string().required().empty('');
 
-var bilingTitleSchema = Joi.object().keys({
-  geo: titleSchema,
-  eng: titleSchema
-}).required();
-
-var bilingContentSchema = Joi.object().keys({
-  geo: contentSchema,
-  eng: contentSchema
+var bilingTextSchema = Joi.object().keys({
+  geo: textSchema,
+  eng: textSchema
 }).required();
 
 var indicatorSchema = Joi.object().keys({
-  title: bilingTitleSchema,
+  title: bilingTextSchema,
   date: Joi.date().required(),
   values: Joi.array().items(yearValueSchema).required(),
-  content: bilingContentSchema,
+  content: bilingTextSchema,
   category: Joi.string().required()
 }).required();
 

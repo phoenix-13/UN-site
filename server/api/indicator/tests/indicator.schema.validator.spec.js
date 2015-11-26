@@ -15,7 +15,7 @@ describe('indicator.schema.validator', () => {
         values: [
           {
             year: 2015,
-            value: 1331
+            value: '1331'
           }
         ],
         content: biling('content'),
@@ -95,7 +95,7 @@ describe('indicator.schema.validator', () => {
         .catch(SchemaError, () => done());
     });
 
-    it('should not validate when values is not array', done => {
+    it('should not validate when values is not an array', done => {
       indicator.values = 'not_an_array';
       indicatorSchemaValidator.validateIndicator(indicator)
         .catch(SchemaError, () => done());
@@ -122,11 +122,18 @@ describe('indicator.schema.validator', () => {
         .catch(SchemaError, () => done());
     });
 
-    it('should not validate when values value is not number', done => {
-      var invalidYearValue = { year: 2020, value: 'not_a_number' };
+    it('should not validate when values value is not string', done => {
+      var invalidYearValue = { year: 2020, value: [] };
       indicator.values.push(invalidYearValue);
       indicatorSchemaValidator.validateIndicator(indicator)
         .catch(SchemaError, () => done());
+    });
+
+    it('should validate when values value is empty string', done => {
+      var validYearValue = { year: 2020, value: '' };
+      indicator.values.push(validYearValue);
+      indicatorSchemaValidator.validateIndicator(indicator)
+        .then(() => done());
     });
 
     it('should not validate when content is not provided', done => {
