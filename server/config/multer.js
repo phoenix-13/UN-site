@@ -16,7 +16,6 @@ var multerOptions = {
 
   limits: {
     fields: options.maxFieldsSize,
-    fileSize: options.maxFileSize,
     files: options.maxFilesSize
   },
 

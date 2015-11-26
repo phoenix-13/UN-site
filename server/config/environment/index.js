@@ -28,10 +28,9 @@ var all = {
   hostName: 'http://localhost:8080',
 
   options: {
-    maxFileSize: 5000000,
     maxFieldsSize: 0,
     maxFilesSize: 1,
-    allowedExtensions: ['jpg', 'jpeg', 'png', 'pdf']
+    allowedExtensions: ['jpg', 'jpeg', 'png', 'pdf', 'docx', 'xlsx']
   },
 
   paths: {
