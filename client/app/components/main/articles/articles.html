@@ -37,8 +37,7 @@
         <div style="padding-top: 20px; padding-left:15px">
           <div class="direction_title title_text" ng-repeat="category in vm.categories">
             <a style="cursor: pointer" ng-click="vm.changeCategory(category)" ng-class="{'active': category._id === vm.query.categoryId}">
-              <i class="fa fa-square-o"></i>
-              <i class="fa fa-square overlay"></i>
+              <i class="fa"></i>
               {{'T' | translate:category.title}}
             </a>
           </div>
@@ -48,15 +47,13 @@
           <div style="padding-top: 20px; padding-left: 25px">
             <div class="publication_year direction_title title_text" ng-repeat="year in vm.years">
               <a style="cursor: pointer" ng-click="vm.changeYear(year)" ng-class="{'active': '' + year === vm.query.year}">
-                <i class="fa fa-square-o"></i>
-                <i class="fa fa-square overlay"></i>
+                <i class="fa"></i>
                 {{year}}
               </a>
             </div>
             <div class="publication_year direction_title title_text">
               <a style="cursor: pointer" ui-sref="main.articles({year: undefined, publicationIndex: 0, indicatorIndex: 0, tabIndex: 1})" ng-class="{'active': !vm.query.year}">
-                <i class="fa fa-square-o"></i>
-                <i class="fa fa-square overlay"></i>
+                <i class="fa"></i>
                 {{'ALL_YEAR' | translate}}
               </a>
             </div>
