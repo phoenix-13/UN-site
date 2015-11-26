@@ -3,14 +3,16 @@
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
+var defaultString = { type: String, default: '' };
+
 var bilingStringSchema = {
-  geo: { type: String, default: '' },
-  eng: { type: String, default: '' }
+  geo: defaultString,
+  eng: defaultString
 };
 
 var yearValueSchema = {
   year: Number,
-  value: Number
+  value: defaultString
 };
 
 var IndicatorSchema = new Schema({
