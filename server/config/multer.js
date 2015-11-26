@@ -2,7 +2,7 @@
 
 var fs = require('fs');
 var getObjectId = require('mongoose').Types.ObjectId;
-var options = require('./environment').imageOptions;
+var options = require('./environment').options;
 var uploadsDirectory = require('./environment').paths.uploads;
 
 function isAllowedExtension(extension, allowedExtensions) {
@@ -23,8 +23,8 @@ var multerOptions = {
   putSingleFilesInArray: true,
 
   rename: function (fieldname, filename, req, res) {
-    req.imageName = getObjectId().toString();
-    return req.imageName;
+    req.fileName = getObjectId().toString();
+    return req.fileName;
   },
 
   onFileUploadStart: function (file, req, res) {
@@ -42,7 +42,7 @@ var multerOptions = {
 
   onFileUploadComplete: function (file, req, res) {
     req.error = file.error;
-    req.imageName += '.' + file.extension;
+    req.fileName += '.' + file.extension;
     if (req.error === 'size') {
       res.status(400).json({type: 'size'});
     }

@@ -4,7 +4,6 @@ var path = require('path');
 var _ = require('lodash');
 
 var dataRootPath = path.join(process.env.HOME, '.UN-site-data');
-var ObjectId = require('mongoose').Types.ObjectId;
 
 var all = {
   env: process.env.NODE_ENV || 'development',
@@ -28,11 +27,11 @@ var all = {
 
   hostName: 'http://localhost:8080',
 
-  imageOptions: {
+  options: {
     maxFileSize: 5000000,
     maxFieldsSize: 0,
     maxFilesSize: 1,
-    allowedExtensions: ['jpg', 'jpeg', 'png']
+    allowedExtensions: ['jpg', 'jpeg', 'png', 'pdf']
   },
 
   paths: {
