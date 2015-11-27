@@ -12,7 +12,7 @@
   </md-tooltip>
 </md-button>
 
-<md-content class="md-padding">
+<md-content class="md-padding file_wrapp">
   <div class="col-xs-6 col-sm-4 col-md-3" ng-repeat="file in vm.storage track by $index">
     <div class="thumbnail text-center" style="margin-bottom:0">
       <i class="fa fa-3x" title="{{file.name}}" ng-class="vm.getExtensionClass(file.name)"></i>
