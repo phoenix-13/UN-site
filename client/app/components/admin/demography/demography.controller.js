@@ -15,15 +15,6 @@ export default class {
     this.years = _.range(6).map((elem, i) => 2015 + i);
   }
 
-  openUpdateDemographyModal(targetEvent, regionName) {
-    var region = this.demographics[regionName];
-    this.demographyModal
-      .open(targetEvent, region)
-      .then(yearValues => this.DemographyResource.updateDemography(region._id, {yearValues}))
-      .then(() => this.Toast.show('Demography Updated Successfully!'))
-      .then(() => this.$state.reload());
-  }
-
   updateDemographics() {
     var promises = [];
     _.forIn(this.demographics, demography => {
@@ -73,7 +64,7 @@ export default class {
         demography.valuesMap[pair.year] = pair.value;
       });
     });
-  }
+  };
 
   isInt(value) {
     return !isNaN(value) && (function(x) { return (x | 0) === x; })(parseFloat(value));

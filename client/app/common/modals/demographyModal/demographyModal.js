@@ -9,7 +9,7 @@ export default class {
     this.$mdDialog = $mdDialog;
   }
 
-  open(targetEvent, demography) {
+  open(demography) {
     return this.$mdDialog.show({
       controller($mdDialog) {
         this.title = `Update "${demography.region.eng}" Demography`;
@@ -51,7 +51,6 @@ export default class {
       },
       controllerAs: 'vm',
       template,
-      targetEvent,
       clickOutsideToClose: true
     });
   }

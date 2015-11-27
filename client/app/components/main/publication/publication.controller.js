@@ -10,7 +10,7 @@ export default class {
   }
 
   initYears() {
-    var startYear = 2009;
+    var startYear = 2015;
     var stopYear = (new Date).getFullYear();
     this.years = _
       .range(stopYear - startYear + 1)
