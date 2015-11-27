@@ -97,7 +97,7 @@
       </div>
       <div layout="row" class="scroll_btn_wrap" md-padding>
         <div flex></div>
-        <a class="scrolltop">
+        <a ng-click="vm.scrollTop()" class="scrolltop">
          <i class="fa fa-step-backward fa-rotate-90"></i>
         </a>
       </div>
@@ -137,7 +137,7 @@
             <span flex></span>
           </div>
           <div layout="row">
-            <span class="demographics_subtitle title_text">{{'DATA_FOR_1' | translate}} 2015 {{'DATA_FOR_2' | translate}}<span>XYZ</span> {{'MAN' | translate}}</span>
+            <span class="demographics_subtitle title_text">{{'DATA_FOR_1' | translate}} {{vm.demographicsMaxYear}} {{'DATA_FOR_2' | translate}} <span>{{vm.demographicsTotalValue}}</span> {{'MAN' | translate}}</span>
           </div>
           <div class="home_map_wrapp">
             <fusion-map bg-color="'#ededed'" height="300" width="500" demographics="vm.demographics" ></fusion-map>

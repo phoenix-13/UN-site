@@ -28,6 +28,7 @@ import 'angular-ui-select';
 import 'animated';
 import 'AngularSlideables/angularSlideables';
 import 'AngularFusionCharts';
+import 'angular-scroll';
 
 export default angular.module('dependencies', [
   'ngAnimate',
@@ -43,5 +44,6 @@ export default angular.module('dependencies', [
   'textAngular',
   'ngFileUpload',
   'angularSlideables',
-  'fusioncharts'
+  'fusioncharts',
+  'duScroll'
 ]);
