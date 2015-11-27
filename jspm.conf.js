@@ -26,6 +26,7 @@ System.config({
     "angular-ui-select": "github:angular-ui/ui-select@0.13.2",
     "animated": "github:daneden/animate.css@3.4.0",
     "babel": "npm:babel-core@5.8.25",
+    "bootstrap": "github:twbs/bootstrap@3.3.6",
     "bpg-ingiri-arial": "npm:bpg-ingiri-arial@1.0.1",
     "bpg-nino-mtavruli": "npm:bpg-nino-mtavruli@1.0.0",
     "clean-css": "npm:clean-css@3.4.6",
@@ -108,6 +109,9 @@ System.config({
     "github:mgonto/restangular@1.5.1": {
       "angular": "github:angular/bower-angular@1.4.7",
       "lodash": "github:lodash/lodash@3.10.1"
+    },
+    "github:twbs/bootstrap@3.3.6": {
+      "jquery": "github:components/jquery@2.1.4"
     },
     "npm:amdefine@1.0.0": {
       "fs": "github:jspm/nodelibs-fs@0.1.2",
