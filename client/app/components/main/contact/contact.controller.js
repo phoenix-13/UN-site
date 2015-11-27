@@ -37,9 +37,9 @@ export default class {
 
     var image = {
       url: '/assets/images/pin.png',
-      scaledSize: new google.maps.Size(38, 50),
+      scaledSize: new google.maps.Size(50, 50),
       origin: new google.maps.Point(0, 0),
-      anchor: new google.maps.Point(0, 23)
+      anchor: new google.maps.Point(0, 25)
     };
 
     this .marker = new google.maps.Marker({

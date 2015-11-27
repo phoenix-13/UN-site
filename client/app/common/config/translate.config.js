@@ -16,7 +16,7 @@ export default $translateProvider => {
       FOUND: 'found',
       COULDNOT_FIND: 'we could not find result',
 
-      MAN: 'man',
+      MAN: 'men',
       READ_MORE: 'Read More',
 
       CONTACT: 'Contact',
