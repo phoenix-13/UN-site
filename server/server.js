@@ -10,7 +10,9 @@ var server = require('http').createServer(app);
 
 require('./config/directories')();
 require('./config/express')(app);
-require('./config/seed')();
+if (config.seedDB) {
+  require('./config/seed')();
+}
 require('./routes')(app);
 
 server.listen(config.port, config.ip, function () {
