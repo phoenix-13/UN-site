@@ -1,7 +1,7 @@
 'use strict';
 
 export default class {
-  constructor($state, $stateParams, articles, categories) {
+  constructor($timeout, $state, $stateParams, articles, categories) {
     'ngInject';
     this.$state = $state;
     this.query = $stateParams;
@@ -12,6 +12,7 @@ export default class {
     this.initIndicators(articles);
     this.initIndicatorYearBounds();
     this.indexIndicatorsByYear();
+    $timeout(() => $('.recent_publications *').removeAttr('style'));
   }
 
   getSelectedCategory() {

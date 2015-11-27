@@ -87,7 +87,7 @@
           <a ui-sref="main.publication({id: publication._id})">
             <div class="md-list-item-text" layout="column" >
               <h3 class="title_text" style="font-size:1em">{{'T' | translate:publication.title}}</h3>
-              <p style="font-size:0.9em;" ng-bind-html="'T' | translate:publication.content" class="publication_text_part"></p>
+              <p style="font-size:0.9em;" ng-bind-html="'T' | translate:publication.content" class="publication_text_part recent_publications"></p>
               <p class="publication_date">{{publication.date | date: 'yyyy-MM-dd': 'GMT+03:00'}}</p>
             </div>
           </a>

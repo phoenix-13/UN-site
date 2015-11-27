@@ -16,6 +16,7 @@ export default class {
     this.populateCategory();
     this.parseSliderLinks();
     this.indexValuesByYears();
+    $timeout(() => $('.recent_publications *').removeAttr('style'));
     $timeout(() => this.initOwlCarousel());
   }
 
