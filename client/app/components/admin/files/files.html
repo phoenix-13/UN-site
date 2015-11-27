@@ -12,13 +12,14 @@
   </md-tooltip>
 </md-button>
 
-<md-content class="md-padding images_container">
+<md-content class="md-padding">
   <div class="col-xs-6 col-sm-4 col-md-3" ng-repeat="file in vm.storage track by $index">
-    <div class="thumbnail" style="margin-bottom:0">
+    <div class="thumbnail text-center" style="margin-bottom:0">
+      <i class="fa fa-file-pdf-o fa-3x" title="{{file.name}}"></i>
       <div ng-click="vm.removeFile(file, $index)" class="delete_btn_contaier btn">
         <i class="fa fa-times"></i>
       </div>
-      <div>{{file.name}}</div>
+      <p class="file_name">{{file.name}}</p>
     </div>
   </div>
 </md-content>
