@@ -1,8 +1,9 @@
 'use strict';
 
 export default class {
-  constructor($scope, $timeout, content, latestPublications, categories, demographics) {
+  constructor($document, $scope, $timeout, content, latestPublications, categories, demographics) {
     'ngInject';
+    this.$document = $document;
     this.$scope = $scope;
     this.categories = categories;
     this.latestPublications = latestPublications.slice(0, 3);
@@ -19,10 +20,20 @@ export default class {
   }
 
   indexValuesByYears() {
+    this.demographicsTotalValue = 0;
+    this.demographicsMaxYear = 2015;
     this.demographics.forEach(demography => {
-      demography.lastValue = demography.values[demography.values.length - 1];
+      if (demography.values.length) {
+        demography.lastValue = demography.values[demography.values.length - 1];
+      } else {
+        demography.lastValue = {year: 2015, value: 0};
+      }
       demography.lastValue.region = demography.region;
       demography.values = _.indexBy(demography.values, 'year');
+      this.demographicsTotalValue += demography.lastValue.value;
+      if (demography.lastValue.year > this.demographicsMaxYear) {
+        this.demographicsMaxYear = demography.lastValue.year;
+      }
     });
   }
 
@@ -32,6 +43,10 @@ export default class {
         ? demography.values[demography.values.length - 1].value
         : 0;
     });
+  }
+
+  scrollTop() {
+    this.$document.scrollTo(0, 0, 1000);
   }
 
   populateCategory() {
