@@ -122,17 +122,31 @@ md-tabs > md-tabs-wrapper > md-tabs-canvas > md-pagination-wrapper > md-tab-item
   padding-top 15px
 
 .article_tabs md-ink-bar
-  color transparent
-  background-color transparent
+  color blue
+  background-color blue
+  height 1px
+  display none
 
 .article_tabs .tab_label
   border 1px solid #b0b0b0
   border-radius 2px
 
+.article_tabs md-tab-item .md-ripple-container
+  display none
+
+.article_tabs md-tab-item
+  border 1px solid #b0b0b0
+  line-height 22px
+  border-radius 1px
+
+.article_tabs md-tab-item,
+.articles_content
+  margin-left 5px
 
 .article_tabs md-tab-item.md-active
   color #ffffff !important
-  background #aa1a24
+  background #aa1a24 !important
+  border 1px solid #aa1a24 !important
 
 .article_tabs md-tab-item.md-active:hover
   color #ffffff !important

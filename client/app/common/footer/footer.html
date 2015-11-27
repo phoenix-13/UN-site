@@ -9,7 +9,10 @@
           <div class="item" ng-repeat="partner in vm.partners">
             <div class="innner_item">
               <a href="{{partner.link}}" target="_blank">
-                <img ng-src="{{partner.image}}" alt="{{partner.title.geo}}">
+                <md-tooltip md-direction="top">
+                  {{ 'T' | translate:partner.name}}
+                </md-tooltip>
+                <img ng-src="{{partner.image}}" alt="{{partner.name.geo}}" title="{{ 'T' | translate:partner.name}}">
               </a>
             </div>
           </div>
@@ -26,7 +29,7 @@
         <a href="http://georgiaunfpa.ge/" target="_blank">
           <img src="/assets/images/unfpa-logo.png" style="height: 80%; margin-top: 10px">
           <md-tooltip md-direction="top">
-            United Nations Population Fund
+            {{'UNFPA' | translate}}
           </md-tooltip>
         </a>
       </div>
@@ -40,7 +43,7 @@
       <div class="logo_container">
         <a href="http://msy.gov.ge/" target="_blank">
           <md-tooltip md-direction="top">
-            საქართველოს სპორტისა და ახალგაზრდობის საქმეთა სამინისტრო
+            {{'MINISTRY' | translate}}
           </md-tooltip>
           <img src="/assets/images/sportis-saministro1.png">
         </a>

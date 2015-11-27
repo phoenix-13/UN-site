@@ -44,7 +44,7 @@
         </div>
         <div ng-show="vm.selectedTab == 1">
           <div class="title_text direction_t" style="font-size:1.2em;padding-top: 20px">{{'PUBLICATIONS_BY_YEAR' | translate}}</div>
-          <div style="padding-top: 20px; padding-left: 25px">
+          <div style="padding-top: 20px; padding-left: 15px">
             <div class="publication_year direction_title title_text" ng-repeat="year in vm.years">
               <a style="cursor: pointer" ng-click="vm.changeYear(year)" ng-class="{'active': '' + year === vm.query.year}">
                 <i class="fa"></i>
@@ -93,7 +93,7 @@
                 <span ng-show="vm.isSearchResult()"> - {{vm.indicators.numTotal}}</span>
               </md-tab-label>
               <md-tab-body>
-                <md-content class="top_padding">
+                <md-content class="top_padding articles_content">
                   <table ng-show="vm.indicators.numTotal" class="table table-striped indicators_table">
                     <thead>
                       <tr>
@@ -122,13 +122,13 @@
                 </md-content>
               </md-tab-body>
             </md-tab>
-            <md-tab>
-              <md-tab-label>
+            <md-tab >
+              <md-tab-label class="publications_tab">
                 {{'PUBLICATIONS' | translate}}
                 <span ng-show="vm.isSearchResult()"> - {{vm.publications.numTotal}}</span>
               </md-tab-label>
               <md-tab-body>
-                <md-content class=" publications_list">
+                <md-content class="publications_list articles_content">
                   <md-list class="top_padding">
                     <div ng-repeat="publication in vm.publications.items" class="publication_item">
                       <md-list-item class="md-3-line" style="padding: 10px;">

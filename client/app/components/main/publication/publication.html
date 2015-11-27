@@ -36,7 +36,7 @@
         </div>
 
         <div class="title_text" style="font-size:1.2em;padding-top: 20px"> {{'PUBLICATIONS_BY_YEAR' | translate}}</div>
-        <div style="padding-top: 20px; padding-left: 25px">
+        <div style="padding-top: 20px; padding-left: 15px">
           <div ng-repeat="year in vm.years" class="publication_year direction_title title_text">
             <a style="cursor: pointer" ui-sref="main.articles({year: year, publicationIndex: 0, indicatorIndex: 0, tabIndex: 1})" ng-class="{'active': year === vm.publication.year}">
               <i class="fa"></i>
@@ -70,14 +70,15 @@
               </md-tab-label>
             </md-tab>
           </md-tabs>
-
-          <div class="article_title top_padding">
-            <h4 class="title_text" style="margin-top:15px">{{'T'| translate:vm.publication.title}}</h4>
-            <div class="publication_date_wrapp">
-              <span class="publication_page_date">{{vm.publication.date | date: 'yyyy-MM-dd': 'GMT+03:00'}}</span>
+          <div class="articles_content">
+            <div class="article_title top_padding">
+              <h4 class="title_text" style="margin-top:15px">{{'T'| translate:vm.publication.title}}</h4>
+              <div class="publication_date_wrapp">
+                <span class="publication_page_date">{{vm.publication.date | date: 'yyyy-MM-dd': 'GMT+03:00'}}</span>
+              </div>
             </div>
+            <div ng-bind-html="'T' | translate: vm.publication.content"></div>
           </div>
-          <div ng-bind-html="'T' | translate: vm.publication.content"></div>
         </md-content>
       </div>
     </div>

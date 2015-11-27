@@ -50,8 +50,11 @@ export default $translateProvider => {
       NEXT: 'next',
       LAST: 'last',
 
-      'NO_RESULT': 'no result found',
-      'ALL_YEAR': 'every',
+      NO_RESULT: 'no result found',
+      ALL_YEAR: 'every',
+
+      MINISTRY: 'Ministry of Sport and Youth Affairs of Georgia',
+      UNFPA: 'United Nations Population Fund',
 
       T: '{{eng}}'
     })
@@ -103,8 +106,11 @@ export default $translateProvider => {
       NEXT: 'შემდეგი',
       LAST: 'ბოლო',
 
-      'NO_RESULT': 'შედეგი ვერ მოიძებნა',
-      'ALL_YEAR': 'ყველა',
+      NO_RESULT: 'შედეგი ვერ მოიძებნა',
+      ALL_YEAR: 'ყველა',
+
+      MINISTRY: 'საქართველოს სპორტისა და ახალგაზრდობის საქმეთა სამინისტრო',
+      UNFPA: 'გაეროს მოსახლეობის ფონდი',
 
       T: '{{geo}}'
     })

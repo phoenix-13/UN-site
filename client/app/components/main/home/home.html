@@ -87,22 +87,23 @@
           <a ui-sref="main.publication({id: publication._id})">
             <div class="md-list-item-text" layout="column" >
               <h3 class="title_text" style="font-size:1em">{{'T' | translate:publication.title}}</h3>
-              <p style="font-size:0.9em;" ng-bind-html="publication.content.geo" class="publication_text_part"></p>
+              <p style="font-size:0.9em;" ng-bind-html="'T' | translate:publication.content" class="publication_text_part"></p>
               <p class="publication_date">{{publication.date | date: 'yyyy-MM-dd': 'GMT+03:00'}}</p>
             </div>
           </a>
+          <span flex></span>
           <span class="publicatons_delimiter"></span>
         </div>
       </div>
     </div>
   </div>
   <div class="banner_wrapp">
-    <div layout="row">
+<!--     <div layout="row">
       <span flex></span>
       <md-button class="scrolltop">
         <i class="fa fa-step-backward fa-rotate-90"></i>
       </md-button>
-    </div>
+    </div> -->
     <div layout="row" class="banner_row md-padding">
       <div class="" layout="row" flex style="padding-top:16px" >
         <div class="item" flex>
