@@ -1,11 +1,13 @@
 'use strict';
 
 export default class {
-  constructor(categories) {
+  constructor($timeout, categories) {
     'ngInject';
     this.categories = categories;
     this.indicatorsSlided = false;
     this.publicationsSlided = false;
+    $timeout(() => document.getElementById('#indicatorsSlide').click());
+    $timeout(() => document.getElementById('#publicationsSlide').click());
   }
 
   toggleIndicators = () => this.indicatorsSlided = !this.indicatorsSlided;
