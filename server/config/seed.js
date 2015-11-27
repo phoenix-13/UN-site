@@ -10,16 +10,7 @@ var Indicator = require('../api/indicator/indicator.dao');
 var Publication = require('../api/publication/publication.dao');
 var Admin = require('../api/admin/admin.dao');
 
-module.exports = function () {
-  Q.all([
-    Indicator.removeAll(),
-    Publication.removeAll()
-  ])
-  .then(() => seedAdmins())
-  .then(() => seedCategories())
-  .then(() => seedDemographics())
-  .then(() => seedContent())
-};
+module.exports = function () {};
 
 function seedContent(indicators, publications) {
   var featured = _
