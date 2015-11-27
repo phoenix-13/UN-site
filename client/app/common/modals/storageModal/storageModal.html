@@ -9,7 +9,7 @@
     <div>
       <div class="col-xs-6 col-sm-4 col-md-3" style="padding-top: 15px;" ng-repeat="file in vm.storage track by $index">
         <div ng-dblclick="vm.chooseFile(file)" class="thumbnail text-center" style="margin-bottom:0">
-          <i class="fa fa-file-pdf-o fa-3x" title="{{file.name}}"></i>
+          <i class="fa fa-3x" ng-class="vm.getExtensionClass(file.name)" title="{{file.name}}"></i>
           <p class="file_name">{{file.name}}</p>
         </div>
       </div>

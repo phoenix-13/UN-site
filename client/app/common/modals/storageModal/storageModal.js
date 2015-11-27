@@ -17,6 +17,12 @@ export default class {
       },
       controller($q, $uibModalInstance, Upload, Toast, storage) {
         this.storage = storage;
+        this.fileTypesMap = {xlsx: 'fa-file-excel-o', docx: 'fa-file-word-o', pdf: 'fa-file-pdf-o'};
+
+        this.getExtensionClass = fileName => {
+          var extension = fileName.substring(fileName.lastIndexOf('.') + 1);
+          return this.fileTypesMap[extension];
+        };
 
         this.uploadFile = files => {
           if (files && files.length) {

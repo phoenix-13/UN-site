@@ -15,7 +15,7 @@
 <md-content class="md-padding">
   <div class="col-xs-6 col-sm-4 col-md-3" ng-repeat="file in vm.storage track by $index">
     <div class="thumbnail text-center" style="margin-bottom:0">
-      <i class="fa fa-file-pdf-o fa-3x" title="{{file.name}}"></i>
+      <i class="fa fa-3x" title="{{file.name}}" ng-class="vm.getExtensionClass(file.name)"></i>
       <div ng-click="vm.removeFile(file, $index)" class="delete_btn_contaier btn">
         <i class="fa fa-times"></i>
       </div>

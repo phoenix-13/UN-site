@@ -8,6 +8,12 @@ export default class {
     this.StorageResource = StorageResource;
     this.storage = storage;
     this.Upload = Upload;
+    this.fileTypesMap = {xlsx: 'fa-file-excel-o', docx: 'fa-file-word-o', pdf: 'fa-file-pdf-o'};
+  }
+
+  getExtensionClass(fileName) {
+    var extension = fileName.substring(fileName.lastIndexOf('.') + 1);
+    return this.fileTypesMap[extension];
   }
 
   uploadFile(files) {
