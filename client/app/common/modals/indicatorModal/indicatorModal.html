@@ -41,7 +41,7 @@
               <md-input-container style="padding-bottom:0" flex="25">
                 <label>მაჩვენებელი</label>
 
-                <input type="number" ng-model="pair.value" readonly>
+                <input type="text" ng-model="pair.value" readonly>
               </md-input-container>
 
               <md-button ng-click="vm.removePair($index, pair); $event.preventDefault()" class="md-fab md-mini md-primary" aria-label="Edit">
@@ -66,10 +66,10 @@
 
               <md-input-container style="padding-bottom:0" flex="25">
                 <label>მაჩვენებელი</label>
-                <input type="number" ng-model="vm.pair.value">
+                <input type="text" ng-model="vm.pair.value">
               </md-input-container>
 
-              <md-button ng-click="vm.addPair(); $event.preventDefault()" ng-disabled="!vm.pair.year || (vm.pair.value == undefined)" class="md-fab md-mini md-primary" aria-label="Add">
+              <md-button ng-click="vm.addPair(); $event.preventDefault()" ng-disabled="!vm.pair.year" class="md-fab md-mini md-primary" aria-label="Add">
                 <i class="fa fa-plus"></i>
               </md-button>
             </div>
@@ -91,10 +91,9 @@
           <md-content >
             <md-input-container flex>
               <label>title</label>
-              <input type="text" name="titleEng" ng-model="vm.indicator.title.eng" required>
+              <input type="text" name="titleEng" ng-model="vm.indicator.title.eng">
             </md-input-container>
             <div class="text_editor_wrapp">
-              <input type="text" name="contentEng" ng-model="vm.indicator.content.eng" required hidden>
               <text-angular ng-model="vm.indicator.content.eng"></text-angular>
             </div>
           </md-content>

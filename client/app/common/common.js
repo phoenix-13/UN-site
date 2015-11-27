@@ -2,6 +2,7 @@
 
 //inject:import
 import config from './config/config';
+import demographyMap from './demographyMap/demographyMap';
 import footer from './footer/footer';
 import fusionMap from './fusionMap/fusionMap';
 import header from './header/header';
@@ -14,6 +15,7 @@ import translate from './translate/translate';
 export default angular.module('app.common', [
   //inject:ngmodule
   config.name,
+  demographyMap.name,
   footer.name,
   fusionMap.name,
   header.name,

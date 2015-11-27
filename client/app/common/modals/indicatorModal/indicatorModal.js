@@ -23,14 +23,14 @@ export default class {
         this.categories = categories;
         this.indicator = indicator || defaultIndicator;
         this.years = getUnUsedYears(this.indicator.values);
-        this.pair = {};
+        this.pair = {value: ''};
 
         this.addPair = () => {
           this.pair.year = Number(this.pair.year);
           this.indicator.values.push({year: this.pair.year, value: this.pair.value});
           this.indicator.values = _.sortBy(this.indicator.values, 'year');
           this.years.splice(this.years.indexOf(this.pair.year), 1);
-          this.pair = {};
+          this.pair = {value: ''};
         };
 
         this.removePair = (index, pair) => {
@@ -48,7 +48,7 @@ export default class {
         this.cancel = () => $mdDialog.cancel();
 
         function getUnUsedYears(usedYears) {
-          var years = _.range(12).map((elem, i) => 2009 + i);
+          var years = _.range(6).map((elem, i) => 2015 + i);
           var unUsedYears = [];
           var i, j;
           for (j = 0, i = 0; i < years.length; i++) {

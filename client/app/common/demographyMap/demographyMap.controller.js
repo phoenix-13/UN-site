@@ -1,12 +1,14 @@
 'use strict';
 
 export default class {
-  constructor($scope) {
+  constructor(demographyModal, DemographyResource, Toast, $state) {
     'ngInject';
 
-    this.selectedDemography = {};
+    this.demographyModal = demographyModal;
+    this.DemographyResource = DemographyResource;
+    this.Toast = Toast;
+    this.$state = $state;
     this.initDemographicsMap();
-    this.$scope = $scope;
   }
 
   initDemographicsMap() {
@@ -23,19 +25,24 @@ export default class {
           data: this.getRangedDemographyData()
         },
         events: {
-          "entityRollover": (evt, data) => {
-            if (this.selectedDemography.id !== data.id) {
-              $('#selectedDemography').addClass('hidden');
-              this.$scope.$apply(() => {
-                this.selectedDemography = this.demographics.filter(demography => demography.id === data.id)[0];
-              });
-              $('#selectedDemography').css({"top": window.event.clientY + document.body.scrollTop + 20, "left": window.event.clientX - 50});
-              $('#selectedDemography').removeClass('hidden');
-            }
+          "entityClick" : (evt, data) => {
+            _.forIn(this.demographics, demography => {
+              if (demography.id === data.id) {
+                this.openDemographyModal(demography);
+              };
+            });
           }
         }
       }).render();
     });
+  }
+
+  openDemographyModal(demography) {
+    this.demographyModal
+      .open(demography)
+      .then(yearValues => this.DemographyResource.updateDemography(demography._id, {yearValues}))
+      .then(() => this.Toast.show('Demography Updated Successfully!'))
+      .then(() => this.$state.reload());
   }
 
   getChart() {
@@ -96,7 +103,9 @@ export default class {
     _.forIn(this.demographics, demography => {
       if (demography && demography.region) {
         var id = regionsMap[demography.region.geo];
-        var value = demography.lastValue.value;
+        var value = demography.values.length
+          ? demography.values[demography.values.length - 1].value
+          : 0;
         demography.id = id;
         data.push({id, value});
       }
