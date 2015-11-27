@@ -19,11 +19,6 @@ module.exports = function () {
   .then(() => seedCategories())
   .then(() => seedDemographics())
   .then(() => seedContent())
-  //.then(() => Q.all([
-  //  seedIndicators(),
-  //  seedPublications()
-  //]))
-  //.spread((indicators, publications) => seedContent(indicators, publications));
 };
 
 function seedContent(indicators, publications) {
