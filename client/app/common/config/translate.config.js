@@ -56,6 +56,9 @@ export default $translateProvider => {
       MINISTRY: 'Ministry of Sport and Youth Affairs of Georgia',
       UNFPA: 'United Nations Population Fund',
 
+      DATA_FOR_1: 'According to the data of ',
+      DATA_FOR_2: '',
+
       T: '{{eng}}'
     })
     .translations('geo', {
@@ -69,7 +72,7 @@ export default $translateProvider => {
       SEARCH: 'ძებნა..',
       SEARCH_RESULT: 'საძიებო სიტყვისათვის',
       FOUND: 'ნაპოვნია',
-      COULDNOT_FIND: 'შედეგი ვერ მოიძებნა:',
+      COULDNOT_FIND: 'შედეგი ვერ მოიძებნა',
 
       MAN: 'კაცი',
       READ_MORE: 'სრულად ნახვა',
@@ -111,6 +114,9 @@ export default $translateProvider => {
 
       MINISTRY: 'საქართველოს სპორტისა და ახალგაზრდობის საქმეთა სამინისტრო',
       UNFPA: 'გაეროს მოსახლეობის ფონდი',
+
+      DATA_FOR_1: '',
+      DATA_FOR_2: 'წლის მონაცემებით სულ',
 
       T: '{{geo}}'
     })

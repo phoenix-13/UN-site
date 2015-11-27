@@ -33,7 +33,7 @@
 
 .main_publications_wrapp .main_publications
   width 322px
-
+  padding-top 0
 
 .main_publications_wrapp a
   padding-right 15px
@@ -42,7 +42,6 @@
   border-left 1px solid #aa1a24
   height 100px
   margin-top 25px
-
 
 .main_publications_wrapp .main_publications:last-child .publicatons_delimiter
   border-left none
@@ -75,13 +74,13 @@
   text-overflow: ellipsis;
   display: -webkit-box;
   line-height: 16px;     /* fallback */
-  max-height: 48px;      /* fallback */
-  -webkit-line-clamp: 3; /* number of lines to show */
+  max-height: 64px;      /* fallback */
+  -webkit-line-clamp: 4; /* number of lines to show */
   -webkit-box-orient: vertical;
+  min-height 60px
 
 .publication_text_part span
-  font-size 0.9em !important
-
+  font-size 12px !important
 
 .publication_text_part img,
 .publication_text_part video
@@ -102,8 +101,8 @@
 .Employment
   background-color #1f93ff
 
-
-
+.slider_wrapper
+  padding-left 0 !important
 
 .participation.main_slider_item
   background-color rgba(169, 71, 186, 0.3)
@@ -120,8 +119,6 @@
 .Employment.main_slider_item
   background-color rgba(31, 147, 255, 0.3)
 
-
-
 #owl2-slider
   width 100%
   height 260px
@@ -137,20 +134,24 @@
 #owl2-slider .owl-dots .owl-dot.active span
   background #aa1a24
 
-.more_btn button
+
+.more_btn
   position absolute
   bottom 20px
   right 20px
   color #ffffff
   background rgba(0,0,0,0.4)
-  border-radius 3px
-
-.more_btn span
-  font-weight bold
+  border-radius 1px
+  height 40px
+  padding-right 15px
+  padding-left 15px
+  line-height 43px
   font-size 15px
 
 .more_btn:hover
+  font-weight bold
   color #ffffff
+  text-decoration none
 
 .btn_wrapper
   margin-top -65px;
@@ -185,20 +186,23 @@
 .Employment .category_image img
   padding-top 10px
 
-
-.all_publications_btn a
-  background-color #aa1a24
-  color #ffffff
-  border-radius 4px
-  padding 5px 15px
-  text-decoration none
+.all_publications_btn
+  background-color #aa1a24 !important
+  color #ffffff !important
+  border-radius 0
+  padding 3px 15px
+  padding-top 5px
   font-size 13px
+  height 30px
+  margin-top 10px
+  margin-right -16px
 
-.all_publications_btn a:hover
+.all_publications_btn:hover
   text-decoration none
 
 .publications_con_wrapp
   background-color #fafafa
+  min-height 220px
 
 .publications_container
   width 1000px
@@ -226,15 +230,34 @@
   border-color #aa1a24
   margin-top 5px
 
-.publications_btn
-  background-color #aa1a24 !important
-  color #ffffff !important
-
 .main_article_p
   height 20px
   overflow-y hidden
   cursor pointer
 
+.scrolltop_wrapp
+  margin-right 50px
 
 .scrolltop
   position absolute
+  height 35px
+  width 35px
+  border-radius 20px
+  background-color #aa1a24
+  color #ffffff
+  margin-left -20px
+  text-align center
+  cursor pointer
+
+.scrolltop:hover
+  color #ffffff
+  text-decoration none
+
+.scrolltop i
+  margin-top 10px
+
+.demographics_subtitle
+  margin-left 172px
+  width 130px
+  font-size 11px
+  text-align right
