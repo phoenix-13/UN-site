@@ -47,7 +47,7 @@
     <hr>
     <div class="" layout="row">
       <span class="navigation title_text">
-        <i ng-click="vm.toggleIndicators()" slide-toggle="#indicators"  class="fa plus_sign" ng-class="{'fa-plus-square-o': !vm.indicatorsSlided, 'fa-minus-square-o': vm.indicatorsSlided}"></i>
+        <i id="#indicatorsSlide" ng-click="vm.toggleIndicators()" slide-toggle="#indicators"  class="fa plus_sign" ng-class="{'fa-plus-square-o': !vm.indicatorsSlided, 'fa-minus-square-o': vm.indicatorsSlided}"></i>
         <a ui-sref="main.articles({tabIndex: 0, publicationIndex: 0, indicatorIndex: 0, categoryId: undefined, year: undefined, searchQuery: undefined})" href="">
           {{'INDICATORS' | translate}}
         </a>
@@ -67,7 +67,7 @@
     <hr>
     <div class="" layout="row">
       <span class="navigation title_text">
-        <i ng-click="vm.togglePublications()" slide-toggle="#publications"  class="fa plus_sign" ng-class="{'fa-plus-square-o': !vm.publicationsSlided, 'fa-minus-square-o': vm.publicationsSlided}"></i>
+        <i id="#publicationsSlide" ng-click="vm.togglePublications()" slide-toggle="#publications"  class="fa plus_sign" ng-class="{'fa-plus-square-o': !vm.publicationsSlided, 'fa-minus-square-o': vm.publicationsSlided}"></i>
         <a ui-sref="main.articles({tabIndex: 1, publicationIndex: 0, indicatorIndex: 0, categoryId: undefined, year: undefined, searchQuery: undefined})" href="">
           {{'PUBLICATIONS' | translate}}
         </a>

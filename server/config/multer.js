@@ -22,7 +22,7 @@ var multerOptions = {
   putSingleFilesInArray: true,
 
   rename: function (fieldname, filename, req, res) {
-    req.fileName = getObjectId().toString();
+    req.fileName = filename + '.' + getObjectId().toString();
     return req.fileName;
   },
 
