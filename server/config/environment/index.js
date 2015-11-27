@@ -10,8 +10,6 @@ var all = {
 
   root: path.normalize(__dirname + '/../../..'),
 
-  seedDB: false,
-
   session: {
     expireTimeInSeconds: 60 * 24 * 30 * 1000,
     secret: 'un-site-secret'
