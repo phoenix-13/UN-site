@@ -3,7 +3,7 @@
     <div layout="row" class="" style="height: 470px;">
       <div flex>
         <div class="title_text">
-          <h4 style="margin-top:0; margin-left:15px">{{'LOOKING_STATISTICS' | translate}}</h4>
+          <h4 style="margin-top:0; margin-left:0px">{{'LOOKING_STATISTICS' | translate}}</h4>
         </div>
         <div layout="row">
           <div flex>
@@ -11,7 +11,7 @@
               <md-list-item class="main_article_item">
                 <div class="md-list-item-text">
                   <a ui-sref="{{'main.' + article.ref.type}}({id:article.ref._id})" class="unstyled_link">
-                    <p class="main_article_p"><i class="fa fa-angle-double-right"></i>{{'T' | translate:article.title}}</p>
+                    <p class="main_article_p small_text"><i class="fa fa-angle-double-right"></i>{{'T' | translate:article.title}}</p>
                   </a>
                 </div>
               </md-list-item>
@@ -23,7 +23,7 @@
               <md-list-item class="main_article_item">
                 <div class="md-list-item-text">
                   <a ui-sref="{{'main.' + article.ref.type}}({id:article.ref._id})" class="unstyled_link">
-                  <p class="main_article_p"><i class="fa fa-angle-double-right"></i>{{'T' | translate:article.title}}</p>
+                  <p class="main_article_p small_text"><i class="fa fa-angle-double-right"></i>{{'T' | translate:article.title}}</p>
                   </a>
                 </div>
               </md-list-item>
@@ -75,7 +75,7 @@
     <div class="publications_container md-padding">
       <div layout="row">
         <div class="title_text">
-          <h4 style="margin:0; padding-top:20px">{{'PUBLICATIONS' | translate}}</h4>
+          <h4 style="margin:0; padding-top:20px; margin-left: -16px;">{{'PUBLICATIONS' | translate}}</h4>
         </div>
         <div flex></div>
         <md-button class="publications_btn" ui-sref="main.articles({tabIndex: 1, publicationIndex: 0, indicatorIndex: 0, categoryId: undefined, year: undefined, searchQuery: undefined})">
@@ -83,7 +83,7 @@
         </md-button>
       </div>
       <div layout="row" class="main_publications_wrapp">
-        <div flex class="md-padding main_publications" layout="row" ng-repeat="publication in vm.latestPublications" >
+        <div class="md-padding main_publications" layout="row" ng-repeat="publication in vm.latestPublications" >
           <a ui-sref="main.publication({id: publication._id})">
             <div class="md-list-item-text" layout="column" >
               <h3 class="title_text" style="font-size:1em">{{'T' | translate:publication.title}}</h3>
@@ -91,16 +91,21 @@
               <p class="publication_date">{{publication.date | date: 'yyyy-MM-dd': 'GMT+03:00'}}</p>
             </div>
           </a>
-          <span flex></span>
           <span class="publicatons_delimiter"></span>
         </div>
       </div>
     </div>
   </div>
   <div class="banner_wrapp">
+    <div layout="row">
+      <span flex></span>
+      <md-button class="scrolltop">
+        <i class="fa fa-step-backward fa-rotate-90"></i>
+      </md-button>
+    </div>
     <div layout="row" class="banner_row md-padding">
-      <div class="" layout="row" flex>
-        <div class="item md-padding" flex>
+      <div class="" layout="row" flex style="padding-top:16px" >
+        <div class="item" flex>
           <div layout="row">
             <span flex></span>
             <span class="title_text page_title">
@@ -119,7 +124,7 @@
             </div>
           </div>
         </div>
-        <div class="item md-padding" flex>
+        <div class="item "flex>
           <div layout="row">
             <span flex></span>
             <span class="title_text page_title">
@@ -131,7 +136,7 @@
             <span flex></span>
           </div>
           <div class="home_map_wrapp">
-            <fusion-map bg-color="'#ebebeb'" height="300" width="480" demographics="vm.demographics" ></fusion-map>
+            <fusion-map bg-color="'#ededed'" height="300" width="500" demographics="vm.demographics" ></fusion-map>
           </div>
         </div>
       </div>

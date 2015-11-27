@@ -6,10 +6,10 @@
 
 .main_page_container .direction_title i
   margin-right 10px
+  width 10px
+  height 10px
+  border 1px solid #777
 
-.main_page_container .direction_title i.overlay
-  margin-left -22px
-  color transparent
 
 .main_page_container .direction_title a
   font-size 0.9em
@@ -19,12 +19,16 @@
   text-decoration none
   color #aa1a24
 
-.main_page_container .direction_title a:hover .overlay
+.main_page_container .direction_title a:hover .fa
+  background-color #aa1a24
+  border-color #aa1a24
+
+.main_page_container .direction_title a.active
   color #aa1a24
 
-.main_page_container .direction_title a.active,
-.main_page_container .direction_title a.active .overlay
-  color #aa1a24
+.main_page_container .direction_title a.active .fa
+  background-color #aa1a24
+  border-color #aa1a24
 
 .md-toolbar.md-warn > md-tabs.md-default-theme,
 md-tabs > md-tabs-wrapper > md-tabs-canvas > md-pagination-wrapper > md-tab-item:not([disabled])
