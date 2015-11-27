@@ -11,5 +11,5 @@ module.exports = {
     uri: 'mongodb://localhost/UN-site'
   },
 
-  // seedDB: true
+  seedDB: true
 };

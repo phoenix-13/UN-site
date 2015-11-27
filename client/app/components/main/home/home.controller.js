@@ -52,7 +52,9 @@ export default class {
 
   populateCategory() {
     this.slider.forEach(slide => {
+      console.log(slide);
       this.categories.forEach(category => {
+        console.log(category._id)
         if (category._id === slide.category) {
           slide.categoryClass = category.title.eng;
         }
