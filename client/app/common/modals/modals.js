@@ -8,6 +8,7 @@ import indicatorModal from './indicatorModal/indicatorModal';
 import partnerModal from './partnerModal/partnerModal';
 import publicationModal from './publicationModal/publicationModal';
 import slideModal from './slideModal/slideModal';
+import storageModal from './storageModal/storageModal';
 //endinject
 
 export default angular.module('modals', [])
@@ -26,5 +27,7 @@ export default angular.module('modals', [])
   .service('publicationModal', publicationModal)
 
   .service('slideModal', slideModal)
+
+  .service('storageModal', storageModal)
 
   //endinject

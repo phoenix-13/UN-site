@@ -19,6 +19,7 @@ import adminaboutUs from './admin/aboutUs/aboutUs';
 import adminbanner from './admin/banner/banner';
 import admincontact from './admin/contact/contact';
 import admindemography from './admin/demography/demography';
+import adminfiles from './admin/files/files';
 import adminindicators from './admin/indicators/indicators';
 import adminlandingPage from './admin/landingPage/landingPage';
 import adminpartners from './admin/partners/partners';
@@ -48,6 +49,7 @@ export default angular.module('app.components', [
   adminbanner.name,
   admincontact.name,
   admindemography.name,
+  adminfiles.name,
   adminindicators.name,
   adminlandingPage.name,
   adminpartners.name,

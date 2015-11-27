@@ -1,0 +1,24 @@
+<div layout layout-sm="column">
+  <div flex></div>
+  <div>
+    <h3 class="title_text">ფაილები</h3>
+  </div>
+  <div flex></div>
+</div>
+<md-button ngf-select="vm.uploadFile($files)" ngf-multiple="true" ngf-fix-orientation="false" accept=".pdf, .xlsx, .docx" class="md-fab md-fab-bottom-right md-primary" style="position:fixed;" aria-label="Add">
+  <i class="fa fa-plus"></i>
+  <md-tooltip md-direction="left">
+    Add new
+  </md-tooltip>
+</md-button>
+
+<md-content class="md-padding images_container">
+  <div class="col-xs-6 col-sm-4 col-md-3" ng-repeat="file in vm.storage track by $index">
+    <div class="thumbnail" style="margin-bottom:0">
+      <div ng-click="vm.removeFile(file, $index)" class="delete_btn_contaier btn">
+        <i class="fa fa-times"></i>
+      </div>
+      <div>{{file.name}}</div>
+    </div>
+  </div>
+</md-content>
