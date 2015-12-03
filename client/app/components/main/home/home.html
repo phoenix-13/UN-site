@@ -55,14 +55,14 @@
           <div flex></div>
         </div>
       </div>
-      <div flex="30" class="categories_wrapp title_text">
-        <div ng-repeat="category in vm.categories" layout="row" layout-wrap ng-cloak>
+      <div flex="30" class="categories_wrapp title_text categories_list">
+        <div ng-repeat="category in vm.categories" layout="row" layout-wrap ng-cloak class="single_category">
           <md-whiteframe class="md-whiteframe-1dp whiteframe" ng-class="category.title.eng" flex layout>
             <a class="unstyled_link" ui-sref="main.articles({tabIndex: 0, publicationIndex: 0, indicatorIndex: 0, categoryId: category._id, year: undefined, searchQuery: undefined})" href="" layout="row">
               <span flex="20" class="category_image">
                 <img ng-src="/assets/images/{{category.title.eng}}.png">
               </span>
-              <span flex class="single_line_category">
+              <span flex class="single_line_category category_title_text">
                 {{'T' | translate:category.title}}
               </span>
             </a>

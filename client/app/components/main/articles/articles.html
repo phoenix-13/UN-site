@@ -36,7 +36,7 @@
         <div class="title_text direction_t" style="font-size:1.2em">{{'DIRECTION' | translate}}</div>
         <div style="padding-top: 20px; padding-left:15px">
           <div class="direction_title title_text" ng-repeat="category in vm.categories">
-            <a style="cursor: pointer" ng-click="vm.changeCategory(category)" ng-class="{'active': category._id === vm.query.categoryId}">
+            <a style="cursor: pointer" ng-click="vm.changeCategory(category)" ng-class="{'active': category._id === vm.query.categoryId}" class="category_title_text">
               <i class="fa"></i>
               {{'T' | translate:category.title}}
             </a>
@@ -131,10 +131,10 @@
                 <md-content class="publications_list articles_content">
                   <md-list class="top_padding">
                     <div ng-repeat="publication in vm.publications.items" class="publication_item">
-                      <md-list-item class="md-3-line" style="padding: 10px;">
+                      <md-list-item class="md-3-line" style="padding: 10px; padding-left: 0;">
                         <a ui-sref="main.publication({id: publication._id})" class="article_item">
                           <div class="md-list-item-text" layout="column" >
-                            <h3 class="title_text" style="font-size:1.3em;">{{'T' | translate:publication.title}}</h3>
+                            <h4 class="title_text" style="font-size:1.3em;">{{'T' | translate:publication.title}}</h4>
                             <p class="publication_date" >{{publication.date | date: 'yyyy-MM-dd': 'GMT+03:00'}}</p>
                             <p style="font-size:0.8em;" ng-bind-html="'T' | translate:publication.content" class="article_text_part recent_publications"></p>
                           </div>

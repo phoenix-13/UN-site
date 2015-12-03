@@ -30,7 +30,7 @@
           <div class="direction_title title_text" ng-repeat="category in vm.categories">
             <a
               style="cursor: pointer" ui-sref="main.articles({categoryId: category._id, publicationIndex: 0, indicatorIndex: 0, tabIndex: 0})"
-              ng-class="{'active': category._id === vm.indicator.category}">
+              ng-class="{'active': category._id === vm.indicator.category}" class="category_title_text">
               <i class="fa"></i>
               {{'T' | translate:category.title}}
             </a>
@@ -60,7 +60,7 @@
             <div class="article_title top_padding">
               <h4 class="title_text" style="margin-top:2px">{{'T' | translate:vm.indicator.title}}</h4>
             </div>
-            <div ng-bind-html="'T' | translate: vm.indicator.content"></div>
+            <div class="article_text" ng-bind-html="'T' | translate: vm.indicator.content"></div>
           </div>
         </md-content>
       </div>
