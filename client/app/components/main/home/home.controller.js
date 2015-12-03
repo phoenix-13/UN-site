@@ -1,8 +1,9 @@
 'use strict';
 
 export default class {
-  constructor($document, $scope, $timeout, content, latestPublications, categories, demographics) {
+  constructor($document, $scope, $timeout, content, latestPublications, categories, demographics, LangService) {
     'ngInject';
+    this.LangService = LangService;
     this.$document = $document;
     this.$scope = $scope;
     this.categories = categories;
@@ -18,6 +19,11 @@ export default class {
     this.indexValuesByYears();
     $timeout(() => $('.recent_publications *').removeAttr('style'));
     $timeout(() => this.initOwlCarousel());
+  }
+
+  engPublicationExists(publication){
+    return this.LangService.getCurrent() === 'geo'
+      || (publication.title.eng || publication.content.eng);
   }
 
   indexValuesByYears() {

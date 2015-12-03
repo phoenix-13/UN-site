@@ -83,7 +83,7 @@
         </a>
       </div>
       <div layout="row" class="main_publications_wrapp">
-        <div class="md-padding main_publications" layout="row" ng-repeat="publication in vm.latestPublications" >
+        <div ng-show="vm.engPublicationExists(publication)" class="md-padding main_publications" layout="row" ng-repeat="publication in vm.latestPublications" >
           <a ui-sref="main.publication({id: publication._id})">
             <div class="md-list-item-text" layout="column" >
               <h3 class="title_text" style="font-size:1em">{{'T' | translate:publication.title}}</h3>
