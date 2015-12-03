@@ -16,6 +16,8 @@ export default $translateProvider => {
       FOUND: 'found',
       COULDNOT_FIND: 'we could not find result',
 
+      RESEARCH: 'research',
+
       MAN: 'men',
       READ_MORE: 'Read More',
 
@@ -51,7 +53,7 @@ export default $translateProvider => {
       LAST: 'last',
 
       NO_RESULT: 'no result found',
-      ALL_YEAR: 'every',
+      ALL_YEAR: 'All',
 
       MINISTRY: 'Ministry of Sport and Youth Affairs of Georgia',
       UNFPA: 'United Nations Population Fund',
@@ -84,6 +86,7 @@ export default $translateProvider => {
       DIRECTION: 'მიმართულება',
       PUBLICATIONS_BY_YEAR: 'პუბლიკაციები წლების მიხედვით',
 
+      RESEARCH: 'კვლევა',
 
       NAME: 'სახელი, გვარი',
       EMAIL: 'მეილი',

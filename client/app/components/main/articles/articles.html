@@ -97,12 +97,12 @@
                   <table ng-show="vm.indicators.numTotal" class="table table-striped indicators_table">
                     <thead>
                       <tr>
-                        <td>კვლევა</td>
+                        <td>{{'RESEARCH' | translate}}</td>
                         <td ng-repeat="indicatorYear in vm.indicatorYears">{{indicatorYear}}</td>
                       </tr>
                     </thead>
                     <tbody>
-                      <tr ng-repeat="indicator in vm.indicators.items" ui-sref="main.indicator({id: indicator._id})">
+                      <tr ng-show="vm.engIndicatorExists(indicator)" ng-repeat="indicator in vm.indicators.items" ui-sref="main.indicator({id: indicator._id})">
                         <td class="table_article_title" style="cursor: pointer" class="title_text">{{'T' | translate:indicator.title}}</td>
                         <td ng-repeat="indicatorYear in vm.indicatorYears">{{indicator.valuesMap[indicatorYear].value}}</td>
                       </tr>
@@ -130,7 +130,7 @@
               <md-tab-body>
                 <md-content class="publications_list articles_content">
                   <md-list class="top_padding">
-                    <div ng-repeat="publication in vm.publications.items" class="publication_item">
+                    <div ng-show="vm.engPublicationExists(publication)" ng-repeat="publication in vm.publications.items" class="publication_item">
                       <md-list-item class="md-3-line" style="padding: 10px; padding-left: 0;">
                         <a ui-sref="main.publication({id: publication._id})" class="article_item">
                           <div class="md-list-item-text" layout="column" >

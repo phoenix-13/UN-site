@@ -56,7 +56,7 @@
               </md-tab-label>
             </md-tab>
           </md-tabs>
-          <div class="articles_content">
+          <div ng-show="vm.engIndicatorExists()" class="articles_content">
             <div class="article_title top_padding">
               <h4 class="title_text" style="margin-top:2px">{{'T' | translate:vm.indicator.title}}</h4>
             </div>

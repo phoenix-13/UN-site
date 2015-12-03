@@ -70,7 +70,7 @@
               </md-tab-label>
             </md-tab>
           </md-tabs>
-          <div class="articles_content">
+          <div ng-show="vm.engPublicationExists()" class="articles_content">
             <div class="article_title top_padding">
               <h4 class="title_text" style="margin-top:15px">{{'T'| translate:vm.publication.title}}</h4>
               <div class="publication_date_wrapp">

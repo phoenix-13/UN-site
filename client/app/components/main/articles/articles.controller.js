@@ -1,8 +1,9 @@
 'use strict';
 
 export default class {
-  constructor($timeout, $state, $stateParams, articles, categories) {
+  constructor($timeout, $state, $stateParams, LangService, articles, categories) {
     'ngInject';
+    this.LangService = LangService;
     this.$state = $state;
     this.query = $stateParams;
     this.selectedTab = this.query.tabIndex;
@@ -13,6 +14,16 @@ export default class {
     this.initIndicatorYearBounds();
     this.indexIndicatorsByYear();
     $timeout(() => $('.recent_publications *').removeAttr('style'));
+  }
+
+  engPublicationExists(publication){
+    return this.LangService.getCurrent() === 'geo'
+      || (publication.title.eng || publication.content.eng);
+  }
+
+  engIndicatorExists(indicator){
+    return this.LangService.getCurrent() === 'geo'
+      || (indicator.title.eng || indicator.content.eng);
   }
 
   getSelectedCategory() {
@@ -56,7 +67,7 @@ export default class {
   }
 
   initYears() {
-    var startYear = 2015;
+    var startYear = 2012;
     var stopYear = (new Date).getFullYear();
     this.years = _
       .range(stopYear - startYear + 1)
@@ -77,7 +88,7 @@ export default class {
 
   initIndicatorYearBounds() {
     var minYear = (new Date()).getFullYear();
-    var maxYear = 2015;
+    var maxYear = 2012;
     for (var indicator of this.indicators.items) {
       indicator.values.forEach(pair => {
         if (pair.year > maxYear) {
