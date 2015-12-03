@@ -9,7 +9,7 @@ export default $translateProvider => {
       PUBLICATIONS: 'Publications',
       INDICATORS: 'Indicators',
       ALL_RESULTS: 'see all results',
-      ALL: 'see all',
+      ALL: 'See all',
       YOUTH_POLICY_MONITOR: 'Youth Policy Monitor',
       SEARCH: 'search..',
       SEARCH_RESULT: 'For the searched word',
