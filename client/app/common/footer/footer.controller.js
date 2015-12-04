@@ -33,7 +33,6 @@ export default class {
       autoplayHoverPause:true
     });
 
-    //console.log(owl);
     $(".next").click(function(){
       owl.trigger('next.owl.carousel');
     })

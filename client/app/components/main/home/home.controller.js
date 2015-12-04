@@ -19,6 +19,15 @@ export default class {
     this.indexValuesByYears();
     $timeout(() => $('.recent_publications *').removeAttr('style'));
     $timeout(() => this.initOwlCarousel());
+    this.listedToScrollEventAndToggleScrollButton();
+  }
+
+  listedToScrollEventAndToggleScrollButton() {
+    this.scrollButtonOpacity = 0;
+    angular.element(this.$document).on('scroll', () => {
+      this.scrollButtonOpacity = document.body.scrollTop / 100;
+      this.$scope.$apply();
+    });
   }
 
   engPublicationExists(publication){
@@ -52,15 +61,17 @@ export default class {
     });
   }
 
+  // showScrollButton() {
+  //   return document.body.scrollTop >= 100;
+  // }
+
   scrollTop() {
     this.$document.scrollTo(0, 0, 1000);
   }
 
   populateCategory() {
     this.slider.forEach(slide => {
-      console.log(slide);
       this.categories.forEach(category => {
-        console.log(category._id)
         if (category._id === slide.category) {
           slide.categoryClass = category.title.eng;
         }
