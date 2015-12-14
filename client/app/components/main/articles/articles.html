@@ -133,8 +133,8 @@
                     <div ng-show="vm.engPublicationExists(publication)" ng-repeat="publication in vm.publications.items" class="publication_item">
                       <md-list-item class="md-3-line" style="padding: 10px; padding-left: 0;">
                         <a ui-sref="main.publication({id: publication._id})" class="article_item">
-                          <div class="md-list-item-text" layout="column" >
-                            <h4 class="title_text" style="font-size:1.3em;">{{'T' | translate:publication.title}}</h4>
+                          <div class="md-list-item-text" style="padding: 8px" layout="column" >
+                            <h4 class="title_text" style="font-size:1.3em; white-space:normal;">{{'T' | translate:publication.title}}</h4>
                             <p class="publication_date" >{{publication.date | date: 'yyyy-MM-dd': 'GMT+03:00'}}</p>
                             <p style="font-size:0.8em;" ng-bind-html="'T' | translate:publication.content" class="article_text_part recent_publications"></p>
                           </div>
