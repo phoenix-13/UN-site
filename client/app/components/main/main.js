@@ -22,10 +22,12 @@ export default angular.module('main', [])
                 if (slide.ref) {
                   if (slide.ref.type === 'publication') {
                     return PublicationResource.getPublication(slide.ref._id)
-                      .then(publication => slide.category = publication.categories[0]);
+                      .then(publication => slide.category = publication.categories[0])
+                      .catch(() => $q.when())
                   } else if (slide.ref.type === 'indicator') {
                     return IndicatorResource.getIndicator(slide.ref._id)
-                      .then(indicator => slide.category = indicator.category);
+                      .then(indicator => slide.category = indicator.category)
+                      .catch(() => $q.when());
                   }
                 }
                 return {};

@@ -31,8 +31,8 @@ export default class {
   }
 
   engPublicationExists(publication){
-    return this.LangService.getCurrent() === 'geo'
-      || (publication.title.eng || publication.content.eng);
+    return this.LangService.getCurrent() === 'geo' ||
+     (publication.title.eng || publication.content.eng);
   }
 
   indexValuesByYears() {
@@ -60,10 +60,6 @@ export default class {
         : 0;
     });
   }
-
-  // showScrollButton() {
-  //   return document.body.scrollTop >= 100;
-  // }
 
   scrollTop() {
     this.$document.scrollTo(0, 0, 1000);
