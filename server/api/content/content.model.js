@@ -16,7 +16,8 @@ var refSchema = {
 
 var featuredSchema = {
   title: bilingStringSchema,
-  ref: refSchema
+  // ref: refSchema,
+  link: { type: String, default: '' }
 };
 
 var slideSchema = {

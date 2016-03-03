@@ -14,8 +14,8 @@ function parseFeatured(featured) {
   for (let item of featured) {
     let current = {
       title: biling(item.title),
-      ref: ref(item)
-      // link: item.link
+      // ref: ref(item)
+      link: item.link
     };
     res.push(current);
   }
