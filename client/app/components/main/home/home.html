@@ -10,7 +10,10 @@
             <md-list flex="90" ng-repeat="article in vm.firstLevelPrimaryArticles" style="padding:0">
               <md-list-item class="main_article_item">
                 <div class="md-list-item-text">
-                  <a ui-sref="{{'main.' + article.ref.type}}({id:article.ref._id})" class="unstyled_link">
+                  <a ng-if="article.ref._id" ui-sref="{{'main.' + article.ref.type}}({id:article.ref._id})" class="unstyled_link">
+                    <p class="main_article_p small_text"><i class="fa fa-angle-double-right"></i>{{'T' | translate:article.title}}</p>
+                  </a>
+                  <a ng-if="!article.ref._id" href="{{article.link}}" class="unstyled_link">
                     <p class="main_article_p small_text"><i class="fa fa-angle-double-right"></i>{{'T' | translate:article.title}}</p>
                   </a>
                 </div>
@@ -22,8 +25,11 @@
             <md-list flex="90" ng-repeat="article in vm.secondLevelPrimaryArticles" style="padding:0">
               <md-list-item class="main_article_item">
                 <div class="md-list-item-text">
-                  <a ui-sref="{{'main.' + article.ref.type}}({id:article.ref._id})" class="unstyled_link">
-                  <p class="main_article_p small_text"><i class="fa fa-angle-double-right"></i>{{'T' | translate:article.title}}</p>
+                  <a ng-if="article.ref._id" ui-sref="{{'main.' + article.ref.type}}({id:article.ref._id})" class="unstyled_link">
+                    <p class="main_article_p small_text"><i class="fa fa-angle-double-right"></i>{{'T' | translate:article.title}}</p>
+                  </a>
+                  <a ng-if="!article.ref._id" href="{{article.link}}" class="unstyled_link">
+                    <p class="main_article_p small_text"><i class="fa fa-angle-double-right"></i>{{'T' | translate:article.title}}</p>
                   </a>
                 </div>
               </md-list-item>

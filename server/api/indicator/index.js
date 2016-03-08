@@ -32,7 +32,7 @@ function getAll(req, res) {
 }
 
 function getLimited(req, res) {
-  var pageIndex = req.params.pageIndex;
+  var pageIndex = Number(req.params.pageIndex);
   controller.getLimited(pageIndex)
     .then(indicators => res.json(indicators))
     .catch(errors.logError('Failed to load limited indicators'))

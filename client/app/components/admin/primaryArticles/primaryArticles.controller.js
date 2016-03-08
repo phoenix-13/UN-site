@@ -10,14 +10,24 @@ export default class {
     this.Toast = Toast;
     this.primaryArticles = content.featured;
     this.primaryArticles.forEach(article => {
-      if (article.ref.type.length !== 0) {
+      if (article.ref._id) {
         article.selectedArticle = article.ref;
+      } else {
+        article.searchText = article.link;
       }
     });
   }
 
   updatePrimaryArticles() {
-    this.primaryArticles.forEach(article => article.ref = article.selectedArticle || article.ref);
+    this.primaryArticles.forEach(article => {
+      if (article.selectedArticle) {
+        article.ref = article.selectedArticle;
+        article.link = '';
+      } else {
+        article.link = article.searchText || '';
+        article.ref = article.ref || {};
+      }
+    });
     this.ContentResource.updatePrimaryArticles({featured: this.primaryArticles})
       .then(() => {
         this.Toast.show('Primary Articles Update!');
@@ -35,7 +45,7 @@ export default class {
     } else {
       return [];
     }
-  };
+  }
 
   parseArticles(articles) {
     var parsedArticles = [];

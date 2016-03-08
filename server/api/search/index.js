@@ -35,8 +35,8 @@ function search(req, res) {
   var searchQuery = req.query.searchQuery;
   var categoryId = req.query.categoryId;
   var year = req.query.year;
-  var indicatorsOffset = req.query.indicatorsOffset;
-  var publicationsOffset = req.query.publicationsOffset;
+  var indicatorsOffset = Number(req.query.indicatorsOffset);
+  var publicationsOffset = Number(req.query.publicationsOffset);
   var limit = searchConstants.searchLimit;
   controller.search(searchQuery, categoryId, year, indicatorsOffset, publicationsOffset, limit)
     .then(result => res.json(result))

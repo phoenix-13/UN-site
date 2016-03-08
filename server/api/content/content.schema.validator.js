@@ -39,7 +39,7 @@ var refSchema = Joi.object().keys({
 
 var featuredItemSchema = Joi.object().keys({
   title: bilingTitleSchema,
-  // ref: refSchema.required()
+  ref: refSchema,
   link: Joi.string().empty('')
 });
 

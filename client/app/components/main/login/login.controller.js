@@ -5,7 +5,7 @@ export default class {
     'ngInject';
     this.$state = $state;
     this.Auth = Auth;
-    this.admin = {name: 'name', password: 'password'};
+    this.admin = {name: '', password: ''};
   }
 
   login() {

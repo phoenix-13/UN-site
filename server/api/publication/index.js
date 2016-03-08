@@ -33,7 +33,7 @@ function getAll(req, res) {
 }
 
 function getLimited(req, res) {
-  var pageIndex = req.params.pageIndex;
+  var pageIndex = Number(req.params.pageIndex);
   controller.getLimited(pageIndex)
     .then(publications => res.json(publications))
     .catch(errors.logError(`Failed to load limited publications from pageIndex: ${pageIndex}`))
