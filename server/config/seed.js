@@ -14,8 +14,8 @@ module.exports = function () {
   seedContent()
     .then(() => seedCategories())
     .then(() => seedDemographics())
-    .then(() => seedIndicators())
-    .then(() => seedPublications())
+    //.then(() => seedIndicators())
+    //.then(() => seedPublications())
     .then(() => seedAdmins());
 };
 
@@ -212,7 +212,7 @@ module.exports = function () {
    }));
  }
 
- function getPublication(index, categoryId1, categoryId2) {
+ function getPublication(index, categoryId1, categoryId2, milliseconds) {
    return {
      title: {
        geo: `${index} Lorem Ipsum საბეჭდი და ტიპოგრაფიული `,
@@ -222,7 +222,7 @@ module.exports = function () {
        geo: `<p>Lorem Ipsum საბეჭდი და ტიპოგრაფიული ინდუსტრიის უშინაარსო ტექსტია. იგი სტანდარტად 1500-იანი წლებიდან იქცა, როდესაც უცნობმა მბეჭდავმა ამწყობ დაზგაზე წიგნის საცდელი ეგზემპლარი დაბეჭდა. მისი ტექსტი არამარტო 5 საუკუნის მანძილზე შემორჩა, არამედ მან დღემდე, ელექტრონული ტიპოგრაფიის დრომდეც უცვლელად მოაღწია. განსაკუთრებული პოპულარობა მას 1960-იან წლებში გამოსულმა Letraset-ის ცნობილმა ტრაფარეტებმა მოუტანა, უფრო მოგვიანებით კი — Aldus PageMaker-ის ტიპის საგამომცემლო პროგრამებმა, რომლებშიც Lorem Ipsum-ის სხვადასხვა ვერსიები იყო ჩაშენებული.</p>`,
        eng: `<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>`
      },
-     date: new Date(Date.now() + 1000 * 60 * 60 * 24 * index),
+     date: new Date(milliseconds),
      categories: [categoryId1, categoryId2],
      year: (new Date()).getFullYear()
    }
