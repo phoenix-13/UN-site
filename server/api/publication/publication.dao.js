@@ -33,7 +33,7 @@ function getLimited(offset, limit) {
   return Publication
     .find()
     .select('')
-    .sort({ '_id': -1 })
+    .sort({ 'date': -1 })
     .skip(offset)
     .limit(limit)
     .execAsync();

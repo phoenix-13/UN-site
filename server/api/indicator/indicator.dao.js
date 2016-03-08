@@ -33,7 +33,7 @@ function getLimited(offset, limit) {
   return Indicator
     .find()
     .select('')
-    .sort({ '_id': -1 })
+    .sort({ 'title.geo': 1 })
     .skip(offset)
     .limit(limit)
     .execAsync();
