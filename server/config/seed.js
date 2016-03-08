@@ -11,12 +11,12 @@ var Publication = require('../api/publication/publication.dao');
 var Admin = require('../api/admin/admin.dao');
 
 module.exports = function () {
-  seedContent()
-    .then(() => seedCategories())
-    .then(() => seedDemographics())
+  //seedContent()
+  //  .then(() => seedCategories())
+  //  .then(() => seedDemographics())
     //.then(() => seedIndicators())
     //.then(() => seedPublications())
-    .then(() => seedAdmins());
+    //.then(() => seedAdmins());
 };
 
  function seedContent() {

@@ -33,7 +33,7 @@ function search(queryString, categoryId, year, indicatorsOffset, publicationsOff
   var pubFindQuery = getPubFindQueryObject(categoryId, year);
 
   return Q.all([
-      Indicator.find(indFindQuery).or(orQuery).sort({ 'title.ge': 1 }).skip(indicatorsOffset).limit(limit).execAsync(),
+      Indicator.find(indFindQuery).or(orQuery).sort({ 'title.geo': 1 }).skip(indicatorsOffset).limit(limit).execAsync(),
       Indicator.find(indFindQuery).or(orQuery).countAsync(),
       Publication.find(pubFindQuery).or(orQuery).sort({ 'date': -1 }).skip(publicationsOffset).limit(limit).execAsync(),
       Publication.find(pubFindQuery).or(orQuery).countAsync()
