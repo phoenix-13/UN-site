@@ -1,7 +1,8 @@
 'use strict';
 
 //var _ = require('lodash');
-//var Q = require('bluebird');
+var Promise = require('bluebird');
+var Event = require('../api/event/event.dao');
 //var ObjectId = require('mongoose').Types.ObjectId;
 //var Content = require('../api/content/content.dao');
 //var Category = require('../api/category/category.dao');
@@ -10,7 +11,15 @@
 //var Publication = require('../api/publication/publication.dao');
 //var Admin = require('../api/admin/admin.dao');
 
-module.exports = function () {};
+module.exports = {
+  clearDB
+};
+
+function clearDB() {
+  return Promise.all([
+    Event.destroyAll(),
+  ]);
+}
 
  //function seedContent() {
  //  var featured = _
