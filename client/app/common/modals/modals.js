@@ -1,33 +1,33 @@
 'use strict';
 
 //inject:import
-import confirmModal from './confirmModal/confirmModal';
-import demographyModal from './demographyModal/demographyModal';
-import galleryModal from './galleryModal/galleryModal';
-import indicatorModal from './indicatorModal/indicatorModal';
-import partnerModal from './partnerModal/partnerModal';
-import publicationModal from './publicationModal/publicationModal';
-import slideModal from './slideModal/slideModal';
-import storageModal from './storageModal/storageModal';
+import confirmModal from './confirmModal/confirmModal.js';
+import demographyModal from './demographyModal/demographyModal.js';
+import galleryModal from './galleryModal/galleryModal.js';
+import indicatorModal from './indicatorModal/indicatorModal.js';
+import partnerModal from './partnerModal/partnerModal.js';
+import publicationModal from './publicationModal/publicationModal.js';
+import slideModal from './slideModal/slideModal.js';
+import storageModal from './storageModal/storageModal.js';
 //endinject
 
 export default angular.module('modals', [])
   //inject:ngservice
 
-  .service('confirmModal', confirmModal)
+  .service('confirmModalModal', confirmModal)
 
-  .service('demographyModal', demographyModal)
+  .service('demographyModalModal', demographyModal)
 
-  .service('galleryModal', galleryModal)
+  .service('galleryModalModal', galleryModal)
 
-  .service('indicatorModal', indicatorModal)
+  .service('indicatorModalModal', indicatorModal)
 
-  .service('partnerModal', partnerModal)
+  .service('partnerModalModal', partnerModal)
 
-  .service('publicationModal', publicationModal)
+  .service('publicationModalModal', publicationModal)
 
-  .service('slideModal', slideModal)
+  .service('slideModalModal', slideModal)
 
-  .service('storageModal', storageModal)
+  .service('storageModalModal', storageModal)
 
   //endinject

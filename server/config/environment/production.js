@@ -5,7 +5,7 @@ var pkg = require('../../../package.json');
 module.exports = {
   ip: process.env.IP || undefined,
 
-  port: pkg.gulp.productionPort,
+  port: pkg.config.productionPort,
 
   mongo: {
     uri: 'mongodb://localhost/UN-site'

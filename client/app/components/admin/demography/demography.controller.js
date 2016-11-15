@@ -57,7 +57,7 @@ export default class {
     demographics.forEach(demography => this.demographics[demography.region.geo] = demography);
   }
 
-  indexDemographicsByYear = () => {
+  indexDemographicsByYear() {
     _.forIn(this.demographics, demography => {
       demography.valuesMap = {};
       demography.values.forEach(pair => {
