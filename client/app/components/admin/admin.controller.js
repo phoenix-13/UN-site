@@ -8,9 +8,11 @@ export default class {
     this.Auth = Auth;
   }
 
-  toggleNavbar = () => this.$mdSidenav('left').toggle();
+  toggleNavbar() {
+    this.$mdSidenav('left').toggle();
+  }
 
-  logout = () => {
+  logout() {
     this.$state.go('main.login');
     this.Auth.logout();
   }

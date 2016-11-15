@@ -10,7 +10,11 @@ export default class {
     $timeout(() => document.getElementById('#publicationsSlide').click());
   }
 
-  toggleIndicators = () => this.indicatorsSlided = !this.indicatorsSlided;
+  toggleIndicators() {
+    this.indicatorsSlided = !this.indicatorsSlided;
+  }
 
-  togglePublications = () => this.publicationsSlided = !this.publicationsSlided;
+  togglePublications() {
+    this.publicationsSlided = !this.publicationsSlided;
+  }
 }

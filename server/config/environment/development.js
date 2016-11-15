@@ -3,7 +3,7 @@
 var pkg = require('../../../package.json');
 
 module.exports = {
-  port: pkg.gulp.developmentPort,
+  port: pkg.config.developmentPort,
 
   mongo: {
     uri: 'mongodb://localhost/UN-site-dev'

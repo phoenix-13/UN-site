@@ -12,7 +12,11 @@ export default class {
       .then(res => this.$cookieStore.put('token', res.token));
   }
 
-  logout = () => this.$cookieStore.remove('token');
+  logout() {
+    this.$cookieStore.remove('token');
+  }
 
-  getToken = () => this.$cookieStore.get('token');
+  getToken() {
+    return this.$cookieStore.get('token');
+  }
 }

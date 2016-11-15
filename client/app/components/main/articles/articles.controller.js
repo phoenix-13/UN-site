@@ -54,13 +54,13 @@ export default class {
     }
   }
 
-  changePublicationPage = () => {
+  changePublicationPage() {
     var query = {publicationIndex: this.publications.currentPage - 1};
     if (this.query.tabIndex !== this.selectedTab) query.tabIndex = this.selectedTab;
     this.$state.go('main.articles', query);
   }
 
-  changeIndicatorPage = () => {
+  changeIndicatorPage() {
     var query = {indicatorIndex: this.indicators.currentPage - 1};
     if (this.query.tabIndex !== this.selectedTab) query.tabIndex = this.selectedTab;
     this.$state.go('main.articles', query);
@@ -108,7 +108,7 @@ export default class {
     }
   }
 
-  indexIndicatorsByYear = () => {
+  indexIndicatorsByYear() {
     for (var indicator of this.indicators.items) {
       indicator.valuesMap = _.indexBy(indicator.values, 'year');
     }
