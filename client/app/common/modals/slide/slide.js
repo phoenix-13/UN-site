@@ -1,7 +1,7 @@
 'use strict';
 
-import template from './slideModal.html!text';
-import './slideModal.css!';
+import template from './slide.html!text';
+import './slide.css!';
 
 export default class {
   constructor($mdDialog) {

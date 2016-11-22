@@ -1,7 +1,7 @@
 'use strict';
 
-import template from './indicatorModal.html!text';
-import './indicatorModal.css!';
+import template from './indicator.html!text';
+import './indicator.css!';
 
 export default class {
   constructor($mdDialog) {

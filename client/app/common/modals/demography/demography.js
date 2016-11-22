@@ -1,7 +1,7 @@
 'use strict';
 
-import template from './demographyModal.html!text';
-import './demographyModal.css!';
+import template from './demography.html!text';
+import './demography.css!';
 
 export default class {
   constructor($mdDialog) {

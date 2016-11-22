@@ -2,6 +2,7 @@
 
 var Q = require('bluebird');
 var mongoose = require('mongoose');
+mongoose.Promise = require('bluebird');
 var config = require('./environment');
 Q.promisifyAll(mongoose);
 

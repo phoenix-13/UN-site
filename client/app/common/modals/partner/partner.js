@@ -1,7 +1,7 @@
 'use strict';
 
-import template from './partnerModal.html!text';
-import './partnerModal.css!';
+import template from './partner.html!text';
+import './partner.css!';
 
 export default class {
   constructor($mdDialog) {

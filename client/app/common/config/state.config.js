@@ -9,7 +9,7 @@ export default ($rootScope, $state, $mdDialog) => {
         $state.go('main.login');
         break;
       default:
-        $state.go('main.home');
+        // $state.go('main.home');
         break;
     }
   });

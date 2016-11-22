@@ -1,7 +1,7 @@
 'use strict';
 
-import template from './storageModal.html!text';
-import './storageModal.css!';
+import template from './storage.html!text';
+import './storage.css!';
 
 export default class {
   constructor($uibModal, StorageResource) {

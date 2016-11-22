@@ -23,13 +23,14 @@ module.exports = function (app) {
   if (env === 'production') {
     app.use(express.static(path.join(config.root, 'dist')));
     app.use(express.static(path.join(config.paths.uploads)));
-    app.set('appPath', 'dist');
+    app.set('views', 'dist');
   }
 
   if (env === 'development' || env === 'test') {
     app.use(express.static(path.join(config.root, '.tmp')));
+    app.use(express.static(path.join(config.root, 'client')));
     app.use(express.static(path.join(config.root, './')));
     app.use(express.static(path.join(config.paths.uploads)));
-    app.set('appPath', 'client');
+    app.set('views', 'client');
   }
 };

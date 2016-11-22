@@ -1,22 +1,22 @@
 'use strict';
 
 export default class {
-  constructor($cookieStore, AdminResource) {
+  constructor($cookies, AdminResource) {
     'ngInject';
-    this.$cookieStore = $cookieStore;
+    this.$cookies = $cookies;
     this.AdminResource = AdminResource;
   }
 
   login(admin) {
     return this.AdminResource.login(admin)
-      .then(res => this.$cookieStore.put('token', res.token));
+      .then(res => this.$cookies.put('token', res.token));
   }
 
   logout() {
-    this.$cookieStore.remove('token');
+    this.$cookies.remove('token');
   }
 
   getToken() {
-    return this.$cookieStore.get('token');
+    return this.$cookies.get('token');
   }
 }

@@ -1,7 +1,7 @@
 'use strict';
 
-import template from './galleryModal.html!text';
-import './galleryModal.css!';
+import template from './gallery.html!text';
+import './gallery.css!';
 
 export default class {
   constructor($uibModal, ImageResource) {
